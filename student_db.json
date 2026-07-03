@@ -1,0 +1,4075 @@
+{
+  "ipm04gadeca@iimrohtak.ac.in": {
+    "name": "Gade Chris Anurag",
+    "courses": [
+      "AIDMD",
+      "BGRI",
+      "DBM",
+      "FADT",
+      "MBPET",
+      "PS",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04niketp@iimrohtak.ac.in": {
+    "name": "Niket Parikh",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "BA Sec-A",
+      "CV Sec-A",
+      "IBS",
+      "PFM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04palaky@iimrohtak.ac.in": {
+    "name": "Palak Yadav",
+    "courses": [
+      "AIDMD",
+      "BA Sec-A",
+      "DBM",
+      "PCM",
+      "PS",
+      "SCM Sec-A",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04sejalt@iimrohtak.ac.in": {
+    "name": "Sejal Trivedi",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "BA Sec-A",
+      "MBPET",
+      "SC",
+      "SDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04shreyaa@iimrohtak.ac.in": {
+    "name": "Shreya Aggarwal",
+    "courses": [
+      "AIDMD",
+      "DBM",
+      "IMDM",
+      "MS",
+      "PFM",
+      "PM",
+      "PS",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04tanishaj@iimrohtak.ac.in": {
+    "name": "Tanisha Jawarkar",
+    "courses": [
+      "AIDMD",
+      "BA Sec-B",
+      "CB Sec-A",
+      "DBM",
+      "PS",
+      "SDM",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04avinash@iimrohtak.ac.in": {
+    "name": "Avinash",
+    "courses": [
+      "AIDMD",
+      "BGRI",
+      "IBS",
+      "PWMP",
+      "SC",
+      "SDM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04dikshar@iimrohtak.ac.in": {
+    "name": "Diksha Raj",
+    "courses": [
+      "AIDMD",
+      "DBM",
+      "FADT",
+      "PS",
+      "SCM Sec-B",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04mahakk@iimrohtak.ac.in": {
+    "name": "Mahak Khabia",
+    "courses": [
+      "AIDMD",
+      "CB Sec-B",
+      "DBM",
+      "Ind4.0",
+      "MBPET",
+      "MS",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04ritikak@iimrohtak.ac.in": {
+    "name": "Ritika Kanojiya",
+    "courses": [
+      "AIDMD",
+      "BA Sec-B",
+      "DBM",
+      "FADT",
+      "PS",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04vatsalm@iimrohtak.ac.in": {
+    "name": "Vatsal Mishra",
+    "courses": [
+      "AIDMD",
+      "BA Sec-B",
+      "CB Sec-B",
+      "FADT",
+      "IMDM",
+      "PS",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04yuvrajk@iimrohtak.ac.in": {
+    "name": "Yuvraj Kataria",
+    "courses": [
+      "AIDMD",
+      "CB Sec-B",
+      "DBM",
+      "FADT",
+      "PS",
+      "SDM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp15khemchandm@iimrohtak.ac.in": {
+    "name": "Khemchand Meena",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "CB Sec-B",
+      "CV Sec-A",
+      "MS",
+      "SCM Sec-A",
+      "SDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp15ngarik@iimrohtak.ac.in": {
+    "name": "Ngari Kena",
+    "courses": [
+      "AIDMD",
+      "FADT",
+      "MBPET",
+      "PCM",
+      "SC",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16aadyaa@iimrohtak.ac.in": {
+    "name": "Aadya Agarwal",
+    "courses": [
+      "AIDMD",
+      "CB Sec-A",
+      "IBS",
+      "Ind4.0",
+      "MBPET",
+      "MS",
+      "PM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16priyas@iimrohtak.ac.in": {
+    "name": "Priya Singh",
+    "courses": [
+      "AIDMD",
+      "CB Sec-A",
+      "IMDM",
+      "L & D",
+      "PWMP",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16anaghav@iimrohtak.ac.in": {
+    "name": "Anagha Premarajan V",
+    "courses": [
+      "AIDMD",
+      "CB Sec-A",
+      "FSA",
+      "GFMG",
+      "MS",
+      "PM",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16komala@iimrohtak.ac.in": {
+    "name": "Aseri Komal Rajkumar",
+    "courses": [
+      "AIDMD",
+      "CB Sec-A",
+      "GFMG",
+      "L & D",
+      "PCM",
+      "PWMP",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16ashwanis@iimrohtak.ac.in": {
+    "name": "Ashwani Kumar Singh",
+    "courses": [
+      "AIDMD",
+      "IBS",
+      "L & D",
+      "PCM",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16bazilm@iimrohtak.ac.in": {
+    "name": "Bazil Mehdi",
+    "courses": [
+      "AIDMD",
+      "BA Sec-A",
+      "CB Sec-A",
+      "GFMG",
+      "PS",
+      "SCM Sec-A",
+      "SDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16bhargavit@iimrohtak.ac.in": {
+    "name": "Bhargavi Taparia",
+    "courses": [
+      "AIDMD",
+      "CB Sec-A",
+      "FADT",
+      "L & D",
+      "SC",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16aryana@iimrohtak.ac.in": {
+    "name": "Aryan Aggarwal",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "BA Sec-A",
+      "CV Sec-A",
+      "DBM",
+      "IAPM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16ayushg@iimrohtak.ac.in": {
+    "name": "Ayush Garg",
+    "courses": [
+      "AIDMD",
+      "CV Sec-A",
+      "DBM",
+      "IAPM",
+      "IMDM",
+      "PS",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16bipashap@iimrohtak.ac.in": {
+    "name": "Bipasha Paul",
+    "courses": [
+      "AIDMD",
+      "BA Sec-A",
+      "FM",
+      "PFM",
+      "PM",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16praisy@iimrohtak.ac.in": {
+    "name": "Praisy",
+    "courses": [
+      "AIDMD",
+      "BA Sec-A",
+      "CV Sec-A",
+      "DBM",
+      "FADT",
+      "SC",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16debosmitam@iimrohtak.ac.in": {
+    "name": "Debosmita Mallick",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "FADT",
+      "L & D",
+      "PCM",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16dhairyaj@iimrohtak.ac.in": {
+    "name": "Dhairya Jain",
+    "courses": [
+      "AIDMD",
+      "CV Sec-B",
+      "FM",
+      "MBPET",
+      "MFIS",
+      "PFM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16harshits@iimrohtak.ac.in": {
+    "name": "Harshit Singh",
+    "courses": [
+      "AIDMD",
+      "BA Sec-B",
+      "CB Sec-A",
+      "FSA",
+      "IAPM",
+      "MFIS",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16nithyaa@iimrohtak.ac.in": {
+    "name": "Nithya Sree Addluri",
+    "courses": [
+      "AIDMD",
+      "CB Sec-A",
+      "DBM",
+      "FADT",
+      "MS",
+      "PCM",
+      "PS",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16jyotishmoyk@iimrohtak.ac.in": {
+    "name": "Jyotishmoy Kakati",
+    "courses": [
+      "AIDMD",
+      "CB Sec-A",
+      "DBM",
+      "FADT",
+      "PS",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16mallikam@iimrohtak.ac.in": {
+    "name": "Mallika Mansinghka",
+    "courses": [
+      "AIDMD",
+      "CB Sec-A",
+      "L & D",
+      "PM",
+      "PS",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16manalr@iimrohtak.ac.in": {
+    "name": "Manal Raval",
+    "courses": [
+      "AIDMD",
+      "BA Sec-B",
+      "CB Sec-A",
+      "FADT",
+      "PS",
+      "SDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16manikab@iimrohtak.ac.in": {
+    "name": "Manika Baskey",
+    "courses": [
+      "AIDMD",
+      "BA Sec-B",
+      "L & D",
+      "PCM",
+      "PFM",
+      "PS",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16manishaa@iimrohtak.ac.in": {
+    "name": "Manisha Anand",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "FADT",
+      "L & D",
+      "PCM",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16meghak@iimrohtak.ac.in": {
+    "name": "Megha Khatri",
+    "courses": [
+      "AIDMD",
+      "BA Sec-B",
+      "CV Sec-B",
+      "IAPM",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16nadiak@iimrohtak.ac.in": {
+    "name": "Nadia Kalra",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "CB Sec-B",
+      "CV Sec-B",
+      "PWMP",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16anils@iimrohtak.ac.in": {
+    "name": "Chitwan Anil Swaraj",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "CB Sec-B",
+      "CV Sec-B",
+      "IMDM",
+      "Ind4.0",
+      "MS",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16salonik@iimrohtak.ac.in": {
+    "name": "Saloni Kumar",
+    "courses": [
+      "AIDMD",
+      "Ind4.0",
+      "MFIS",
+      "MS",
+      "PCM",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16parvanib@iimrohtak.ac.in": {
+    "name": "Parvani Baroi",
+    "courses": [
+      "AIDMD",
+      "BGRI",
+      "IBS",
+      "PWMP",
+      "SC",
+      "SDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16hemanthr@iimrohtak.ac.in": {
+    "name": "Hemanth Rathod Rathlavath",
+    "courses": [
+      "AIDMD",
+      "CV Sec-A",
+      "DBM",
+      "IBS",
+      "PWMP",
+      "SC",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16aakashm@iimrohtak.ac.in": {
+    "name": "Aakash Malav",
+    "courses": [
+      "AIDMD",
+      "BA Sec-A",
+      "CV Sec-B",
+      "FSA",
+      "IAPM",
+      "MBPET",
+      "SCM Sec-B",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16riyab@iimrohtak.ac.in": {
+    "name": "Riya Burman",
+    "courses": [
+      "AIDMD",
+      "BGRI",
+      "FADT",
+      "L & D",
+      "PS",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16robing@iimrohtak.ac.in": {
+    "name": "Robin Gautam",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "BGRI",
+      "CB Sec-B",
+      "DBM",
+      "SDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16sahilb@iimrohtak.ac.in": {
+    "name": "Sahil Bhalla",
+    "courses": [
+      "AIDMD",
+      "BGRI",
+      "FADT",
+      "FM",
+      "FSA",
+      "IAPM",
+      "Ind4.0",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16sakshig@iimrohtak.ac.in": {
+    "name": "Sakshi Vishnu Gaikwad",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "IBS",
+      "MBPET",
+      "PWMP",
+      "SCM Sec-A",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16saurabhs@iimrohtak.ac.in": {
+    "name": "Saurabh Sachdeva",
+    "courses": [
+      "AIDMD",
+      "BA Sec-A",
+      "CB Sec-B",
+      "PM",
+      "PS",
+      "SCM Sec-A",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16vaibhavm@iimrohtak.ac.in": {
+    "name": "Vaibhav Mittal",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "BGRI",
+      "CB Sec-B",
+      "IBS",
+      "PCM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16sanjanad@iimrohtak.ac.in": {
+    "name": "Sanjana Dagar",
+    "courses": [
+      "AIDMD",
+      "CB Sec-B",
+      "FADT",
+      "MS",
+      "PM",
+      "PS",
+      "SDM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16shreyar@iimrohtak.ac.in": {
+    "name": "Shreya Rathore",
+    "courses": [
+      "AIDMD",
+      "BA Sec-A",
+      "CV Sec-B",
+      "DBM",
+      "FM",
+      "PFM",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16honeyt@iimrohtak.ac.in": {
+    "name": "Honey Tilwani",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "BA Sec-A",
+      "DBM",
+      "GFMG",
+      "MS",
+      "SCM Sec-A",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16subhashs@iimrohtak.ac.in": {
+    "name": "Subhash Sourav",
+    "courses": [
+      "AIDMD",
+      "BGRI",
+      "MS",
+      "PM",
+      "PS",
+      "PWMP",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16swatip@iimrohtak.ac.in": {
+    "name": "Swati Prajapati",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "CB Sec-B",
+      "FADT",
+      "PM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16tanishthav@iimrohtak.ac.in": {
+    "name": "Tanishtha Verma",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "BA Sec-B",
+      "DBM",
+      "PCM",
+      "PFM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16unnatip@iimrohtak.ac.in": {
+    "name": "Unnati Gowardhan Patil",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "FADT",
+      "L & D",
+      "MS",
+      "PCM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16varshitr@iimrohtak.ac.in": {
+    "name": "Varshit Rathi",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "BA Sec-B",
+      "CV Sec-B",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16venusm@iimrohtak.ac.in": {
+    "name": "Venus Magroliya",
+    "courses": [
+      "AIDMD",
+      "CV Sec-B",
+      "FM",
+      "GFMG",
+      "PWMP",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16aayakshc@iimrohtak.ac.in": {
+    "name": "Aayaksh Chadha",
+    "courses": [
+      "AIDMD",
+      "BA Sec-B",
+      "MBPET",
+      "PCM",
+      "PS",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16ravalje@iimrohtak.ac.in": {
+    "name": "Raval Jeel Dineshkumar",
+    "courses": [
+      "AIDMD",
+      "BGRI",
+      "CV Sec-A",
+      "FADT",
+      "MFIS",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16priyankas@iimrohtak.ac.in": {
+    "name": "Priyanka",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "BA Sec-B",
+      "CV Sec-A",
+      "GFMG",
+      "IAPM",
+      "MFIS",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16varshinis@iimrohtak.ac.in": {
+    "name": "Varshini S",
+    "courses": [
+      "AIDMD",
+      "B2B",
+      "BA Sec-B",
+      "DBM",
+      "SCM Sec-B",
+      "SHRM",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04kotia@iimrohtak.ac.in": {
+    "name": "Koti Ashritha",
+    "courses": [
+      "B2B",
+      "BA Sec-A",
+      "CV Sec-A",
+      "FADT",
+      "MFIS",
+      "SC",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04mridulu@iimrohtak.ac.in": {
+    "name": "Mridul Upadhyay",
+    "courses": [
+      "B2B",
+      "BA Sec-A",
+      "CV Sec-A",
+      "IBS",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04zeeshans@iimrohtak.ac.in": {
+    "name": "Zeeshan Siddiqui",
+    "courses": [
+      "B2B",
+      "IMDM",
+      "PM",
+      "SCM Sec-A",
+      "SDM",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04pratyushs@iimrohtak.ac.in": {
+    "name": "Pratyush Singhal",
+    "courses": [
+      "B2B",
+      "BA Sec-B",
+      "DBM",
+      "GFMG",
+      "IBS",
+      "PCM",
+      "SHRM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04sahily@iimrohtak.ac.in": {
+    "name": "Sahil Yadav",
+    "courses": [
+      "B2B",
+      "BA Sec-B",
+      "IBS",
+      "MBPET",
+      "PM",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04sundars@iimrohtak.ac.in": {
+    "name": "Sundar Suman",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "CB Sec-B",
+      "IMDM",
+      "PM",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04tanmays@iimrohtak.ac.in": {
+    "name": "Tanmay Sharma",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "CB Sec-B",
+      "L & D",
+      "PM",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04vph@iimrohtak.ac.in": {
+    "name": "V Prannoy Hans",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "GFMG",
+      "IBS",
+      "MBPET",
+      "PCM",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04yash@iimrohtak.ac.in": {
+    "name": "Yash",
+    "courses": [
+      "B2B",
+      "BA Sec-B",
+      "DBM",
+      "IBS",
+      "MBPET",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp15nishitac@iimrohtak.ac.in": {
+    "name": "Nishita Chaudhary",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "FADT",
+      "Ind4.0",
+      "MBPET",
+      "MS",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16alishaa@iimrohtak.ac.in": {
+    "name": "Alisha Ali",
+    "courses": [
+      "B2B",
+      "BA Sec-A",
+      "CB Sec-B",
+      "FM",
+      "IMDM",
+      "Ind4.0",
+      "L & D",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16ammus@iimrohtak.ac.in": {
+    "name": "Ammu S",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "L & D",
+      "PM",
+      "SCM Sec-A",
+      "SHRM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16amritac@iimrohtak.ac.in": {
+    "name": "Amrita Choudhary",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "DBM",
+      "MS",
+      "PM",
+      "SCM Sec-A",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16anchitg@iimrohtak.ac.in": {
+    "name": "Anchit Gupta",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "FADT",
+      "PM",
+      "SCM Sec-A",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16aditiy@iimrohtak.ac.in": {
+    "name": "Aditi Yadav",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "CV Sec-A",
+      "FM",
+      "IMDM",
+      "Ind4.0",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16akshita@iimrohtak.ac.in": {
+    "name": "Akshita",
+    "courses": [
+      "B2B",
+      "BA Sec-A",
+      "Ind4.0",
+      "PCM",
+      "SCM Sec-A",
+      "SHRM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16gaurib@iimrohtak.ac.in": {
+    "name": "Gauri Bajaj",
+    "courses": [
+      "B2B",
+      "BA Sec-B",
+      "IBS",
+      "PCM",
+      "PFM",
+      "SCM Sec-A",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16joeg@iimrohtak.ac.in": {
+    "name": "Joe George",
+    "courses": [
+      "B2B",
+      "BA Sec-B",
+      "IBS",
+      "MBPET",
+      "PCM",
+      "SDM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16yashaswinik@iimrohtak.ac.in": {
+    "name": "K Yashaswini",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "DBM",
+      "Ind4.0",
+      "MBPET",
+      "MS",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16adityag@iimrohtak.ac.in": {
+    "name": "Aditya Gupta",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "Ind4.0",
+      "MS",
+      "PM",
+      "SCM Sec-A",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16kalpanav@iimrohtak.ac.in": {
+    "name": "Kalpana Verma",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "FADT",
+      "MBPET",
+      "PM",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16manavg@iimrohtak.ac.in": {
+    "name": "Manav Gupta",
+    "courses": [
+      "B2B",
+      "BA Sec-B",
+      "CB Sec-B",
+      "FADT",
+      "PM",
+      "SCM Sec-A",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16nehas@iimrohtak.ac.in": {
+    "name": "Neha Singh",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "CB Sec-B",
+      "FADT",
+      "MS",
+      "SHRM",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16nirmanb@iimrohtak.ac.in": {
+    "name": "Nirman Bhowmik",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "CB Sec-B",
+      "SDM",
+      "SHRM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16devanshun@iimrohtak.ac.in": {
+    "name": "Devanshu Singh Negi",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "IMDM",
+      "MFIS",
+      "PCM",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16pavithran@iimrohtak.ac.in": {
+    "name": "Pavithra N",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "IAPM",
+      "IMDM",
+      "MBPET",
+      "MS",
+      "PFM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16adityak@iimrohtak.ac.in": {
+    "name": "Aditya Khandelwal",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "Ind4.0",
+      "MS",
+      "SCM Sec-B",
+      "SDM",
+      "SHRM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16palakk@iimrohtak.ac.in": {
+    "name": "Palak Atul Karwatkar",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "DBM",
+      "PM",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16priyanshua@iimrohtak.ac.in": {
+    "name": "Priyanshu Avi",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "FADT",
+      "Ind4.0",
+      "L & D",
+      "PCM",
+      "SC",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16raghavendars@iimrohtak.ac.in": {
+    "name": "Raghavendar Srikkanth",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "FADT",
+      "Ind4.0",
+      "L & D",
+      "PCM",
+      "SCM Sec-B",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16ranup@iimrohtak.ac.in": {
+    "name": "Ranu Priya",
+    "courses": [
+      "B2B",
+      "L & D",
+      "MBPET",
+      "PCM",
+      "SHRM",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16rejalb@iimrohtak.ac.in": {
+    "name": "Rejal Bhagat",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "Ind4.0",
+      "MFIS",
+      "PCM",
+      "SDM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16richab@iimrohtak.ac.in": {
+    "name": "Richa Boro",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "FADT",
+      "Ind4.0",
+      "MS",
+      "SDM",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16rifas@iimrohtak.ac.in": {
+    "name": "Rifa Shereef",
+    "courses": [
+      "B2B",
+      "Ind4.0",
+      "MS",
+      "PM",
+      "SCM Sec-B",
+      "SHRM",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16khyatik@iimrohtak.ac.in": {
+    "name": "Khyati Kuthare",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "L & D",
+      "PCM",
+      "PWMP",
+      "SC",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16shreyasa@iimrohtak.ac.in": {
+    "name": "Shreya Samantaray",
+    "courses": [
+      "B2B",
+      "FADT",
+      "L & D",
+      "PFM",
+      "PM",
+      "SCM Sec-A",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16yashs@iimrohtak.ac.in": {
+    "name": "Yash Sharma",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "CB Sec-B",
+      "CV Sec-B",
+      "FM",
+      "PFM",
+      "SDM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16sagars@iimrohtak.ac.in": {
+    "name": "Solanki Sagar Dhanjibhai",
+    "courses": [
+      "B2B",
+      "BGRI",
+      "Ind4.0",
+      "L & D",
+      "MS",
+      "PM",
+      "SDM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16sweta@iimrohtak.ac.in": {
+    "name": "Sweta",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "DBM",
+      "FADT",
+      "GFMG",
+      "SDM",
+      "SHRM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16tanishac@iimrohtak.ac.in": {
+    "name": "Tanisha Choudhary",
+    "courses": [
+      "B2B",
+      "DBM",
+      "IBS",
+      "MBPET",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16vineetd@iimrohtak.ac.in": {
+    "name": "Vineet Dudeja",
+    "courses": [
+      "B2B",
+      "BA Sec-B",
+      "CB Sec-B",
+      "CV Sec-B",
+      "MFIS",
+      "PFM",
+      "SCM Sec-B",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16shikal@iimrohtak.ac.in": {
+    "name": "Shikal",
+    "courses": [
+      "B2B",
+      "CB Sec-B",
+      "FM",
+      "GFMG",
+      "IMDM",
+      "PWMP",
+      "SDM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16muhammadt@iimrohtak.ac.in": {
+    "name": "Muhammad Taha",
+    "courses": [
+      "B2B",
+      "BA Sec-B",
+      "CV Sec-A",
+      "DBM",
+      "MBPET",
+      "PFM",
+      "SHRM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04abhijayaky@iimrohtak.ac.in": {
+    "name": "Abhijaya Kumar Yadav",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FSA",
+      "IMDM",
+      "PWMP",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04aditib@iimrohtak.ac.in": {
+    "name": "Aditi Badwaya",
+    "courses": [
+      "BA Sec-A",
+      "CB Sec-A",
+      "CV Sec-A",
+      "FSA",
+      "MFIS",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04adityabs@iimrohtak.ac.in": {
+    "name": "Aditya Brijgopal Sarda",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "GFMG",
+      "MFIS",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04alfredph@iimrohtak.ac.in": {
+    "name": "Alfred Paogunlien Haokip",
+    "courses": [
+      "BA Sec-A",
+      "DBM",
+      "IBS",
+      "PM",
+      "SCM Sec-A",
+      "SDM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04archanaj@iimrohtak.ac.in": {
+    "name": "Archana Jat",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "L & D",
+      "SCM Sec-A",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04arpitga@iimrohtak.ac.in": {
+    "name": "Arpit Garg",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "IMDM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04girisha@iimrohtak.ac.in": {
+    "name": "Girisha",
+    "courses": [
+      "BA Sec-A",
+      "IBS",
+      "L & D",
+      "PCM",
+      "SC",
+      "SHRM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04kallemh@iimrohtak.ac.in": {
+    "name": "Kallem Harathi",
+    "courses": [
+      "BA Sec-A",
+      "FADT",
+      "IMDM",
+      "Ind4.0",
+      "L & D",
+      "MS",
+      "SC",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04narishab@iimrohtak.ac.in": {
+    "name": "Narisha Bhawsar",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FADT",
+      "IMDM",
+      "MFIS",
+      "PFM",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04nirbhaykk@iimrohtak.ac.in": {
+    "name": "Nirbhay Kumar Kushwaha",
+    "courses": [
+      "BA Sec-A",
+      "CB Sec-A",
+      "CV Sec-A",
+      "FSA",
+      "IAPM",
+      "IMDM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04pranavg@iimrohtak.ac.in": {
+    "name": "Pranav Gupta",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-B",
+      "IAPM",
+      "MBPET",
+      "MFIS",
+      "PFM",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04rainaa@iimrohtak.ac.in": {
+    "name": "Raina Arjun",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-B",
+      "DBM",
+      "FM",
+      "FSA",
+      "GFMG",
+      "IMDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16khushis@iimrohtak.ac.in": {
+    "name": "Khushi Sinha",
+    "courses": [
+      "BA Sec-A",
+      "CB Sec-A",
+      "CV Sec-A",
+      "FSA",
+      "IAPM",
+      "IMDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16aanchals@iimrohtak.ac.in": {
+    "name": "Aanchal Sharma",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "IAPM",
+      "IMDM",
+      "PFM",
+      "SC",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16vishavg@iimrohtak.ac.in": {
+    "name": "Vishav Garg",
+    "courses": [
+      "BA Sec-A",
+      "CB Sec-A",
+      "CV Sec-A",
+      "PS",
+      "SDM",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16abhijits@iimrohtak.ac.in": {
+    "name": "Abhijit Singh",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "GFMG",
+      "IBS",
+      "MBPET",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16jaivardhana@iimrohtak.ac.in": {
+    "name": "Agarwal Jaivardhan Anand",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "IBS",
+      "IMDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16manisham@iimrohtak.ac.in": {
+    "name": "Manisha Manaswini",
+    "courses": [
+      "BA Sec-A",
+      "CB Sec-A",
+      "FM",
+      "IMDM",
+      "Ind4.0",
+      "PM",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16akshitaa@iimrohtak.ac.in": {
+    "name": "Akshita Aggarwal",
+    "courses": [
+      "BA Sec-A",
+      "DBM",
+      "MS",
+      "PFM",
+      "PM",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16rainac@iimrohtak.ac.in": {
+    "name": "Raina Chakraborty",
+    "courses": [
+      "BA Sec-A",
+      "IBS",
+      "MFIS",
+      "PCM",
+      "SHRM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16ananyab@iimrohtak.ac.in": {
+    "name": "Ananya Biswas",
+    "courses": [
+      "BA Sec-A",
+      "CB Sec-A",
+      "CV Sec-A",
+      "GFMG",
+      "MBPET",
+      "MFIS",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16aneesh@iimrohtak.ac.in": {
+    "name": "Aneesh",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "GFMG",
+      "MBPET",
+      "MFIS",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16anubhava@iimrohtak.ac.in": {
+    "name": "Anubhav Agrawal",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16anweshas@iimrohtak.ac.in": {
+    "name": "Anwesha Saha",
+    "courses": [
+      "BA Sec-A",
+      "L & D",
+      "PCM",
+      "PFM",
+      "SDM",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16ashutoshs@iimrohtak.ac.in": {
+    "name": "Ashutosh Sharma",
+    "courses": [
+      "BA Sec-A",
+      "DBM",
+      "GFMG",
+      "MBPET",
+      "MS",
+      "PWMP",
+      "SCM Sec-A",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16ayushga@iimrohtak.ac.in": {
+    "name": "Ayush Gupta",
+    "courses": [
+      "BA Sec-A",
+      "IAPM",
+      "MS",
+      "PFM",
+      "PM",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16bhavikj@iimrohtak.ac.in": {
+    "name": "Bhavik Jain",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "IAPM",
+      "PFM",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16adityab@iimrohtak.ac.in": {
+    "name": "Aditya Batra",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "PWMP",
+      "SC",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16deepikai@iimrohtak.ac.in": {
+    "name": "Deepika I",
+    "courses": [
+      "BA Sec-A",
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "SCM Sec-A",
+      "SHRM",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16muskans@iimrohtak.ac.in": {
+    "name": "Muskan Shah",
+    "courses": [
+      "BA Sec-A",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "MFIS",
+      "PM",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16namank@iimrohtak.ac.in": {
+    "name": "Naman Kaushik",
+    "courses": [
+      "BA Sec-A",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "MFIS",
+      "PM",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16palaka@iimrohtak.ac.in": {
+    "name": "Palak Agrawal",
+    "courses": [
+      "BA Sec-A",
+      "CB Sec-A",
+      "IBS",
+      "L & D",
+      "PCM",
+      "SHRM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16peralad@iimrohtak.ac.in": {
+    "name": "Perala Divya",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "MFIS",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16hidayrajsinhc@iimrohtak.ac.in": {
+    "name": "Hidayrajsinh Chauhan",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "GFMG",
+      "MFIS",
+      "PWMP",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16prashantt@iimrohtak.ac.in": {
+    "name": "Prashant Thakur",
+    "courses": [
+      "BA Sec-A",
+      "CB Sec-A",
+      "CV Sec-A",
+      "MBPET",
+      "MFIS",
+      "PFM",
+      "PWMP",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16vatsalg@iimrohtak.ac.in": {
+    "name": "Vatsal Gupta",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "IMDM",
+      "Ind4.0",
+      "MS",
+      "PWMP",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16preranap@iimrohtak.ac.in": {
+    "name": "Prerana Priyadarshini",
+    "courses": [
+      "BA Sec-A",
+      "CB Sec-A",
+      "DBM",
+      "FADT",
+      "PM",
+      "SCM Sec-B",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16rahulp@iimrohtak.ac.in": {
+    "name": "Rahul Pande",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "GFMG",
+      "MFIS",
+      "PS",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16raunakh@iimrohtak.ac.in": {
+    "name": "Raunak Halder",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "IAPM",
+      "Ind4.0",
+      "MFIS",
+      "PWMP",
+      "SCM Sec-B",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16riddhim@iimrohtak.ac.in": {
+    "name": "Riddhi Mittal",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "IAPM",
+      "PFM",
+      "SHRM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16rozala@iimrohtak.ac.in": {
+    "name": "Rozal Agarwal",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FSA",
+      "IMDM",
+      "Ind4.0",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16sagar@iimrohtak.ac.in": {
+    "name": "Sagar",
+    "courses": [
+      "BA Sec-A",
+      "IBS",
+      "MBPET",
+      "MFIS",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16udaib@iimrohtak.ac.in": {
+    "name": "Udai Bairaria",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "IAPM",
+      "L & D",
+      "MS",
+      "PFM",
+      "SC",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16setuj@iimrohtak.ac.in": {
+    "name": "Setu Jain",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "MFIS",
+      "PFM",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16shreeyam@iimrohtak.ac.in": {
+    "name": "Shreeya Modi",
+    "courses": [
+      "BA Sec-A",
+      "CV Sec-B",
+      "IMDM",
+      "Ind4.0",
+      "MFIS",
+      "PWMP",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04soumyam@iimrohtak.ac.in": {
+    "name": "Soumya Mishra",
+    "courses": [
+      "BA Sec-B",
+      "CB Sec-A",
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "Ind4.0",
+      "SDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04bharathkr@iimrohtak.ac.in": {
+    "name": "Bharath K R",
+    "courses": [
+      "BA Sec-B",
+      "CB Sec-A",
+      "DBM",
+      "MBPET",
+      "PM",
+      "PS",
+      "PWMP",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04deekshaa@iimrohtak.ac.in": {
+    "name": "Deeksha Agrawal",
+    "courses": [
+      "BA Sec-B",
+      "CB Sec-A",
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "IMDM",
+      "MBPET",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04harminm@iimrohtak.ac.in": {
+    "name": "Harmin Mody",
+    "courses": [
+      "BA Sec-B",
+      "IBS",
+      "IMDM",
+      "Ind4.0",
+      "MBPET",
+      "PM",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04kashisha@iimrohtak.ac.in": {
+    "name": "Kashish Agrawal",
+    "courses": [
+      "BA Sec-B",
+      "GFMG",
+      "PM",
+      "PS",
+      "SCM Sec-B",
+      "SHRM",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04krishnakants@iimrohtak.ac.in": {
+    "name": "Krishnakant Singh",
+    "courses": [
+      "BA Sec-B",
+      "CB Sec-A",
+      "DBM",
+      "MBPET",
+      "PS",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04nihirap@iimrohtak.ac.in": {
+    "name": "Nihira Prakash",
+    "courses": [
+      "BA Sec-B",
+      "CB Sec-B",
+      "FSA",
+      "PM",
+      "PWMP",
+      "SCM Sec-B",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04pranjals@iimrohtak.ac.in": {
+    "name": "Pranjal Srivastava",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "FSA",
+      "IBS",
+      "MFIS",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04prithivit@iimrohtak.ac.in": {
+    "name": "Prithivi Tejeshwar",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "FSA",
+      "IBS",
+      "MFIS",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04rishin@iimrohtak.ac.in": {
+    "name": "Rishi Nayyar",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "FM",
+      "GFMG",
+      "IMDM",
+      "MFIS",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04sakthivs@iimrohtak.ac.in": {
+    "name": "Sakthi Vel S",
+    "courses": [
+      "BA Sec-B",
+      "DBM",
+      "IBS",
+      "MBPET",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16deerajc@iimrohtak.ac.in": {
+    "name": "Deeraj Chenoth",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-A",
+      "FADT",
+      "MBPET",
+      "MFIS",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16ngunthasuii@iimrohtak.ac.in": {
+    "name": "Ngunthasuii",
+    "courses": [
+      "BA Sec-B",
+      "CB Sec-A",
+      "CV Sec-B",
+      "IMDM",
+      "SC",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16dhawalj@iimrohtak.ac.in": {
+    "name": "Dhawal Jain",
+    "courses": [
+      "BA Sec-B",
+      "IBS",
+      "MBPET",
+      "PFM",
+      "PM",
+      "SC",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16divyaj@iimrohtak.ac.in": {
+    "name": "Divya Jyoti",
+    "courses": [
+      "BA Sec-B",
+      "CB Sec-A",
+      "IBS",
+      "MS",
+      "PCM",
+      "PFM",
+      "PWMP",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16hiyas@iimrohtak.ac.in": {
+    "name": "Hiya Singhvi",
+    "courses": [
+      "BA Sec-B",
+      "BGRI",
+      "CV Sec-B",
+      "FADT",
+      "FM",
+      "MFIS",
+      "PFM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16akritis@iimrohtak.ac.in": {
+    "name": "Akriti Singh",
+    "courses": [
+      "BA Sec-B",
+      "CB Sec-A",
+      "MS",
+      "PCM",
+      "PFM",
+      "PS",
+      "SDM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16shreyae@iimrohtak.ac.in": {
+    "name": "Shreya Prashansa Ekka",
+    "courses": [
+      "BA Sec-B",
+      "IAPM",
+      "Ind4.0",
+      "MFIS",
+      "PCM",
+      "SC",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16chaudharim@iimrohtak.ac.in": {
+    "name": "Chaudhari Nareshkumar Mangaram",
+    "courses": [
+      "BA Sec-B",
+      "DBM",
+      "IBS",
+      "Ind4.0",
+      "MBPET",
+      "MS",
+      "PM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16khushi@iimrohtak.ac.in": {
+    "name": "Khushi",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "FADT",
+      "FM",
+      "MFIS",
+      "PFM",
+      "PS",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16sezals@iimrohtak.ac.in": {
+    "name": "Sezal Sharma",
+    "courses": [
+      "BA Sec-B",
+      "L & D",
+      "MS",
+      "PCM",
+      "PFM",
+      "PS",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16siddhir@iimrohtak.ac.in": {
+    "name": "Siddhi Rai",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "IAPM",
+      "MBPET",
+      "MFIS",
+      "PFM",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16kushagrac@iimrohtak.ac.in": {
+    "name": "Kushagra Celly",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "FM",
+      "IAPM",
+      "MFIS",
+      "PFM",
+      "SCM Sec-A",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16loveg@iimrohtak.ac.in": {
+    "name": "Love Gupta",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "FADT",
+      "MBPET",
+      "MFIS",
+      "PFM",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16deepc@iimrohtak.ac.in": {
+    "name": "Chaudhary Deep Bhikhubhai",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "IMDM",
+      "MFIS",
+      "SCM Sec-A",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16mahakv@iimrohtak.ac.in": {
+    "name": "Mahak Verma",
+    "courses": [
+      "BA Sec-B",
+      "MBPET",
+      "PCM",
+      "PS",
+      "SHRM",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16monalk@iimrohtak.ac.in": {
+    "name": "Monal Kala",
+    "courses": [
+      "BA Sec-B",
+      "DBM",
+      "FADT",
+      "PM",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16shrutike@iimrohtak.ac.in": {
+    "name": "Shruti Kela",
+    "courses": [
+      "BA Sec-B",
+      "DBM",
+      "Ind4.0",
+      "MS",
+      "PM",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16srishtij@iimrohtak.ac.in": {
+    "name": "Srishti Jain",
+    "courses": [
+      "BA Sec-B",
+      "CB Sec-B",
+      "MBPET",
+      "MFIS",
+      "PCM",
+      "PFM",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16sudeekshithag@iimrohtak.ac.in": {
+    "name": "Sudeekshitha G",
+    "courses": [
+      "BA Sec-B",
+      "CB Sec-B",
+      "IBS",
+      "MBPET",
+      "PM",
+      "SCM Sec-B",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16sunjaym@iimrohtak.ac.in": {
+    "name": "Sunjay Murali",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "IBS",
+      "IMDM",
+      "PS",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16swastikp@iimrohtak.ac.in": {
+    "name": "Swastik Paul",
+    "courses": [
+      "BA Sec-B",
+      "GFMG",
+      "MBPET",
+      "MFIS",
+      "PM",
+      "SCM Sec-B",
+      "SHRM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16rupatm@iimrohtak.ac.in": {
+    "name": "TM Rupa",
+    "courses": [
+      "BA Sec-B",
+      "IBS",
+      "MBPET",
+      "MFIS",
+      "PM",
+      "SCM Sec-B",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16urmikap@iimrohtak.ac.in": {
+    "name": "Urmika Padmanabhan",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "GFMG",
+      "IBS",
+      "L & D",
+      "PWMP",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16vanshikag@iimrohtak.ac.in": {
+    "name": "Vanshika Gupta",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "MFIS",
+      "PFM",
+      "SCM Sec-B",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16aayushmaand@iimrohtak.ac.in": {
+    "name": "Aayushmaan Dogra",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "FADT",
+      "FSA",
+      "GFMG",
+      "MFIS",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16yashishreev@iimrohtak.ac.in": {
+    "name": "Yashishree Raj Verma",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "FM",
+      "GFMG",
+      "IBS",
+      "MFIS",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16vipuls@iimrohtak.ac.in": {
+    "name": "Vipul Singla",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16shridharb@iimrohtak.ac.in": {
+    "name": "Shridhar Biju Nair",
+    "courses": [
+      "BA Sec-B",
+      "CV Sec-A",
+      "FSA",
+      "IAPM",
+      "Ind4.0",
+      "L & D",
+      "SCM Sec-B",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16vaibhavs@iimrohtak.ac.in": {
+    "name": "Vaibhav Srivastava",
+    "courses": [
+      "BA Sec-B",
+      "MBPET",
+      "PM",
+      "PS",
+      "PWMP",
+      "SCM Sec-B",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04rudranshc@iimrohtak.ac.in": {
+    "name": "Rudransh Chaurasia",
+    "courses": [
+      "BGRI",
+      "CB Sec-A",
+      "PFM",
+      "PM",
+      "PS",
+      "SDM",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04shivanik@iimrohtak.ac.in": {
+    "name": "Shivani Kumbhkar",
+    "courses": [
+      "BGRI",
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "GFMG",
+      "MFIS",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04estherhh@iimrohtak.ac.in": {
+    "name": "Esther Hatneikim Haokip",
+    "courses": [
+      "BGRI",
+      "DBM",
+      "IBS",
+      "PCM",
+      "SDM",
+      "SHRM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04rudrakshps@iimrohtak.ac.in": {
+    "name": "Rudraksh Pratap Singh",
+    "courses": [
+      "BGRI",
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "GFMG",
+      "IMDM",
+      "MFIS",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp15henna@iimrohtak.ac.in": {
+    "name": "Henna",
+    "courses": [
+      "BGRI",
+      "CB Sec-B",
+      "IBS",
+      "L & D",
+      "SHRM",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp15khushis@iimrohtak.ac.in": {
+    "name": "Khushi Sharma",
+    "courses": [
+      "BGRI",
+      "CB Sec-B",
+      "FADT",
+      "PCM",
+      "PWMP",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16achrajm@iimrohtak.ac.in": {
+    "name": "Achraj Mishra",
+    "courses": [
+      "BGRI",
+      "IBS",
+      "IMDM",
+      "L & D",
+      "PM",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16apekshan@iimrohtak.ac.in": {
+    "name": "Apeksha Namdeo",
+    "courses": [
+      "BGRI",
+      "CB Sec-A",
+      "DBM",
+      "IBS",
+      "SDM",
+      "SHRM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16avim@iimrohtak.ac.in": {
+    "name": "Avi Mittal",
+    "courses": [
+      "BGRI",
+      "CV Sec-A",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "MFIS",
+      "MS",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16bhavnak@iimrohtak.ac.in": {
+    "name": "Bhavna Kapoor",
+    "courses": [
+      "BGRI",
+      "CB Sec-A",
+      "CV Sec-A",
+      "FSA",
+      "IMDM",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16shreyap@iimrohtak.ac.in": {
+    "name": "Shreya Prasad",
+    "courses": [
+      "BGRI",
+      "CV Sec-A",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "L & D",
+      "SHRM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16karnikad@iimrohtak.ac.in": {
+    "name": "Karnika Dungrakoti",
+    "courses": [
+      "BGRI",
+      "CB Sec-A",
+      "IBS",
+      "IMDM",
+      "MFIS",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16ekanshk@iimrohtak.ac.in": {
+    "name": "Ekansh Khandelwal",
+    "courses": [
+      "BGRI",
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "IMDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16harshg@iimrohtak.ac.in": {
+    "name": "Harsh Goyal",
+    "courses": [
+      "BGRI",
+      "CV Sec-B",
+      "FSA",
+      "MBPET",
+      "MFIS",
+      "PFM",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16kajals@iimrohtak.ac.in": {
+    "name": "Kajal Somani",
+    "courses": [
+      "BGRI",
+      "CV Sec-B",
+      "IBS",
+      "IMDM",
+      "Ind4.0",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16vaishnavim@iimrohtak.ac.in": {
+    "name": "M Vaishnavi",
+    "courses": [
+      "BGRI",
+      "GFMG",
+      "IBS",
+      "PCM",
+      "SCM Sec-A",
+      "SHRM",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16mananb@iimrohtak.ac.in": {
+    "name": "Manan Bhargava",
+    "courses": [
+      "BGRI",
+      "CV Sec-B",
+      "FSA",
+      "GFMG",
+      "IMDM",
+      "PWMP",
+      "SC",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16sudharshanaap@iimrohtak.ac.in": {
+    "name": "P Sudharshanaa",
+    "courses": [
+      "BGRI",
+      "IBS",
+      "PM",
+      "SCM Sec-B",
+      "SHRM",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16akshayn@iimrohtak.ac.in": {
+    "name": "Akshay Nair",
+    "courses": [
+      "BGRI",
+      "CV Sec-A",
+      "GFMG",
+      "IAPM",
+      "MFIS",
+      "PWMP",
+      "SC",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16amanr@iimrohtak.ac.in": {
+    "name": "Aman Raj",
+    "courses": [
+      "BGRI",
+      "CV Sec-A",
+      "DBM",
+      "FM",
+      "FSA",
+      "Ind4.0",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16rudranshr@iimrohtak.ac.in": {
+    "name": "Rudransh Rastogi",
+    "courses": [
+      "BGRI",
+      "CB Sec-B",
+      "CV Sec-A",
+      "DBM",
+      "IAPM",
+      "IBS",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16prarisht@iimrohtak.ac.in": {
+    "name": "Tikhe Pratish Vinayak",
+    "courses": [
+      "BGRI",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "IMDM",
+      "PFM",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16prachis@iimrohtak.ac.in": {
+    "name": "Singhaniya Prachi Mukeshkumar",
+    "courses": [
+      "BGRI",
+      "IBS",
+      "Ind4.0",
+      "L & D",
+      "MS",
+      "PCM",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16sanafathima@iimrohtak.ac.in": {
+    "name": "Sana Fathima K M",
+    "courses": [
+      "BGRI",
+      "IBS",
+      "L & D",
+      "PM",
+      "SHRM",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16vanshg@iimrohtak.ac.in": {
+    "name": "Vansh Gupta",
+    "courses": [
+      "BGRI",
+      "CV Sec-B",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "PS",
+      "PWMP",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16vansikap@iimrohtak.ac.in": {
+    "name": "Vansika Pathak",
+    "courses": [
+      "BGRI",
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "GFMG",
+      "MFIS",
+      "PWMP",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16mohitr@iimrohtak.ac.in": {
+    "name": "Mohit Rathi",
+    "courses": [
+      "BGRI",
+      "CB Sec-B",
+      "CV Sec-B",
+      "FSA",
+      "IAPM",
+      "Ind4.0",
+      "SCM Sec-B",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16zillaw@iimrohtak.ac.in": {
+    "name": "Zilla Wilson",
+    "courses": [
+      "BGRI",
+      "IBS",
+      "PM",
+      "SCM Sec-B",
+      "SHRM",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16saisoumyas@iimrohtak.ac.in": {
+    "name": "Saisoumya Sahu",
+    "courses": [
+      "BGRI",
+      "FADT",
+      "PCM",
+      "PS",
+      "PWMP",
+      "SC",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16aadityat@iimrohtak.ac.in": {
+    "name": "Aaditya Thamman",
+    "courses": [
+      "BGRI",
+      "CV Sec-B",
+      "FM",
+      "IBS",
+      "Ind4.0",
+      "SCM Sec-B",
+      "SHRM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16kamalp@iimrohtak.ac.in": {
+    "name": "Kamal Pipersaniya",
+    "courses": [
+      "BGRI",
+      "CV Sec-B",
+      "DBM",
+      "GFMG",
+      "IAPM",
+      "IMDM",
+      "MBPET",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16kshitijb@iimrohtak.ac.in": {
+    "name": "kshitij Bhargava",
+    "courses": [
+      "BGRI",
+      "CB Sec-B",
+      "L & D",
+      "PS",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16rahulpr@iimrohtak.ac.in": {
+    "name": "Rahul Prabhu",
+    "courses": [
+      "BGRI",
+      "CB Sec-B",
+      "CV Sec-B",
+      "FSA",
+      "IMDM",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16drishtis@iimrohtak.ac.in": {
+    "name": "Drishti Singh",
+    "courses": [
+      "BGRI",
+      "FADT",
+      "Ind4.0",
+      "L & D",
+      "PS",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16gautamdevc@iimrohtak.ac.in": {
+    "name": "Gautamdev Chakaravarty",
+    "courses": [
+      "BGRI",
+      "CV Sec-A",
+      "GFMG",
+      "MFIS",
+      "MS",
+      "PS",
+      "PWMP",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16gunjits@iimrohtak.ac.in": {
+    "name": "Gunjit Suri",
+    "courses": [
+      "BGRI",
+      "CB Sec-B",
+      "IBS",
+      "L & D",
+      "PCM",
+      "SHRM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16mumukshan@iimrohtak.ac.in": {
+    "name": "Mumuksha Nagotia",
+    "courses": [
+      "BGRI",
+      "FADT",
+      "L & D",
+      "PCM",
+      "SC",
+      "SHRM",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04asthav@iimrohtak.ac.in": {
+    "name": "Astha Verma",
+    "courses": [
+      "CB Sec-A",
+      "FADT",
+      "IAPM",
+      "MFIS",
+      "PWMP",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04anushao@iimrohtak.ac.in": {
+    "name": "Anusha Orea",
+    "courses": [
+      "CB Sec-A",
+      "CV Sec-B",
+      "FM",
+      "IMDM",
+      "Ind4.0",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp15pakhis@iimrohtak.ac.in": {
+    "name": "Pakhi Sonowal",
+    "courses": [
+      "CB Sec-A",
+      "IBS",
+      "Ind4.0",
+      "L & D",
+      "MBPET",
+      "MS",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp15sonalb@iimrohtak.ac.in": {
+    "name": "Sonal Avinash Bhuyar",
+    "courses": [
+      "CB Sec-A",
+      "FADT",
+      "L & D",
+      "PCM",
+      "PS",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp15aachalw@iimrohtak.ac.in": {
+    "name": "Wadhai Aachal Hanuman",
+    "courses": [
+      "CB Sec-A",
+      "IAPM",
+      "PM",
+      "SC",
+      "SCM Sec-B",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16ameeshav@iimrohtak.ac.in": {
+    "name": "Ameesha Verma",
+    "courses": [
+      "CB Sec-A",
+      "FSA",
+      "IMDM",
+      "L & D",
+      "PCM",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16anshikaj@iimrohtak.ac.in": {
+    "name": "Anshika Jaiswal",
+    "courses": [
+      "CB Sec-A",
+      "CV Sec-A",
+      "FSA",
+      "Ind4.0",
+      "MS",
+      "SDM",
+      "SHRM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16anushkag@iimrohtak.ac.in": {
+    "name": "Anushka Gehlot",
+    "courses": [
+      "CB Sec-A",
+      "CV Sec-A",
+      "DBM",
+      "MBPET",
+      "PS",
+      "SCM Sec-A",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16hetakship@iimrohtak.ac.in": {
+    "name": "Patel Hetakshi Kishorbhai",
+    "courses": [
+      "CB Sec-A",
+      "CV Sec-A",
+      "DBM",
+      "FM",
+      "IAPM",
+      "MS",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16deepikac@iimrohtak.ac.in": {
+    "name": "Chorotiya Deepika Kanhaiyalal",
+    "courses": [
+      "CB Sec-A",
+      "FADT",
+      "IAPM",
+      "PS",
+      "SCM Sec-A",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16deepakk@iimrohtak.ac.in": {
+    "name": "Deepak Kalyani",
+    "courses": [
+      "CB Sec-A",
+      "CV Sec-A",
+      "FSA",
+      "IAPM",
+      "IMDM",
+      "MS",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16madhumitha@iimrohtak.ac.in": {
+    "name": "Madhumitha",
+    "courses": [
+      "CB Sec-A",
+      "Ind4.0",
+      "L & D",
+      "PM",
+      "SCM Sec-A",
+      "SDM",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16devvrat@iimrohtak.ac.in": {
+    "name": "Devvrat",
+    "courses": [
+      "CB Sec-A",
+      "FADT",
+      "Ind4.0",
+      "MBPET",
+      "MS",
+      "PS",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16divyanshid@iimrohtak.ac.in": {
+    "name": "Divyanshi Dongre",
+    "courses": [
+      "CB Sec-A",
+      "DBM",
+      "MBPET",
+      "PCM",
+      "PS",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16faisalr@iimrohtak.ac.in": {
+    "name": "Faisal Rahman",
+    "courses": [
+      "CB Sec-A",
+      "CV Sec-B",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "MFIS",
+      "MS",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16garima@iimrohtak.ac.in": {
+    "name": "Garima",
+    "courses": [
+      "CB Sec-A",
+      "IMDM",
+      "PFM",
+      "PM",
+      "SC",
+      "SCM Sec-B",
+      "SHRM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16hardika@iimrohtak.ac.in": {
+    "name": "Hardik Agarwal",
+    "courses": [
+      "CB Sec-A",
+      "CV Sec-B",
+      "FM",
+      "IAPM",
+      "Ind4.0",
+      "SCM Sec-A",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16ishitg@iimrohtak.ac.in": {
+    "name": "Ishit Gadia",
+    "courses": [
+      "CB Sec-A",
+      "CV Sec-B",
+      "FSA",
+      "IAPM",
+      "IMDM",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16jating@iimrohtak.ac.in": {
+    "name": "Jatin Goel",
+    "courses": [
+      "CB Sec-A",
+      "GFMG",
+      "IAPM",
+      "IBS",
+      "IMDM",
+      "PCM",
+      "SHRM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16jyotsnam@iimrohtak.ac.in": {
+    "name": "Jyotsna Mishra",
+    "courses": [
+      "CB Sec-A",
+      "DBM",
+      "FADT",
+      "Ind4.0",
+      "MS",
+      "PS",
+      "SCM Sec-A",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16rishabhs@iimrohtak.ac.in": {
+    "name": "Rishabh Solanki",
+    "courses": [
+      "CB Sec-A",
+      "DBM",
+      "FADT",
+      "PM",
+      "PS",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16silviyak@iimrohtak.ac.in": {
+    "name": "Silviya Kn",
+    "courses": [
+      "CB Sec-A",
+      "IMDM",
+      "L & D",
+      "MBPET",
+      "SCM Sec-A",
+      "SHRM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16ojasvitas@iimrohtak.ac.in": {
+    "name": "Ojasvita Sikka",
+    "courses": [
+      "CB Sec-A",
+      "FADT",
+      "IMDM",
+      "Ind4.0",
+      "L & D",
+      "SC",
+      "SCM Sec-B",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16padamb@iimrohtak.ac.in": {
+    "name": "Padam Kumar Banthia",
+    "courses": [
+      "CB Sec-A",
+      "DBM",
+      "GFMG",
+      "PS",
+      "PWMP",
+      "SCM Sec-B",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16dhanushp@iimrohtak.ac.in": {
+    "name": "Dhanush Pinninti",
+    "courses": [
+      "CB Sec-A",
+      "CV Sec-A",
+      "FM",
+      "Ind4.0",
+      "MBPET",
+      "MFIS",
+      "SCM Sec-B",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16prachik@iimrohtak.ac.in": {
+    "name": "Prachi Kumari",
+    "courses": [
+      "CB Sec-A",
+      "CV Sec-A",
+      "L & D",
+      "SC",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16ishikas@iimrohtak.ac.in": {
+    "name": "Ishika Sunam",
+    "courses": [
+      "CB Sec-A",
+      "IBS",
+      "MBPET",
+      "PCM",
+      "SHRM",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16namanm@iimrohtak.ac.in": {
+    "name": "Naman Markndey",
+    "courses": [
+      "CB Sec-A",
+      "DBM",
+      "IMDM",
+      "SC",
+      "SDM",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04rishabhg@iimrohtak.ac.in": {
+    "name": "Rishabh Gupta",
+    "courses": [
+      "CB Sec-B",
+      "FSA",
+      "GFMG",
+      "MS",
+      "PCM",
+      "PWMP",
+      "SCM Sec-B",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04sparshy@iimrohtak.ac.in": {
+    "name": "Sparsh Yadav",
+    "courses": [
+      "CB Sec-B",
+      "DBM",
+      "IBS",
+      "MBPET",
+      "PM",
+      "SCM Sec-B",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16vishwah@iimrohtak.ac.in": {
+    "name": "Rami Vishwa Hiteshbhai",
+    "courses": [
+      "CB Sec-B",
+      "Ind4.0",
+      "L & D",
+      "MS",
+      "PS",
+      "SHRM",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16rashib@iimrohtak.ac.in": {
+    "name": "Rashi Bagde",
+    "courses": [
+      "CB Sec-B",
+      "DBM",
+      "SC",
+      "SDM",
+      "SHRM",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16ridhik@iimrohtak.ac.in": {
+    "name": "Ridhi Kalshan",
+    "courses": [
+      "CB Sec-B",
+      "DBM",
+      "PCM",
+      "SC",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16rishabhg@iimrohtak.ac.in": {
+    "name": "Rishabh Grover",
+    "courses": [
+      "CB Sec-B",
+      "MBPET",
+      "PM",
+      "PS",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16shikha@iimrohtak.ac.in": {
+    "name": "Shikha",
+    "courses": [
+      "CB Sec-B",
+      "Ind4.0",
+      "MS",
+      "PCM",
+      "PS",
+      "SHRM",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16shivani@iimrohtak.ac.in": {
+    "name": "Shivani",
+    "courses": [
+      "CB Sec-B",
+      "Ind4.0",
+      "MS",
+      "PCM",
+      "PS",
+      "SCM Sec-A",
+      "SHRM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16shrutik@iimrohtak.ac.in": {
+    "name": "Shruti Kumari",
+    "courses": [
+      "CB Sec-B",
+      "Ind4.0",
+      "L & D",
+      "MBPET",
+      "MS",
+      "PS",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16sifys@iimrohtak.ac.in": {
+    "name": "Sify Singh",
+    "courses": [
+      "CB Sec-B",
+      "DBM",
+      "FADT",
+      "MBPET",
+      "PS",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16krishikad@iimrohtak.ac.in": {
+    "name": "Krishika Dagar",
+    "courses": [
+      "CB Sec-B",
+      "Ind4.0",
+      "L & D",
+      "MS",
+      "PCM",
+      "SHRM",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16riddhip@iimrohtak.ac.in": {
+    "name": "Riddhi Pal",
+    "courses": [
+      "CB Sec-B",
+      "IBS",
+      "Ind4.0",
+      "L & D",
+      "MBPET",
+      "PWMP",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16shreyas@iimrohtak.ac.in": {
+    "name": "Shreya Sarkar",
+    "courses": [
+      "CB Sec-B",
+      "FADT",
+      "Ind4.0",
+      "MS",
+      "PM",
+      "SC",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16dakshitab@iimrohtak.ac.in": {
+    "name": "Dakshita Bhanarkar",
+    "courses": [
+      "CB Sec-B",
+      "L & D",
+      "PCM",
+      "PS",
+      "SHRM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16yugantarv@iimrohtak.ac.in": {
+    "name": "Yugantar Vyas",
+    "courses": [
+      "CB Sec-B",
+      "CV Sec-B",
+      "FM",
+      "IBS",
+      "Ind4.0",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16shrutib@iimrohtak.ac.in": {
+    "name": "Shruti Banthia",
+    "courses": [
+      "CB Sec-B",
+      "GFMG",
+      "IAPM",
+      "MFIS",
+      "SC",
+      "SCM Sec-B",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16mosesi@iimrohtak.ac.in": {
+    "name": "Moses Inbuon",
+    "courses": [
+      "CB Sec-B",
+      "L & D",
+      "PM",
+      "PS",
+      "SDM",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16priyam@iimrohtak.ac.in": {
+    "name": "Priya Mondal",
+    "courses": [
+      "CB Sec-B",
+      "CV Sec-A",
+      "FSA",
+      "SDM",
+      "SHRM",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04heets@iimrohtak.ac.in": {
+    "name": "Heet Sarvaiya",
+    "courses": [
+      "CV Sec-A",
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "IMDM",
+      "MS",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04hiteshdb@iimrohtak.ac.in": {
+    "name": "Hitesh Dinkar Bharambe",
+    "courses": [
+      "CV Sec-A",
+      "DBM",
+      "FADT",
+      "FSA",
+      "IAPM",
+      "MBPET",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04kushagrak@iimrohtak.ac.in": {
+    "name": "Kushagra Kumar",
+    "courses": [
+      "CV Sec-A",
+      "FADT",
+      "IAPM",
+      "PS",
+      "SCM Sec-A",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16aryang@iimrohtak.ac.in": {
+    "name": "Aryan Goyal",
+    "courses": [
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "GFMG",
+      "MFIS",
+      "PWMP",
+      "SCM Sec-A",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16bharatd@iimrohtak.ac.in": {
+    "name": "Bharat Didwania",
+    "courses": [
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "IMDM",
+      "MFIS",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16bhaveshs@iimrohtak.ac.in": {
+    "name": "Bhavesh Shukla",
+    "courses": [
+      "CV Sec-A",
+      "DBM",
+      "FSA",
+      "IAPM",
+      "MS",
+      "PFM",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04vedp@iimrohtak.ac.in": {
+    "name": "Ved Pandit",
+    "courses": [
+      "CV Sec-B",
+      "DBM",
+      "FADT",
+      "FM",
+      "FSA",
+      "MBPET",
+      "SDM",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "ipm04harshs@iimrohtak.ac.in": {
+    "name": "Harsh Samvedi",
+    "courses": [
+      "CV Sec-B",
+      "IBS",
+      "IMDM",
+      "Ind4.0",
+      "MBPET",
+      "MS",
+      "SC",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16pallaviw@iimrohtak.ac.in": {
+    "name": "Pallavi Hemantkumar Warhatkar",
+    "courses": [
+      "CV Sec-B",
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "IMDM",
+      "MS",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16malavikav@iimrohtak.ac.in": {
+    "name": "Malavika K V",
+    "courses": [
+      "CV Sec-B",
+      "IBS",
+      "IMDM",
+      "Ind4.0",
+      "MS",
+      "SCM Sec-A",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16anujm@iimrohtak.ac.in": {
+    "name": "Mokashi Anuj Santosh",
+    "courses": [
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "GFMG",
+      "IMDM",
+      "PWMP",
+      "SCM Sec-A",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16muditj@iimrohtak.ac.in": {
+    "name": "Mudit Jhawar",
+    "courses": [
+      "CV Sec-B",
+      "FADT",
+      "FM",
+      "IAPM",
+      "MFIS",
+      "PFM",
+      "SC",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16siddharthr@iimrohtak.ac.in": {
+    "name": "Siddharth Ramchandani",
+    "courses": [
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "IMDM",
+      "MFIS",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16swayamg@iimrohtak.ac.in": {
+    "name": "Swayam Gupta",
+    "courses": [
+      "CV Sec-B",
+      "FM",
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "IMDM",
+      "SHRM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16vikramadityaj@iimrohtak.ac.in": {
+    "name": "Vikramaditya Anil Jain",
+    "courses": [
+      "CV Sec-B",
+      "FSA",
+      "IMDM",
+      "Ind4.0",
+      "MS",
+      "PWMP",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16shivanga@iimrohtak.ac.in": {
+    "name": "Shivang Agrawal",
+    "courses": [
+      "CV Sec-B",
+      "IAPM",
+      "PWMP",
+      "SC",
+      "SCM Sec-B",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04aaditj@iimrohtak.ac.in": {
+    "name": "Aadit Jindal",
+    "courses": [
+      "DBM",
+      "FSA",
+      "PM",
+      "PWMP",
+      "SCM Sec-A",
+      "SDM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16ayushiv@iimrohtak.ac.in": {
+    "name": "Ayushi Verma",
+    "courses": [
+      "DBM",
+      "PCM",
+      "SC",
+      "SCM Sec-B",
+      "SHRM",
+      "TA",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16ishikav@iimrohtak.ac.in": {
+    "name": "Ishika Varshney",
+    "courses": [
+      "DBM",
+      "FM",
+      "GFMG",
+      "IAPM",
+      "IMDM",
+      "PM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04ashmitg@iimrohtak.ac.in": {
+    "name": "Ashmit Gothwal",
+    "courses": [
+      "FADT",
+      "Ind4.0",
+      "L & D",
+      "MS",
+      "PS",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16simrank@iimrohtak.ac.in": {
+    "name": "Simran Kaur",
+    "courses": [
+      "FADT",
+      "FSA",
+      "IMDM",
+      "L & D",
+      "SDM",
+      "SHRM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16aarzoos@iimrohtak.ac.in": {
+    "name": "Aarzoo Saini",
+    "courses": [
+      "FADT",
+      "L & D",
+      "MS",
+      "PS",
+      "SCM Sec-B",
+      "SDM",
+      "SHRM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16yashikav@iimrohtak.ac.in": {
+    "name": "Yashika Verma",
+    "courses": [
+      "FADT",
+      "Ind4.0",
+      "L & D",
+      "MS",
+      "PS",
+      "SCM Sec-B",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16aryank@iimrohtak.ac.in": {
+    "name": "Kabadi Aryan Vishal",
+    "courses": [
+      "FSA",
+      "GFMG",
+      "IAPM",
+      "MS",
+      "PM",
+      "PWMP",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04devanj@iimrohtak.ac.in": {
+    "name": "Deva Nanda J S",
+    "courses": [
+      "IBS",
+      "L & D",
+      "PCM",
+      "SDM",
+      "SHRM",
+      "TA",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16yogitab@iimrohtak.ac.in": {
+    "name": "Yogita Baishya",
+    "courses": [
+      "IBS",
+      "L & D",
+      "PCM",
+      "SC",
+      "SCM Sec-B",
+      "SHRM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16saumyav@iimrohtak.ac.in": {
+    "name": "saumya verma",
+    "courses": [
+      "IBS",
+      "L & D",
+      "PCM",
+      "SC",
+      "SCM Sec-B",
+      "SHRM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16aswinkumarn@iimrohtak.ac.in": {
+    "name": "Aswinkumar Nattuvally",
+    "courses": [
+      "Ind4.0",
+      "L & D",
+      "MS",
+      "PM",
+      "PS",
+      "SCM Sec-A",
+      "SDM",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "ipm04jatink@iimrohtak.ac.in": {
+    "name": "Jatin Kasaudhan",
+    "courses": [
+      "L & D",
+      "MBPET",
+      "PFM",
+      "PM",
+      "PS",
+      "SCM Sec-B",
+      "TA",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16varsha@iimrohtak.ac.in": {
+    "name": "Varsha",
+    "courses": [
+      "L & D",
+      "PCM",
+      "PS",
+      "SCM Sec-B",
+      "SDM",
+      "SHRM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  }
+}

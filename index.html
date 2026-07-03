@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>IIMR Academic Planner & Attendance Tracker</title>
+  <meta name="description" content="Manage your academic schedule, track daily attendance, view course calendar, and sync timetable with Google Sheets.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Academic Planner">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="app_icon.jpg">
+  
+  <!-- Modern Fonts and Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-mode">
+  
+  <!-- Decorative Background Elements -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- ==========================================
+         LOGIN SCREEN
+         ========================================== -->
+    <section id="login-screen" class="screen active">
+      <div class="login-card glassmorphic">
+        <div class="login-header">
+          <span class="material-symbols-outlined" style="font-size: 64px; color: var(--accent-cyan); margin-bottom: 15px; display: inline-block; filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.4));">school</span>
+          <h1 class="brand-title">IIMR<span>Tracker</span></h1>
+          <p class="brand-subtitle">Academic Planner & Attendance Manager</p>
+        </div>
+        
+        <form id="login-form">
+          <div class="form-group">
+            <label for="student-email">Institute Email Address</label>
+            <div class="input-wrapper">
+              <span class="material-symbols-outlined input-icon">mail</span>
+              <input type="email" id="student-email" placeholder="e.g. name.p25@iimrohtak.ac.in" required autocomplete="email">
+            </div>
+          </div>
+          
+          <button type="submit" id="btn-login" class="btn btn-primary btn-block">
+            <span>Log In with Email</span>
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </form>
+
+        <div class="demo-section">
+          <p class="demo-title">Or Log In to a Mock Student Account:</p>
+          <div id="demo-accounts-container" class="demo-buttons">
+            <button class="btn btn-secondary demo-login-btn" data-email="ipm04niketp@iimrohtak.ac.in">
+              <span class="demo-avatar">NP</span>
+              <div class="demo-info">
+                <span class="demo-name">Niket Parikh (PGP)</span>
+                <span class="demo-mail">ipm04niketp@iimrohtak.ac.in</span>
+              </div>
+            </button>
+            <button class="btn btn-secondary demo-login-btn" data-email="ipm04palaky@iimrohtak.ac.in">
+              <span class="demo-avatar">PY</span>
+              <div class="demo-info">
+                <span class="demo-name">Palak Yadav (PGP)</span>
+                <span class="demo-mail">ipm04palaky@iimrohtak.ac.in</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         APP PANEL WITH SIDEBAR NAVIGATION
+         ========================================== -->
+    <section id="dashboard-screen" class="screen">
+      <div class="app-layout">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="app-sidebar glassmorphic">
+          <div class="sidebar-top">
+            <div class="brand-section">
+              <span class="material-symbols-outlined brand-icon">school</span>
+              <span class="brand-text">Academic Planner</span>
+            </div>
+            
+            <div class="user-profile-section">
+              <div id="user-avatar" class="user-avatar">N</div>
+              <div class="user-meta">
+                <h3 id="user-display-name" class="user-name">NIKET PARIKH</h3>
+                <p id="user-cohort" class="user-cohort">PGP16</p>
+              </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+              <button class="nav-tab active" data-tab="tab-analytics">
+                <span class="material-symbols-outlined">grid_view</span>
+                <span>Dashboard</span>
+              </button>
+              <button class="nav-tab" data-tab="tab-schedule">
+                <span class="material-symbols-outlined">calendar_month</span>
+                <span>Timetable</span>
+              </button>
+              <button class="nav-tab" data-tab="tab-today">
+                <span class="material-symbols-outlined">check_box</span>
+                <span>Attendance</span>
+              </button>
+              <button class="nav-tab" data-tab="tab-settings">
+                <span class="material-symbols-outlined">settings</span>
+                <span>Settings</span>
+              </button>
+            </nav>
+          </div>
+
+          <div class="sidebar-bottom">
+            <div class="subscribed-courses-badge">
+              <p>Subscribed Courses</p>
+              <span id="active-courses-count-label">8 active</span>
+            </div>
+            <button id="btn-logout" class="btn btn-secondary btn-block">
+              <span class="material-symbols-outlined">logout</span>
+              <span>Logout</span>
+            </button>
+          </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+          
+          <!-- Tab 1: Dashboard (Overview & Attendance Summary) -->
+          <div id="tab-analytics" class="tab-content active">
+            <div class="dashboard-grid-layout">
+              <!-- Left Column: Main Cards -->
+              <div class="dashboard-main-col">
+                
+                <!-- Celebration status banner -->
+                <div id="dashboard-status-banner" class="status-banner-card glassmorphic">
+                  <span class="material-symbols-outlined banner-icon">celebration</span>
+                  <div class="banner-text">
+                    <h3>All classes done for today!</h3>
+                    <p>Enjoy the rest of your day.</p>
+                  </div>
+                </div>
+
+                <!-- Today's Schedule Card -->
+                <div class="dashboard-card glassmorphic">
+                  <div class="card-header-row">
+                    <h3 class="card-title">Today's Schedule</h3>
+                    <button class="link-btn" id="link-view-timetable">
+                      <span>View full timetable</span>
+                      <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                  </div>
+                  <div id="dashboard-today-schedule-list" class="dashboard-schedule-list">
+                    <!-- Dynamic lecture items -->
+                  </div>
+                </div>
+
+                <!-- Announcements Card -->
+                <div class="dashboard-card glassmorphic">
+                  <div class="card-header-row">
+                    <h3 class="card-title">Announcements</h3>
+                  </div>
+                  <div class="announcements-empty">
+                    <span class="material-symbols-outlined bell-icon">notifications</span>
+                    <p class="empty-title">No announcements</p>
+                    <p class="empty-desc">You're all caught up</p>
+                  </div>
+                </div>
+
+                <!-- Deadlines Card -->
+                <div class="dashboard-card glassmorphic">
+                  <div class="card-header-row">
+                    <h3 class="card-title">Deadlines</h3>
+                  </div>
+                  <div class="deadlines-empty">
+                    <span class="material-symbols-outlined calendar-icon">event_busy</span>
+                    <p class="empty-title">No upcoming deadlines</p>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Right Column: Sidebar Attendance Ring list -->
+              <div class="dashboard-sidebar-col glassmorphic">
+                <div class="sidebar-header-row">
+                  <h3 class="sidebar-title">My Attendance</h3>
+                  <button class="link-btn" id="link-view-attendance">
+                    <span>View all</span>
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                  </button>
+                </div>
+
+                <div id="dashboard-attendance-summary-list" class="attendance-summary-list">
+                  <!-- Dynamic attendance items -->
+                </div>
+
+                <div class="sidebar-footer">
+                  <span class="material-symbols-outlined">lock</span>
+                  <span>Your attendance is private and visible only to you</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Timetable (Calendar Week & Month view) -->
+          <div id="tab-schedule" class="tab-content">
+            <div class="tab-header-row" style="margin-bottom: 12px;">
+              <div>
+                <h2 class="tab-title">Timetable</h2>
+                <p class="tab-subtitle">Digital student schedule planner</p>
+              </div>
+            </div>
+
+            <!-- Stats Overview Bar -->
+            <div class="stats-overview-bar glassmorphic">
+              <div class="stat-widget">
+                <span id="stat-courses-count" class="stat-number">8</span>
+                <span class="stat-label">COURSES</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-widget">
+                <span id="stat-lectures-count" class="stat-number">9</span>
+                <span class="stat-label">THIS WEEK</span>
+              </div>
+              <div class="stat-divider"></div>
+              <div class="stat-widget">
+                <span id="stat-credits-count" class="stat-number">6.5</span>
+                <span class="stat-label">CREDITS</span>
+              </div>
+            </div>
+
+            <!-- Calendar View Controls Row -->
+            <div class="calendar-controls-row">
+              <div class="controls-left">
+                <!-- Week / Month Toggles -->
+                <div class="toggle-btn-group">
+                  <button id="btn-view-week" class="btn-toggle active">Week</button>
+                  <button id="btn-view-month" class="btn-toggle">Month</button>
+                </div>
+                
+                <!-- Time / Code / Name Filter Toggles -->
+                <div class="toggle-btn-group filter-group">
+                  <button class="btn-toggle filter-btn active" data-filter="time">Time</button>
+                  <button class="btn-toggle filter-btn" data-filter="code">Code</button>
+                  <button class="btn-toggle filter-btn" data-filter="name">Name</button>
+                </div>
+              </div>
+
+              <div class="controls-right">
+                <!-- Date Selector panel -->
+                <div class="date-navigator-panel glassmorphic">
+                  <button id="btn-date-prev" class="btn-nav" aria-label="Previous">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                  </button>
+                  
+                  <div class="date-picker-wrapper">
+                    <span id="calendar-date-label" class="date-label-text">29/06/2026</span>
+                    <input type="date" id="calendar-date-input" class="hidden-date-input">
+                  </div>
+                  
+                  <button id="btn-date-next" class="btn-nav" aria-label="Next">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                  </button>
+                </div>
+
+                <!-- Export dropdown -->
+                <div class="export-dropdown-wrapper">
+                  <button id="btn-export" class="btn btn-secondary btn-small">
+                    <span class="material-symbols-outlined">download</span>
+                    <span>Export</span>
+                    <span class="material-symbols-outlined">expand_more</span>
+                  </button>
+                  <div id="export-dropdown-menu" class="dropdown-menu glassmorphic">
+                    <button class="dropdown-item" data-format="pdf">Export as PDF</button>
+                    <button class="dropdown-item" data-format="csv">Export as CSV</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Timetable Canvas (Dynamic Week columns or Month calendar) -->
+            <div id="timetable-canvas">
+              
+              <!-- View 1: Week Columns Layout -->
+              <div id="week-timetable-view" class="timetable-view active">
+                <div class="week-columns-grid">
+                  <!-- Columns for MON - SUN -->
+                  <div class="week-column" data-day="Monday">
+                    <div class="column-header">
+                      <span class="col-day">MON</span>
+                      <span class="col-date" data-date="mon">29</span>
+                    </div>
+                    <div class="column-body">
+                      <!-- Stacked lecture cards populated dynamically -->
+                    </div>
+                  </div>
+                  <div class="week-column" data-day="Tuesday">
+                    <div class="column-header">
+                      <span class="col-day">TUE</span>
+                      <span class="col-date" data-date="tue">30</span>
+                    </div>
+                    <div class="column-body"></div>
+                  </div>
+                  <div class="week-column" data-day="Wednesday">
+                    <div class="column-header">
+                      <span class="col-day">WED</span>
+                      <span class="col-date" data-date="wed">01</span>
+                    </div>
+                    <div class="column-body"></div>
+                  </div>
+                  <div class="week-column" data-day="Thursday">
+                    <div class="column-header">
+                      <span class="col-day">THU</span>
+                      <span class="col-date" data-date="thu">02</span>
+                    </div>
+                    <div class="column-body"></div>
+                  </div>
+                  <div class="week-column" data-day="Friday">
+                    <div class="column-header">
+                      <span class="col-day">FRI</span>
+                      <span class="col-date" data-date="fri">03</span>
+                    </div>
+                    <div class="column-body"></div>
+                  </div>
+                  <div class="week-column" data-day="Saturday">
+                    <div class="column-header">
+                      <span class="col-day">SAT</span>
+                      <span class="col-date" data-date="sat">04</span>
+                    </div>
+                    <div class="column-body"></div>
+                  </div>
+                  <div class="week-column" data-day="Sunday">
+                    <div class="column-header">
+                      <span class="col-day">SUN</span>
+                      <span class="col-date" data-date="sun">05</span>
+                    </div>
+                    <div class="column-body"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 2: Month Grid Layout -->
+              <div id="month-timetable-view" class="timetable-view">
+                <div class="month-calendar-scroll-wrapper">
+                  <div class="month-calendar-grid glassmorphic">
+                    <div class="month-weekday-label">MON</div>
+                    <div class="month-weekday-label">TUE</div>
+                    <div class="month-weekday-label">WED</div>
+                    <div class="month-weekday-label">THU</div>
+                    <div class="month-weekday-label">FRI</div>
+                    <div class="month-weekday-label">SAT</div>
+                    <div class="month-weekday-label">SUN</div>
+                    <!-- 35 calendar cells populated dynamically -->
+                    <div id="month-grid-cells" class="month-cells-container"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Tab 3: Attendance (Detailed logs by course) -->
+          <div id="tab-today" class="tab-content">
+            <div class="tab-header-row" style="margin-bottom: 12px;">
+              <div>
+                <h2 class="tab-title">Attendance Details</h2>
+                <p class="tab-subtitle">Track conducted and upcoming sessions per course</p>
+              </div>
+            </div>
+
+            <!-- Scrollable course selector row -->
+            <div id="attendance-course-pills" class="attendance-course-pills-row">
+              <!-- Dynamically populated course pills -->
+            </div>
+
+            <!-- Course Detail stats block -->
+            <div id="attendance-course-detail-card" class="course-detail-summary-card glassmorphic">
+              <!-- Dynamically populated selected course info -->
+            </div>
+
+            <!-- Sessions grid/table -->
+            <div class="attendance-timetable-container">
+              <table class="attendance-table">
+                <thead>
+                  <tr>
+                    <th>Mark / Status</th>
+                    <th>Date</th>
+                    <th>LR</th>
+                    <th>#</th>
+                    <th>Time</th>
+                    <th>Professor</th>
+                    <th>Notif Sent</th>
+                  </tr>
+                </thead>
+                <tbody id="attendance-timetable-body">
+                  <!-- Dynamically populated table rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tab 4: Settings -->
+          <div id="tab-settings" class="tab-content">
+            <div class="tab-header-row" style="margin-bottom: 20px;">
+              <div>
+                <h2 class="tab-title">Settings</h2>
+                <p class="tab-subtitle">Manage subscriptions and notification settings</p>
+              </div>
+            </div>
+
+            <div class="settings-stack">
+              
+              <!-- Card 1: Profile Photo -->
+              <div class="settings-card glassmorphic">
+                <div class="profile-photo-card-body">
+                  <div id="settings-avatar" class="settings-avatar-circle">N</div>
+                  <div class="profile-photo-meta">
+                    <h4>Using Google profile photo</h4>
+                    <p>Upload a custom photo (JPG, PNG, HEIC · max 10 MB). It replaces your Google profile photo everywhere in the app. No additional Google permissions are required.</p>
+                    <button class="btn btn-secondary btn-small" id="btn-upload-photo" style="margin-top: 10px;">
+                      <span class="material-symbols-outlined">upload</span>
+                      <span>Upload photo</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: Subscriptions -->
+              <div class="settings-card glassmorphic">
+                <div class="card-header-row" style="margin-bottom: 16px;">
+                  <div class="card-title-with-icon">
+                    <span class="material-symbols-outlined card-icon">ballot</span>
+                    <h3 style="margin-left: 8px;">Subscriptions</h3>
+                  </div>
+                  <button id="btn-manage-subscriptions" class="btn btn-primary btn-small">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">edit</span>
+                    <span>Manage</span>
+                  </button>
+                </div>
+                
+                <div id="settings-subscriptions-tags" class="subscriptions-tags-container">
+                  <!-- Dynamic capsules of enrolled courses -->
+                </div>
+              </div>
+
+              <!-- Card 4: Timetable Sync Source -->
+              <div id="settings-sync-card" class="settings-card glassmorphic">
+                <div class="card-header-row" style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 14px; margin-bottom: 16px;">
+                  <div class="card-title-with-icon">
+                    <span class="material-symbols-outlined card-icon" style="color: var(--accent-cyan);">sync</span>
+                    <h3 style="margin-left: 8px;">Timetable Sync Source</h3>
+                  </div>
+                </div>
+                <div class="form-group" style="margin-bottom: 16px;">
+                  <label for="settings-timetable-url">Google Sheets or JSON API URL</label>
+                  <input type="text" id="settings-timetable-url" placeholder="Paste Sheets URL or Apps Script URL" style="width: 100%; padding: 10px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: var(--text-main); font-size: 0.9rem; margin-top: 8px;">
+                </div>
+                <button id="btn-save-timetable-url" class="btn btn-primary btn-block">
+                  <span class="material-symbols-outlined">save</span>
+                  <span>Save &amp; Sync Now</span>
+                </button>
+              </div>
+
+              <!-- Card 5: Theme Settings -->
+              <div class="settings-card glassmorphic">
+                <div class="card-header-row" style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 14px; margin-bottom: 16px;">
+                  <div class="card-title-with-icon">
+                    <span class="material-symbols-outlined card-icon" style="color: var(--accent-cyan);">palette</span>
+                    <h3 style="margin-left: 8px;">Theme Settings</h3>
+                  </div>
+                </div>
+
+                <div class="toggle-row-item">
+                  <div class="toggle-text-block">
+                    <h4>Light Mode</h4>
+                    <p>Switch between light and dark visual modes.</p>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="theme-mode-toggle">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Card 3: Notification Preferences -->
+              <div class="settings-card glassmorphic">
+                <div class="card-header-row" style="border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 14px; margin-bottom: 16px;">
+                  <div class="card-title-with-icon">
+                    <span class="material-symbols-outlined card-icon" style="color: var(--accent-cyan);">notifications</span>
+                    <h3 style="margin-left: 8px;">Notification Preferences</h3>
+                  </div>
+                </div>
+
+                <div class="toggle-row-item">
+                  <div class="toggle-text-block">
+                    <h4>Email Reminders</h4>
+                    <p>Daily digest of tomorrow's classes, sent after the admin reviews and approves the plan each evening.</p>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="email-reminder-toggle" checked>
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+
+                <div class="toggle-row-item">
+                  <div class="toggle-text-block">
+                    <h4>Push Notifications</h4>
+                    <p>20 & 10 min before class · instant for deadlines & announcements</p>
+                    <div class="toggle-sub-status">
+                      <span class="material-symbols-outlined" style="color: var(--state-present); font-size: 14px;">check_circle</span>
+                      <span>Active: this device is registered.</span>
+                    </div>
+                  </div>
+                  <label class="switch">
+                    <input type="checkbox" id="push-notification-toggle" checked>
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+
+                <!-- Hidden inputs for backward threshold settings support -->
+                <input type="hidden" id="threshold-input" value="75">
+                <input type="hidden" id="notification-toggle">
+
+                <div class="settings-buttons" style="margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px;">
+                  <button id="btn-clear-cache" class="btn btn-danger btn-block">
+                    <span class="material-symbols-outlined">delete_forever</span>
+                    <span>Reset App Data</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Subscription management Modal -->
+          <div id="modal-manage-subscriptions" class="modal-overlay">
+            <div class="modal-card glassmorphic" style="max-width: 550px;">
+              <div class="modal-header">
+                <h3 class="modal-title">Manage Subscriptions</h3>
+                <button id="btn-close-subs-modal" class="btn-close">
+                  <span class="material-symbols-outlined">close</span>
+                </button>
+              </div>
+              <form id="subs-management-form">
+                <p class="modal-subtitle-desc" style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 20px;">Toggle the courses you want to subscribe to. This filters your timetable schedule and dashboard analytics.</p>
+                <div id="subs-checkboxes-grid" class="subs-checklist-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-height: 250px; overflow-y: auto; padding: 4px;">
+                  <!-- Dynamically populated checklist -->
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" style="margin-top: 20px;">Save Subscriptions</button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Reusable Dialog / Modal for Manual Log Entry -->
+  <div id="modal-log-entry" class="modal-overlay">
+    <div class="modal-card glassmorphic">
+      <div class="modal-header">
+        <h3 class="modal-title">Manual Attendance Entry</h3>
+        <button id="btn-close-modal" class="btn-close">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="manual-log-form">
+        <div class="form-group">
+          <label for="manual-course">Select Course</label>
+          <select id="manual-course" required>
+            <!-- Filled dynamically -->
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="manual-date">Select Date</label>
+          <input type="date" id="manual-date" required>
+        </div>
+        <div class="form-group">
+          <label for="manual-status">Status</label>
+          <select id="manual-status" required>
+            <option value="present">Present</option>
+            <option value="absent">Absent</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Log Attendance</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Global notification toasts -->
+  <div id="toast-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js?v=20260703v16"></script>
+</body>
+</html>

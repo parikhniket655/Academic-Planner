@@ -1,0 +1,19 @@
+{
+  "name": "Academic Planner",
+  "short_name": "Academic Planner",
+  "description": "Log in with your institute ID to track courses, view schedules, sync timetables, and monitor your attendance.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#070d19",
+  "theme_color": "#00e5ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "app_icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
