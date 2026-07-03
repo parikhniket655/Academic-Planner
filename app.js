@@ -451,7 +451,7 @@ function login(email) {
   };
   
   storage.setItem("iimr_active_user", JSON.stringify(state.user));
-  showToast(`Welcome back, ${student.name}!`, "success");
+  showToast(`Welcome, ${student.name}!`, "success");
   
   loadUserData();
   showScreen("dashboard-screen");
@@ -2053,6 +2053,7 @@ function triggerNotification(text) {
    TOAST HELPER
    ========================================================================== */
 function showToast(message, type = "info") {
+  return; // Disabled popups as per user request
   const container = document.getElementById("toast-container");
   
   const toast = document.createElement("div");
