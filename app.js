@@ -436,6 +436,14 @@ function showTab(tabId) {
 function login(email) {
   const cleanEmail = email.trim().toLowerCase();
   
+  if (cleanEmail === "ipm04niketp@iimrohtak.ac.in") {
+    const pwd = prompt("Enter password for Niket Parikh's account:");
+    if (pwd !== "1212") {
+      alert("Incorrect password. Access denied.");
+      return;
+    }
+  }
+  
   // Authorize student email
   const student = studentDatabase[cleanEmail];
   
