@@ -436,6 +436,11 @@ function showTab(tabId) {
 function login(email) {
   const cleanEmail = email.trim().toLowerCase();
   
+  // Request notification permission under user gesture
+  if ("Notification" in window && Notification.permission === "default") {
+    Notification.requestPermission().catch(() => {});
+  }
+  
   if (cleanEmail === "ipm04niketp@iimrohtak.ac.in") {
     const pwd = prompt("Enter password for Niket Parikh's account:");
     if (pwd !== "1212") {
@@ -2011,7 +2016,6 @@ function checkClassReminders() {
   if (!state.user || !state.settings.notifications) return;
 
   const today = new Date();
-  const dayName = getDayString(today);
   const dateKey = formatDateKey(today);
   
   const todayClasses = state.timetable.filter(s => {
@@ -2020,6 +2024,12 @@ function checkClassReminders() {
     return s.dateKey === dateKey;
   });
   
+  // Track already sent notifications in sessionStorage to avoid duplicates
+  let sent = {};
+  try {
+    sent = JSON.parse(sessionStorage.getItem("iimr_sent_reminders") || "{}");
+  } catch (e) {}
+
   todayClasses.forEach(lecture => {
     const timeMatch = lecture.slot.match(/^(\d{2}):(\d{2})/);
     if (!timeMatch) return;
@@ -2033,9 +2043,18 @@ function checkClassReminders() {
     const diffMs = classTime.getTime() - today.getTime();
     const diffMins = Math.floor(diffMs / 60000);
     
-    if (diffMins === 10) {
-      triggerNotification(`Upcoming Lecture in 10 mins: ${lecture.subject} (${lecture.courseId}) in Room ${lecture.room}`);
-    }
+    const targets = [30, 20, 10];
+    targets.forEach(mins => {
+      if (diffMins === mins) {
+        const uniqueKey = `${lecture.courseId}_${dateKey}_${mins}`;
+        if (!sent[uniqueKey]) {
+          sent[uniqueKey] = true;
+          sessionStorage.setItem("iimr_sent_reminders", JSON.stringify(sent));
+          
+          triggerNotification(`Upcoming Lecture in ${mins} mins: ${lecture.subject} in Room ${lecture.room}`);
+        }
+      }
+    });
   });
 }
 
