@@ -1403,6 +1403,8 @@ input:checked + .slider:before {
 @media (max-width: 992px) {
   .app-layout {
     grid-template-columns: 1fr;
+    max-width: 100%;
+    overflow-x: hidden;
   }
   .app-sidebar {
     height: auto;
@@ -1410,6 +1412,8 @@ input:checked + .slider:before {
     border-right: none;
     border-bottom: 1px solid var(--glass-border);
     padding: 20px;
+    max-width: 100%;
+    overflow: hidden;
   }
   .user-profile-section {
     margin-bottom: 16px;
@@ -1418,6 +1422,8 @@ input:checked + .slider:before {
     flex-direction: row;
     overflow-x: auto;
     padding-bottom: 8px;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
   }
   .sidebar-nav .nav-tab {
     flex-shrink: 0;
@@ -1430,6 +1436,8 @@ input:checked + .slider:before {
   .main-content {
     height: auto;
     padding: 20px;
+    max-width: 100%;
+    overflow-x: hidden;
   }
   .week-columns-grid {
     grid-template-columns: 1fr; /* Stack columns on mobile screens */
