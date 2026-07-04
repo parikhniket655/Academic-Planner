@@ -756,7 +756,8 @@ function calculateCourseStats(courseId) {
     const parts = s.slot.split('-');
     if (parts.length < 2) return true;
     const endTimeStr = parts[1].trim();
-    const [endH, endM] = endTimeStr.split(':').map(Number);
+    let [endH, endM] = endTimeStr.split(':').map(Number);
+    if (endH < 8) endH += 12;
     
     const now = getActualToday();
     const currentH = now.getHours();
@@ -824,7 +825,7 @@ function calculateCourseStats(courseId) {
    UI RENDERING / DASHBOARD TAB LAYOUT
    ========================================================================== */
 function renderDashboard() {
-  const today = state.currentDate;
+  const today = new Date();
   const todayStr = formatDateKey(today);
 
   // 1. Render Greeting celebration banner depending on lectures
@@ -836,7 +837,23 @@ function renderDashboard() {
 
   const pendingToday = todayClasses.filter(c => {
     const status = state.attendanceLogs[`${todayStr}_${c.courseId}`];
-    return !status; // scheduled, not logged
+    if (status) return false; // Already logged
+
+    // Check if the class end time has already passed
+    const parts = c.slot.split('-');
+    if (parts.length < 2) return false;
+    const endTimeStr = parts[1].trim();
+    let [endH, endM] = endTimeStr.split(':').map(Number);
+    if (endH < 8) endH += 12; // Convert afternoon/evening to 24h
+
+    const now = new Date();
+    const currentH = now.getHours();
+    const currentM = now.getMinutes();
+
+    if (currentH > endH) return false;
+    if (currentH === endH && currentM >= endM) return false;
+
+    return true; // Future unlogged class
   });
 
   const banner = document.getElementById("dashboard-status-banner");
@@ -920,8 +937,9 @@ function renderDashboard() {
     const offset = circumference - (stats.percentage / 100) * circumference;
 
     let strokeColor = "var(--state-present)";
-    if (stats.percentage < state.settings.threshold) strokeColor = "var(--state-absent)";
-    else if (stats.percentage - state.settings.threshold <= 5) strokeColor = "var(--state-cancelled)";
+    if (stats.percentage < state.settings.threshold) {
+      strokeColor = "var(--state-absent)";
+    }
 
     // Format credit description
     const creditStr = credits > 0 ? `${credits.toFixed(0)} credit` : "Non-credit";
