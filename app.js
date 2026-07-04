@@ -210,20 +210,7 @@ const DEFAULT_STUDENT_DB = {
       "CW Sec-D"
     ]
   },
-  "ipm04adityas@iimrohtak.ac.in": {
-    name: "Aditya Brijgopal Sarda",
-    courses: [
-      "BA Sec-A",
-      "CV Sec-A",
-      "FM",
-      "FSA",
-      "GFMG",
-      "MFIS",
-      "PWMP",
-      "GBS Sec-A",
-      "CW Sec-A"
-    ]
-  },
+
   "ipm04adityabs@iimrohtak.ac.in": {
     name: "Aditya Brijgopal Sarda",
     courses: [
@@ -381,7 +368,7 @@ const DEFAULT_TIMETABLE = [
 const WAZIR_MEMBERS = [
   "ipm04niketp@iimrohtak.ac.in",
   "pgp16hidayrajsinhc@iimrohtak.ac.in",
-  "ipm04adityas@iimrohtak.ac.in",
+  "ipm04adityabs@iimrohtak.ac.in",
   "ipm04prithivit@iimrohtak.ac.in",
   "pgp16tanishthav@iimrohtak.ac.in",
   "pgp16akshita@iimrohtak.ac.in",
