@@ -1709,8 +1709,12 @@ function setupEventListeners() {
     });
   });
 
-  // Logout Button
+  // Logout Buttons
   document.getElementById("btn-logout").addEventListener("click", logout);
+  const settingsLogoutBtn = document.getElementById("btn-logout-settings");
+  if (settingsLogoutBtn) {
+    settingsLogoutBtn.addEventListener("click", logout);
+  }
 
   // Tab Switch Routing
   document.querySelectorAll(".nav-tab").forEach(tab => {

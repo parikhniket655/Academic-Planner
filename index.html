@@ -519,7 +519,11 @@
                 <input type="hidden" id="threshold-input" value="75">
                 <input type="hidden" id="notification-toggle">
 
-                <div class="settings-buttons" style="margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px;">
+                <div class="settings-buttons" style="margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 20px; display: flex; flex-direction: column; gap: 12px;">
+                  <button id="btn-logout-settings" class="btn btn-secondary btn-block">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>Log Out</span>
+                  </button>
                   <button id="btn-clear-cache" class="btn btn-danger btn-block">
                     <span class="material-symbols-outlined">delete_forever</span>
                     <span>Reset App Data</span>
@@ -748,6 +752,6 @@
   <div id="toast-container"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="app.js?v=20260703v25"></script>
+  <script src="app.js?v=20260703v26"></script>
 </body>
 </html>
