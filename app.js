@@ -186,11 +186,117 @@ const DEFAULT_STUDENT_DB = {
     name: "Palak Yadav",
     courses: [
       "AIDMD",
-      "B2B",
+      "BA Sec-A",
+      "DBM",
+      "PCM",
+      "PS",
+      "SCM Sec-A",
+      "TA",
+      "GBS Sec-B",
+      "CW Sec-B"
+    ]
+  },
+  "pgp16hidayrajsinhc@iimrohtak.ac.in": {
+    name: "Hidayrajsinh Chauhan",
+    courses: [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "GFMG",
+      "MFIS",
+      "PWMP",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "ipm04adityas@iimrohtak.ac.in": {
+    name: "Aditya Brijgopal Sarda",
+    courses: [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "GFMG",
+      "MFIS",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04adityabs@iimrohtak.ac.in": {
+    name: "Aditya Brijgopal Sarda",
+    courses: [
+      "BA Sec-A",
+      "CV Sec-A",
+      "FM",
+      "FSA",
+      "GFMG",
+      "MFIS",
+      "PWMP",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04prithivit@iimrohtak.ac.in": {
+    name: "Prithivi Tejeshwar",
+    courses: [
       "BA Sec-B",
       "CV Sec-B",
+      "FSA",
       "IBS",
+      "MFIS",
+      "GBS Sec-C",
+      "CW Sec-C"
+    ]
+  },
+  "pgp16tanishthav@iimrohtak.ac.in": {
+    name: "Tanishtha Verma",
+    courses: [
+      "AIDMD",
+      "B2B",
+      "BA Sec-B",
+      "DBM",
+      "PCM",
       "PFM",
+      "GBS Sec-D",
+      "CW Sec-D"
+    ]
+  },
+  "pgp16akshita@iimrohtak.ac.in": {
+    name: "Akshita",
+    courses: [
+      "B2B",
+      "BA Sec-A",
+      "Ind4.0",
+      "PCM",
+      "SCM Sec-A",
+      "SHRM",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "ipm04mridulu@iimrohtak.ac.in": {
+    name: "Mridul Upadhyay",
+    courses: [
+      "B2B",
+      "BA Sec-A",
+      "CV Sec-A",
+      "IBS",
+      "SCM Sec-A",
+      "GBS Sec-A",
+      "CW Sec-A"
+    ]
+  },
+  "pgp16divyanshid@iimrohtak.ac.in": {
+    name: "Divyanshi Dongre",
+    courses: [
+      "CB Sec-A",
+      "DBM",
+      "MBPET",
+      "PCM",
+      "PS",
+      "SHRM",
       "GBS Sec-B",
       "CW Sec-B"
     ]
@@ -271,17 +377,32 @@ const DEFAULT_TIMETABLE = [
   { dateKey: "2026-07-11", day: "Saturday", slot: "14:30 - 15:45", courseId: "B2B", subject: "B2B Marketing", room: "LR 07", instructor: "Dr. Mihir Kushwah" }
 ];
 
+// Wazir Group Access List
+const WAZIR_MEMBERS = [
+  "ipm04niketp@iimrohtak.ac.in",
+  "pgp16hidayrajsinhc@iimrohtak.ac.in",
+  "ipm04adityas@iimrohtak.ac.in",
+  "ipm04prithivit@iimrohtak.ac.in",
+  "pgp16tanishthav@iimrohtak.ac.in",
+  "pgp16akshita@iimrohtak.ac.in",
+  "ipm04mridulu@iimrohtak.ac.in",
+  "pgp16divyanshid@iimrohtak.ac.in"
+];
+
 // App Global State
 let state = {
   user: null,
   timetable: [],
   attendanceLogs: {}, // Key: dateString_courseId => status
+  wazirMeetings: {},  // Key: dateString_slot => meeting details
   settings: {
     threshold: 75,
     notifications: true
   },
   currentDate: new Date(), // Set default date to today
+  wazirCurrentDate: new Date(), // Date reference for Wazir tab
   viewMode: "week",   // "week" or "month"
+  wazirViewMode: "week", // Wazir calendar mode
   filterMode: "time", // "time", "code", or "name"
   selectedAttendanceCourse: null // Code string of currently highlighted course in detailed logs
 };
@@ -428,6 +549,10 @@ function showTab(tabId) {
   
   const content = document.getElementById(tabId);
   if (content) content.classList.add("active");
+
+  if (tabId === "tab-wazir") {
+    renderWazirCanvas();
+  }
 }
 
 /* ==========================================================================
@@ -687,6 +812,24 @@ async function loadUserData() {
   const pushToggle = document.getElementById("push-notification-toggle");
   if (pushToggle) {
     pushToggle.checked = state.settings.notifications !== false;
+  }
+
+  // Handle Wazir tab authorization
+  const wazirTabBtn = document.getElementById("nav-tab-wazir");
+  if (wazirTabBtn) {
+    const isWazirMember = WAZIR_MEMBERS.includes(state.user.email);
+    if (isWazirMember) {
+      wazirTabBtn.style.display = "flex";
+      loadWazirMeetings().then(() => {
+        // Redraw canvas if active
+        const link = document.querySelector('[data-tab="tab-wazir"]');
+        if (link && link.classList.contains("active")) {
+          renderWazirCanvas();
+        }
+      });
+    } else {
+      wazirTabBtn.style.display = "none";
+    }
   }
 
   renderDashboard();
@@ -1864,6 +2007,9 @@ function setupEventListeners() {
       showToast(`Switched to ${newTheme} theme.`, "success");
     });
   }
+
+  // Initialize Wazir specific listeners
+  setupWazirEventListeners();
 }
 
 function populateModalCourses() {
@@ -2164,3 +2310,466 @@ function showToast(message, type = "info") {
     });
   }, 4000);
 }
+
+/* ==========================================================================
+   WAZIR HUB SPECIFIC BUSINESS LOGIC
+   ========================================================================== */
+
+async function loadWazirMeetings() {
+  if (!supabaseClient) return;
+  try {
+    const { data, error } = await supabaseClient
+      .from('wazir_meetings')
+      .select('*');
+    if (error) throw error;
+    
+    state.wazirMeetings = {};
+    if (data) {
+      data.forEach(row => {
+        state.wazirMeetings[`${row.date_key}_${row.slot}`] = row;
+      });
+    }
+  } catch (e) {
+    console.error("Failed to load Wazir meetings:", e);
+  }
+}
+
+async function bookWazirMeeting(dateKey, slot, title) {
+  if (!supabaseClient) {
+    showToast("Database not connected. Local booking simulated.", "warning");
+    state.wazirMeetings[`${dateKey}_${slot}`] = {
+      date_key: dateKey,
+      slot: slot,
+      booked_by: state.user.email,
+      title: title
+    };
+    renderWazirCanvas();
+    return true;
+  }
+  
+  try {
+    const { error } = await supabaseClient
+      .from('wazir_meetings')
+      .upsert({
+        date_key: dateKey,
+        slot: slot,
+        booked_by: state.user.email,
+        title: title
+      }, { onConflict: 'date_key,slot' });
+      
+    if (error) throw error;
+    
+    // Refresh local cache and redraw
+    await loadWazirMeetings();
+    renderWazirCanvas();
+    showToast("Meeting booked successfully!", "success");
+    return true;
+  } catch (e) {
+    console.error("Failed to book meeting:", e);
+    showToast("Booking failed: " + e.message, "danger");
+    return false;
+  }
+}
+
+async function cancelWazirMeeting(dateKey, slot) {
+  if (!supabaseClient) {
+    delete state.wazirMeetings[`${dateKey}_${slot}`];
+    renderWazirCanvas();
+    return true;
+  }
+  
+  try {
+    const { error } = await supabaseClient
+      .from('wazir_meetings')
+      .delete()
+      .eq('date_key', dateKey)
+      .eq('slot', slot);
+      
+    if (error) throw error;
+    
+    // Refresh local cache and redraw
+    await loadWazirMeetings();
+    renderWazirCanvas();
+    showToast("Meeting cancelled successfully!", "success");
+    return true;
+  } catch (e) {
+    console.error("Failed to cancel meeting:", e);
+    showToast("Cancellation failed: " + e.message, "danger");
+    return false;
+  }
+}
+
+function getWazirDaySchedule(dateKey, dayName) {
+  const slots = [
+    { slot: "08:45 - 10:00", type: "class" },
+    { slot: "10:00 - 13:10", type: "placement", label: "Placement Activity Slot" },
+    { slot: "13:10 - 14:30", type: "lunch", label: "Lunch Break" },
+    { slot: "14:30 - 15:45", type: "class" },
+    { slot: "16:05 - 17:20", type: "class" },
+    { slot: "17:40 - 18:55", type: "class" },
+    { slot: "19:15 - 20:30", type: "class" },
+    { slot: "20:50 - 22:05", type: "class" },
+    { slot: "22:25 - 23:40", type: "class" }
+  ];
+
+  // Find all scheduled lectures for this day in the database
+  const dayLectures = state.timetable.filter(s => s.dateKey === dateKey);
+
+  const result = [];
+  
+  slots.forEach(item => {
+    // 1. Check if a meeting is booked in Supabase for this slot/date
+    const booked = state.wazirMeetings && state.wazirMeetings[`${dateKey}_${item.slot}`];
+    if (booked) {
+      result.push({
+        slot: item.slot,
+        status: "booked",
+        title: booked.title,
+        bookedBy: booked.booked_by
+      });
+      return;
+    }
+
+    // 2. If it is a placement or lunch slot, it is always free
+    if (item.type === "placement" || item.type === "lunch") {
+      if (dayName === "Sunday") return;
+      result.push({
+        slot: item.slot,
+        status: "free",
+        title: item.label
+      });
+      return;
+    }
+
+    // 3. For standard class slots, check if any of the 8 members have a class
+    let isOccupied = false;
+    const slotLectures = dayLectures.filter(l => l.slot === item.slot);
+    
+    for (const lecture of slotLectures) {
+      for (const email of WAZIR_MEMBERS) {
+        const student = studentDatabase[email];
+        if (student && isStudentEnrolled(student.courses, lecture.courseId)) {
+          isOccupied = true;
+          break;
+        }
+      }
+      if (isOccupied) break;
+    }
+
+    if (!isOccupied) {
+      if (dayName === "Sunday") return;
+      result.push({
+        slot: item.slot,
+        status: "free",
+        title: "Free Slot"
+      });
+    }
+  });
+
+  return result;
+}
+
+function renderWazirCanvas() {
+  if (state.wazirViewMode === "week") {
+    document.getElementById("wazir-week-view").classList.add("active");
+    document.getElementById("wazir-month-view").classList.remove("active");
+    renderWazirWeekView();
+  } else {
+    document.getElementById("wazir-week-view").classList.remove("active");
+    document.getElementById("wazir-month-view").classList.add("active");
+    renderWazirMonthView();
+  }
+}
+
+function renderWazirWeekView() {
+  const monday = getMonday(state.wazirCurrentDate);
+  const weekDays = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    weekDays.push(d);
+  }
+
+  const startStr = monday.toLocaleDateString('en-GB'); // DD/MM/YYYY
+  document.getElementById("wazir-calendar-date-label").textContent = startStr;
+
+  const columns = document.querySelectorAll("#wazir-week-view .week-column");
+  columns.forEach((col, idx) => {
+    const colDate = weekDays[idx];
+    const dateKey = formatDateKey(colDate);
+    const dayName = getDayString(colDate);
+    
+    const dateNumSpan = col.querySelector(".col-date");
+    if (dateNumSpan) {
+      dateNumSpan.textContent = String(colDate.getDate()).padStart(2, '0');
+    }
+    
+    const todayStr = formatDateKey(new Date());
+    if (dateKey === todayStr) {
+      col.classList.add("current-day-col");
+    } else {
+      col.classList.remove("current-day-col");
+    }
+
+    const body = col.querySelector(".column-body");
+    body.innerHTML = "";
+
+    const schedule = getWazirDaySchedule(dateKey, dayName);
+    if (schedule.length === 0) {
+      const free = document.createElement("div");
+      free.className = "free-card";
+      free.textContent = "No Slots Available";
+      body.appendChild(free);
+    } else {
+      schedule.forEach(item => {
+        const card = document.createElement("div");
+        if (item.status === "booked") {
+          card.className = "lecture-card cat-b2b";
+          card.innerHTML = `
+            <div class="lecture-time">${item.slot}</div>
+            <div class="lecture-title">${item.title}</div>
+            <div class="lecture-meta-row">
+              <div class="lecture-meta-item">
+                <span class="material-symbols-outlined" style="font-size: 11px;">person</span>
+                <span>Booked by: ${item.bookedBy.split('@')[0]}</span>
+              </div>
+            </div>
+          `;
+        } else {
+          card.className = "lecture-card cat-default";
+          card.innerHTML = `
+            <div class="lecture-time">${item.slot}</div>
+            <div class="lecture-title" style="color: var(--state-present);">${item.title}</div>
+            <div class="lecture-meta-row">
+              <div class="lecture-meta-item">
+                <span class="material-symbols-outlined" style="font-size: 11px; color: var(--state-present);">check_circle</span>
+                <span style="color: var(--state-present);">Tap to Book</span>
+              </div>
+            </div>
+          `;
+        }
+
+        card.style.cursor = "pointer";
+        card.addEventListener("click", () => {
+          openWazirBookingModal(dateKey, item.slot, item.status === "booked" ? item : null);
+        });
+
+        body.appendChild(card);
+      });
+    }
+  });
+}
+
+function renderWazirMonthView() {
+  const grid = document.getElementById("wazir-month-grid-cells");
+  grid.innerHTML = "";
+  
+  const year = state.wazirCurrentDate.getFullYear();
+  const month = state.wazirCurrentDate.getMonth();
+  
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  document.getElementById("wazir-calendar-date-label").textContent = `${monthNames[month]} ${year}`;
+
+  const firstDay = new Date(year, month, 1);
+  let startDay = firstDay.getDay();
+  startDay = startDay === 0 ? 7 : startDay;
+  
+  const totalDays = new Date(year, month + 1, 0).getDate();
+  const prevTotalDays = new Date(year, month, 0).getDate();
+  
+  const cells = [];
+  for (let i = startDay - 2; i >= 0; i--) {
+    cells.push({
+      date: new Date(year, month - 1, prevTotalDays - i),
+      active: false
+    });
+  }
+  for (let i = 1; i <= totalDays; i++) {
+    cells.push({
+      date: new Date(year, month, i),
+      active: true
+    });
+  }
+  const totalCells = cells.length > 35 ? 42 : 35;
+  const remaining = totalCells - cells.length;
+  for (let i = 1; i <= remaining; i++) {
+    cells.push({
+      date: new Date(year, month + 1, i),
+      active: false
+    });
+  }
+  
+  cells.forEach(c => {
+    const cellDiv = document.createElement("div");
+    cellDiv.className = `month-cell ${c.active ? '' : 'inactive-month-cell'}`;
+    
+    const dateNum = document.createElement("span");
+    dateNum.className = "month-date-number";
+    dateNum.textContent = c.date.getDate();
+    cellDiv.appendChild(dateNum);
+    
+    const cellDateKey = formatDateKey(c.date);
+    const cellDayName = getDayString(c.date);
+    
+    const schedule = getWazirDaySchedule(cellDateKey, cellDayName);
+    const freeCount = schedule.filter(s => s.status === "free").length;
+    const bookedCount = schedule.filter(s => s.status === "booked").length;
+    
+    if (freeCount > 0 || bookedCount > 0) {
+      const capsulesContainer = document.createElement("div");
+      capsulesContainer.className = "month-capsules-list";
+      
+      if (bookedCount > 0) {
+        const cap = document.createElement("div");
+        cap.className = "month-capsule cat-b2b";
+        cap.textContent = `${bookedCount} Mtg`;
+        capsulesContainer.appendChild(cap);
+      }
+      
+      if (freeCount > 0) {
+        const cap = document.createElement("div");
+        cap.className = "month-capsule cat-default";
+        cap.style.background = "rgba(40, 167, 69, 0.15)";
+        cap.style.color = "var(--state-present)";
+        cap.style.border = "1px solid rgba(40, 167, 69, 0.3)";
+        cap.textContent = `${freeCount} Free`;
+        capsulesContainer.appendChild(cap);
+      }
+      
+      cellDiv.appendChild(capsulesContainer);
+    }
+    
+    cellDiv.style.cursor = "pointer";
+    cellDiv.addEventListener("click", () => {
+      state.wazirCurrentDate = c.date;
+      state.wazirViewMode = "week";
+      const weekBtn = document.getElementById("btn-wazir-view-week");
+      const monthBtn = document.getElementById("btn-wazir-view-month");
+      if (weekBtn) weekBtn.classList.add("active");
+      if (monthBtn) monthBtn.classList.remove("active");
+      renderWazirCanvas();
+    });
+
+    grid.appendChild(cellDiv);
+  });
+}
+
+function openWazirBookingModal(dateKey, slot, bookedItem) {
+  document.getElementById("wazir-book-date").value = dateKey;
+  document.getElementById("wazir-book-slot").value = slot;
+  
+  const label = document.getElementById("wazir-booking-label-time");
+  label.textContent = `${dateKey} @ ${slot}`;
+  
+  const titleInput = document.getElementById("wazir-book-title");
+  const deleteBtn = document.getElementById("btn-wazir-delete-booking");
+  
+  if (bookedItem) {
+    titleInput.value = bookedItem.title;
+    titleInput.disabled = true;
+    deleteBtn.style.display = "block";
+  } else {
+    titleInput.value = "Wazir Meeting";
+    titleInput.disabled = false;
+    deleteBtn.style.display = "none";
+  }
+  
+  document.getElementById("modal-wazir-booking").classList.add("active");
+}
+
+function setupWazirEventListeners() {
+  const weekBtn = document.getElementById("btn-wazir-view-week");
+  const monthBtn = document.getElementById("btn-wazir-view-month");
+  
+  if (weekBtn) {
+    weekBtn.addEventListener("click", () => {
+      state.wazirViewMode = "week";
+      weekBtn.classList.add("active");
+      monthBtn.classList.remove("active");
+      renderWazirCanvas();
+    });
+  }
+  
+  if (monthBtn) {
+    monthBtn.addEventListener("click", () => {
+      state.wazirViewMode = "month";
+      monthBtn.classList.add("active");
+      weekBtn.classList.remove("active");
+      renderWazirCanvas();
+    });
+  }
+
+  const prevBtn = document.getElementById("btn-wazir-date-prev");
+  const nextBtn = document.getElementById("btn-wazir-date-next");
+  
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      if (state.wazirViewMode === "week") {
+        state.wazirCurrentDate.setDate(state.wazirCurrentDate.getDate() - 7);
+      } else {
+        state.wazirCurrentDate.setMonth(state.wazirCurrentDate.getMonth() - 1);
+      }
+      document.getElementById("wazir-calendar-date-input").value = formatDateKey(state.wazirCurrentDate);
+      renderWazirCanvas();
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      if (state.wazirViewMode === "week") {
+        state.wazirCurrentDate.setDate(state.wazirCurrentDate.getDate() + 7);
+      } else {
+        state.wazirCurrentDate.setMonth(state.wazirCurrentDate.getMonth() + 1);
+      }
+      document.getElementById("wazir-calendar-date-input").value = formatDateKey(state.wazirCurrentDate);
+      renderWazirCanvas();
+    });
+  }
+
+  const dateInput = document.getElementById("wazir-calendar-date-input");
+  if (dateInput) {
+    dateInput.addEventListener("change", (e) => {
+      const val = e.target.value;
+      if (val) {
+        state.wazirCurrentDate = new Date(val);
+        renderWazirCanvas();
+      }
+    });
+  }
+
+  const closeModalBtn = document.getElementById("btn-close-wazir-modal");
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", () => {
+      document.getElementById("modal-wazir-booking").classList.remove("active");
+    });
+  }
+
+  const form = document.getElementById("wazir-booking-form");
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const dateKey = document.getElementById("wazir-book-date").value;
+      const slot = document.getElementById("wazir-book-slot").value;
+      const title = document.getElementById("wazir-book-title").value;
+      
+      const success = await bookWazirMeeting(dateKey, slot, title);
+      if (success) {
+        document.getElementById("modal-wazir-booking").classList.remove("active");
+      }
+    });
+  }
+
+  const deleteBtn = document.getElementById("btn-wazir-delete-booking");
+  if (deleteBtn) {
+    deleteBtn.addEventListener("click", async () => {
+      const dateKey = document.getElementById("wazir-book-date").value;
+      const slot = document.getElementById("wazir-book-slot").value;
+      
+      const success = await cancelWazirMeeting(dateKey, slot);
+      if (success) {
+        document.getElementById("modal-wazir-booking").classList.remove("active");
+      }
+    });
+  }
+}
+

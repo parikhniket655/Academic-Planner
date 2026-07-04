@@ -59,25 +59,7 @@
           </button>
         </form>
 
-        <div class="demo-section">
-          <p class="demo-title">Or Log In to a Mock Student Account:</p>
-          <div id="demo-accounts-container" class="demo-buttons">
-            <button class="btn btn-secondary demo-login-btn" data-email="ipm04niketp@iimrohtak.ac.in">
-              <span class="demo-avatar">NP</span>
-              <div class="demo-info">
-                <span class="demo-name">Niket Parikh (PGP)</span>
-                <span class="demo-mail">ipm04niketp@iimrohtak.ac.in</span>
-              </div>
-            </button>
-            <button class="btn btn-secondary demo-login-btn" data-email="ipm04palaky@iimrohtak.ac.in">
-              <span class="demo-avatar">PY</span>
-              <div class="demo-info">
-                <span class="demo-name">Palak Yadav (PGP)</span>
-                <span class="demo-mail">ipm04palaky@iimrohtak.ac.in</span>
-              </div>
-            </button>
-          </div>
-        </div>
+
       </div>
     </section>
 
@@ -115,6 +97,10 @@
               <button class="nav-tab" data-tab="tab-today">
                 <span class="material-symbols-outlined">check_box</span>
                 <span>Attendance</span>
+              </button>
+              <button class="nav-tab" data-tab="tab-wazir" id="nav-tab-wazir" style="display: none;">
+                <span class="material-symbols-outlined">groups</span>
+                <span>Wazir</span>
               </button>
               <button class="nav-tab" data-tab="tab-settings">
                 <span class="material-symbols-outlined">settings</span>
@@ -562,7 +548,133 @@
               </form>
             </div>
           </div>
+          
+          <!-- Tab 5: Wazir (Shared Common Free Slots & Meeting Scheduler) -->
+          <div id="tab-wazir" class="tab-content">
+            <div class="tab-header-row" style="margin-bottom: 20px;">
+              <div>
+                <h2 class="tab-title">Wazir Hub</h2>
+                <p class="tab-subtitle">Common free slots & shared meetings for the Wazir group</p>
+              </div>
+            </div>
 
+            <!-- Calendar View Controls Row -->
+            <div class="calendar-controls-row">
+              <div class="controls-left">
+                <div class="toggle-btn-group">
+                  <button id="btn-wazir-view-week" class="btn-toggle active">Week</button>
+                  <button id="btn-wazir-view-month" class="btn-toggle">Month</button>
+                </div>
+              </div>
+
+              <div class="controls-right">
+                <div class="date-navigator-panel glassmorphic">
+                  <button id="btn-wazir-date-prev" class="btn-nav" aria-label="Previous">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                  </button>
+                  
+                  <div class="date-picker-wrapper">
+                    <span id="wazir-calendar-date-label" class="date-label-text">29/06/2026</span>
+                    <input type="date" id="wazir-calendar-date-input" class="hidden-date-input">
+                  </div>
+                  
+                  <button id="btn-wazir-date-next" class="btn-nav" aria-label="Next">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Wazir Canvas (Dynamic Week columns or Month calendar) -->
+            <div id="wazir-canvas">
+              
+              <!-- View 1: Week Columns Layout -->
+              <div id="wazir-week-view" class="timetable-view active">
+                <div class="week-columns-grid">
+                  <div class="week-column" data-day="Monday">
+                    <div class="column-header">
+                      <span class="col-day">MON</span>
+                      <span class="col-date">29</span>
+                    </div>
+                    <div class="column-body">
+                      <!-- Dynamic free slots -->
+                    </div>
+                  </div>
+                  <div class="week-column" data-day="Tuesday">
+                    <div class="column-header">
+                      <span class="col-day">TUE</span>
+                      <span class="col-date">30</span>
+                    </div>
+                    <div class="column-body">
+                      <!-- Dynamic free slots -->
+                    </div>
+                  </div>
+                  <div class="week-column" data-day="Wednesday">
+                    <div class="column-header">
+                      <span class="col-day">WED</span>
+                      <span class="col-date">01</span>
+                    </div>
+                    <div class="column-body">
+                      <!-- Dynamic free slots -->
+                    </div>
+                  </div>
+                  <div class="week-column" data-day="Thursday">
+                    <div class="column-header">
+                      <span class="col-day">THU</span>
+                      <span class="col-date">02</span>
+                    </div>
+                    <div class="column-body">
+                      <!-- Dynamic free slots -->
+                    </div>
+                  </div>
+                  <div class="week-column" data-day="Friday">
+                    <div class="column-header">
+                      <span class="col-day">FRI</span>
+                      <span class="col-date">03</span>
+                    </div>
+                    <div class="column-body">
+                      <!-- Dynamic free slots -->
+                    </div>
+                  </div>
+                  <div class="week-column" data-day="Saturday">
+                    <div class="column-header">
+                      <span class="col-day">SAT</span>
+                      <span class="col-date">04</span>
+                    </div>
+                    <div class="column-body">
+                      <!-- Dynamic free slots -->
+                    </div>
+                  </div>
+                  <div class="week-column" data-day="Sunday">
+                    <div class="column-header">
+                      <span class="col-day">SUN</span>
+                      <span class="col-date">05</span>
+                    </div>
+                    <div class="column-body">
+                      <!-- Dynamic free slots -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- View 2: Month Calendar Layout -->
+              <div id="wazir-month-view" class="timetable-view">
+                <div class="month-calendar-scroll-wrapper">
+                  <div class="month-calendar-grid">
+                    <div class="month-day-name">MON</div>
+                    <div class="month-day-name">TUE</div>
+                    <div class="month-day-name">WED</div>
+                    <div class="month-day-name">THU</div>
+                    <div class="month-day-name">FRI</div>
+                    <div class="month-day-name">SAT</div>
+                    <div class="month-day-name">SUN</div>
+                    <div id="wazir-month-grid-cells" style="display: contents;"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -602,10 +714,40 @@
     </div>
   </div>
 
+  <!-- Wazir Meeting Booking Modal -->
+  <div id="modal-wazir-booking" class="modal-overlay">
+    <div class="modal-card glassmorphic">
+      <div class="modal-header">
+        <h3 class="modal-title">Wazir Meeting Scheduler</h3>
+        <button id="btn-close-wazir-modal" class="btn-close">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="wazir-booking-form">
+        <input type="hidden" id="wazir-book-date">
+        <input type="hidden" id="wazir-book-slot">
+        
+        <div class="form-group">
+          <label id="wazir-booking-label-time" style="font-weight: 500; font-size: 0.9rem; color: var(--accent-cyan);"></label>
+        </div>
+        
+        <div class="form-group" style="margin-top: 12px;">
+          <label for="wazir-book-title">Meeting Title / Agenda</label>
+          <input type="text" id="wazir-book-title" placeholder="e.g. Brainstorm session" required value="Wazir Meeting">
+        </div>
+        
+        <div class="settings-buttons" style="margin-top: 20px; display: flex; gap: 12px;">
+          <button type="submit" id="btn-wazir-book-submit" class="btn btn-primary btn-block">Confirm Booking</button>
+          <button type="button" id="btn-wazir-delete-booking" class="btn btn-danger btn-block" style="display: none;">Cancel Meeting</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Global notification toasts -->
   <div id="toast-container"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="app.js?v=20260703v23"></script>
+  <script src="app.js?v=20260703v24"></script>
 </body>
 </html>
