@@ -553,6 +553,48 @@ async function loadUserData() {
           logs[`${row.date_key}_${row.course_id}`] = row.status;
         });
       }
+      
+      // Auto-upload local offline logs that are missing in Supabase
+      const localCached = storage.getItem(`iimr_attendance_logs_${email}`);
+      if (localCached) {
+        try {
+          const localLogs = JSON.parse(localCached);
+          const toUpload = [];
+          for (const key in localLogs) {
+            const status = localLogs[key];
+            if (status && status !== "norecord" && logs[key] !== status) {
+              const parts = key.split('_');
+              if (parts.length >= 2) {
+                const dateKey = parts[0];
+                const courseId = parts.slice(1).join('_');
+                toUpload.push({
+                  email: email,
+                  date_key: dateKey,
+                  course_id: courseId,
+                  status: status
+                });
+              }
+            }
+          }
+          if (toUpload.length > 0) {
+            console.log(`Auto-syncing ${toUpload.length} offline logs to Supabase...`);
+            const { error: uploadErr } = await supabaseClient
+              .from('attendance_logs')
+              .upsert(toUpload, { onConflict: 'email,date_key,course_id' });
+            if (!uploadErr) {
+              toUpload.forEach(item => {
+                logs[`${item.date_key}_${item.course_id}`] = item.status;
+              });
+              console.log("Offline logs synced to database successfully!");
+            } else {
+              console.error("Auto-sync of offline logs failed:", uploadErr);
+            }
+          }
+        } catch (e) {
+          console.error("Local logs auto-sync error:", e);
+        }
+      }
+      
       state.attendanceLogs = logs;
       saveLogsLocal(); // Cache locally for offline availability
     } catch (e) {
