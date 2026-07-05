@@ -2820,10 +2820,10 @@ function renderMessMenu() {
   // 2. Fetch target day's meals
   const dayMenu = state.messMenu[targetDay] || {};
   const mealTypes = [
-    { name: "Breakfast", time: "08:00 AM - 09:30 AM", icon: "breakfast_dining", css: "meal-breakfast" },
-    { name: "Lunch", time: "01:10 PM - 02:30 PM", icon: "soup_kitchen", css: "meal-lunch" },
-    { name: "Snacks", time: "05:00 PM - 06:00 PM", icon: "local_cafe", css: "meal-snacks" },
-    { name: "Dinner", time: "08:00 PM - 09:30 PM", icon: "dinner_dining", css: "meal-dinner" }
+    { name: "Breakfast", time: "8 - 9 AM", icon: "breakfast_dining", css: "meal-breakfast" },
+    { name: "Lunch", time: "1 - 2 PM", icon: "soup_kitchen", css: "meal-lunch" },
+    { name: "Snacks", time: "5 - 6 PM", icon: "local_cafe", css: "meal-snacks" },
+    { name: "Dinner", time: "8 - 9:30 PM", icon: "dinner_dining", css: "meal-dinner" }
   ];
 
   let hasAnyMeals = false;
