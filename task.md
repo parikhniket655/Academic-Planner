@@ -1,10 +1,10 @@
-# Wazir Hub Member Selector Implementation Tasks
+# Mess Menu Implementation Tasks
 
-- [x] Add HTML container `#wazir-members-selector-row` to index.html
-- [x] Add CSS styling for member selector panel and checkable pills to styles.css
-- [x] Initialize `state.wazirCompareEmails` and helper mappings in app.js
-- [x] Implement dynamically populated member pills in app.js
-- [x] Bind toggle event handlers to the pills to recalculate free slots dynamically
-- [x] Update `getWazirDaySchedule()` to filter calculations based on selected members
+- [x] Add navigation tab button and content container for `#tab-mess` in index.html
+- [x] Add CSS styling for meal cards (`.meal-card`), icons, and flex list categories in styles.css
+- [x] Initialize Mess Menu state variables and URL configuration in app.js
+- [x] Implement CSV parser `syncMessMenu()` and background update logic in app.js
+- [x] Implement meal card DOM generator and rendering logic for Today/Weekly views in app.js
+- [x] Bind event listeners for tab switching, Today/Weekly toggling, force-syncing, and weekday pill clicks in app.js
 - [ ] Verify using headless Chrome DOM dump verification script
 - [ ] Push updates to GitHub for Vercel deployment

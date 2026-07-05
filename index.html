@@ -102,6 +102,10 @@
                 <span class="material-symbols-outlined">groups</span>
                 <span>Wazir</span>
               </button>
+              <button class="nav-tab" data-tab="tab-mess">
+                <span class="material-symbols-outlined">restaurant</span>
+                <span>Mess Menu</span>
+              </button>
               <button class="nav-tab" data-tab="tab-settings">
                 <span class="material-symbols-outlined">settings</span>
                 <span>Settings</span>
@@ -687,6 +691,51 @@
 
             </div>
           </div>
+          
+          <!-- Tab 6: Mess Menu -->
+          <div id="tab-mess" class="tab-content">
+            <div class="tab-header-row" style="margin-bottom: 20px;">
+              <div>
+                <h2 class="tab-title">Mess Menu</h2>
+                <p class="tab-subtitle">Weekly dining menu synced from Google Sheets</p>
+              </div>
+            </div>
+
+            <!-- Toggle controls: Today vs Weekly -->
+            <div class="calendar-controls-row">
+              <div class="controls-left">
+                <div class="toggle-btn-group">
+                  <button id="btn-mess-view-today" class="btn-toggle active">Today</button>
+                  <button id="btn-mess-view-week" class="btn-toggle">Weekly</button>
+                </div>
+              </div>
+              <div class="controls-right">
+                <button id="btn-mess-sync" class="btn-nav" title="Force Sync Menu" aria-label="Sync Menu" style="padding: 6px 12px; display: flex; align-items: center; gap: 6px;">
+                  <span id="mess-sync-icon" class="material-symbols-outlined" style="font-size: 18px;">sync</span>
+                  <span style="font-size: 0.8rem; font-weight: 500;">Sync</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Weekly day selector (Mon - Sun pills) -->
+            <div id="mess-weekly-selector-row" class="wazir-members-panel glassmorphic" style="display: none; margin-top: 10px; margin-bottom: 20px;">
+              <span class="wazir-panel-title">Select Day:</span>
+              <div id="mess-days-pills-list" class="wazir-pills-container">
+                <div class="member-pill active" data-day="Monday">Monday</div>
+                <div class="member-pill" data-day="Tuesday">Tuesday</div>
+                <div class="member-pill" data-day="Wednesday">Wednesday</div>
+                <div class="member-pill" data-day="Thursday">Thursday</div>
+                <div class="member-pill" data-day="Friday">Friday</div>
+                <div class="member-pill" data-day="Saturday">Saturday</div>
+                <div class="member-pill" data-day="Sunday">Sunday</div>
+              </div>
+            </div>
+
+            <!-- Mess canvas rendering list -->
+            <div id="mess-canvas" class="mess-menu-grid" style="margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+              <!-- Dynamic meal cards go here -->
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -760,6 +809,6 @@
   <div id="toast-container"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="app.js?v=20260703v27"></script>
+  <script src="app.js?v=20260703v28"></script>
 </body>
 </html>

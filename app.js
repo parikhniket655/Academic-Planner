@@ -387,6 +387,8 @@ const WAZIR_NAMES = {
   "pgp16divyanshid@iimrohtak.ac.in": "Divyanshi"
 };
 
+const MESS_MENU_URL = "https://docs.google.com/spreadsheets/d/1b2abkLcJAavna03KhesMOUamufMgABuuHmuojpZPIZ8/gviz/tq?tqx=out:csv&sheet=Imported%20Menu";
+
 // App Global State
 let state = {
   user: null,
@@ -394,6 +396,7 @@ let state = {
   attendanceLogs: {}, // Key: dateString_courseId => status
   wazirMeetings: {},  // Key: dateString_slot => meeting details
   wazirCompareEmails: [], // Selected emails for schedule comparison
+  messMenu: {},       // Key: Day -> Meal Type -> Array of { category, items }
   settings: {
     threshold: 75,
     notifications: true
@@ -402,6 +405,8 @@ let state = {
   wazirCurrentDate: new Date(), // Date reference for Wazir tab
   viewMode: "week",   // "week" or "month"
   wazirViewMode: "week", // Wazir calendar mode
+  messViewMode: "today", // "today" or "week"
+  messSelectedDay: "",  // Selected day for Mess Menu (e.g. "Monday"). Will auto-init to current weekday.
   filterMode: "time", // "time", "code", or "name"
   selectedAttendanceCourse: null // Code string of currently highlighted course in detailed logs
 };
@@ -551,6 +556,9 @@ function showTab(tabId) {
 
   if (tabId === "tab-wazir") {
     renderWazirCanvas();
+  }
+  if (tabId === "tab-mess") {
+    syncMessMenu().then(() => renderMessMenu());
   }
 }
 
@@ -831,6 +839,14 @@ async function loadUserData() {
       wazirTabBtn.style.display = "none";
     }
   }
+
+  // Preload Mess Menu cache in the background on startup
+  syncMessMenu().then(() => {
+    const link = document.querySelector('[data-tab="tab-mess"]');
+    if (link && link.classList.contains("active")) {
+      renderMessMenu();
+    }
+  });
 
   renderDashboard();
   renderAttendanceTab();
@@ -2014,6 +2030,9 @@ function setupEventListeners() {
 
   // Initialize Wazir specific listeners
   setupWazirEventListeners();
+
+  // Initialize Mess specific listeners
+  setupMessEventListeners();
 }
 
 function populateModalCourses() {
@@ -2682,6 +2701,223 @@ function openWazirBookingModal(dateKey, slot, bookedItem) {
   }
   
   document.getElementById("modal-wazir-booking").classList.add("active");
+}
+
+/* ==========================================================================
+   MESS MENU SPECIFIC BUSINESS LOGIC
+   ========================================================================== */
+function parseMessMenuCsv(csvText) {
+  const lines = csvText.split(/\r?\n/);
+  const menu = {};
+  
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    
+    const cells = parseCsvLine(line);
+    if (cells.length < 4 || !cells[0] || cells[0] === "Day") continue;
+    
+    const day = cells[0].trim();
+    const mealType = cells[1].trim();
+    const category = cells[2].trim();
+    const items = cells.slice(3).map(x => x.trim()).filter(x => x !== "").join(", ");
+    
+    if (!menu[day]) menu[day] = {};
+    if (!menu[day][mealType]) menu[day][mealType] = [];
+    menu[day][mealType].push({ category, items });
+  }
+  return menu;
+}
+
+async function syncMessMenu(force = false) {
+  // 1. Try loading from cache first if state is empty
+  if (Object.keys(state.messMenu).length === 0) {
+    const cachedRaw = localStorage.getItem("iimr_mess_menu_raw");
+    if (cachedRaw) {
+      try {
+        state.messMenu = parseMessMenuCsv(cachedRaw);
+      } catch (e) {
+        console.error("Failed to parse cached mess menu:", e);
+      }
+    }
+  }
+
+  // 2. Fetch live menu from Google Sheets if forced or cache is empty
+  const isCacheEmpty = Object.keys(state.messMenu).length === 0;
+  if (force || isCacheEmpty) {
+    const syncIcon = document.getElementById("mess-sync-icon");
+    if (syncIcon) syncIcon.classList.add("spin-animation"); // visual feedback
+    
+    try {
+      const response = await fetch(MESS_MENU_URL);
+      if (!response.ok) throw new Error("HTTP error " + response.status);
+      
+      const csvText = await response.text();
+      if (csvText && csvText.trim().length > 0) {
+        state.messMenu = parseMessMenuCsv(csvText);
+        localStorage.setItem("iimr_mess_menu_raw", csvText);
+        
+        // Show success notification if manual sync was requested
+        if (force) {
+          showToast("Mess menu synced successfully!", "success");
+        }
+      }
+    } catch (e) {
+      console.error("Failed to fetch mess menu from Google Sheets:", e);
+      if (force) {
+        showToast("Sync failed: using offline menu data.", "danger");
+      }
+    } finally {
+      if (syncIcon) syncIcon.classList.remove("spin-animation");
+    }
+  }
+
+  // Auto-initialize selected day if empty
+  if (!state.messSelectedDay) {
+    const dayString = getDayString(new Date()); // e.g. "Sunday"
+    state.messSelectedDay = state.messMenu[dayString] ? dayString : "Monday";
+  }
+}
+
+function renderMessMenu() {
+  const canvas = document.getElementById("mess-canvas");
+  if (!canvas) return;
+
+  canvas.innerHTML = "";
+
+  // 1. Determine target day
+  let targetDay = "";
+  if (state.messViewMode === "today") {
+    targetDay = getDayString(new Date());
+    const selectorRow = document.getElementById("mess-weekly-selector-row");
+    if (selectorRow) selectorRow.style.display = "none";
+    
+    const subtitle = document.querySelector("#tab-mess .tab-subtitle");
+    if (subtitle) subtitle.textContent = `Dining menu for today (${targetDay})`;
+  } else {
+    // Weekly view
+    const selectorRow = document.getElementById("mess-weekly-selector-row");
+    if (selectorRow) selectorRow.style.display = "flex";
+    
+    if (!state.messSelectedDay) {
+      state.messSelectedDay = getDayString(new Date());
+    }
+    targetDay = state.messSelectedDay;
+    
+    const subtitle = document.querySelector("#tab-mess .tab-subtitle");
+    if (subtitle) subtitle.textContent = `Dining menu for ${targetDay}`;
+
+    // Highlight correct day pill
+    document.querySelectorAll("#mess-days-pills-list .member-pill").forEach(pill => {
+      if (pill.getAttribute("data-day") === targetDay) {
+        pill.classList.add("active");
+      } else {
+        pill.classList.remove("active");
+      }
+    });
+  }
+
+  // 2. Fetch target day's meals
+  const dayMenu = state.messMenu[targetDay] || {};
+  const mealTypes = [
+    { name: "Breakfast", time: "08:00 AM - 09:30 AM", icon: "breakfast_dining", css: "meal-breakfast" },
+    { name: "Lunch", time: "01:10 PM - 02:30 PM", icon: "soup_kitchen", css: "meal-lunch" },
+    { name: "Snacks", time: "05:00 PM - 06:00 PM", icon: "local_cafe", css: "meal-snacks" },
+    { name: "Dinner", time: "08:00 PM - 09:30 PM", icon: "dinner_dining", css: "meal-dinner" }
+  ];
+
+  let hasAnyMeals = false;
+
+  mealTypes.forEach(meal => {
+    const categories = dayMenu[meal.name] || [];
+    if (categories.length === 0) return; // skip if no categories listed for this meal on this day
+
+    hasAnyMeals = true;
+
+    const card = document.createElement("div");
+    card.className = `meal-card ${meal.css}`;
+
+    // Header row
+    const header = document.createElement("div");
+    header.className = "meal-header-row";
+
+    header.innerHTML = `
+      <div class="meal-title-block">
+        <span class="material-symbols-outlined meal-icon" style="color: var(--text-primary);">${meal.icon}</span>
+        <span class="meal-type-title">${meal.name}</span>
+      </div>
+      <span class="meal-time">${meal.time}</span>
+    `;
+    card.appendChild(header);
+
+    // Body container
+    const body = document.createElement("div");
+    body.className = "meal-body";
+
+    categories.forEach(cat => {
+      const block = document.createElement("div");
+      block.className = "meal-category-block";
+      block.innerHTML = `
+        <span class="meal-category-name">${cat.category}</span>
+        <span class="meal-category-items">${cat.items}</span>
+      `;
+      body.appendChild(block);
+    });
+
+    card.appendChild(body);
+    canvas.appendChild(card);
+  });
+
+  if (!hasAnyMeals) {
+    const emptyCard = document.createElement("div");
+    emptyCard.className = "free-card";
+    emptyCard.style.gridColumn = "1 / -1";
+    emptyCard.style.textAlign = "center";
+    emptyCard.textContent = "No mess menu records found for this day.";
+    canvas.appendChild(emptyCard);
+  }
+}
+
+function setupMessEventListeners() {
+  const todayBtn = document.getElementById("btn-mess-view-today");
+  const weekBtn = document.getElementById("btn-mess-view-week");
+  
+  if (todayBtn) {
+    todayBtn.addEventListener("click", () => {
+      state.messViewMode = "today";
+      todayBtn.classList.add("active");
+      if (weekBtn) weekBtn.classList.remove("active");
+      renderMessMenu();
+    });
+  }
+  
+  if (weekBtn) {
+    weekBtn.addEventListener("click", () => {
+      state.messViewMode = "week";
+      weekBtn.classList.add("active");
+      if (todayBtn) todayBtn.classList.remove("active");
+      renderMessMenu();
+    });
+  }
+
+  const syncBtn = document.getElementById("btn-mess-sync");
+  if (syncBtn) {
+    syncBtn.addEventListener("click", () => {
+      syncMessMenu(true).then(() => {
+        renderMessMenu();
+      });
+    });
+  }
+
+  document.querySelectorAll("#mess-days-pills-list .member-pill").forEach(pill => {
+    pill.addEventListener("click", (e) => {
+      const day = e.currentTarget.getAttribute("data-day");
+      if (day) {
+        state.messSelectedDay = day;
+        renderMessMenu();
+      }
+    });
+  });
 }
 
 function initWazirMembersSelector() {

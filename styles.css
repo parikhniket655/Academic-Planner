@@ -2241,6 +2241,117 @@ input:checked + .slider:before {
   }
 }
 
+/* ==========================================================================
+   MESS MENU STYLES
+   ========================================================================== */
+.meal-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(20, 32, 54, 0.2);
+  border: 1px solid var(--glass-border);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.meal-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.meal-card.meal-breakfast {
+  border-left: 4px solid #ffb300;
+}
+.meal-card.meal-lunch {
+  border-left: 4px solid #4caf50;
+}
+.meal-card.meal-snacks {
+  border-left: 4px solid #ff5722;
+}
+.meal-card.meal-dinner {
+  border-left: 4px solid #7e57c2;
+}
+
+.meal-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 12px;
+}
+
+.meal-title-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.meal-type-title {
+  font-family: var(--font-header);
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+}
+
+.meal-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.meal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meal-category-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.meal-category-name {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  letter-spacing: 0.8px;
+}
+
+.meal-category-items {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .mess-menu-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .meal-card {
+    padding: 16px;
+  }
+}
+
+.spin-animation {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+
 
 
 
