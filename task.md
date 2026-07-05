@@ -1,12 +1,10 @@
-# Wazir Hub Implementation Tasks
+# Wazir Hub Member Selector Implementation Tasks
 
-- [x] Remove mock login button cards from index.html
-- [x] Add Wazir tab navigation button to index.html
-- [x] Add Wazir tab layout grid structure to index.html
-- [x] Add Wazir booking modal popup to index.html
-- [x] Implement Wazir access lists and authorization checker in app.js
-- [x] Implement wazir_meetings database fetch, upsert, and delete operations in app.js
-- [x] Implement calculation function to determine common free slots for the 8 candidates
-- [x] Implement calendar rendering logic for Wazir week-view and month-view grids
-- [x] Implement booking confirmation and cancellation trigger handlers
-- [x] Verify using headless Chrome verification script and push to GitHub
+- [x] Add HTML container `#wazir-members-selector-row` to index.html
+- [x] Add CSS styling for member selector panel and checkable pills to styles.css
+- [x] Initialize `state.wazirCompareEmails` and helper mappings in app.js
+- [x] Implement dynamically populated member pills in app.js
+- [x] Bind toggle event handlers to the pills to recalculate free slots dynamically
+- [x] Update `getWazirDaySchedule()` to filter calculations based on selected members
+- [ ] Verify using headless Chrome DOM dump verification script
+- [ ] Push updates to GitHub for Vercel deployment

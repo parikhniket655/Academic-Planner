@@ -376,12 +376,24 @@ const WAZIR_MEMBERS = [
   "pgp16divyanshid@iimrohtak.ac.in"
 ];
 
+const WAZIR_NAMES = {
+  "ipm04niketp@iimrohtak.ac.in": "Niket",
+  "pgp16hidayrajsinhc@iimrohtak.ac.in": "Hidayrajsinh",
+  "ipm04adityabs@iimrohtak.ac.in": "Aditya",
+  "ipm04prithivit@iimrohtak.ac.in": "Prithivi",
+  "pgp16tanishthav@iimrohtak.ac.in": "Tanishtha",
+  "pgp16akshita@iimrohtak.ac.in": "Akshita",
+  "ipm04mridulu@iimrohtak.ac.in": "Mridul",
+  "pgp16divyanshid@iimrohtak.ac.in": "Divyanshi"
+};
+
 // App Global State
 let state = {
   user: null,
   timetable: [],
   attendanceLogs: {}, // Key: dateString_courseId => status
   wazirMeetings: {},  // Key: dateString_slot => meeting details
+  wazirCompareEmails: [], // Selected emails for schedule comparison
   settings: {
     threshold: 75,
     notifications: true
@@ -807,6 +819,7 @@ async function loadUserData() {
     const isWazirMember = WAZIR_MEMBERS.includes(state.user.email);
     if (isWazirMember) {
       wazirTabBtn.style.display = "flex";
+      initWazirMembersSelector();
       loadWazirMeetings().then(() => {
         // Redraw canvas if active
         const link = document.querySelector('[data-tab="tab-wazir"]');
@@ -2437,7 +2450,10 @@ function getWazirDaySchedule(dateKey, dayName) {
     const slotLectures = dayLectures.filter(l => l.slot === item.slot);
     
     for (const lecture of slotLectures) {
-      for (const email of WAZIR_MEMBERS) {
+      const compareList = (state.wazirCompareEmails && state.wazirCompareEmails.length > 0) 
+        ? state.wazirCompareEmails 
+        : [state.user.email];
+      for (const email of compareList) {
         const student = studentDatabase[email];
         if (student && isStudentEnrolled(student.courses, lecture.courseId)) {
           isOccupied = true;
@@ -2666,6 +2682,55 @@ function openWazirBookingModal(dateKey, slot, bookedItem) {
   }
   
   document.getElementById("modal-wazir-booking").classList.add("active");
+}
+
+function initWazirMembersSelector() {
+  const container = document.getElementById("wazir-members-list");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  // Reset selected comparison emails with current logged in user as the locked base
+  state.wazirCompareEmails = [state.user.email];
+
+  // Render the pills:
+  // Current user's pill first, followed by other members
+  const orderedMembers = [
+    state.user.email,
+    ...WAZIR_MEMBERS.filter(email => email !== state.user.email)
+  ];
+
+  orderedMembers.forEach(email => {
+    const isSelf = email === state.user.email;
+    const name = WAZIR_NAMES[email] || email.split('@')[0];
+
+    const pill = document.createElement("div");
+    pill.className = `member-pill${isSelf ? " active self-pill" : ""}`;
+    pill.setAttribute("data-email", email);
+
+    pill.innerHTML = `
+      <span class="material-symbols-outlined" style="font-size: 14px;">
+        ${isSelf ? "lock" : "person"}
+      </span>
+      <span>${name}${isSelf ? " (Me)" : ""}</span>
+    `;
+
+    if (!isSelf) {
+      pill.addEventListener("click", () => {
+        const index = state.wazirCompareEmails.indexOf(email);
+        if (index > -1) {
+          state.wazirCompareEmails.splice(index, 1);
+          pill.classList.remove("active");
+        } else {
+          state.wazirCompareEmails.push(email);
+          pill.classList.add("active");
+        }
+        renderWazirCanvas();
+      });
+    }
+
+    container.appendChild(pill);
+  });
 }
 
 function setupWazirEventListeners() {

@@ -2143,5 +2143,104 @@ input:checked + .slider:before {
   }
 }
 
+/* ==========================================================================
+   WAZIR MEMBERS SELECTOR STYLES
+   ========================================================================== */
+.wazir-members-panel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  background: rgba(20, 32, 54, 0.2);
+  border: 1px solid var(--glass-border);
+}
+
+.wazir-panel-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  white-space: nowrap;
+}
+
+.wazir-pills-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+
+.member-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.member-pill:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text-primary);
+}
+
+.member-pill.active {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.12);
+}
+
+.member-pill.self-pill {
+  background: rgba(0, 242, 254, 0.15);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  cursor: default;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .wazir-members-panel {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+  }
+  
+  .wazir-pills-container {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .wazir-pills-container::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .wazir-pills-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  
+  .member-pill {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+
 
 
