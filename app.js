@@ -558,6 +558,15 @@ function showTab(tabId) {
     renderWazirCanvas();
   }
   if (tabId === "tab-mess") {
+    if (Object.keys(state.messMenu).length === 0) {
+      const cachedRaw = localStorage.getItem("iimr_mess_menu_raw");
+      if (cachedRaw) {
+        try {
+          state.messMenu = parseMessMenuCsv(cachedRaw);
+        } catch (e) {}
+      }
+    }
+    renderMessMenu();
     syncMessMenu().then(() => renderMessMenu());
   }
 }
@@ -1689,33 +1698,42 @@ async function saveLogs(key, status, courseId, dateKey) {
   }
   saveLogsLocal();
 
+  // Optimistic UI Update: Render changes immediately!
+  renderDashboard();
+  if (document.getElementById("tab-today").classList.contains("active")) {
+    renderAttendanceTab();
+  }
+
+  // Perform Supabase write in the background (non-blocking)
   if (supabaseClient) {
-    try {
-      if (status === null || status === "norecord") {
-        const { error } = await supabaseClient
-          .from('attendance_logs')
-          .delete()
-          .eq('email', state.user.email)
-          .eq('date_key', dateKey)
-          .eq('course_id', courseId);
-        
-        if (error) throw error;
-      } else {
-        const { error } = await supabaseClient
-          .from('attendance_logs')
-          .upsert({
-            email: state.user.email,
-            date_key: dateKey,
-            course_id: courseId,
-            status: status
-          }, { onConflict: 'email,date_key,course_id' });
+    (async () => {
+      try {
+        if (status === null || status === "norecord") {
+          const { error } = await supabaseClient
+            .from('attendance_logs')
+            .delete()
+            .eq('email', state.user.email)
+            .eq('date_key', dateKey)
+            .eq('course_id', courseId);
           
-        if (error) throw error;
+          if (error) throw error;
+        } else {
+          const { error } = await supabaseClient
+            .from('attendance_logs')
+            .upsert({
+              email: state.user.email,
+              date_key: dateKey,
+              course_id: courseId,
+              status: status
+            }, { onConflict: 'email,date_key,course_id' });
+            
+          if (error) throw error;
+        }
+      } catch (e) {
+        console.error("Supabase write sync failed:", e);
+        showToast("Offline mode: Log saved locally.", "error");
       }
-    } catch (e) {
-      console.error("Supabase write sync failed:", e);
-      showToast("Offline mode: Log saved locally.", "error");
-    }
+    })();
   }
 }
 
@@ -1869,13 +1887,7 @@ function setupEventListeners() {
     }
 
     const logKey = `${dateVal}_${courseId}`;
-    await saveLogs(logKey, status, courseId, dateVal);
-    
-    // Refresh screens
-    renderDashboard();
-    if (document.getElementById("tab-today").classList.contains("active")) {
-      renderAttendanceTab();
-    }
+    saveLogs(logKey, status, courseId, dateVal); // Non-blocking optimistic update
     
     document.getElementById("modal-log-entry").classList.remove("active");
     showToast("Status updated successfully.", "success");
@@ -2358,68 +2370,92 @@ async function loadWazirMeetings() {
 }
 
 async function bookWazirMeeting(dateKey, slot, title) {
+  // Optimistically set state and render canvas instantly!
+  const backup = state.wazirMeetings[`${dateKey}_${slot}`];
+  state.wazirMeetings[`${dateKey}_${slot}`] = {
+    date_key: dateKey,
+    slot: slot,
+    booked_by: state.user.email,
+    title: title
+  };
+  renderWazirCanvas();
+
   if (!supabaseClient) {
     showToast("Database not connected. Local booking simulated.", "warning");
-    state.wazirMeetings[`${dateKey}_${slot}`] = {
-      date_key: dateKey,
-      slot: slot,
-      booked_by: state.user.email,
-      title: title
-    };
-    renderWazirCanvas();
     return true;
   }
   
-  try {
-    const { error } = await supabaseClient
-      .from('wazir_meetings')
-      .upsert({
-        date_key: dateKey,
-        slot: slot,
-        booked_by: state.user.email,
-        title: title
-      }, { onConflict: 'date_key,slot' });
+  // Perform Supabase upsert in background
+  (async () => {
+    try {
+      const { error } = await supabaseClient
+        .from('wazir_meetings')
+        .upsert({
+          date_key: dateKey,
+          slot: slot,
+          booked_by: state.user.email,
+          title: title
+        }, { onConflict: 'date_key,slot' });
+        
+      if (error) throw error;
       
-    if (error) throw error;
-    
-    // Refresh local cache and redraw
-    await loadWazirMeetings();
-    renderWazirCanvas();
-    showToast("Meeting booked successfully!", "success");
-    return true;
-  } catch (e) {
-    console.error("Failed to book meeting:", e);
-    showToast("Booking failed: " + e.message, "danger");
-    return false;
-  }
+      // Refresh local cache and redraw silently
+      await loadWazirMeetings();
+      renderWazirCanvas();
+      showToast("Meeting booked successfully!", "success");
+    } catch (e) {
+      console.error("Failed to book meeting:", e);
+      // Revert state if write failed
+      if (backup) {
+        state.wazirMeetings[`${dateKey}_${slot}`] = backup;
+      } else {
+        delete state.wazirMeetings[`${dateKey}_${slot}`];
+      }
+      renderWazirCanvas();
+      showToast("Booking failed: " + e.message, "danger");
+    }
+  })();
+
+  return true;
 }
 
 async function cancelWazirMeeting(dateKey, slot) {
+  // Optimistically delete from state and redraw canvas instantly!
+  const backup = state.wazirMeetings[`${dateKey}_${slot}`];
+  delete state.wazirMeetings[`${dateKey}_${slot}`];
+  renderWazirCanvas();
+
   if (!supabaseClient) {
-    delete state.wazirMeetings[`${dateKey}_${slot}`];
-    renderWazirCanvas();
     return true;
   }
   
-  try {
-    const { error } = await supabaseClient
-      .from('wazir_meetings')
-      .delete()
-      .eq('date_key', dateKey)
-      .eq('slot', slot);
+  // Perform Supabase delete in background
+  (async () => {
+    try {
+      const { error } = await supabaseClient
+        .from('wazir_meetings')
+        .delete()
+        .eq('date_key', dateKey)
+        .eq('slot', slot);
+        
+      if (error) throw error;
       
-    if (error) throw error;
-    
-    // Refresh local cache and redraw
-    await loadWazirMeetings();
-    renderWazirCanvas();
-    showToast("Meeting cancelled successfully!", "success");
-    return true;
-  } catch (e) {
-    console.error("Failed to cancel meeting:", e);
-    showToast("Cancellation failed: " + e.message, "danger");
-    return false;
-  }
+      // Refresh local cache and redraw silently
+      await loadWazirMeetings();
+      renderWazirCanvas();
+      showToast("Meeting cancelled successfully!", "success");
+    } catch (e) {
+      console.error("Failed to cancel meeting:", e);
+      // Revert state if delete failed
+      if (backup) {
+        state.wazirMeetings[`${dateKey}_${slot}`] = backup;
+      }
+      renderWazirCanvas();
+      showToast("Cancellation failed: " + e.message, "danger");
+    }
+  })();
+
+  return true;
 }
 
 function getWazirDaySchedule(dateKey, dayName) {
