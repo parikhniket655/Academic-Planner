@@ -387,7 +387,7 @@ const WAZIR_NAMES = {
   "pgp16divyanshid@iimrohtak.ac.in": "Divyanshi"
 };
 
-const MESS_MENU_URL = "https://docs.google.com/spreadsheets/d/1b2abkLcJAavna03KhesMOUamufMgABuuHmuojpZPIZ8/gviz/tq?tqx=out:csv&sheet=Imported%20Menu";
+const MESS_MENU_URL = "https://docs.google.com/spreadsheets/d/1b2abkLcJAavna03KhesMOUamufMgABuuHmuojpZPIZ8/export?format=csv&gid=216885731";
 
 // App Global State
 let state = {
@@ -2717,8 +2717,15 @@ function parseMessMenuCsv(csvText) {
     const cells = parseCsvLine(line);
     if (cells.length < 4 || !cells[0] || cells[0] === "Day") continue;
     
-    const day = cells[0].trim();
-    const mealType = cells[1].trim();
+    // Normalize Day (e.g. "monday" -> "Monday")
+    let rawDay = cells[0].trim().toLowerCase();
+    if (!rawDay) continue;
+    const day = rawDay.charAt(0).toUpperCase() + rawDay.slice(1);
+
+    // Normalize Meal Type (e.g. "BREAKFAST" -> "Breakfast")
+    let rawMealType = cells[1].trim().toLowerCase();
+    const mealType = rawMealType.charAt(0).toUpperCase() + rawMealType.slice(1);
+
     const category = cells[2].trim();
     const items = cells.slice(3).map(x => x.trim()).filter(x => x !== "").join(", ");
     
