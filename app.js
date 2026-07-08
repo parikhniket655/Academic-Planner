@@ -379,7 +379,8 @@ const WAZIR_MEMBERS = [
   "pgp16tanishthav@iimrohtak.ac.in",
   "pgp16akshita@iimrohtak.ac.in",
   "ipm04mridulu@iimrohtak.ac.in",
-  "pgp16divyanshid@iimrohtak.ac.in"
+  "pgp16divyanshid@iimrohtak.ac.in",
+  "ipm04rainaa@iimrohtak.ac.in"
 ];
 
 const WAZIR_NAMES = {
@@ -390,7 +391,8 @@ const WAZIR_NAMES = {
   "pgp16tanishthav@iimrohtak.ac.in": "Tanishtha",
   "pgp16akshita@iimrohtak.ac.in": "Akshita",
   "ipm04mridulu@iimrohtak.ac.in": "Mridul",
-  "pgp16divyanshid@iimrohtak.ac.in": "Divyanshi"
+  "pgp16divyanshid@iimrohtak.ac.in": "Divyanshi",
+  "ipm04rainaa@iimrohtak.ac.in": "Arjun"
 };
 
 const MESS_MENU_URL = "https://docs.google.com/spreadsheets/d/1b2abkLcJAavna03KhesMOUamufMgABuuHmuojpZPIZ8/export?format=csv&gid=216885731";
@@ -3012,8 +3014,10 @@ function initWazirMembersSelector() {
 
   container.innerHTML = "";
 
-  // Reset selected comparison emails with current logged in user as the locked base
-  state.wazirCompareEmails = [state.user.email];
+  // Initialize selected comparison list with logged-in user if empty
+  if (!state.wazirCompareEmails || state.wazirCompareEmails.length === 0 || !state.wazirCompareEmails.includes(state.user.email)) {
+    state.wazirCompareEmails = [state.user.email];
+  }
 
   // Render the pills:
   // Current user's pill first, followed by other members
@@ -3024,10 +3028,11 @@ function initWazirMembersSelector() {
 
   orderedMembers.forEach(email => {
     const isSelf = email === state.user.email;
+    const isActive = state.wazirCompareEmails.includes(email);
     const name = WAZIR_NAMES[email] || email.split('@')[0];
 
     const pill = document.createElement("div");
-    pill.className = `member-pill${isSelf ? " active self-pill" : ""}`;
+    pill.className = `member-pill${isSelf ? " active self-pill" : (isActive ? " active" : "")}`;
     pill.setAttribute("data-email", email);
 
     pill.innerHTML = `
@@ -3147,6 +3152,33 @@ function setupWazirEventListeners() {
       if (success) {
         document.getElementById("modal-wazir-booking").classList.remove("active");
       }
+    });
+  }
+
+  const btnSelectWazirs = document.getElementById("btn-select-all-wazirs");
+  if (btnSelectWazirs) {
+    btnSelectWazirs.addEventListener("click", () => {
+      state.wazirCompareEmails = [
+        "ipm04niketp@iimrohtak.ac.in",
+        "pgp16hidayrajsinhc@iimrohtak.ac.in",
+        "ipm04adityabs@iimrohtak.ac.in",
+        "ipm04prithivit@iimrohtak.ac.in",
+        "pgp16tanishthav@iimrohtak.ac.in",
+        "pgp16akshita@iimrohtak.ac.in",
+        "ipm04mridulu@iimrohtak.ac.in",
+        "pgp16divyanshid@iimrohtak.ac.in"
+      ];
+      initWazirMembersSelector();
+      renderWazirCanvas();
+    });
+  }
+
+  const btnSelectAll9 = document.getElementById("btn-select-all-9");
+  if (btnSelectAll9) {
+    btnSelectAll9.addEventListener("click", () => {
+      state.wazirCompareEmails = [...WAZIR_MEMBERS];
+      initWazirMembersSelector();
+      renderWazirCanvas();
     });
   }
 }
