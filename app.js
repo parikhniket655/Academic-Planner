@@ -45,9 +45,15 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 2.9) {
+  if (isStorageWorking && storedVer < 3.2) {
+    const activeUser = window.localStorage.getItem("iimr_active_user");
+    const studentDb = window.localStorage.getItem("iimr_student_db");
+    
     window.localStorage.clear();
-    window.localStorage.setItem("iimr_app_version", "2.9");
+    
+    if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
+    if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
+    window.localStorage.setItem("iimr_app_version", "3.2");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -1768,10 +1774,12 @@ function setupEventListeners() {
     tab.addEventListener("click", (e) => {
       const tabId = e.currentTarget.getAttribute("data-tab");
       showTab(tabId);
-      if (tabId === "tab-today") {
-        renderAttendanceTab();
-      } else {
+      if (tabId === "tab-analytics") {
         renderDashboard();
+      } else if (tabId === "tab-today") {
+        renderAttendanceTab();
+      } else if (tabId === "tab-schedule") {
+        renderTimetableCanvas();
       }
     });
   });
