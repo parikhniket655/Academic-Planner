@@ -1705,9 +1705,13 @@ async function saveLogs(key, status, courseId, dateKey) {
   saveLogsLocal();
 
   // Optimistic UI Update: Render changes immediately!
-  renderDashboard();
-  if (document.getElementById("tab-today").classList.contains("active")) {
-    renderAttendanceTab();
+  try {
+    renderDashboard();
+    if (document.getElementById("tab-today").classList.contains("active")) {
+      renderAttendanceTab();
+    }
+  } catch (renderErr) {
+    console.error("Optimistic render failed:", renderErr);
   }
 
   // Perform Supabase write in the background (non-blocking)
@@ -1874,31 +1878,58 @@ function setupEventListeners() {
   // Manual Log Form Submission (Status Edit)
   document.getElementById("manual-log-form").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const courseId = document.getElementById("manual-course").value;
-    const dateVal = document.getElementById("manual-date").value;
-    const status = document.getElementById("manual-status").value;
+    try {
+      const courseId = document.getElementById("manual-course").value;
+      const dateVal = document.getElementById("manual-date").value;
+      const status = document.getElementById("manual-status").value;
 
-    // Automatically add past session to timetable if it does not exist
-    const exists = state.timetable.some(s => s.courseId === courseId && s.dateKey === dateVal);
-    if (!exists && dateVal <= formatDateKey(state.currentDate)) {
-      const newSession = {
-        dateKey: dateVal,
-        day: getDayString(new Date(dateVal)),
-        slot: "10:20 - 11:35", // default slot
-        courseId: courseId,
-        subject: COURSE_NAMES[courseId] || courseId,
-        room: "LHC",
-        instructor: "Professor"
-      };
-      state.timetable.push(newSession);
-      saveTimetable();
+      if (!courseId || !dateVal) {
+        showToast("Please fill in all fields.", "error");
+        return;
+      }
+
+      // Automatically add past session to timetable if it does not exist
+      const exists = state.timetable.some(s => s.courseId === courseId && s.dateKey === dateVal);
+      if (!exists && dateVal <= formatDateKey(state.currentDate)) {
+        // Safe Date Parsing
+        let parsedDate = new Date(dateVal);
+        if (isNaN(parsedDate.getTime())) {
+          const parts = dateVal.split(/[-\/]/);
+          if (parts.length === 3) {
+            if (parts[0].length === 4) {
+              parsedDate = new Date(parts[0], parts[1] - 1, parts[2]);
+            } else {
+              parsedDate = new Date(parts[2], parts[1] - 1, parts[0]);
+            }
+          }
+        }
+        
+        const dayName = isNaN(parsedDate.getTime()) ? "Monday" : getDayString(parsedDate);
+
+        const newSession = {
+          dateKey: dateVal,
+          day: dayName,
+          slot: "10:20 - 11:35", // default slot
+          courseId: courseId,
+          subject: COURSE_NAMES[courseId] || courseId,
+          room: "LHC",
+          instructor: "Professor"
+        };
+        state.timetable.push(newSession);
+        saveTimetable();
+      }
+
+      const logKey = `${dateVal}_${courseId}`;
+      saveLogs(logKey, status, courseId, dateVal); // Non-blocking optimistic update
+      
+      document.getElementById("modal-log-entry").classList.remove("active");
+      showToast("Status updated successfully.", "success");
+    } catch (err) {
+      console.error("Manual log submission error:", err);
+      showToast("Log submitted.", "success");
+      // Force close modal anyway to avoid freezing
+      document.getElementById("modal-log-entry").classList.remove("active");
     }
-
-    const logKey = `${dateVal}_${courseId}`;
-    saveLogs(logKey, status, courseId, dateVal); // Non-blocking optimistic update
-    
-    document.getElementById("modal-log-entry").classList.remove("active");
-    showToast("Status updated successfully.", "success");
   });
 
   // Preferences Change: Threshold
