@@ -2171,10 +2171,16 @@ input:checked + .slider:before {
   user-select: none;
 }
 
-.wazir-action-buttons button:hover {
-  background: rgba(0, 242, 254, 0.08);
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
+@media (hover: hover) {
+  .wazir-action-buttons button:hover {
+    background: rgba(0, 242, 254, 0.08);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+  }
+}
+
+.wazir-action-buttons button:focus {
+  outline: none;
 }
 
 .wazir-action-buttons button.active {
