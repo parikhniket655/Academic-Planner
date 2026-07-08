@@ -1704,12 +1704,16 @@ async function saveLogs(key, status, courseId, dateKey) {
   }
   saveLogsLocal();
 
-  // Optimistic UI Update: Render changes immediately!
+  // Sync selected attendance course to the edited one
+  if (courseId) {
+    state.selectedAttendanceCourse = courseId;
+  }
+
+  // Optimistic UI Update: Render all views immediately so changes reflect instantly on any active tab!
   try {
     renderDashboard();
-    if (document.getElementById("tab-today").classList.contains("active")) {
-      renderAttendanceTab();
-    }
+    renderAttendanceTab();
+    renderTimetableCanvas();
   } catch (renderErr) {
     console.error("Optimistic render failed:", renderErr);
   }
