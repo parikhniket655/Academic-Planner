@@ -2148,13 +2148,40 @@ input:checked + .slider:before {
    ========================================================================== */
 .wazir-members-panel {
   display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 12px 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
   border-radius: 16px;
   margin-bottom: 20px;
   background: rgba(20, 32, 54, 0.2);
   border: 1px solid var(--glass-border);
+}
+
+.wazir-action-buttons button {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.wazir-action-buttons button:hover {
+  background: rgba(0, 242, 254, 0.08);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.wazir-action-buttons button.active {
+  background: rgba(0, 242, 254, 0.15);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 8px rgba(0, 242, 254, 0.15);
 }
 
 .wazir-panel-title {

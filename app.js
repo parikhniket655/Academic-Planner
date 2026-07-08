@@ -3058,6 +3058,39 @@ function initWazirMembersSelector() {
 
     container.appendChild(pill);
   });
+
+  // Highlight/toggle active styles on Select Buttons based on current state.wazirCompareEmails
+  const wazirsList = [
+    "ipm04niketp@iimrohtak.ac.in",
+    "pgp16hidayrajsinhc@iimrohtak.ac.in",
+    "ipm04adityabs@iimrohtak.ac.in",
+    "ipm04prithivit@iimrohtak.ac.in",
+    "pgp16tanishthav@iimrohtak.ac.in",
+    "pgp16akshita@iimrohtak.ac.in",
+    "ipm04mridulu@iimrohtak.ac.in",
+    "pgp16divyanshid@iimrohtak.ac.in"
+  ];
+  const allWazirsSelected = wazirsList.every(email => state.wazirCompareEmails.includes(email));
+  const onlyWazirsSelected = allWazirsSelected && !state.wazirCompareEmails.includes("ipm04rainaa@iimrohtak.ac.in");
+  const all9Selected = WAZIR_MEMBERS.every(email => state.wazirCompareEmails.includes(email));
+
+  const selectWazirsBtn = document.getElementById("btn-select-all-wazirs");
+  if (selectWazirsBtn) {
+    if (onlyWazirsSelected || (allWazirsSelected && !all9Selected)) {
+      selectWazirsBtn.classList.add("active");
+    } else {
+      selectWazirsBtn.classList.remove("active");
+    }
+  }
+
+  const selectAllBtn = document.getElementById("btn-select-all-9");
+  if (selectAllBtn) {
+    if (all9Selected) {
+      selectAllBtn.classList.add("active");
+    } else {
+      selectAllBtn.classList.remove("active");
+    }
+  }
 }
 
 function setupWazirEventListeners() {
@@ -3158,7 +3191,7 @@ function setupWazirEventListeners() {
   const btnSelectWazirs = document.getElementById("btn-select-all-wazirs");
   if (btnSelectWazirs) {
     btnSelectWazirs.addEventListener("click", () => {
-      state.wazirCompareEmails = [
+      const wazirsList = [
         "ipm04niketp@iimrohtak.ac.in",
         "pgp16hidayrajsinhc@iimrohtak.ac.in",
         "ipm04adityabs@iimrohtak.ac.in",
@@ -3168,6 +3201,15 @@ function setupWazirEventListeners() {
         "ipm04mridulu@iimrohtak.ac.in",
         "pgp16divyanshid@iimrohtak.ac.in"
       ];
+      const allWazirsSelected = wazirsList.every(email => state.wazirCompareEmails.includes(email));
+      const onlyWazirsSelected = allWazirsSelected && !state.wazirCompareEmails.includes("ipm04rainaa@iimrohtak.ac.in");
+
+      if (onlyWazirsSelected || (allWazirsSelected && state.wazirCompareEmails.length === wazirsList.length)) {
+        // Toggle reversal: reset to just self
+        state.wazirCompareEmails = [state.user.email];
+      } else {
+        state.wazirCompareEmails = [...wazirsList];
+      }
       initWazirMembersSelector();
       renderWazirCanvas();
     });
@@ -3176,7 +3218,13 @@ function setupWazirEventListeners() {
   const btnSelectAll9 = document.getElementById("btn-select-all-9");
   if (btnSelectAll9) {
     btnSelectAll9.addEventListener("click", () => {
-      state.wazirCompareEmails = [...WAZIR_MEMBERS];
+      const allSelected = WAZIR_MEMBERS.every(email => state.wazirCompareEmails.includes(email));
+      if (allSelected) {
+        // Toggle reversal: reset to just self
+        state.wazirCompareEmails = [state.user.email];
+      } else {
+        state.wazirCompareEmails = [...WAZIR_MEMBERS];
+      }
       initWazirMembersSelector();
       renderWazirCanvas();
     });
