@@ -167,6 +167,30 @@ const COURSE_TOTAL_SESSIONS = {
   "IMDM": 20
 };
 
+function getCourseCredits(courseId) {
+  if (!courseId) return 1.0;
+  if (COURSE_CREDITS[courseId] !== undefined) {
+    return COURSE_CREDITS[courseId];
+  }
+  const base = courseId.split(' ')[0];
+  if (COURSE_CREDITS[base] !== undefined) {
+    return COURSE_CREDITS[base];
+  }
+  return 1.0;
+}
+
+function getCourseTotalSessions(courseId, fallbackVal) {
+  if (!courseId) return fallbackVal || 20;
+  if (COURSE_TOTAL_SESSIONS[courseId] !== undefined) {
+    return COURSE_TOTAL_SESSIONS[courseId];
+  }
+  const base = courseId.split(' ')[0];
+  if (COURSE_TOTAL_SESSIONS[base] !== undefined) {
+    return COURSE_TOTAL_SESSIONS[base];
+  }
+  return fallbackVal || 20;
+}
+
 function getInstructorName(instructorStr) {
   if (!instructorStr) return 'Professor';
   if (instructorStr.includes('|')) {
@@ -1140,7 +1164,7 @@ function renderDashboard() {
     todayClasses.sort((a,b) => a.slot.localeCompare(b.slot));
     todayClasses.forEach(lecture => {
       const parentCourseId = lecture.courseId.split(' ')[0]; // E.g. CW Sec-B -> CW
-      const crWeight = COURSE_CREDITS[lecture.courseId] || 1.0;
+      const crWeight = getCourseCredits(lecture.courseId);
       
       // Calculate session index of today's lecture
       const courseSessions = state.timetable.filter(s => s.courseId === lecture.courseId);
@@ -1148,7 +1172,7 @@ function renderDashboard() {
       const todaySessionIdx = courseSessions.findIndex(s => s.dateKey === todayStr);
       const todaySessionObj = courseSessions[todaySessionIdx];
       const todayIdx = todaySessionObj ? getSessionNum(todaySessionObj, todaySessionIdx + 1) : (todaySessionIdx + 1);
-      const totalCount = COURSE_TOTAL_SESSIONS[lecture.courseId] || courseSessions.length;
+      const totalCount = getCourseTotalSessions(lecture.courseId, courseSessions.length);
 
       const item = document.createElement("div");
       const categoryClass = getCourseCategoryClass(lecture.courseId);
@@ -1183,7 +1207,7 @@ function renderDashboard() {
     const parentId = courseId.split(' ')[0]; // E.g. CW Sec-B -> CW
     const name = COURSE_NAMES[courseId] || courseId;
     const stats = calculateCourseStats(courseId);
-    const credits = COURSE_CREDITS[courseId] || 1.0;
+    const credits = getCourseCredits(courseId);
 
     const row = document.createElement("div");
     row.className = "attendance-summary-row";
@@ -1282,7 +1306,7 @@ function renderAttendanceTab() {
   sessions = state.timetable.filter(s => isStudentEnrolled([currentCourse], s.courseId));
   instructor = sessions.length > 0 ? getInstructorName(sessions[0].instructor) : "Professor";
   upcomingCount = sessions.filter(s => s.dateKey > todayStr).length;
-  totalSyllabus = COURSE_TOTAL_SESSIONS[currentCourse] || sessions.length;
+  totalSyllabus = getCourseTotalSessions(currentCourse, sessions.length);
   sessions.sort((a,b) => a.dateKey.localeCompare(b.dateKey));
 
   const logPastBtnHTML = `
@@ -1602,7 +1626,7 @@ function renderWeekTimetable() {
   // Calculate week stats and credits
   let weekCredits = 0;
   uniqueCoursesThisWeek.forEach(cId => {
-    weekCredits += COURSE_CREDITS[cId] || 1.0;
+    weekCredits += getCourseCredits(cId);
   });
 
   document.getElementById("stat-courses-count").textContent = state.user.courses.length;
@@ -1723,7 +1747,7 @@ function renderMonthTimetable() {
 
   let weekCredits = 0;
   uniqueCoursesThisWeek.forEach(cId => {
-    weekCredits += COURSE_CREDITS[cId] || 1.0;
+    weekCredits += getCourseCredits(cId);
   });
 
   document.getElementById("stat-courses-count").textContent = state.user.courses.length;
