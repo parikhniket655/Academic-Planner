@@ -155,6 +155,23 @@ const COURSE_TOTAL_SESSIONS = {
   "IMDM": 14
 };
 
+function getInstructorName(instructorStr) {
+  if (!instructorStr) return 'Professor';
+  if (instructorStr.includes('|')) {
+    return instructorStr.split('|')[0];
+  }
+  return instructorStr;
+}
+
+function getSessionNum(session, fallbackIdx) {
+  if (session && session.instructor && session.instructor.includes('|')) {
+    const parts = session.instructor.split('|');
+    const num = parseInt(parts[1]);
+    if (!isNaN(num)) return num;
+  }
+  return fallbackIdx;
+}
+
 function normalizeCourseId(id) {
   if (!id) return "";
   return id.replace(/[\s\-]/g, '').toUpperCase();
@@ -1116,7 +1133,9 @@ function renderDashboard() {
       // Calculate session index of today's lecture
       const courseSessions = state.timetable.filter(s => s.courseId === lecture.courseId);
       courseSessions.sort((a,b) => a.dateKey.localeCompare(b.dateKey));
-      const todayIdx = courseSessions.findIndex(s => s.dateKey === todayStr) + 1;
+      const todaySessionIdx = courseSessions.findIndex(s => s.dateKey === todayStr);
+      const todaySessionObj = courseSessions[todaySessionIdx];
+      const todayIdx = todaySessionObj ? getSessionNum(todaySessionObj, todaySessionIdx + 1) : (todaySessionIdx + 1);
       const totalCount = COURSE_TOTAL_SESSIONS[lecture.courseId] || courseSessions.length;
 
       const item = document.createElement("div");
@@ -1127,7 +1146,7 @@ function renderDashboard() {
         <div class="dash-sched-time">${lecture.slot}</div>
         <div class="dash-sched-info">
           <span class="dash-sched-subj">${lecture.subject}</span>
-          <span class="dash-sched-meta">${lecture.room} · ${lecture.instructor || 'Professor'}</span>
+          <span class="dash-sched-meta">${lecture.room} · ${getInstructorName(lecture.instructor)}</span>
         </div>
         <div class="dash-sched-right">
           <span class="dash-sched-cr">${crWeight.toFixed(0)}cr</span>
@@ -1248,7 +1267,7 @@ function renderAttendanceTab() {
   section = currentCourse.includes('Sec-') ? currentCourse.split(' ')[1] : 'Section A';
   
   sessions = state.timetable.filter(s => isStudentEnrolled([currentCourse], s.courseId));
-  instructor = sessions.length > 0 ? (sessions[0].instructor || "Professor") : "Professor";
+  instructor = sessions.length > 0 ? getInstructorName(sessions[0].instructor) : "Professor";
   upcomingCount = sessions.filter(s => s.dateKey > todayStr).length;
   totalSyllabus = COURSE_TOTAL_SESSIONS[currentCourse] || sessions.length;
   sessions.sort((a,b) => a.dateKey.localeCompare(b.dateKey));
@@ -1402,13 +1421,15 @@ function renderAttendanceTab() {
       }
     }
 
+    const sessionNum = getSessionNum(session, idx + 1);
+
     tr.innerHTML = `
       <td>${statusHTML}</td>
       <td style="font-weight: 500;">${dateFormatted}</td>
       <td>${session.room}</td>
-      <td style="font-weight: bold;">${idx + 1}</td>
+      <td style="font-weight: bold;">${sessionNum}</td>
       <td>${session.slot}</td>
-      <td>${session.instructor || 'Professor'}</td>
+      <td>${getInstructorName(session.instructor)}</td>
       <td>${notifTime}</td>
     `;
 
@@ -1554,7 +1575,7 @@ function renderWeekTimetable() {
             ${
               lecture.instructor 
               ? `<div class="lecture-meta-item" style="color: var(--text-muted); margin-top: 4px; font-weight: 500;">
-                   <span>${lecture.instructor}</span>
+                   <span>${getInstructorName(lecture.instructor)}</span>
                  </div>` 
               : ''
             }
@@ -2155,7 +2176,46 @@ function mergeTimetable(liveTimetable) {
 }
 
 async function autoSyncTimetable() {
-  if (supabaseClient) {
+  const syncUrl = state.settings.timetableSheetsUrl || TIMETABLE_SHEETS_URL;
+  let synced = false;
+
+  // 1. Try to sync from Google Sheets Web App first (carries user's Google credentials in browser)
+  if (syncUrl) {
+    const isJsonApi = syncUrl.includes("/macros/s/") || syncUrl.includes("/exec");
+    const fetchUrl = isJsonApi ? syncUrl : getCsvUrl(syncUrl);
+    try {
+      const res = await fetch(fetchUrl);
+      if (res.ok) {
+        let parsedTimetable = [];
+        if (isJsonApi) {
+          const data = await res.json();
+          if (data && data.sessions) {
+            parsedTimetable = data.sessions;
+            console.log(`Parsed ${parsedTimetable.length} sessions from live JSON API.`);
+          }
+        } else {
+          const csvText = await res.text();
+          parsedTimetable = parseCsv(csvText);
+        }
+
+        if (parsedTimetable && parsedTimetable.length > 0) {
+          state.timetable = mergeTimetable(parsedTimetable);
+          saveTimetable();
+          renderDashboard();
+          if (document.getElementById("tab-today").classList.contains("active")) {
+            renderAttendanceTab();
+          }
+          console.log("Timetable successfully synced from Google Sheets Web App.");
+          synced = true;
+        }
+      }
+    } catch (e) {
+      console.warn("Failed to sync timetable from Google Sheets Web App, trying Supabase fallback:", e);
+    }
+  }
+
+  // 2. Fallback to Supabase database if Google Sheets sync failed or was skipped
+  if (!synced && supabaseClient) {
     try {
       const { data, error } = await supabaseClient
         .from('timetable')
@@ -2178,48 +2238,12 @@ async function autoSyncTimetable() {
         if (document.getElementById("tab-today").classList.contains("active")) {
           renderAttendanceTab();
         }
-        console.log("Timetable synced successfully from Supabase database.");
-        return; // Done
+        console.log("Timetable synced from Supabase fallback.");
+        synced = true;
       }
     } catch (e) {
-      console.warn("Failed to sync timetable from Supabase, trying fallback URL:", e);
+      console.warn("Failed to sync timetable from Supabase fallback:", e);
     }
-  }
-
-  const syncUrl = state.settings.timetableSheetsUrl || TIMETABLE_SHEETS_URL;
-  if (!syncUrl) return;
-  const isJsonApi = syncUrl.includes("/macros/s/") || syncUrl.includes("/exec");
-  const fetchUrl = isJsonApi ? syncUrl : getCsvUrl(syncUrl);
-  try {
-    const res = await fetch(fetchUrl);
-    if (!res.ok) throw new Error("Timetable sync returned non-200");
-    
-    let parsedTimetable = [];
-    if (isJsonApi) {
-      const data = await res.json();
-      if (data && data.sessions) {
-        parsedTimetable = data.sessions;
-        console.log(`Parsed ${parsedTimetable.length} sessions from live JSON API.`);
-      } else {
-        throw new Error("Invalid JSON structure from Apps Script");
-      }
-    } else {
-      const csvText = await res.text();
-      parsedTimetable = parseCsv(csvText);
-    }
-    
-    if (parsedTimetable && parsedTimetable.length > 0) {
-      state.timetable = mergeTimetable(parsedTimetable);
-
-      saveTimetable();
-      renderDashboard();
-      if (document.getElementById("tab-today").classList.contains("active")) {
-        renderAttendanceTab();
-      }
-      console.log("Timetable auto-synced successfully.");
-    }
-  } catch (e) {
-    console.warn("Timetable auto-sync failed. Loaded cached copy:", e);
   }
 }
 

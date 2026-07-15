@@ -99,6 +99,7 @@ function syncTimetableToSupabase() {
         var match = cellVal.match(/^([A-Za-z0-9&\s\.\-]+?)\s*(\d+)\s*\(([^)]+)\)\s*$/);
         if (match) {
           var courseCode = match[1].trim().replace(/[\-\s]+$/, "");
+          var sessionNum = match[2].trim();
           var profInitials = match[3].trim();
           
           var courseId = courseCode;
@@ -116,7 +117,7 @@ function syncTimetableToSupabase() {
             course_id: courseId,
             subject: subject,
             room: room,
-            instructor: profInitials,
+            instructor: profInitials + "|" + sessionNum,
             section: section
           });
         }

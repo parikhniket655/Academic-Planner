@@ -114,6 +114,7 @@ function doGet(e) {
         var match = cellVal.match(/^([A-Za-z0-9&\s\.\-]+?)\s*(\d+)\s*\(([^)]+)\)\s*$/);
         if (match) {
           var courseCode = match[1].trim().replace(/[\-\s]+$/, "");
+          var sessionNum = match[2].trim();
           var profInitials = match[3].trim();
           
           // Determine courseId with section suffix if applicable
@@ -133,7 +134,7 @@ function doGet(e) {
             courseId: courseId,
             subject: subject,
             room: room,
-            instructor: profInitials
+            instructor: profInitials + "|" + sessionNum
           });
         }
       }
