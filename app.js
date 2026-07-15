@@ -111,48 +111,60 @@ const COURSE_NAMES = {
 
 // Course Credit Weights (matches 6.5 credits for 9 scheduled courses in screenshot)
 const COURSE_CREDITS = {
-  "BA": 1.0,
-  "BA Sec-A": 1.0,
-  "BA Sec-B": 1.0,
-  "AIDMD": 1.0,
-  "GBS": 1.0,
-  "GBS Sec-B": 1.0,
-  "B2B": 1.0,
-  "CW": 0.5,
-  "CW Sec-B": 0.5,
+  "BA": 0.75,
+  "BA Sec-A": 0.75,
+  "BA Sec-B": 0.75,
+  "AIDMD": 0.75,
+  "GBS": 0.75,
+  "GBS Sec-A": 0.75,
+  "GBS Sec-B": 0.75,
+  "GBS Sec-C": 0.75,
+  "GBS Sec-D": 0.75,
+  "B2B": 0.75,
+  "CW": 0.0,
+  "CW Sec-A": 0.0,
+  "CW Sec-B": 0.0,
+  "CW Sec-C": 0.0,
+  "CW Sec-D": 0.0,
   "CV": 1.0,
   "CV Sec-A": 1.0,
   "CV Sec-B": 1.0,
   "IBS": 1.0,
   "PFM": 0.5,
-  "DBM": 1.0,
+  "DBM": 0.75,
   "FM": 0.75,
-  "FSA": 1.0,
-  "GFMG": 0.5,
-  "IMDM": 1.0
+  "FSA": 0.75,
+  "GFMG": 0.75,
+  "IMDM": 0.75
 };
 
 // Course Total Scheduled Sessions count in syllabus
 const COURSE_TOTAL_SESSIONS = {
-  "BA": 20,
-  "BA Sec-A": 20,
-  "BA Sec-B": 20,
-  "AIDMD": 20,
-  "GBS": 20,
-  "GBS Sec-B": 20,
-  "B2B": 20,
-  "CW": 8,
-  "CW Sec-B": 8,
+  "BA": 14,
+  "BA Sec-A": 14,
+  "BA Sec-B": 14,
+  "AIDMD": 14,
+  "GBS": 14,
+  "GBS Sec-A": 14,
+  "GBS Sec-B": 14,
+  "GBS Sec-C": 14,
+  "GBS Sec-D": 14,
+  "B2B": 14,
+  "CW": 7,
+  "CW Sec-A": 7,
+  "CW Sec-B": 7,
+  "CW Sec-C": 7,
+  "CW Sec-D": 7,
   "CV": 20,
   "CV Sec-A": 20,
   "CV Sec-B": 20,
   "IBS": 20,
   "PFM": 10,
-  "DBM": 20,
+  "DBM": 14,
   "FM": 14,
-  "FSA": 20,
-  "GFMG": 10,
-  "IMDM": 20
+  "FSA": 14,
+  "GFMG": 14,
+  "IMDM": 14
 };
 
 function getInstructorName(instructorStr) {
@@ -1149,7 +1161,7 @@ function renderDashboard() {
           <span class="dash-sched-meta">${lecture.room} · ${getInstructorName(lecture.instructor)}</span>
         </div>
         <div class="dash-sched-right">
-          <span class="dash-sched-cr">${crWeight.toFixed(0)}cr</span>
+          <span class="dash-sched-cr">${crWeight % 1 === 0 ? crWeight.toFixed(0) : crWeight.toString()}cr</span>
           <span class="dash-sched-ratio">${todayIdx}/${totalCount}</span>
         </div>
       `;
@@ -1187,7 +1199,8 @@ function renderDashboard() {
     }
 
     // Format credit description
-    const creditStr = credits > 0 ? `${credits.toFixed(0)} credit` : "Non-credit";
+    const formattedCredits = credits % 1 === 0 ? credits.toFixed(0) : credits.toString();
+    const creditStr = credits > 0 ? `${formattedCredits} credit${credits !== 1 ? 's' : ''}` : "Non-credit";
 
     row.innerHTML = `
       <div class="attendance-summary-info">
