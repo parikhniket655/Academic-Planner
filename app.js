@@ -111,48 +111,48 @@ const COURSE_NAMES = {
 
 // Course Credit Weights (matches 6.5 credits for 9 scheduled courses in screenshot)
 const COURSE_CREDITS = {
-  "BA": 0.75,
-  "BA Sec-A": 0.75,
-  "BA Sec-B": 0.75,
-  "AIDMD": 0.75,
-  "GBS": 0.75,
-  "GBS Sec-B": 0.75,
-  "B2B": 0.75,
+  "BA": 1.0,
+  "BA Sec-A": 1.0,
+  "BA Sec-B": 1.0,
+  "AIDMD": 1.0,
+  "GBS": 1.0,
+  "GBS Sec-B": 1.0,
+  "B2B": 1.0,
   "CW": 0.5,
   "CW Sec-B": 0.5,
   "CV": 1.0,
   "CV Sec-A": 1.0,
   "CV Sec-B": 1.0,
   "IBS": 1.0,
-  "PFM": 0.75,
-  "DBM": 0.75,
+  "PFM": 0.5,
+  "DBM": 1.0,
   "FM": 0.75,
-  "FSA": 0.75,
-  "GFMG": 0.75,
-  "IMDM": 0.75
+  "FSA": 1.0,
+  "GFMG": 0.5,
+  "IMDM": 1.0
 };
 
 // Course Total Scheduled Sessions count in syllabus
 const COURSE_TOTAL_SESSIONS = {
-  "BA": 14,
-  "BA Sec-A": 14,
-  "BA Sec-B": 14,
-  "AIDMD": 14,
-  "GBS": 14,
-  "GBS Sec-B": 14,
-  "B2B": 14,
-  "CW": 10,
-  "CW Sec-B": 10,
+  "BA": 20,
+  "BA Sec-A": 20,
+  "BA Sec-B": 20,
+  "AIDMD": 20,
+  "GBS": 20,
+  "GBS Sec-B": 20,
+  "B2B": 20,
+  "CW": 8,
+  "CW Sec-B": 8,
   "CV": 20,
   "CV Sec-A": 20,
   "CV Sec-B": 20,
   "IBS": 20,
-  "PFM": 14,
-  "DBM": 14,
+  "PFM": 10,
+  "DBM": 20,
   "FM": 14,
-  "FSA": 14,
-  "GFMG": 14,
-  "IMDM": 14
+  "FSA": 20,
+  "GFMG": 10,
+  "IMDM": 20
 };
 
 function getInstructorName(instructorStr) {
