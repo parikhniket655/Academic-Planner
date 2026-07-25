@@ -205,3 +205,18 @@ function debugTimetableRows() {
     Logger.log("Error in debug: " + err.toString());
   }
 }
+
+function setupSpreadsheetEditTrigger() {
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === 'syncTimetableToSupabase' && 
+        triggers[i].getEventType() === ScriptApp.EventType.ON_EDIT) {
+      ScriptApp.deleteTrigger(triggers[i]);
+    }
+  }
+  ScriptApp.newTrigger('syncTimetableToSupabase')
+    .forSpreadsheet('1WPTKyFL52nR6PdJ2n2hdlw2yb-S5A6wiiHW1QBdUitU')
+    .onEdit()
+    .create();
+  Logger.log("Successfully created spreadsheet edit trigger!");
+}
