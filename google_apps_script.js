@@ -71,7 +71,7 @@ function doGet(e) {
           lastValidDate = new Date(currentDate);
         } else {
           var dateStr = String(dateVal).trim();
-          if (dateStr.toUpperCase() === "SUNDAY") {
+          if (dateStr.toUpperCase().indexOf("SUNDAY") !== -1) {
             if (lastValidDate) {
               currentDate = new Date(lastValidDate);
               currentDate.setDate(currentDate.getDate() + 1);
