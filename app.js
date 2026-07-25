@@ -2192,7 +2192,11 @@ function mergeTimetable(liveTimetable) {
   // Keep custom logged past sessions that were manually added
   state.timetable.forEach(existingSession => {
     if (existingSession.dateKey && existingSession.dateKey < todayStr) {
-      const exists = merged.some(s => normalizeCourseId(s.courseId) === normalizeCourseId(existingSession.courseId) && s.dateKey === existingSession.dateKey);
+      const exists = merged.some(s => 
+        normalizeCourseId(s.courseId) === normalizeCourseId(existingSession.courseId) && 
+        s.dateKey === existingSession.dateKey &&
+        s.slot === existingSession.slot
+      );
       if (!exists) {
         merged.push(existingSession);
       }
@@ -2202,7 +2206,11 @@ function mergeTimetable(liveTimetable) {
   // Keep past sessions from DEFAULT_TIMETABLE
   DEFAULT_TIMETABLE.forEach(defSession => {
     if (defSession.dateKey && defSession.dateKey < todayStr) {
-      const exists = merged.some(s => normalizeCourseId(s.courseId) === normalizeCourseId(defSession.courseId) && s.dateKey === defSession.dateKey);
+      const exists = merged.some(s => 
+        normalizeCourseId(s.courseId) === normalizeCourseId(defSession.courseId) && 
+        s.dateKey === defSession.dateKey &&
+        s.slot === defSession.slot
+      );
       if (!exists) {
         merged.push(defSession);
       }
