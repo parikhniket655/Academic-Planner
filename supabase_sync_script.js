@@ -63,7 +63,9 @@ function syncTimetableToSupabase() {
           if (dateStr.toUpperCase().indexOf("SUNDAY") !== -1) {
             if (lastValidDate) {
               currentDate = new Date(lastValidDate);
-              currentDate.setDate(currentDate.getDate() + 1);
+              if (currentDate.getDay() !== 0) {
+                currentDate.setDate(currentDate.getDate() + 1);
+              }
               currentDay = "Sunday";
             } else {
               currentDate = null;
