@@ -338,7 +338,7 @@ function sendDailyScheduleEmails() {
         to: email,
         subject: subjectLine,
         htmlBody: htmlBody,
-        name: "TimeTable"
+        name: "Wazir Family"
       });
       
       Logger.log("Emailed " + name + " (" + email + ") successfully.");
