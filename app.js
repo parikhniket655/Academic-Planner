@@ -765,6 +765,19 @@ async function loadUserData() {
   // Auto-sync Google Sheet timetable silently in the background
   autoSyncTimetable();
 
+  // Ask for notification permission on first tap if push notifications are enabled
+  document.body.addEventListener('click', function askPermissionOnGesture() {
+    if (state.settings.notifications && "Notification" in window && Notification.permission === 'default') {
+      Notification.requestPermission().then(permission => {
+        console.log("Notification permission response:", permission);
+        if (permission === 'granted') {
+          showToast("Notification permission granted!", "success");
+        }
+      });
+    }
+    document.body.removeEventListener('click', askPermissionOnGesture);
+  }, { once: true });
+
   // Load Attendance Logs
   if (supabaseClient) {
     try {
@@ -2426,7 +2439,8 @@ function checkClassReminders() {
     
     const targets = [30, 20, 10];
     targets.forEach(mins => {
-      if (diffMins === mins) {
+      // Use a 2-minute range check to prevent browser timer delays from skipping notifications
+      if (diffMins <= mins && diffMins >= mins - 2) {
         const uniqueKey = `${lecture.courseId}_${dateKey}_${mins}`;
         if (!sent[uniqueKey]) {
           sent[uniqueKey] = true;
