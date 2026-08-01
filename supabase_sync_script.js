@@ -301,11 +301,6 @@ function sendDailyScheduleEmails() {
       htmlBody += '<h2 style="color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-top: 0; font-size: 1.5em; display: flex; align-items: center; gap: 8px;">📅 Tomorrow\'s Class Schedule</h2>';
       htmlBody += '<p style="font-size: 1.05em; color: #f0f6fc;">Hi <strong>' + name + '</strong>,</p>';
       htmlBody += '<p style="color: #8b949e;">Please find your personalized academic timetable for tomorrow, <strong>' + formattedDate + '</strong>.</p>';
-      
-      htmlBody += '<div style="background-color: #161b22; border-left: 4px solid #58a6ff; padding: 12px; margin: 18px 0; border-radius: 4px; font-style: italic; color: #8b949e; font-size: 0.95em;">';
-      htmlBody += '<strong style="color: #c9d1d9; font-style: normal; display: block; margin-bottom: 4px;">Quote of the Day</strong>';
-      htmlBody += '"' + quote + '"';
-      htmlBody += '</div>';
 
       if (myClasses.length > 0) {
         for (var i = 0; i < myClasses.length; i++) {
@@ -337,7 +332,7 @@ function sendDailyScheduleEmails() {
       htmlBody += '</p>';
       htmlBody += '</div>';
 
-      var subjectLine = "Timetable | " + name + " | " + dateKey;
+      var subjectLine = "TimeTable | " + name + " | " + dateKey;
       
       MailApp.sendEmail({
         to: email,
