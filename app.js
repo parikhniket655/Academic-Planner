@@ -2424,16 +2424,33 @@ function checkClassReminders() {
 function triggerNotification(text) {
   if (!("Notification" in window)) return;
   
+  const options = {
+    body: text,
+    icon: "./app_icon.jpg",
+    badge: "./app_icon.jpg",
+    vibrate: [200, 100, 200]
+  };
+
   if (Notification.permission === "granted") {
-    new Notification("IIMR Academic Planner", {
-      body: text
-    });
+    if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+      navigator.serviceWorker.ready.then(reg => {
+        reg.showNotification("IIMR Academic Planner", options);
+      }).catch(err => {
+        new Notification("IIMR Academic Planner", options);
+      });
+    } else {
+      new Notification("IIMR Academic Planner", options);
+    }
   } else if (Notification.permission !== "denied") {
     Notification.requestPermission().then(permission => {
       if (permission === "granted") {
-        new Notification("IIMR Academic Planner", {
-          body: text
-        });
+        if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+          navigator.serviceWorker.ready.then(reg => {
+            reg.showNotification("IIMR Academic Planner", options);
+          });
+        } else {
+          new Notification("IIMR Academic Planner", options);
+        }
       }
     });
   }
