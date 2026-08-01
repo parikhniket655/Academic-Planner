@@ -337,7 +337,8 @@ function sendDailyScheduleEmails() {
       MailApp.sendEmail({
         to: email,
         subject: subjectLine,
-        htmlBody: htmlBody
+        htmlBody: htmlBody,
+        name: "TimeTable"
       });
       
       Logger.log("Emailed " + name + " (" + email + ") successfully.");
