@@ -213,6 +213,24 @@ function normalizeCourseId(id) {
   return id.replace(/[\s\-]/g, '').toUpperCase();
 }
 
+function normalizeSlot(slot) {
+  if (!slot) return "";
+  return slot.replace(/[\s\u00A0\-]/g, '');
+}
+
+function deduplicateTimetable(list) {
+  if (!list || !Array.isArray(list)) return [];
+  const seen = new Set();
+  return list.filter(item => {
+    const key = `${item.dateKey}_${normalizeCourseId(item.courseId)}_${normalizeSlot(item.slot)}`;
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+}
+
 function isStudentEnrolled(studentCourses, courseId) {
   if (!studentCourses || !courseId) return false;
   const normId = normalizeCourseId(courseId);
@@ -736,7 +754,7 @@ async function loadUserData() {
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
-    state.timetable = JSON.parse(cachedTimetable);
+    state.timetable = deduplicateTimetable(JSON.parse(cachedTimetable));
   } else {
     console.log("Timetable cache outdated or missing. Resetting to DEFAULT_TIMETABLE.");
     state.timetable = DEFAULT_TIMETABLE;
@@ -2195,7 +2213,7 @@ function mergeTimetable(liveTimetable) {
       const exists = merged.some(s => 
         normalizeCourseId(s.courseId) === normalizeCourseId(existingSession.courseId) && 
         s.dateKey === existingSession.dateKey &&
-        s.slot === existingSession.slot
+        normalizeSlot(s.slot) === normalizeSlot(existingSession.slot)
       );
       if (!exists) {
         merged.push(existingSession);
@@ -2209,7 +2227,7 @@ function mergeTimetable(liveTimetable) {
       const exists = merged.some(s => 
         normalizeCourseId(s.courseId) === normalizeCourseId(defSession.courseId) && 
         s.dateKey === defSession.dateKey &&
-        s.slot === defSession.slot
+        normalizeSlot(s.slot) === normalizeSlot(defSession.slot)
       );
       if (!exists) {
         merged.push(defSession);
