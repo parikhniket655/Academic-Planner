@@ -2944,6 +2944,16 @@ function parseMessMenuCsv(csvText) {
 }
 
 async function syncMessMenu(force = false) {
+  // Clear old cached mess menus from before we used local CSV (v52 and above)
+  const MESS_MENU_VERSION = "v52_1";
+  const cachedVersion = localStorage.getItem("iimr_mess_menu_version");
+  if (cachedVersion !== MESS_MENU_VERSION) {
+    localStorage.removeItem("iimr_mess_menu_raw");
+    localStorage.setItem("iimr_mess_menu_version", MESS_MENU_VERSION);
+    state.messMenu = {};
+    force = true;
+  }
+
   // 1. Try loading from cache first if state is empty
   if (Object.keys(state.messMenu).length === 0) {
     const cachedRaw = localStorage.getItem("iimr_mess_menu_raw");
