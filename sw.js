@@ -1,10 +1,11 @@
-const CACHE_NAME = "iimr-tracker-cache-v51";
+const CACHE_NAME = "iimr-tracker-cache-v52";
 const ASSETS = [
   "./index.html",
   "./styles.css",
   "./app.js",
   "./manifest.json",
-  "./app_icon.jpg"
+  "./app_icon.jpg",
+  "./mess_menu.csv"
 ];
 
 // Install Event

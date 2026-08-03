@@ -474,7 +474,7 @@ const WAZIR_NAMES = {
   "ipm04rainaa@iimrohtak.ac.in": "Arjun"
 };
 
-const MESS_MENU_URL = "https://docs.google.com/spreadsheets/d/1b2abkLcJAavna03KhesMOUamufMgABuuHmuojpZPIZ8/export?format=csv&gid=216885731";
+const MESS_MENU_URL = "./mess_menu.csv";
 
 // App Global State
 let state = {
