@@ -798,7 +798,7 @@ async function loadUserData() {
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
   // Version key: bump this whenever DEFAULT_TIMETABLE or expansion logic changes
-  const TIMETABLE_CACHE_VERSION = "v5";
+  const TIMETABLE_CACHE_VERSION = "v6";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
@@ -2347,6 +2347,14 @@ function mergeTimetable(liveTimetable) {
   // Keep custom logged past sessions that were manually added
   state.timetable.forEach(existingSession => {
     if (existingSession.dateKey && existingSession.dateKey < todayStr) {
+      // Exclude mock sessions that are present in DEFAULT_TIMETABLE
+      const isDefault = DEFAULT_TIMETABLE.some(def =>
+        def.dateKey === existingSession.dateKey &&
+        normalizeCourseId(def.courseId) === normalizeCourseId(existingSession.courseId) &&
+        normalizeSlot(def.slot) === normalizeSlot(existingSession.slot)
+      );
+      if (isDefault) return;
+
       const exists = merged.some(s => 
         normalizeCourseId(s.courseId) === normalizeCourseId(existingSession.courseId) && 
         s.dateKey === existingSession.dateKey &&
