@@ -2389,7 +2389,7 @@ async function autoSyncTimetable() {
           instructor: s.instructor,
           section: s.section
         }));
-        state.timetable = parsed;
+        state.timetable = mergeTimetable(parsed);
         saveTimetable();
         renderDashboard();
         if (document.getElementById("tab-today").classList.contains("active")) {
