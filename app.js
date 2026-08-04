@@ -376,6 +376,54 @@ const DEFAULT_STUDENT_DB = {
 };
 
 // Default Timetable Mapping (Spans late June to late July 2026 to match stats & dates in screenshots)
+const EXAMS_TIMETABLE = [
+  // 24th August, 2026 (Monday)
+  { dateKey: "2026-08-24", day: "Monday", slot: "10:20 - 12:20", courseId: "MBPET", subject: "EXAM: Managing Business Processes with Emerging Technologies (MBPET)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-24", day: "Monday", slot: "14:30 - 16:30", courseId: "CV", subject: "EXAM: Corporate Valuation (CV)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-24", day: "Monday", slot: "14:30 - 16:30", courseId: "PM", subject: "EXAM: Project Management (PM)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-24", day: "Monday", slot: "14:30 - 16:30", courseId: "PCM", subject: "EXAM: Performance and Compensation Management (PCM)", room: "Exam Hall", instructor: "EXAM" },
+
+  // 25th August, 2026 (Tuesday)
+  { dateKey: "2026-08-25", day: "Tuesday", slot: "10:20 - 12:20", courseId: "AIDMD", subject: "EXAM: AI-Driven Marketing Decision Making (AIDMD)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-25", day: "Tuesday", slot: "14:30 - 16:30", courseId: "SCM", subject: "EXAM: Supply Chain Management (SCM)", room: "Exam Hall", instructor: "EXAM" },
+
+  // 27th August, 2026 (Thursday)
+  { dateKey: "2026-08-27", day: "Thursday", slot: "10:20 - 12:20", courseId: "FADT", subject: "EXAM: Fundamentals and Applications of Design Thinking (FADT)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-27", day: "Thursday", slot: "10:20 - 12:20", courseId: "IBS", subject: "EXAM: International Business Strategies (IBS)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-27", day: "Thursday", slot: "14:30 - 16:30", courseId: "BA", subject: "EXAM: Business Analytics (BA)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-27", day: "Thursday", slot: "14:30 - 16:30", courseId: "BGRI", subject: "EXAM: Business–Government Relations in India (BGRI)", room: "Exam Hall", instructor: "EXAM" },
+
+  // 28th August, 2026 (Friday)
+  { dateKey: "2026-08-28", day: "Friday", slot: "10:20 - 12:20", courseId: "FM", subject: "EXAM: Financial Modelling (FM)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-28", day: "Friday", slot: "14:30 - 16:30", courseId: "GBS", subject: "EXAM: Global Business Simulation (GBS)", room: "Exam Hall", instructor: "EXAM" },
+
+  // 29th August, 2026 (Saturday)
+  { dateKey: "2026-08-29", day: "Saturday", slot: "10:20 - 12:20", courseId: "TA", subject: "EXAM: Talent Acquisition (TA)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-29", day: "Saturday", slot: "14:30 - 16:30", courseId: "PS", subject: "EXAM: Pricing Strategies (PS)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-29", day: "Saturday", slot: "14:30 - 16:30", courseId: "FSA", subject: "EXAM: Financial Statement Analysis (FSA)", room: "Exam Hall", instructor: "EXAM" },
+
+  // 31st August, 2026 (Monday)
+  { dateKey: "2026-08-31", day: "Monday", slot: "10:20 - 12:20", courseId: "MS", subject: "EXAM: Managing Sustainability (MS)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-31", day: "Monday", slot: "14:30 - 16:30", courseId: "PWMP", subject: "EXAM: Playing to Win Market and Power (PWMP)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-31", day: "Monday", slot: "14:30 - 16:30", courseId: "SHRM", subject: "EXAM: Strategic Human Resource Management (SHRM)", room: "Exam Hall", instructor: "EXAM" },
+
+  // 1st September, 2026 (Tuesday)
+  { dateKey: "2026-09-01", day: "Tuesday", slot: "10:20 - 12:20", courseId: "IMDM", subject: "EXAM: Insurance and Managerial Decision Making (IMDM)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-09-01", day: "Tuesday", slot: "14:30 - 16:30", courseId: "SDM", subject: "EXAM: Sales and Distribution Management (SDM)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-09-01", day: "Tuesday", slot: "14:30 - 16:30", courseId: "IAPM", subject: "EXAM: Investment Analysis & Portfolio Management (IAPM)", room: "Exam Hall", instructor: "EXAM" },
+
+  // 2nd September, 2026 (Wednesday)
+  { dateKey: "2026-09-02", day: "Wednesday", slot: "10:20 - 12:20", courseId: "PFM", subject: "EXAM: Python for Managers (PFM)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-09-02", day: "Wednesday", slot: "14:30 - 16:30", courseId: "B2B", subject: "EXAM: B2B Marketing (B2B)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-09-02", day: "Wednesday", slot: "14:30 - 16:30", courseId: "CB", subject: "EXAM: Consumer Behaviour (CB)", room: "Exam Hall", instructor: "EXAM" },
+
+  // 3rd September, 2026 (Thursday)
+  { dateKey: "2026-09-03", day: "Thursday", slot: "10:20 - 12:20", courseId: "SC", subject: "EXAM: Strategic Consulting (SC)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-09-03", day: "Thursday", slot: "14:30 - 16:30", courseId: "L&D", subject: "EXAM: Learning and Development (L&D)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-09-03", day: "Thursday", slot: "14:30 - 16:30", courseId: "MFIS", subject: "EXAM: Management of Financial Institutions and Services (MFIS)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-09-03", day: "Thursday", slot: "14:30 - 16:30", courseId: "DBM", subject: "EXAM: Digital Business Models (DBM)", room: "Exam Hall", instructor: "EXAM" }
+];
+
 const DEFAULT_TIMETABLE = [
   // CW Sec-B (Communication Workshop) Sessions
   { dateKey: "2026-06-28", day: "Sunday", slot: "17:40 - 18:55", courseId: "CW Sec-B", subject: "Communication Workshop", room: "LR 07", instructor: "Ms. Xenia Rao" },
@@ -754,10 +802,10 @@ async function loadUserData() {
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
-    state.timetable = deduplicateTimetable(JSON.parse(cachedTimetable));
+    state.timetable = deduplicateTimetable([...JSON.parse(cachedTimetable), ...EXAMS_TIMETABLE]);
   } else {
     console.log("Timetable cache outdated or missing. Resetting to DEFAULT_TIMETABLE.");
-    state.timetable = DEFAULT_TIMETABLE;
+    state.timetable = deduplicateTimetable([...DEFAULT_TIMETABLE, ...EXAMS_TIMETABLE]);
     storage.setItem(`iimr_timetable_version_${email}`, TIMETABLE_CACHE_VERSION);
     saveTimetable();
   }
@@ -1032,7 +1080,8 @@ function getMonday(d) {
   return new Date(d.setDate(diff));
 }
 
-function getCourseCategoryClass(courseId) {
+function getCourseCategoryClass(courseId, instructor) {
+  if (instructor === "EXAM") return "cat-exam";
   if (!courseId) return "cat-default";
   const id = courseId.toUpperCase();
   if (id.startsWith("BA")) return "cat-ba";
@@ -1206,25 +1255,39 @@ function renderDashboard() {
       const totalCount = getCourseTotalSessions(lecture.courseId, courseSessions.length);
 
       const item = document.createElement("div");
-      const categoryClass = getCourseCategoryClass(lecture.courseId);
-      item.className = `dash-sched-item ${categoryClass}`;
-
-      item.innerHTML = `
-        <div class="dash-sched-time">${lecture.slot}</div>
-        <div class="dash-sched-info">
-          <span class="dash-sched-subj">${lecture.subject}</span>
-          <span class="dash-sched-meta">${lecture.room} · ${getInstructorName(lecture.instructor)}</span>
-        </div>
-        <div class="dash-sched-right">
-          <span class="dash-sched-cr">${crWeight % 1 === 0 ? crWeight.toFixed(0) : crWeight.toString()}cr</span>
-          <span class="dash-sched-ratio">${todayIdx}/${totalCount}</span>
-        </div>
-      `;
-
-      // Click to open status edit popup modal
-      item.addEventListener("click", () => {
-        openEditStatusModal(lecture.courseId, todayStr);
-      });
+      const categoryClass = getCourseCategoryClass(lecture.courseId, lecture.instructor);
+      
+      if (lecture.instructor === "EXAM") {
+        item.className = `dash-sched-item ${categoryClass} exam-card`;
+        item.style.cursor = "default";
+        item.innerHTML = `
+          <div class="dash-sched-time">${lecture.slot}</div>
+          <div class="dash-sched-info">
+            <span class="dash-sched-subj" style="font-weight: bold; color: #ef4444;">${lecture.subject}</span>
+            <span class="dash-sched-meta">${lecture.room}</span>
+          </div>
+          <div class="dash-sched-right">
+            <span class="dash-sched-cr" style="background: #ef4444; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; font-size: 10px; letter-spacing: 0.5px;">EXAM</span>
+          </div>
+        `;
+      } else {
+        item.className = `dash-sched-item ${categoryClass}`;
+        item.innerHTML = `
+          <div class="dash-sched-time">${lecture.slot}</div>
+          <div class="dash-sched-info">
+            <span class="dash-sched-subj">${lecture.subject}</span>
+            <span class="dash-sched-meta">${lecture.room} · ${getInstructorName(lecture.instructor)}</span>
+          </div>
+          <div class="dash-sched-right">
+            <span class="dash-sched-cr">${crWeight % 1 === 0 ? crWeight.toFixed(0) : crWeight.toString()}cr</span>
+            <span class="dash-sched-ratio">${todayIdx}/${totalCount}</span>
+          </div>
+        `;
+        
+        item.addEventListener("click", () => {
+          openEditStatusModal(lecture.courseId, todayStr);
+        });
+      }
 
       scheduleContainer.appendChild(item);
     });
@@ -1625,30 +1688,48 @@ function renderWeekTimetable() {
     } else {
       dayClasses.forEach(lecture => {
         const card = document.createElement("div");
-        const categoryClass = getCourseCategoryClass(lecture.courseId);
-        card.className = `lecture-card ${categoryClass}`;
+        const categoryClass = getCourseCategoryClass(lecture.courseId, lecture.instructor);
 
-        card.innerHTML = `
-          <div class="lecture-time">${lecture.slot}</div>
-          <div class="lecture-title">${lecture.subject}</div>
-          <div class="lecture-meta-row">
-            <div class="lecture-meta-item">
-              <span class="material-symbols-outlined" style="font-size: 11px;">badge</span>
-              <span>${lecture.courseId}</span>
+        if (lecture.instructor === "EXAM") {
+          card.className = `lecture-card ${categoryClass} exam-card`;
+          card.innerHTML = `
+            <div class="lecture-time">${lecture.slot}</div>
+            <div class="lecture-title" style="font-weight: bold; color: #ef4444;">${lecture.subject}</div>
+            <div class="lecture-meta-row">
+              <div class="lecture-meta-item">
+                <span class="material-symbols-outlined" style="font-size: 11px;">badge</span>
+                <span>${lecture.courseId}</span>
+              </div>
+              <div class="lecture-meta-item">
+                <span class="material-symbols-outlined" style="font-size: 11px;">meeting_room</span>
+                <span>Room: ${lecture.room}</span>
+              </div>
             </div>
-            <div class="lecture-meta-item">
-              <span class="material-symbols-outlined" style="font-size: 11px;">meeting_room</span>
-              <span>Room: ${lecture.room}</span>
+          `;
+        } else {
+          card.className = `lecture-card ${categoryClass}`;
+          card.innerHTML = `
+            <div class="lecture-time">${lecture.slot}</div>
+            <div class="lecture-title">${lecture.subject}</div>
+            <div class="lecture-meta-row">
+              <div class="lecture-meta-item">
+                <span class="material-symbols-outlined" style="font-size: 11px;">badge</span>
+                <span>${lecture.courseId}</span>
+              </div>
+              <div class="lecture-meta-item">
+                <span class="material-symbols-outlined" style="font-size: 11px;">meeting_room</span>
+                <span>Room: ${lecture.room}</span>
+              </div>
+              ${
+                lecture.instructor 
+                ? `<div class="lecture-meta-item" style="color: var(--text-muted); margin-top: 4px; font-weight: 500;">
+                     <span>${getInstructorName(lecture.instructor)}</span>
+                   </div>` 
+                : ''
+              }
             </div>
-            ${
-              lecture.instructor 
-              ? `<div class="lecture-meta-item" style="color: var(--text-muted); margin-top: 4px; font-weight: 500;">
-                   <span>${getInstructorName(lecture.instructor)}</span>
-                 </div>` 
-              : ''
-            }
-          </div>
-        `;
+          `;
+        }
         body.appendChild(card);
       });
     }
@@ -1757,7 +1838,7 @@ function renderMonthTimetable() {
       const maxVisible = 2;
       dayClasses.slice(0, maxVisible).forEach(lecture => {
         const cap = document.createElement("div");
-        const catClass = getCourseCategoryClass(lecture.courseId);
+        const catClass = getCourseCategoryClass(lecture.courseId, lecture.instructor);
         cap.className = `month-capsule ${catClass}`;
         cap.textContent = lecture.courseId.split(' ')[0]; // E.g. BA Sec-A -> BA
         capsulesContainer.appendChild(cap);
@@ -2217,7 +2298,7 @@ function getCsvUrl(inputUrl) {
 }
 
 function mergeTimetable(liveTimetable) {
-  const merged = [...liveTimetable];
+  const merged = deduplicateTimetable([...liveTimetable, ...EXAMS_TIMETABLE]);
   const todayStr = formatDateKey(state.currentDate);
   
   // Keep custom logged past sessions that were manually added

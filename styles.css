@@ -775,6 +775,34 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* EXAM (Special Styling) */
+.cat-exam {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border-color: #ef4444 !important;
+}
+.cat-exam .lecture-time, .month-capsule.cat-exam {
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.25) !important;
+}
+.exam-card {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+}
+.exam-card::after {
+  content: "EXAM";
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: #ef4444;
+  color: #fff;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
 /* ==========================================================================
    COMMON UI ELEMENTS: BUTTONS & INPUTS
    ========================================================================== */
