@@ -1101,8 +1101,8 @@ function calculateCourseStats(courseId) {
   const today = getActualToday();
   const todayStr = formatDateKey(today);
 
-  // Find all scheduled lectures of this course in the term
-  const courseSessions = state.timetable.filter(s => s.courseId === courseId);
+  // Find all scheduled lectures of this course in the term (excluding exams)
+  const courseSessions = state.timetable.filter(s => s.courseId === courseId && s.instructor !== "EXAM");
   courseSessions.sort((a,b) => a.dateKey.localeCompare(b.dateKey));
 
   // Conducted sessions are lectures where date <= today
@@ -1195,6 +1195,7 @@ function renderDashboard() {
   });
 
   const pendingToday = todayClasses.filter(c => {
+    if (c.instructor === "EXAM") return false;
     const status = state.attendanceLogs[`${todayStr}_${c.courseId}`];
     if (status) return false; // Already logged
 
@@ -1397,7 +1398,7 @@ function renderAttendanceTab() {
   parentId = currentCourse.split(' ')[0];
   section = currentCourse.includes('Sec-') ? currentCourse.split(' ')[1] : 'Section A';
   
-  sessions = state.timetable.filter(s => isStudentEnrolled([currentCourse], s.courseId));
+  sessions = state.timetable.filter(s => isStudentEnrolled([currentCourse], s.courseId) && s.instructor !== "EXAM");
   instructor = sessions.length > 0 ? getInstructorName(sessions[0].instructor) : "Professor";
   upcomingCount = sessions.filter(s => s.dateKey > todayStr).length;
   totalSyllabus = getCourseTotalSessions(currentCourse, sessions.length);
