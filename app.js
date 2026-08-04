@@ -1347,6 +1347,48 @@ function renderDashboard() {
     sidebarContainer.appendChild(row);
   });
 
+  // 4. Render Upcoming Exams List
+  const examsContainer = document.getElementById("dashboard-exams-list");
+  if (examsContainer) {
+    const todayStrVal = formatDateKey(getActualToday());
+    const myExams = EXAMS_TIMETABLE.filter(s => {
+      const isEnrolled = isStudentEnrolled(state.user.courses, s.courseId);
+      return isEnrolled && s.dateKey >= todayStrVal;
+    });
+    myExams.sort((a, b) => a.dateKey.localeCompare(b.dateKey));
+
+    if (myExams.length === 0) {
+      examsContainer.className = "deadlines-empty";
+      examsContainer.innerHTML = `
+        <span class="material-symbols-outlined calendar-icon" style="color: #ef4444;">event_upcoming</span>
+        <p class="empty-title">No upcoming exams</p>
+      `;
+    } else {
+      examsContainer.className = "dashboard-exams-list-container";
+      examsContainer.innerHTML = "";
+      myExams.forEach(exam => {
+        const item = document.createElement("div");
+        item.className = "dashboard-exam-row-item";
+        
+        // Format date e.g. "24 Aug"
+        const dateParts = exam.dateKey.split('-');
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const formattedDate = `${parseInt(dateParts[2])} ${monthNames[parseInt(dateParts[1]) - 1]}`;
+        
+        item.innerHTML = `
+          <div class="exam-date-badge">
+            <span class="badge-day">${formattedDate}</span>
+          </div>
+          <div class="exam-details-info">
+            <span class="exam-subject-name">${exam.subject.replace("EXAM: ", "")}</span>
+            <span class="exam-meta-text">${exam.slot} · ${exam.room}</span>
+          </div>
+        `;
+        examsContainer.appendChild(item);
+      });
+    }
+  }
+
   // Render Schedule Grid (Weekly columns / Monthly calendar)
   renderTimetableCanvas();
 }

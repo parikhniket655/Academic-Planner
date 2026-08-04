@@ -2412,6 +2412,61 @@ input:checked + .slider:before {
   100% { transform: rotate(360deg); }
 }
 
+/* Upcoming Exams Card Styles */
+.dashboard-exams-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+.dashboard-exam-row-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: var(--transition-smooth);
+}
+.dashboard-exam-row-item:hover {
+  background: rgba(239, 68, 68, 0.05);
+  border-color: rgba(239, 68, 68, 0.2);
+  transform: translateX(4px);
+}
+.exam-date-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  min-width: 60px;
+  text-align: center;
+}
+.exam-details-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+.exam-subject-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.exam-meta-text {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
 
 
 
