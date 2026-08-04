@@ -798,7 +798,7 @@ async function loadUserData() {
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
   // Version key: bump this whenever DEFAULT_TIMETABLE or expansion logic changes
-  const TIMETABLE_CACHE_VERSION = "v6";
+  const TIMETABLE_CACHE_VERSION = "v7";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
@@ -1571,7 +1571,13 @@ function renderAttendanceTab() {
     }
 
     // Format Date: e.g. "28 Jun Sun"
-    const sDate = new Date(session.dateKey);
+    let sDate;
+    const dateParts = session.dateKey.split('-');
+    if (dateParts.length === 3) {
+      sDate = new Date(parseInt(dateParts[0]), parseInt(dateParts[1]) - 1, parseInt(dateParts[2]), 12, 0, 0);
+    } else {
+      sDate = new Date(session.dateKey);
+    }
     const dayNameStr = sDate.toLocaleDateString('en-US', { day: '2-digit', month: 'short', weekday: 'short' });
     const dateFormatted = dayNameStr.replace(',', '');
 
@@ -2119,16 +2125,16 @@ function setupEventListeners() {
       const exists = state.timetable.some(s => s.courseId === courseId && s.dateKey === dateVal);
       if (!exists && dateVal <= formatDateKey(state.currentDate)) {
         // Safe Date Parsing
-        let parsedDate = new Date(dateVal);
-        if (isNaN(parsedDate.getTime())) {
-          const parts = dateVal.split(/[-\/]/);
-          if (parts.length === 3) {
-            if (parts[0].length === 4) {
-              parsedDate = new Date(parts[0], parts[1] - 1, parts[2]);
-            } else {
-              parsedDate = new Date(parts[2], parts[1] - 1, parts[0]);
-            }
+        let parsedDate;
+        const parts = dateVal.split(/[-\/]/);
+        if (parts.length === 3) {
+          if (parts[0].length === 4) {
+            parsedDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]), 12, 0, 0);
+          } else {
+            parsedDate = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]), 12, 0, 0);
           }
+        } else {
+          parsedDate = new Date(dateVal);
         }
         
         const dayName = isNaN(parsedDate.getTime()) ? "Monday" : getDayString(parsedDate);
