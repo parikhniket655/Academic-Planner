@@ -378,47 +378,49 @@ const DEFAULT_STUDENT_DB = {
 // Default Timetable Mapping (Spans late June to late July 2026 to match stats & dates in screenshots)
 const EXAMS_TIMETABLE = [
   // 24th August, 2026 (Monday)
-  { dateKey: "2026-08-24", day: "Monday", slot: "10:20 - 12:20", courseId: "MBPET", subject: "EXAM: Managing Business Processes with Emerging Technologies (MBPET)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-24", day: "Monday", slot: "10:30 - 12:30", courseId: "MBPET", subject: "EXAM: Managing Business Processes with Emerging Technologies (MBPET)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-08-24", day: "Monday", slot: "14:30 - 16:30", courseId: "CV", subject: "EXAM: Corporate Valuation (CV)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-08-24", day: "Monday", slot: "14:30 - 16:30", courseId: "PM", subject: "EXAM: Project Management (PM)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-08-24", day: "Monday", slot: "14:30 - 16:30", courseId: "PCM", subject: "EXAM: Performance and Compensation Management (PCM)", room: "Exam Hall", instructor: "EXAM" },
 
   // 25th August, 2026 (Tuesday)
-  { dateKey: "2026-08-25", day: "Tuesday", slot: "10:20 - 12:20", courseId: "AIDMD", subject: "EXAM: AI-Driven Marketing Decision Making (AIDMD)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-25", day: "Tuesday", slot: "10:30 - 12:30", courseId: "AIDMD", subject: "EXAM: AI-Driven Marketing Decision Making (AIDMD)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-08-25", day: "Tuesday", slot: "14:30 - 16:30", courseId: "SCM", subject: "EXAM: Supply Chain Management (SCM)", room: "Exam Hall", instructor: "EXAM" },
 
   // 27th August, 2026 (Thursday)
-  { dateKey: "2026-08-27", day: "Thursday", slot: "10:20 - 12:20", courseId: "FADT", subject: "EXAM: Fundamentals and Applications of Design Thinking (FADT)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-27", day: "Thursday", slot: "10:20 - 12:20", courseId: "IBS", subject: "EXAM: International Business Strategies (IBS)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-27", day: "Thursday", slot: "10:30 - 12:30", courseId: "FADT", subject: "EXAM: Fundamentals and Applications of Design Thinking (FADT)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-27", day: "Thursday", slot: "10:30 - 12:30", courseId: "IBS", subject: "EXAM: International Business Strategies (IBS)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-08-27", day: "Thursday", slot: "14:30 - 16:30", courseId: "BA", subject: "EXAM: Business Analytics (BA)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-08-27", day: "Thursday", slot: "14:30 - 16:30", courseId: "BGRI", subject: "EXAM: Business–Government Relations in India (BGRI)", room: "Exam Hall", instructor: "EXAM" },
 
   // 28th August, 2026 (Friday)
-  { dateKey: "2026-08-28", day: "Friday", slot: "10:20 - 12:20", courseId: "FM", subject: "EXAM: Financial Modelling (FM)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-28", day: "Friday", slot: "10:30 - 12:30", courseId: "FM", subject: "EXAM: Financial Modelling (FM)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-08-28", day: "Friday", slot: "14:30 - 16:30", courseId: "GBS", subject: "EXAM: Global Business Simulation (GBS)", room: "Exam Hall", instructor: "EXAM" },
 
   // 29th August, 2026 (Saturday)
-  { dateKey: "2026-08-29", day: "Saturday", slot: "10:20 - 12:20", courseId: "TA", subject: "EXAM: Talent Acquisition (TA)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-29", day: "Saturday", slot: "14:30 - 16:30", courseId: "PS", subject: "EXAM: Pricing Strategies (PS)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-29", day: "Saturday", slot: "14:30 - 16:30", courseId: "FSA", subject: "EXAM: Financial Statement Analysis (FSA)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-29", day: "Saturday", slot: "10:30 - 12:30", courseId: "TA", subject: "EXAM: Talent Acquisition (TA)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-29", day: "Saturday", slot: "14:30 - 16:30", courseId: "CB", subject: "EXAM: Consumer Behaviour (CB)", room: "Exam Hall", instructor: "EXAM" },
+
+  // 30th August, 2026 (Sunday)
+  { dateKey: "2026-08-30", day: "Sunday", slot: "10:30 - 12:30", courseId: "PS", subject: "EXAM: Pricing Strategies (PS)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-30", day: "Sunday", slot: "10:30 - 12:30", courseId: "FSA", subject: "EXAM: Financial Statement Analysis (FSA)", room: "Exam Hall", instructor: "EXAM" },
 
   // 31st August, 2026 (Monday)
-  { dateKey: "2026-08-31", day: "Monday", slot: "10:20 - 12:20", courseId: "MS", subject: "EXAM: Managing Sustainability (MS)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-08-31", day: "Monday", slot: "10:30 - 12:30", courseId: "MS", subject: "EXAM: Managing Sustainability (MS)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-08-31", day: "Monday", slot: "14:30 - 16:30", courseId: "PWMP", subject: "EXAM: Playing to Win Market and Power (PWMP)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-08-31", day: "Monday", slot: "14:30 - 16:30", courseId: "SHRM", subject: "EXAM: Strategic Human Resource Management (SHRM)", room: "Exam Hall", instructor: "EXAM" },
 
   // 1st September, 2026 (Tuesday)
-  { dateKey: "2026-09-01", day: "Tuesday", slot: "10:20 - 12:20", courseId: "IMDM", subject: "EXAM: Insurance and Managerial Decision Making (IMDM)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-09-01", day: "Tuesday", slot: "10:30 - 12:30", courseId: "IMDM", subject: "EXAM: Insurance and Managerial Decision Making (IMDM)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-09-01", day: "Tuesday", slot: "14:30 - 16:30", courseId: "SDM", subject: "EXAM: Sales and Distribution Management (SDM)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-09-01", day: "Tuesday", slot: "14:30 - 16:30", courseId: "IAPM", subject: "EXAM: Investment Analysis & Portfolio Management (IAPM)", room: "Exam Hall", instructor: "EXAM" },
 
   // 2nd September, 2026 (Wednesday)
-  { dateKey: "2026-09-02", day: "Wednesday", slot: "10:20 - 12:20", courseId: "PFM", subject: "EXAM: Python for Managers (PFM)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-09-02", day: "Wednesday", slot: "10:30 - 12:30", courseId: "PFM", subject: "EXAM: Python for Managers (PFM)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-09-02", day: "Wednesday", slot: "14:30 - 16:30", courseId: "B2B", subject: "EXAM: B2B Marketing (B2B)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-09-02", day: "Wednesday", slot: "14:30 - 16:30", courseId: "CB", subject: "EXAM: Consumer Behaviour (CB)", room: "Exam Hall", instructor: "EXAM" },
 
   // 3rd September, 2026 (Thursday)
-  { dateKey: "2026-09-03", day: "Thursday", slot: "10:20 - 12:20", courseId: "SC", subject: "EXAM: Strategic Consulting (SC)", room: "Exam Hall", instructor: "EXAM" },
+  { dateKey: "2026-09-03", day: "Thursday", slot: "10:30 - 12:30", courseId: "SC", subject: "EXAM: Strategic Consulting (SC)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-09-03", day: "Thursday", slot: "14:30 - 16:30", courseId: "L&D", subject: "EXAM: Learning and Development (L&D)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-09-03", day: "Thursday", slot: "14:30 - 16:30", courseId: "MFIS", subject: "EXAM: Management of Financial Institutions and Services (MFIS)", room: "Exam Hall", instructor: "EXAM" },
   { dateKey: "2026-09-03", day: "Thursday", slot: "14:30 - 16:30", courseId: "DBM", subject: "EXAM: Digital Business Models (DBM)", room: "Exam Hall", instructor: "EXAM" }
@@ -798,7 +800,7 @@ async function loadUserData() {
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
   // Version key: bump this whenever DEFAULT_TIMETABLE or expansion logic changes
-  const TIMETABLE_CACHE_VERSION = "v7";
+  const TIMETABLE_CACHE_VERSION = "v8";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
