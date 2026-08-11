@@ -1391,6 +1391,47 @@ function renderDashboard() {
     }
   }
 
+  // 5. Render Wazir Course Registration Announcements
+  const announcementsContainer = document.getElementById("dashboard-announcements-list");
+  if (announcementsContainer) {
+    const wazirCourseMapping = {
+      "Niket": ["CSY", "IT", "FORM", "PBM Sec-A", "SNAB", "TQMS Sec-B", "MSS Sec-A"],
+      "Hidayrajsinh": ["GSEC", "FIS", "FORM", "IB", "SNCM Sec-B", "MSS Sec-C"],
+      "Aditya": ["GSEC", "AAB", "FIS", "IB", "SNCM Sec-A", "MSS Sec-A"],
+      "Prithivi": ["FORM", "IB", "PFWM", "PBM Sec-A", "MSS Sec-C", "Project Course"],
+      "Tanishtha": ["GSEC", "MBFM", "SM", "MSD", "TQMS Sec-B", "MSS Sec-D"],
+      "Akshita": ["SNCM Sec-A", "PBM Sec-B", "SNAB", "NPD", "TQMS Sec-A", "MSS Sec-A"],
+      "Mridul": ["AAB", "SNCM Sec-A", "PBM Sec-B", "SoM", "MSS Sec-B", "Project Course"],
+      "Divyanshi": ["GSEC", "CSY", "IT", "SNCM Sec-A", "IMC", "SM", "MSS Sec-B"],
+      "Raina": ["GSEC", "AAB", "FIS", "IB", "SNCM Sec-A", "MSS Sec-A"]
+    };
+
+    announcementsContainer.className = "wazir-announcement-container";
+    announcementsContainer.innerHTML = "";
+    
+    // Header for the list
+    const headerTitle = document.createElement("div");
+    headerTitle.style.cssText = "font-size: 12px; font-weight: bold; color: var(--text-muted); margin-bottom: 6px; display: flex; align-items: center; gap: 6px;";
+    headerTitle.innerHTML = `<span class="material-symbols-outlined" style="font-size: 16px; color: #30b0c7;">campaign</span><span>Wazir Family Term V Course Choices</span>`;
+    announcementsContainer.appendChild(headerTitle);
+
+    Object.keys(wazirCourseMapping).forEach(name => {
+      const courses = wazirCourseMapping[name];
+      const row = document.createElement("div");
+      row.className = "wazir-course-row";
+      
+      const pillsHTML = courses.map(c => `<span class="wazir-course-pill">${c}</span>`).join("");
+      
+      row.innerHTML = `
+        <span class="wazir-member-name">${name}</span>
+        <div class="wazir-member-pills">
+          ${pillsHTML}
+        </div>
+      `;
+      announcementsContainer.appendChild(row);
+    });
+  }
+
   // Render Schedule Grid (Weekly columns / Monthly calendar)
   renderTimetableCanvas();
 }

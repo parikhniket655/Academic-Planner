@@ -2467,6 +2467,53 @@ input:checked + .slider:before {
   color: var(--text-muted);
 }
 
+/* Wazir Course Choice Announcement Styles */
+.wazir-announcement-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+.wazir-course-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  transition: var(--transition-smooth);
+}
+.wazir-course-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(48, 176, 199, 0.3);
+}
+.wazir-member-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 90px;
+}
+.wazir-member-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+.wazir-course-pill {
+  font-size: 10px;
+  font-weight: bold;
+  color: #30b0c7;
+  background: rgba(48, 176, 199, 0.12);
+  border: 1px solid rgba(48, 176, 199, 0.25);
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
 
 
 
