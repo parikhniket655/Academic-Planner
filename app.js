@@ -2869,6 +2869,84 @@ function getWazirDaySchedule(dateKey, dayName) {
   return result;
 }
 
+function mergeWazirSchedule(schedule) {
+  const slotsOrder = [
+    "08:45 - 10:00",
+    "10:00 - 13:10",
+    "13:10 - 14:30",
+    "14:30 - 15:45",
+    "16:05 - 17:20",
+    "17:40 - 18:55",
+    "19:15 - 20:30",
+    "20:50 - 22:05",
+    "22:25 - 23:40"
+  ];
+
+  const merged = [];
+  let currentFreeGroup = null;
+
+  schedule.forEach((item) => {
+    if (item.status === "booked") {
+      if (currentFreeGroup) {
+        merged.push(createMergedFreeItem(currentFreeGroup));
+        currentFreeGroup = null;
+      }
+      merged.push(item);
+    } else {
+      if (!currentFreeGroup) {
+        currentFreeGroup = [item];
+      } else {
+        const prevSlot = currentFreeGroup[currentFreeGroup.length - 1].slot;
+        const idxPrev = slotsOrder.indexOf(prevSlot);
+        const idxCurr = slotsOrder.indexOf(item.slot);
+        if (idxCurr === idxPrev + 1) {
+          currentFreeGroup.push(item);
+        } else {
+          merged.push(createMergedFreeItem(currentFreeGroup));
+          currentFreeGroup = [item];
+        }
+      }
+    }
+  });
+
+  if (currentFreeGroup) {
+    merged.push(createMergedFreeItem(currentFreeGroup));
+  }
+
+  return merged;
+}
+
+function createMergedFreeItem(items) {
+  if (items.length === 1) {
+    return {
+      ...items[0],
+      isMerged: false,
+      constituentSlots: [items[0].slot]
+    };
+  }
+
+  const start = items[0].slot.split(" - ")[0];
+  const end = items[items.length - 1].slot.split(" - ")[1];
+  const combinedSlot = `${start} - ${end}`;
+  
+  const labels = items.map(x => x.title || "Free Slot");
+  const uniqueLabels = [...new Set(labels)];
+  let title = "Free Time Block";
+  if (uniqueLabels.length === 1) {
+    title = uniqueLabels[0];
+  } else {
+    title = "Combined Free Slots";
+  }
+
+  return {
+    slot: combinedSlot,
+    status: "free",
+    title: title,
+    isMerged: true,
+    constituentSlots: items.map(x => x.slot)
+  };
+}
+
 function renderWazirCanvas() {
   if (state.wazirViewMode === "week") {
     document.getElementById("wazir-week-view").classList.add("active");
@@ -2921,7 +2999,8 @@ function renderWazirWeekView() {
       free.textContent = "No Slots Available";
       body.appendChild(free);
     } else {
-      schedule.forEach(item => {
+      const mergedSchedule = mergeWazirSchedule(schedule);
+      mergedSchedule.forEach(item => {
         const card = document.createElement("div");
         if (item.status === "booked") {
           card.className = "lecture-card cat-b2b";
@@ -2951,7 +3030,7 @@ function renderWazirWeekView() {
 
         card.style.cursor = "pointer";
         card.addEventListener("click", () => {
-          openWazirBookingModal(dateKey, item.slot, item.status === "booked" ? item : null);
+          openWazirBookingModal(dateKey, item.slot, item.status === "booked" ? item : null, item.constituentSlots);
         });
 
         body.appendChild(card);
@@ -3054,24 +3133,147 @@ function renderWazirMonthView() {
   });
 }
 
-function openWazirBookingModal(dateKey, slot, bookedItem) {
+function safeParseDate(str) {
+  const parts = str.split('-');
+  if (parts.length === 3) {
+    return new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]), 12, 0, 0);
+  }
+  return new Date(str);
+}
+
+function getDateKeysInRange(startDateStr, endDateStr) {
+  const dates = [];
+  let curr = safeParseDate(startDateStr);
+  const end = safeParseDate(endDateStr);
+  while (curr <= end) {
+    dates.push(formatDateKey(curr));
+    curr.setDate(curr.getDate() + 1);
+  }
+  return dates;
+}
+
+async function bookWazirMeetingsBatch(dateKeys, slots, title) {
+  const backup = {};
+  
+  // Save backup and update state optimistically
+  dateKeys.forEach(dateKey => {
+    slots.forEach(slot => {
+      const key = `${dateKey}_${slot}`;
+      backup[key] = state.wazirMeetings[key];
+      state.wazirMeetings[key] = {
+        date_key: dateKey,
+        slot: slot,
+        booked_by: state.user.email,
+        title: title
+      };
+    });
+  });
+  
+  renderWazirCanvas();
+  
+  if (!supabaseClient) {
+    showToast("Database not connected. Local booking simulated.", "warning");
+    return true;
+  }
+  
+  // Perform Supabase upsert in background
+  (async () => {
+    try {
+      const rows = [];
+      dateKeys.forEach(dateKey => {
+        slots.forEach(slot => {
+          rows.push({
+            date_key: dateKey,
+            slot: slot,
+            booked_by: state.user.email,
+            title: title
+          });
+        });
+      });
+      
+      const { error } = await supabaseClient
+        .from('wazir_meetings')
+        .upsert(rows, { onConflict: 'date_key,slot' });
+        
+      if (error) throw error;
+      
+      await loadWazirMeetings();
+      renderWazirCanvas();
+      showToast("Meetings booked successfully!", "success");
+    } catch (e) {
+      console.error("Failed to book meetings:", e);
+      // Revert state if write failed
+      Object.keys(backup).forEach(key => {
+        if (backup[key] === undefined) {
+          delete state.wazirMeetings[key];
+        } else {
+          state.wazirMeetings[key] = backup[key];
+        }
+      });
+      renderWazirCanvas();
+      showToast("Booking failed: " + e.message, "danger");
+    }
+  })();
+  
+  return true;
+}
+
+function openWazirBookingModal(dateKey, slot, bookedItem, constituentSlots) {
   document.getElementById("wazir-book-date").value = dateKey;
   document.getElementById("wazir-book-slot").value = slot;
   
   const label = document.getElementById("wazir-booking-label-time");
-  label.textContent = `${dateKey} @ ${slot}`;
+  label.textContent = bookedItem ? `${dateKey} @ ${slot}` : `Booking Slots on ${dateKey}`;
   
   const titleInput = document.getElementById("wazir-book-title");
   const deleteBtn = document.getElementById("btn-wazir-delete-booking");
+  
+  const dateRangeGroup = document.getElementById("wazir-book-date-range-group");
+  const slotRangeGroup = document.getElementById("wazir-book-slot-range-group");
   
   if (bookedItem) {
     titleInput.value = bookedItem.title;
     titleInput.disabled = true;
     deleteBtn.style.display = "block";
+    
+    if (dateRangeGroup) dateRangeGroup.style.display = "none";
+    if (slotRangeGroup) slotRangeGroup.style.display = "none";
   } else {
     titleInput.value = "Wazir Meeting";
     titleInput.disabled = false;
     deleteBtn.style.display = "none";
+    
+    if (dateRangeGroup) {
+      dateRangeGroup.style.display = "flex";
+      document.getElementById("wazir-book-start-date").value = dateKey;
+      document.getElementById("wazir-book-end-date").value = dateKey;
+    }
+    
+    if (slotRangeGroup && constituentSlots && constituentSlots.length > 0) {
+      slotRangeGroup.style.display = "flex";
+      const startSelect = document.getElementById("wazir-book-start-slot");
+      const endSelect = document.getElementById("wazir-book-end-slot");
+      
+      startSelect.innerHTML = "";
+      endSelect.innerHTML = "";
+      
+      constituentSlots.forEach((sOption) => {
+        const optStart = document.createElement("option");
+        optStart.value = sOption;
+        optStart.textContent = sOption;
+        startSelect.appendChild(optStart);
+        
+        const optEnd = document.createElement("option");
+        optEnd.value = sOption;
+        optEnd.textContent = sOption;
+        endSelect.appendChild(optEnd);
+      });
+      
+      startSelect.value = constituentSlots[0];
+      endSelect.value = constituentSlots[constituentSlots.length - 1];
+    } else {
+      if (slotRangeGroup) slotRangeGroup.style.display = "none";
+    }
   }
   
   document.getElementById("modal-wazir-booking").classList.add("active");
@@ -3467,11 +3669,47 @@ function setupWazirEventListeners() {
   if (form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const dateKey = document.getElementById("wazir-book-date").value;
-      const slot = document.getElementById("wazir-book-slot").value;
-      const title = document.getElementById("wazir-book-title").value;
       
-      const success = await bookWazirMeeting(dateKey, slot, title);
+      const title = document.getElementById("wazir-book-title").value;
+      const isBookingRange = document.getElementById("wazir-book-slot-range-group").style.display !== "none";
+      
+      let success = false;
+      if (isBookingRange) {
+        const startD = document.getElementById("wazir-book-start-date").value;
+        const endD = document.getElementById("wazir-book-end-date").value;
+        const startS = document.getElementById("wazir-book-start-slot").value;
+        const endS = document.getElementById("wazir-book-end-slot").value;
+        
+        const dateKeys = getDateKeysInRange(startD, endD);
+        
+        const slotsOrder = [
+          "08:45 - 10:00",
+          "10:00 - 13:10",
+          "13:10 - 14:30",
+          "14:30 - 15:45",
+          "16:05 - 17:20",
+          "17:40 - 18:55",
+          "19:15 - 20:30",
+          "20:50 - 22:05",
+          "22:25 - 23:40"
+        ];
+        
+        const idxStart = slotsOrder.indexOf(startS);
+        const idxEnd = slotsOrder.indexOf(endS);
+        
+        if (idxStart === -1 || idxEnd === -1 || idxStart > idxEnd) {
+          showToast("Invalid slot range chosen.", "error");
+          return;
+        }
+        
+        const selectedSlots = slotsOrder.slice(idxStart, idxEnd + 1);
+        success = await bookWazirMeetingsBatch(dateKeys, selectedSlots, title);
+      } else {
+        const dateKey = document.getElementById("wazir-book-date").value;
+        const slot = document.getElementById("wazir-book-slot").value;
+        success = await bookWazirMeeting(dateKey, slot, title);
+      }
+      
       if (success) {
         document.getElementById("modal-wazir-booking").classList.remove("active");
       }

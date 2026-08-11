@@ -797,10 +797,34 @@
         <div class="form-group">
           <label id="wazir-booking-label-time" style="font-weight: 500; font-size: 0.9rem; color: var(--accent-cyan);"></label>
         </div>
+
+        <!-- Custom Date Range Booking -->
+        <div class="form-group" id="wazir-book-date-range-group" style="display: flex; gap: 12px; margin-top: 12px;">
+          <div style="flex: 1;">
+            <label for="wazir-book-start-date">Start Date</label>
+            <input type="date" id="wazir-book-start-date" required style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: var(--text-primary); font-family: var(--font-main); outline: none;">
+          </div>
+          <div style="flex: 1;">
+            <label for="wazir-book-end-date">End Date</label>
+            <input type="date" id="wazir-book-end-date" required style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: var(--text-primary); font-family: var(--font-main); outline: none;">
+          </div>
+        </div>
+
+        <!-- Custom Time Slot Booking -->
+        <div class="form-group" id="wazir-book-slot-range-group" style="display: flex; gap: 12px; margin-top: 12px;">
+          <div style="flex: 1;">
+            <label for="wazir-book-start-slot">Start Slot</label>
+            <select id="wazir-book-start-slot" class="form-control" style="width: 100%; padding: 12px; border-radius: 8px; background: #1a202c; border: 1px solid var(--glass-border); color: var(--text-primary); font-family: var(--font-main); outline: none;"></select>
+          </div>
+          <div style="flex: 1;">
+            <label for="wazir-book-end-slot">End Slot</label>
+            <select id="wazir-book-end-slot" class="form-control" style="width: 100%; padding: 12px; border-radius: 8px; background: #1a202c; border: 1px solid var(--glass-border); color: var(--text-primary); font-family: var(--font-main); outline: none;"></select>
+          </div>
+        </div>
         
         <div class="form-group" style="margin-top: 12px;">
           <label for="wazir-book-title">Meeting Title / Agenda</label>
-          <input type="text" id="wazir-book-title" placeholder="e.g. Brainstorm session" required value="Wazir Meeting">
+          <input type="text" id="wazir-book-title" placeholder="e.g. Brainstorm session" required value="Wazir Meeting" style="width: 100%; padding: 12px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); color: var(--text-primary); font-family: var(--font-main); outline: none;">
         </div>
         
         <div class="settings-buttons" style="margin-top: 20px; display: flex; gap: 12px;">
@@ -815,6 +839,6 @@
   <div id="toast-container"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="app.js?v=20260703v62"></script>
+  <script src="app.js?v=20260703v63"></script>
 </body>
 </html>
