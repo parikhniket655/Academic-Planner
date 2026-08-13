@@ -220,15 +220,41 @@ function normalizeSlot(slot) {
 
 function deduplicateTimetable(list) {
   if (!list || !Array.isArray(list)) return [];
+  
+  // Sort so that late-night slots are processed last
+  const sortedList = [...list].sort((a, b) => {
+    const aLate = (a.slot || "").includes("22:25") || (a.slot || "").includes("23:40");
+    const bLate = (b.slot || "").includes("22:25") || (b.slot || "").includes("23:40");
+    if (aLate && !bLate) return 1;
+    if (!aLate && bLate) return -1;
+    return (a.dateKey || "").localeCompare(b.dateKey || "");
+  });
+
   const seen = new Set();
-  return list.filter(item => {
+  const seenSessionNums = new Set();
+  
+  const filteredSorted = sortedList.filter(item => {
     const key = `${item.dateKey}_${normalizeCourseId(item.courseId)}_${normalizeSlot(item.slot)}`;
     if (seen.has(key)) {
       return false;
     }
     seen.add(key);
+    
+    if (item.instructor && item.instructor.includes('|') && item.instructor !== "EXAM") {
+      const parts = item.instructor.split('|');
+      const num = parseInt(parts[1]);
+      if (!isNaN(num)) {
+        const sessionKey = `${normalizeCourseId(item.courseId)}_${num}`;
+        if (seenSessionNums.has(sessionKey)) {
+          return false;
+        }
+        seenSessionNums.add(sessionKey);
+      }
+    }
     return true;
   });
+
+  return filteredSorted.sort((a, b) => (a.dateKey || "").localeCompare(b.dateKey || ""));
 }
 
 function isStudentEnrolled(studentCourses, courseId) {
@@ -800,7 +826,7 @@ async function loadUserData() {
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
   // Version key: bump this whenever DEFAULT_TIMETABLE or expansion logic changes
-  const TIMETABLE_CACHE_VERSION = "v8";
+  const TIMETABLE_CACHE_VERSION = "v9";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
