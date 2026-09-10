@@ -942,7 +942,7 @@ async function loadUserData() {
     // If user's active courses still contain Term IV courses (e.g. AIDMD, B2B), update to Term V
     const hasTerm4 = state.user.courses.some(c => ["AIDMD", "B2B", "CV Sec-A", "BA Sec-A", "PFM"].includes(c));
     const cachedVer = storage.getItem(`iimr_timetable_version_${email}`);
-    const TIMETABLE_CACHE_VERSION = "v13";
+    const TIMETABLE_CACHE_VERSION = "v14";
 
     if (hasTerm4 || cachedVer !== TIMETABLE_CACHE_VERSION) {
       console.log("Migrating student subscriptions to Term V courses...");
@@ -970,7 +970,7 @@ async function loadUserData() {
   initSupabase();
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v13";
+  const TIMETABLE_CACHE_VERSION = "v14";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
@@ -2559,8 +2559,39 @@ function getCsvUrl(inputUrl) {
   return inputUrl;
 }
 
+function normalizeSlotTime(slotStr) {
+  if (!slotStr) return "08:45 - 10:00";
+  const str = String(slotStr).trim();
+  const rangeMatch = str.match(/(\d{1,2}:\d{2})\s*[\-–]\s*(\d{1,2}:\d{2})/);
+  if (rangeMatch) {
+    const sH = rangeMatch[1].split(':')[0].padStart(2, '0');
+    const sM = rangeMatch[1].split(':')[1];
+    const eH = rangeMatch[2].split(':')[0].padStart(2, '0');
+    const eM = rangeMatch[2].split(':')[1];
+    return `${sH}:${sM} - ${eH}:${eM}`;
+  }
+  
+  const singleMatch = str.match(/(\d{1,2}:\d{2})/);
+  if (singleMatch) {
+    const parts = singleMatch[1].split(':');
+    const hr = parseInt(parts[0]);
+    const min = parseInt(parts[1]);
+    const startH = String(hr).padStart(2, '0');
+    const startM = String(min).padStart(2, '0');
+    let endH = hr + 1;
+    let endM = min + 15;
+    if (endM >= 60) { endH += 1; endM -= 60; }
+    return `${startH}:${startM} - ${String(endH).padStart(2, '0')}:${String(endM).padStart(2, '0')}`;
+  }
+  return slotStr;
+}
+
 function mergeTimetable(liveTimetable) {
-  const merged = deduplicateTimetable([...liveTimetable, ...EXAMS_TIMETABLE]);
+  const normalizedLive = (liveTimetable || []).map(item => ({
+    ...item,
+    slot: normalizeSlotTime(item.slot)
+  }));
+  const merged = deduplicateTimetable([...normalizedLive, ...EXAMS_TIMETABLE]);
   const todayStr = formatDateKey(state.currentDate);
   
   // Keep custom logged past sessions that were manually added
