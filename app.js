@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 4.0) {
+  if (isStorageWorking && storedVer < 4.1) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "4.0");
+    window.localStorage.setItem("iimr_app_version", "4.1");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -364,16 +364,21 @@ function isStudentEnrolled(studentCourses, courseId) {
     const normUser = normalizeCourseId(uCourse);
     if (normUser === normId) return true;
     
-    // E.g. timetable is "BA", user is "BA SEC-A" (combined classes support)
-    const baseCodes = ["CW", "GBS", "BA", "CV", "AIDMD", "B2B", "IBS", "PFM", "DBM", "MSS", "SNCM", "PBM", "TQMS"];
-    if (normUser.startsWith(normId) && baseCodes.includes(normId)) {
-      return true;
-    }
-    // E.g. timetable is "BA SEC-A", user is "BA"
-    if (normId.startsWith(normUser) && baseCodes.includes(normUser)) {
-      return true;
+    // Check base course match (e.g. user has "PBM Sec-A" and lecture is "PBM" or vice versa)
+    const baseCodes = ["CW", "GBS", "BA", "CV", "AIDMD", "B2B", "IBS", "PFM", "DBM", "MSS", "SNCM", "PBM", "TQMS", "CSY", "IT", "FORM", "SNAB", "FIS", "IB", "AAB", "PFWM", "MBFM", "SM", "MSD", "NPD", "SOM", "IMC", "SSM"];
+    
+    const uBase = baseCodes.find(b => normUser.startsWith(normalizeCourseId(b)));
+    const lBase = baseCodes.find(b => normId.startsWith(normalizeCourseId(b)));
+
+    if (uBase && lBase && normalizeCourseId(uBase) === normalizeCourseId(lBase)) {
+      if (normUser.includes("SEC") && normId.includes("SEC")) {
+        if (normUser === normId) return true;
+      } else {
+        return true;
+      }
     }
   }
+  return false;
 }
 
 function isDateKeyMatch(lecture, targetDateKey) {
@@ -2605,46 +2610,10 @@ function mergeTimetable(liveTimetable) {
 }
 
 async function autoSyncTimetable() {
-  const syncUrl = state.settings.timetableSheetsUrl || TIMETABLE_SHEETS_URL;
   let synced = false;
 
-  // 1. Try to sync from Google Sheets Web App first (carries user's Google credentials in browser)
-  if (syncUrl) {
-    const isJsonApi = syncUrl.includes("/macros/s/") || syncUrl.includes("/exec");
-    const fetchUrl = isJsonApi ? syncUrl : getCsvUrl(syncUrl);
-    try {
-      const res = await fetch(fetchUrl);
-      if (res.ok) {
-        let parsedTimetable = [];
-        if (isJsonApi) {
-          const data = await res.json();
-          if (data && data.sessions) {
-            parsedTimetable = data.sessions;
-            console.log(`Parsed ${parsedTimetable.length} sessions from live JSON API.`);
-          }
-        } else {
-          const csvText = await res.text();
-          parsedTimetable = parseCsv(csvText);
-        }
-
-        if (parsedTimetable && parsedTimetable.length > 0) {
-          state.timetable = mergeTimetable(parsedTimetable);
-          saveTimetable();
-          renderDashboard();
-          if (document.getElementById("tab-today").classList.contains("active")) {
-            renderAttendanceTab();
-          }
-          console.log("Timetable successfully synced from Google Sheets Web App.");
-          synced = true;
-        }
-      }
-    } catch (e) {
-      console.warn("Failed to sync timetable from Google Sheets Web App, trying Supabase fallback:", e);
-    }
-  }
-
-  // 2. Fallback to Supabase database if Google Sheets sync failed or was skipped
-  if (!synced && supabaseClient) {
+  // 1. Primary: Load complete timetable from Supabase
+  if (supabaseClient) {
     try {
       const { data, error } = await supabaseClient
         .from('timetable')
@@ -2664,14 +2633,49 @@ async function autoSyncTimetable() {
         state.timetable = mergeTimetable(parsed);
         saveTimetable();
         renderDashboard();
-        if (document.getElementById("tab-today").classList.contains("active")) {
+        if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
           renderAttendanceTab();
         }
-        console.log("Timetable synced from Supabase fallback.");
+        console.log(`Timetable successfully loaded ${parsed.length} sessions from Supabase.`);
         synced = true;
       }
     } catch (e) {
-      console.warn("Failed to sync timetable from Supabase fallback:", e);
+      console.warn("Failed to sync timetable from Supabase:", e);
+    }
+  }
+
+  // 2. Fallback to Google Sheets Web App if Supabase is offline or empty
+  const syncUrl = state.settings.timetableSheetsUrl || TIMETABLE_SHEETS_URL;
+  if (!synced && syncUrl) {
+    const isJsonApi = syncUrl.includes("/macros/s/") || syncUrl.includes("/exec");
+    const fetchUrl = isJsonApi ? syncUrl : getCsvUrl(syncUrl);
+    try {
+      const res = await fetch(fetchUrl);
+      if (res.ok) {
+        let parsedTimetable = [];
+        if (isJsonApi) {
+          const data = await res.json();
+          if (data && data.sessions) {
+            parsedTimetable = data.sessions;
+          }
+        } else {
+          const csvText = await res.text();
+          parsedTimetable = parseCsv(csvText);
+        }
+
+        if (parsedTimetable && parsedTimetable.length > 0) {
+          state.timetable = mergeTimetable(parsedTimetable);
+          saveTimetable();
+          renderDashboard();
+          if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
+            renderAttendanceTab();
+          }
+          console.log("Timetable synced from Google Sheets Web App fallback.");
+          synced = true;
+        }
+      }
+    } catch (e) {
+      console.warn("Failed to sync timetable from Google Sheets Web App:", e);
     }
   }
 }
