@@ -1,5 +1,5 @@
-// Google Apps Script – Universal Term V Live Google Sheet Parser & Supabase Synchronizer
-// Tracking Live Google Sheet: 1KO1bwDTVyirnMFLKpsdDe8y6OiicN-Xju9ytnpnDIFQ
+// Google Apps Script – Complete Non-Cyclical 4-Row Grid Parser for Term V Timetable
+// Spreadsheet ID: 1KO1bwDTVyirnMFLKpsdDe8y6OiicN-Xju9ytnpnDIFQ
 
 const SUPABASE_URL = "https://frnyuuywkteqiyinlrmp.supabase.co";
 const SUPABASE_KEY = "sb_publishable_dfysjA_5CU1AmweExgrmiA_FD0AS34o";
@@ -27,7 +27,6 @@ function mapToCourseCode(cName) {
   var str = String(cName).trim();
   var u = str.toUpperCase();
 
-  // Extract Section suffix if explicitly in cell
   var secMatch = u.match(/SEC[\s\-]*([A-D])/);
   var secStr = secMatch ? (" Sec-" + secMatch[1]) : "";
 
@@ -51,6 +50,9 @@ function mapToCourseCode(cName) {
   if (u.includes("SERVICE OPERATIONS") || u.includes("SOM")) return "SoM";
   if (u.includes("INTEGRATED MARKETING") || u.includes("IMC")) return "IMC";
   if (u.includes("SERVICES MARKETING") || u.includes("SSM")) return "SSM";
+  if (u.includes("TALENT MANAGEMENT") || u === "TM" || u.startsWith("TM ")) return "TM";
+  if (u.includes("MERGERS") || u === "M&A" || u.includes("M & A")) return "M&A";
+  if (u.includes("ENTREPRENEURSHIP") || u === "ENV") return "ENV";
   if (u.includes("PROJECT COURSE")) return "Project Course";
 
   return "";
@@ -64,22 +66,26 @@ function formatDateToKey(dVal) {
   }
   var str = String(dVal).trim();
   
-  // DD/MM/YYYY or DD-MM-YYYY
   var mSlash = str.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/);
   if (mSlash) {
-    var day = String(mSlash[1]).padStart(2, '0');
-    var mon = String(mSlash[2]).padStart(2, '0');
-    var yr = mSlash[3];
-    return yr + "-" + mon + "-" + day;
+    return mSlash[3] + "-" + String(mSlash[2]).padStart(2, '0') + "-" + String(mSlash[1]).padStart(2, '0');
   }
   
-  // YYYY-MM-DD
   var mISO = str.match(/^(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
   if (mISO) {
     return mISO[1] + "-" + String(mISO[2]).padStart(2, '0') + "-" + String(mISO[3]).padStart(2, '0');
   }
 
-  // Parse strings like "Sat Sep 12 2026" or "12 Sep 2026" or "Sep 12, 2026"
+  // Handle strings like "12-Sep-26" or "12-Sep-2026"
+  var mText = str.match(/^(\d{1,2})[\/\-]([A-Za-z]{3})[\/\-](\d{2,4})/);
+  if (mText) {
+    var day = String(mText[1]).padStart(2, '0');
+    var monthMap = { 'JAN':'01', 'FEB':'02', 'MAR':'03', 'APR':'04', 'MAY':'05', 'JUN':'06', 'JUL':'07', 'AUG':'08', 'SEP':'09', 'OCT':'10', 'NOV':'11', 'DEC':'12' };
+    var mon = monthMap[mText[2].toUpperCase()] || '09';
+    var yr = mText[3].length === 2 ? ('20' + mText[3]) : mText[3];
+    return yr + "-" + mon + "-" + day;
+  }
+
   var pDate = new Date(str);
   if (!isNaN(pDate.getTime()) && pDate.getFullYear() > 2020 && pDate.getFullYear() < 2030) {
     return Utilities.formatDate(pDate, Session.getScriptTimeZone(), "yyyy-MM-dd");
@@ -91,7 +97,6 @@ function formatSlotTime(str) {
   if (!str) return "08:45 - 10:00";
   var s = String(str).trim();
   
-  // Look for time range like 08:45-10:00 or 8:45 - 10:00
   var match = s.match(/(\d{1,2}:\d{2})\s*[\-\u2013\u2014to]*\s*(\d{1,2}:\d{2})/i);
   if (match) {
     var start = match[1].padStart(5, '0');
@@ -99,7 +104,6 @@ function formatSlotTime(str) {
     return start + " - " + end;
   }
   
-  // Single time like 08:45
   var single = s.match(/(\d{1,2}:\d{2})/);
   if (single) {
     return single[1].padStart(5, '0');
@@ -113,103 +117,141 @@ function fetchTimetableSessions() {
   var sessions = [];
   var seenKeys = {};
 
+  var sectionRooms = { "A": "LR 02", "B": "LR 07", "C": "LR 06", "D": "LR 06" };
+
+  var courseAbbrMap = {
+    "TM": "Talent Management",
+    "IT": "Information Technology",
+    "TQMS": "Total Quality Management & Six Sigma",
+    "PFWM": "Personal Finance & Wealth Management",
+    "GSEC": "Growth Strategies for E-Commerce",
+    "AAB": "Advanced Accounting for Business",
+    "FIS": "Fixed Income Securities",
+    "M&A": "Mergers and Acquisitions",
+    "FORM": "Financial Operations & Risk Management",
+    "SM": "Strategic Management",
+    "CSY": "Cyber Security",
+    "SNAB": "Strategies for New Age Businesses",
+    "MSS": "Management Structure & Systems",
+    "PBM": "Product & Brand Management",
+    "SNCM": "Strategic Negotiation & Commercial Management",
+    "IB": "International Business",
+    "MBFM": "Management of Banking & Financial Services",
+    "MSD": "Market Structure & Dynamics",
+    "NPD": "New Product Development",
+    "SoM": "Service Operations Management",
+    "IMC": "Integrated Marketing Communication",
+    "SSM": "Services Marketing",
+    "ENV": "Entrepreneurship & New Ventures",
+    "ESMM": "Executive Sales & Marketing",
+    "Project Course": "Project Course"
+  };
+
   for (var s = 0; s < sheets.length; s++) {
     var sheet = sheets[s];
     var data = sheet.getDataRange().getValues();
-    if (!data || data.length < 2) continue;
+    if (!data || data.length < 4) continue;
 
-    var currentDateKey = "";
-    var currentDayName = "";
-    
-    // Check if sheet has room headers in row 0-5 or column headers
-    var roomCols = {};
-    var slotCols = {};
+    var headerRowIdx = -1;
+    var timeSlotCols = [];
 
-    for (var r = 0; r < Math.min(5, data.length); r++) {
-      for (var c = 0; c < data[r].length; c++) {
-        var cellStr = String(data[r][c]).trim();
-        if (/LR[\s\-]*\d+/i.test(cellStr) || /CR[\s\-]*\d+/i.test(cellStr) || /Hall/i.test(cellStr) || /Auditorium/i.test(cellStr)) {
-          roomCols[c] = cellStr;
+    for (var r = 0; r < Math.min(10, data.length); r++) {
+      var rowStr = data[r].map(function(c) { return String(c).trim(); });
+      var dIdx = rowStr.findIndex(function(h) { return h.toLowerCase().includes("date"); });
+      var sIdx = rowStr.findIndex(function(h) { return h.toLowerCase().includes("section"); });
+
+      if (dIdx !== -1 || sIdx !== -1) {
+        headerRowIdx = r;
+        for (var c = 2; c < Math.min(13, rowStr.length); c++) {
+          var val = rowStr[c];
+          if (val && !val.toUpperCase().includes("LUNCH")) {
+            timeSlotCols.push({ col: c, slot: formatSlotTime(val) });
+          }
         }
-        if (/\d{1,2}:\d{2}/.test(cellStr)) {
-          slotCols[c] = formatSlotTime(cellStr);
-        }
+        break;
       }
     }
 
-    for (var i = 0; i < data.length; i++) {
-      var row = data[i];
-      if (!row || row.length === 0) continue;
+    if (headerRowIdx === -1 || timeSlotCols.length === 0) continue;
 
-      // Check Column A/B/C for Date & Day
-      for (var c = 0; c < Math.min(4, row.length); c++) {
-        var cellVal = row[c];
-        if (cellVal instanceof Date) {
-          var formatted = formatDateToKey(cellVal);
-          if (formatted) {
-            currentDateKey = formatted;
-            currentDayName = Utilities.formatDate(cellVal, Session.getScriptTimeZone(), "EEEE");
-          }
-        } else if (cellVal) {
-          var vStr = String(cellVal).trim();
-          var parsedDate = formatDateToKey(vStr);
-          if (parsedDate) {
-            currentDateKey = parsedDate;
-          }
-          if (/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$/i.test(vStr)) {
-            currentDayName = vStr;
-          }
+    var currentDateKey = "";
+    var currentDayName = "";
+
+    for (var r = headerRowIdx + 1; r < data.length; r++) {
+      var row = data[r];
+      if (!row || row.length < 2) continue;
+
+      var cellA = row[0];
+      if (cellA instanceof Date) {
+        var formatted = formatDateToKey(cellA);
+        if (formatted) {
+          currentDateKey = formatted;
+          currentDayName = Utilities.formatDate(cellA, Session.getScriptTimeZone(), "EEEE");
+        }
+      } else if (cellA) {
+        var strA = String(cellA).trim();
+        var parsedA = formatDateToKey(strA);
+        if (parsedA) {
+          currentDateKey = parsedA;
+        }
+        if (/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$/i.test(strA)) {
+          currentDayName = strA;
         }
       }
 
       if (!currentDateKey) continue;
 
-      // Determine slot time for this row if row has explicit slot column
-      var rowSlotTime = "";
-      for (var c = 0; c < Math.min(5, row.length); c++) {
-        var vStr = String(row[c]).trim();
-        if (/\d{1,2}:\d{2}\s*[\-\u2013to]*\s*\d{1,2}:\d{2}/i.test(vStr)) {
-          rowSlotTime = formatSlotTime(vStr);
-          break;
-        }
+      var sectionLetter = String(row[1] || "").trim().toUpperCase();
+      if (!sectionLetter || !["A", "B", "C", "D"].includes(sectionLetter)) {
+        continue;
       }
 
-      // Process cells in row
-      for (var c = 0; c < row.length; c++) {
-        var cellVal = String(row[c] || "").trim();
-        if (!cellVal) continue;
+      var roomName = sectionRooms[sectionLetter] || "LR 07";
 
-        var cCode = mapToCourseCode(cellVal);
-        if (!cCode) continue;
+      for (var t = 0; t < timeSlotCols.length; t++) {
+        var colIdx = timeSlotCols[t].col;
+        var slotTime = timeSlotCols[t].slot;
 
-        var slotTime = rowSlotTime || slotCols[c] || "08:45 - 10:00";
-        var roomName = roomCols[c] || "LR 07";
+        var cellVal = String(row[colIdx] || "").trim();
+        if (!cellVal || cellVal.toUpperCase() === "LUNCH") continue;
 
-        // Extract professor name from multiline cell if present
-        var profName = "Faculty";
-        var lines = cellVal.split(/\r?\n/);
-        if (lines.length > 1) {
-          profName = lines[lines.length - 1].trim();
-        }
+        var match = cellVal.match(/^([A-Za-z0-9&\s\.\-]+?)\s*(\d+)?\s*(?:\(([^)]+)\))?$/);
+        if (match) {
+          var rawCode = match[1].trim();
+          var profInitials = match[3] ? match[3].trim() : "Faculty";
+          var sessionNum = match[2] ? match[2].trim() : "1";
 
-        var uniqueKey = currentDateKey + "_" + slotTime + "_" + cCode + "_" + roomName;
-        if (!seenKeys[uniqueKey]) {
-          seenKeys[uniqueKey] = true;
-          sessions.push({
-            dateKey: currentDateKey,
-            day: currentDayName || "Scheduled",
-            slot: slotTime,
-            courseId: cCode,
-            subject: cellVal.replace(/[\r\n]+/g, ' '),
-            room: roomName,
-            instructor: profName
-          });
+          var courseCode = mapToCourseCode(rawCode);
+          if (!courseCode) continue;
+
+          var sectionedCourses = ["PBM", "TQMS", "SNCM", "MSS", "BA", "CV", "GBS", "CW"];
+          var courseId = courseCode;
+          if (sectionedCourses.includes(courseCode)) {
+            courseId = courseCode + " Sec-" + sectionLetter;
+          }
+
+          var subjectName = courseAbbrMap[courseCode] || cellVal;
+
+          var uniqueKey = currentDateKey + "_" + slotTime + "_" + courseId + "_" + sectionLetter;
+          if (!seenKeys[uniqueKey]) {
+            seenKeys[uniqueKey] = true;
+            sessions.push({
+              dateKey: currentDateKey,
+              day: currentDayName || "Scheduled",
+              slot: slotTime,
+              courseId: courseId,
+              subject: subjectName,
+              room: roomName,
+              instructor: profInitials + "|" + sessionNum,
+              section: sectionLetter
+            });
+          }
         }
       }
     }
   }
 
-  Logger.log("Total parsed sessions across sheet: " + sessions.length);
+  Logger.log("Total parsed 4-row grid sessions: " + sessions.length);
   return sessions;
 }
 
@@ -218,7 +260,7 @@ function syncTimetableToSupabase() {
   Logger.log("Found " + sessions.length + " sessions. Syncing to Supabase...");
   
   if (sessions.length === 0) return;
-  
+
   var url = SUPABASE_URL + "/rest/v1/timetable";
   var headers = {
     "apikey": SUPABASE_KEY,
@@ -233,12 +275,13 @@ function syncTimetableToSupabase() {
     var payload = chunk.map(function(s) {
       return {
         date_key: s.dateKey,
-        day: s.day || "Mon",
+        day: s.day || "Scheduled",
         slot: s.slot,
         course_id: s.courseId,
         subject: s.subject || s.courseId,
         room: s.room,
-        instructor: s.instructor
+        instructor: s.instructor,
+        section: s.section
       };
     });
 

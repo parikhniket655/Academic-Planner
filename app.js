@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 4.1) {
+  if (isStorageWorking && storedVer < 4.2) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "4.1");
+    window.localStorage.setItem("iimr_app_version", "4.2");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
