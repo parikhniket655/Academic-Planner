@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 4.3) {
+  if (isStorageWorking && storedVer < 4.4) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "4.3");
+    window.localStorage.setItem("iimr_app_version", "4.4");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -973,7 +973,7 @@ async function loadUserData() {
   }
   
   // Auto-sync Google Sheet timetable silently in the background
-  autoSyncTimetable();
+  await autoSyncTimetable();
 
   // Ask for notification permission on first tap if push notifications are enabled
   document.body.addEventListener('click', function askPermissionOnGesture() {
@@ -2637,6 +2637,7 @@ async function autoSyncTimetable() {
           state.timetable = mergeTimetable(parsed);
           saveTimetable();
           renderDashboard();
+          renderTimetableCanvas();
           if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
             renderAttendanceTab();
           }
