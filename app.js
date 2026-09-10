@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 5.0) {
+  if (isStorageWorking && storedVer < 5.1) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "5.0");
+    window.localStorage.setItem("iimr_app_version", "5.1");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -9919,14 +9919,6 @@ function login(email) {
     Notification.requestPermission().catch(() => {});
   }
   
-  if (cleanEmail === "ipm04niketp@iimrohtak.ac.in") {
-    const pwd = prompt("Enter password for Niket Parikh's account:");
-    if (pwd !== "1212") {
-      alert("Incorrect password. Access denied.");
-      return;
-    }
-  }
-  
   // Authorize student email
   const student = studentDatabase[cleanEmail];
   
@@ -10026,7 +10018,7 @@ async function loadUserData() {
   }
   
   // Auto-sync Google Sheet timetable silently in the background
-  await autoSyncTimetable();
+  autoSyncTimetable().catch(e => console.warn("Auto sync background error:", e));
 
   // Ask for notification permission on first tap if push notifications are enabled
   document.body.addEventListener('click', function askPermissionOnGesture() {
