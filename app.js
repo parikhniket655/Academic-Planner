@@ -82,7 +82,8 @@ try {
    ========================================================================== */
 
 // Hardcoded Configurations & Backend API Credentials
-const TIMETABLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbzKMkHRtxKEWhyybW6CLdlfAHIS0ICimLE4g4-n5Oa_ipo3tG22NEjRMZlvcIxNBB_K/exec";
+// Hardcoded Configurations & Backend API Credentials
+const TIMETABLE_SHEETS_URL = "https://docs.google.com/spreadsheets/d/1KO1bwDTVyirnMFLKpsdDe8y6OiicN-Xju9ytnpnDIFQ/edit?gid=1739917831#gid=1739917831";
 const SUPABASE_URL = "https://frnyuuywkteqiyinlrmp.supabase.co";  // Paste your Supabase project URL here (e.g. "https://xxxx.supabase.co")
 const SUPABASE_KEY = "sb_publishable_dfysjA_5CU1AmweExgrmiA_FD0AS34o";  // Paste your Supabase Anon/Public Key here
 
@@ -106,7 +107,40 @@ const COURSE_NAMES = {
   "CV Sec-A": "Corporate Valuation Sec A",
   "CV Sec-B": "Corporate Valuation Sec B",
   "GBS Sec-B": "Global Business Simulation Sec B",
-  "CW Sec-B": "Communication Workshop Sec B"
+  "CW Sec-B": "Communication Workshop Sec B",
+
+  // Term V Subjects
+  "CSY": "Cyber Security",
+  "IT": "Information Technology",
+  "FORM": "Financial Risk Operations Management",
+  "PBM": "Product & Brand Management",
+  "PBM Sec-A": "Product & Brand Management Sec A",
+  "PBM Sec-B": "Product & Brand Management Sec B",
+  "SNAB": "Social Network Analytics for Business",
+  "TQMS": "Total Quality Management & Six Sigma",
+  "TQMS Sec-A": "Total Quality Management Sec A",
+  "TQMS Sec-B": "Total Quality Management Sec B",
+  "MSS": "Management Systems & Strategy",
+  "MSS Sec-A": "Management Systems & Strategy Sec A",
+  "MSS Sec-B": "Management Systems & Strategy Sec B",
+  "MSS Sec-C": "Management Systems & Strategy Sec C",
+  "MSS Sec-D": "Management Systems & Strategy Sec D",
+  "GSEC": "Global Strategy & Emerging Companies",
+  "FIS": "Financial Institutions & Services",
+  "IB": "International Business",
+  "SNCM": "Strategic Negotiation & Commercial Management",
+  "SNCM Sec-A": "Strategic Negotiation Sec A",
+  "SNCM Sec-B": "Strategic Negotiation Sec B",
+  "AAB": "Advanced Accounting for Business",
+  "PFWM": "Personal Finance & Wealth Management",
+  "Project Course": "Project Course",
+  "MBFM": "Management of Banking & Financial Markets",
+  "SM": "Strategic Management",
+  "MSD": "Market Structure & Dynamics",
+  "NPD": "New Product Development",
+  "SoM": "Service Operations Management",
+  "IMC": "Integrated Marketing Communication",
+  "SSM": "Services Marketing & Strategy"
 };
 
 // Course Credit Weights (matches 6.5 credits for 9 scheduled courses in screenshot)
@@ -135,7 +169,40 @@ const COURSE_CREDITS = {
   "FM": 0.75,
   "FSA": 1.0,
   "GFMG": 0.5,
-  "IMDM": 1.0
+  "IMDM": 1.0,
+
+  // Term V Credits
+  "CSY": 1.0,
+  "IT": 1.0,
+  "FORM": 1.0,
+  "PBM": 1.0,
+  "PBM Sec-A": 1.0,
+  "PBM Sec-B": 1.0,
+  "SNAB": 1.0,
+  "TQMS": 1.0,
+  "TQMS Sec-A": 1.0,
+  "TQMS Sec-B": 1.0,
+  "MSS": 1.0,
+  "MSS Sec-A": 1.0,
+  "MSS Sec-B": 1.0,
+  "MSS Sec-C": 1.0,
+  "MSS Sec-D": 1.0,
+  "GSEC": 1.0,
+  "FIS": 1.0,
+  "IB": 1.0,
+  "SNCM": 1.0,
+  "SNCM Sec-A": 1.0,
+  "SNCM Sec-B": 1.0,
+  "AAB": 1.0,
+  "PFWM": 1.0,
+  "Project Course": 1.0,
+  "MBFM": 1.0,
+  "SM": 1.0,
+  "MSD": 1.0,
+  "NPD": 1.0,
+  "SoM": 1.0,
+  "IMC": 1.0,
+  "SSM": 1.0
 };
 
 // Course Total Scheduled Sessions count in syllabus
@@ -164,7 +231,40 @@ const COURSE_TOTAL_SESSIONS = {
   "FM": 14,
   "FSA": 20,
   "GFMG": 10,
-  "IMDM": 20
+  "IMDM": 20,
+
+  // Term V Total Sessions
+  "CSY": 20,
+  "IT": 20,
+  "FORM": 20,
+  "PBM": 20,
+  "PBM Sec-A": 20,
+  "PBM Sec-B": 20,
+  "SNAB": 20,
+  "TQMS": 20,
+  "TQMS Sec-A": 20,
+  "TQMS Sec-B": 20,
+  "MSS": 20,
+  "MSS Sec-A": 20,
+  "MSS Sec-B": 20,
+  "MSS Sec-C": 20,
+  "MSS Sec-D": 20,
+  "GSEC": 20,
+  "FIS": 20,
+  "IB": 20,
+  "SNCM": 20,
+  "SNCM Sec-A": 20,
+  "SNCM Sec-B": 20,
+  "AAB": 20,
+  "PFWM": 20,
+  "Project Course": 20,
+  "MBFM": 20,
+  "SM": 20,
+  "MSD": 20,
+  "NPD": 20,
+  "SoM": 20,
+  "IMC": 20,
+  "SSM": 20
 };
 
 function getCourseCredits(courseId) {
@@ -266,7 +366,7 @@ function isStudentEnrolled(studentCourses, courseId) {
     if (normUser === normId) return true;
     
     // E.g. timetable is "BA", user is "BA SEC-A" (combined classes support)
-    const baseCodes = ["CW", "GBS", "BA", "CV", "AIDMD", "B2B", "IBS", "PFM", "DBM"];
+    const baseCodes = ["CW", "GBS", "BA", "CV", "AIDMD", "B2B", "IBS", "PFM", "DBM", "MSS", "SNCM", "PBM", "TQMS"];
     if (normUser.startsWith(normId) && baseCodes.includes(normId)) {
       return true;
     }
@@ -283,120 +383,113 @@ const DEFAULT_STUDENT_DB = {
   "ipm04niketp@iimrohtak.ac.in": {
     name: "Niket Parikh",
     courses: [
-      "AIDMD",
-      "B2B",
-      "BA Sec-A",
-      "CV Sec-A",
-      "IBS",
-      "PFM",
-      "GBS Sec-B",
-      "CW Sec-B"
+      "CSY",
+      "IT",
+      "FORM",
+      "PBM Sec-A",
+      "SNAB",
+      "TQMS Sec-B",
+      "MSS Sec-A"
     ]
   },
   "ipm04palaky@iimrohtak.ac.in": {
     name: "Palak Yadav",
     courses: [
-      "AIDMD",
-      "BA Sec-A",
-      "DBM",
-      "PCM",
-      "PS",
-      "SCM Sec-A",
-      "TA",
-      "GBS Sec-B",
-      "CW Sec-B"
+      "GSEC",
+      "SNCM Sec-A",
+      "SSM",
+      "PBM Sec-B",
+      "TQMS Sec-A",
+      "MSS Sec-A"
     ]
   },
   "pgp16hidayrajsinhc@iimrohtak.ac.in": {
     name: "Hidayrajsinh Chauhan",
     courses: [
-      "BA Sec-A",
-      "CV Sec-A",
-      "FM",
-      "FSA",
-      "GFMG",
-      "MFIS",
-      "PWMP",
-      "GBS Sec-D",
-      "CW Sec-D"
+      "GSEC",
+      "FIS",
+      "FORM",
+      "IB",
+      "SNCM Sec-B",
+      "MSS Sec-C"
     ]
   },
-
   "ipm04adityabs@iimrohtak.ac.in": {
     name: "Aditya Brijgopal Sarda",
     courses: [
-      "BA Sec-A",
-      "CV Sec-A",
-      "FM",
-      "FSA",
-      "GFMG",
-      "MFIS",
-      "PWMP",
-      "GBS Sec-A",
-      "CW Sec-A"
+      "GSEC",
+      "AAB",
+      "FIS",
+      "IB",
+      "SNCM Sec-A",
+      "MSS Sec-A"
     ]
   },
   "ipm04prithivit@iimrohtak.ac.in": {
     name: "Prithivi Tejeshwar",
     courses: [
-      "BA Sec-B",
-      "CV Sec-B",
-      "FSA",
-      "IBS",
-      "MFIS",
-      "GBS Sec-C",
-      "CW Sec-C"
+      "FORM",
+      "IB",
+      "PFWM",
+      "PBM Sec-A",
+      "MSS Sec-C",
+      "Project Course"
     ]
   },
   "pgp16tanishthav@iimrohtak.ac.in": {
     name: "Tanishtha Verma",
     courses: [
-      "AIDMD",
-      "B2B",
-      "BA Sec-B",
-      "DBM",
-      "PCM",
-      "PFM",
-      "GBS Sec-D",
-      "CW Sec-D"
+      "GSEC",
+      "MBFM",
+      "SM",
+      "MSD",
+      "TQMS Sec-B",
+      "MSS Sec-D"
     ]
   },
   "pgp16akshita@iimrohtak.ac.in": {
     name: "Akshita",
     courses: [
-      "B2B",
-      "BA Sec-A",
-      "Ind4.0",
-      "PCM",
-      "SCM Sec-A",
-      "SHRM",
-      "GBS Sec-A",
-      "CW Sec-A"
+      "SNCM Sec-A",
+      "PBM Sec-B",
+      "SNAB",
+      "NPD",
+      "TQMS Sec-A",
+      "MSS Sec-A"
     ]
   },
   "ipm04mridulu@iimrohtak.ac.in": {
     name: "Mridul Upadhyay",
     courses: [
-      "B2B",
-      "BA Sec-A",
-      "CV Sec-A",
-      "IBS",
-      "SCM Sec-A",
-      "GBS Sec-A",
-      "CW Sec-A"
+      "AAB",
+      "SNCM Sec-A",
+      "PBM Sec-B",
+      "SoM",
+      "MSS Sec-B",
+      "Project Course"
     ]
   },
   "pgp16divyanshid@iimrohtak.ac.in": {
     name: "Divyanshi Dongre",
     courses: [
-      "CB Sec-A",
-      "DBM",
-      "MBPET",
-      "PCM",
-      "PS",
-      "SHRM",
-      "GBS Sec-B",
-      "CW Sec-B"
+      "GSEC",
+      "CSY",
+      "IT",
+      "SNCM Sec-A",
+      "IMC",
+      "SM",
+      "MSS Sec-B"
+    ]
+  },
+  "ipm04rainaa@iimrohtak.ac.in": {
+    name: "Raina Arjun",
+    courses: [
+      "GSEC",
+      "AAB",
+      "FIS",
+      "IB",
+      "SNCM Sec-A",
+      "MSS Sec-A"
     ]
   }
 };
@@ -826,7 +919,7 @@ async function loadUserData() {
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
   // Version key: bump this whenever DEFAULT_TIMETABLE or expansion logic changes
-  const TIMETABLE_CACHE_VERSION = "v9";
+  const TIMETABLE_CACHE_VERSION = "v10";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
