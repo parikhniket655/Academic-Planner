@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 4.2) {
+  if (isStorageWorking && storedVer < 4.3) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "4.2");
+    window.localStorage.setItem("iimr_app_version", "4.3");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -2612,35 +2612,40 @@ function mergeTimetable(liveTimetable) {
 async function autoSyncTimetable() {
   let synced = false;
 
-  // 1. Primary: Load complete timetable from Supabase
-  if (supabaseClient) {
+  // 1. Primary: Direct fetch from Supabase REST API (No CDN dependency!)
+  if (SUPABASE_URL && SUPABASE_KEY) {
     try {
-      const { data, error } = await supabaseClient
-        .from('timetable')
-        .select('*');
-      if (error) throw error;
-      if (data && data.length > 0) {
-        const parsed = data.map(s => ({
-          dateKey: s.date_key,
-          day: s.day,
-          slot: s.slot,
-          courseId: s.course_id,
-          subject: s.subject,
-          room: s.room,
-          instructor: s.instructor,
-          section: s.section
-        }));
-        state.timetable = mergeTimetable(parsed);
-        saveTimetable();
-        renderDashboard();
-        if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
-          renderAttendanceTab();
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/timetable?select=*`, {
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`
         }
-        console.log(`Timetable successfully loaded ${parsed.length} sessions from Supabase.`);
-        synced = true;
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.length > 0) {
+          const parsed = data.map(s => ({
+            dateKey: s.date_key,
+            day: s.day,
+            slot: s.slot,
+            courseId: s.course_id,
+            subject: s.subject,
+            room: s.room,
+            instructor: s.instructor,
+            section: s.section
+          }));
+          state.timetable = mergeTimetable(parsed);
+          saveTimetable();
+          renderDashboard();
+          if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
+            renderAttendanceTab();
+          }
+          console.log(`Timetable successfully loaded ${parsed.length} sessions from direct Supabase REST API.`);
+          synced = true;
+        }
       }
     } catch (e) {
-      console.warn("Failed to sync timetable from Supabase:", e);
+      console.warn("Failed to fetch timetable from Supabase REST API:", e);
     }
   }
 
