@@ -82,7 +82,7 @@ try {
    ========================================================================== */
 
 // Hardcoded Configurations & Backend API Credentials
-const TIMETABLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxRaUY1cwMs39mrSiq4WpVENQL4mV6r5lqszRWMQngPjSSJNFW9yiCi7i81fcH_yuYn/exec";
+const TIMETABLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxoc845iGqxwYmyECtHppmte5RYPuhfb7e2RNn4RkLq53dSJE6R5Zkul-rs--4TkW2xLA/exec";
 const SUPABASE_URL = "https://frnyuuywkteqiyinlrmp.supabase.co";  // Paste your Supabase project URL here (e.g. "https://xxxx.supabase.co")
 const SUPABASE_KEY = "sb_publishable_dfysjA_5CU1AmweExgrmiA_FD0AS34o";  // Paste your Supabase Anon/Public Key here
 
@@ -374,6 +374,45 @@ function isStudentEnrolled(studentCourses, courseId) {
       return true;
     }
   }
+}
+
+function isDateKeyMatch(lecture, targetDateKey) {
+  if (!lecture || !targetDateKey) return false;
+  
+  // 1. Direct match (e.g. "2026-09-12" === "2026-09-12")
+  if (lecture.dateKey === targetDateKey) return true;
+
+  // Normalize inputs
+  const lKey = String(lecture.dateKey || "").trim();
+  const lDay = String(lecture.day || "").trim();
+  
+  // 2. Parsed Date object check (e.g. "Sat Sep 12 2026...")
+  if (lKey.length > 10 && (lKey.includes("GMT") || lKey.includes("India") || lKey.includes("202"))) {
+    const pDate = new Date(lKey);
+    if (!isNaN(pDate.getTime())) {
+      const formattedKey = formatDateKey(pDate);
+      if (formattedKey === targetDateKey) return true;
+    }
+  }
+
+  // 3. Match Day of Week (e.g. lKey or lDay is "Saturday", "Monday", "Sat", "Mon")
+  const parts = targetDateKey.split('-');
+  if (parts.length === 3) {
+    const targetDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]), 12, 0, 0);
+    const fullDayName = targetDate.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
+    const shortDayName = targetDate.toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase();
+    
+    const keyLow = lKey.toLowerCase();
+    const dayLow = lDay.toLowerCase();
+    
+    if (keyLow === fullDayName || keyLow === shortDayName) return true;
+    if (dayLow === fullDayName || dayLow === shortDayName) {
+      if (!/\d{4}-\d{2}-\d{2}/.test(keyLow)) {
+        return true;
+      }
+    }
+  }
+  
   return false;
 }
 
@@ -918,7 +957,7 @@ async function loadUserData() {
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
   // Version key: bump this whenever DEFAULT_TIMETABLE or expansion logic changes
-  const TIMETABLE_CACHE_VERSION = "v11";
+  const TIMETABLE_CACHE_VERSION = "v12";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
@@ -1873,7 +1912,7 @@ function renderWeekTimetable() {
     let dayClasses = state.timetable.filter(lecture => {
       const isEnrolled = isStudentEnrolled(state.user.courses, lecture.courseId);
       if (!isEnrolled) return false;
-      return lecture.dateKey === dateKey;
+      return isDateKeyMatch(lecture, dateKey);
     });
 
     totalLecturesThisWeek += dayClasses.length;
@@ -2027,7 +2066,7 @@ function renderMonthTimetable() {
     const dayClasses = state.timetable.filter(lecture => {
       const matchesCourse = isStudentEnrolled(state.user.courses, lecture.courseId);
       if (!matchesCourse) return false;
-      return lecture.dateKey === cellDateKey;
+      return isDateKeyMatch(lecture, cellDateKey);
     });
     
     // Calculate stats if cell falls in current week
@@ -2928,7 +2967,7 @@ function getWazirDaySchedule(dateKey, dayName) {
   ];
 
   // Find all scheduled lectures for this day in the database
-  const dayLectures = state.timetable.filter(s => s.dateKey === dateKey);
+  const dayLectures = state.timetable.filter(s => isDateKeyMatch(s, dateKey));
 
   const result = [];
   
