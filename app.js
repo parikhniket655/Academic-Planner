@@ -82,8 +82,7 @@ try {
    ========================================================================== */
 
 // Hardcoded Configurations & Backend API Credentials
-// Hardcoded Configurations & Backend API Credentials
-const TIMETABLE_SHEETS_URL = "https://docs.google.com/spreadsheets/d/1KO1bwDTVyirnMFLKpsdDe8y6OiicN-Xju9ytnpnDIFQ/edit?gid=1739917831#gid=1739917831";
+const TIMETABLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxRaUY1cwMs39mrSiq4WpVENQL4mV6r5lqszRWMQngPjSSJNFW9yiCi7i81fcH_yuYn/exec";
 const SUPABASE_URL = "https://frnyuuywkteqiyinlrmp.supabase.co";  // Paste your Supabase project URL here (e.g. "https://xxxx.supabase.co")
 const SUPABASE_KEY = "sb_publishable_dfysjA_5CU1AmweExgrmiA_FD0AS34o";  // Paste your Supabase Anon/Public Key here
 
@@ -919,7 +918,7 @@ async function loadUserData() {
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
   // Version key: bump this whenever DEFAULT_TIMETABLE or expansion logic changes
-  const TIMETABLE_CACHE_VERSION = "v10";
+  const TIMETABLE_CACHE_VERSION = "v11";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
