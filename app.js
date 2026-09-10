@@ -379,14 +379,10 @@ function isStudentEnrolled(studentCourses, courseId) {
 function isDateKeyMatch(lecture, targetDateKey) {
   if (!lecture || !targetDateKey) return false;
   
-  // 1. Direct match (e.g. "2026-09-12" === "2026-09-12")
-  if (lecture.dateKey === targetDateKey) return true;
+  let lKey = String(lecture.dateKey || lecture.date_key || "").trim();
+  if (lKey === targetDateKey) return true;
 
-  // Normalize inputs
-  const lKey = String(lecture.dateKey || "").trim();
-  const lDay = String(lecture.day || "").trim();
-  
-  // 2. Parsed Date object check (e.g. "Sat Sep 12 2026...")
+  // Parsed Date object check (e.g. "Sat Sep 12 2026...")
   if (lKey.length > 10 && (lKey.includes("GMT") || lKey.includes("India") || lKey.includes("202"))) {
     const pDate = new Date(lKey);
     if (!isNaN(pDate.getTime())) {
@@ -395,24 +391,13 @@ function isDateKeyMatch(lecture, targetDateKey) {
     }
   }
 
-  // 3. Match Day of Week (e.g. lKey or lDay is "Saturday", "Monday", "Sat", "Mon")
-  const parts = targetDateKey.split('-');
-  if (parts.length === 3) {
-    const targetDate = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]), 12, 0, 0);
-    const fullDayName = targetDate.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
-    const shortDayName = targetDate.toLocaleDateString('en-US', { weekday: 'short' }).toLowerCase();
-    
-    const keyLow = lKey.toLowerCase();
-    const dayLow = lDay.toLowerCase();
-    
-    if (keyLow === fullDayName || keyLow === shortDayName) return true;
-    if (dayLow === fullDayName || dayLow === shortDayName) {
-      if (!/\d{4}-\d{2}-\d{2}/.test(keyLow)) {
-        return true;
-      }
-    }
+  // DD/MM/YYYY or DD-MM-YYYY format matching
+  const mSlash = lKey.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/);
+  if (mSlash) {
+    const formattedKey = `${mSlash[3]}-${String(mSlash[2]).padStart(2, '0')}-${String(mSlash[1]).padStart(2, '0')}`;
+    if (formattedKey === targetDateKey) return true;
   }
-  
+
   return false;
 }
 
