@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 510.0) {
+  if (isStorageWorking && storedVer < 520.0) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "510.0");
+    window.localStorage.setItem("iimr_app_version", "520.0");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -746,28 +746,10 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-13",
     "day": "Sun",
     "slot": "14:30 - 15:45",
-    "courseId": "IT",
-    "subject": "Fixed Income Securities",
-    "room": "LR 07",
-    "instructor": "Dr. Deepabali Bhattacharjee"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sun",
-    "slot": "14:30 - 15:45",
     "courseId": "FIS",
     "subject": "FIS",
     "room": "LR 07",
     "instructor": "Dr. Amit Pandey"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sun",
-    "slot": "14:30 - 15:45",
-    "courseId": "IT",
-    "subject": "Dr. Amit Pandey",
-    "room": "LR 07",
-    "instructor": "Dr. Deepabali Bhattacharjee"
   },
   {
     "dateKey": "2026-09-14",
@@ -1043,15 +1025,6 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-16",
     "day": "Wed",
     "slot": "20:50 - 22:05",
-    "courseId": "IT",
-    "subject": "Mergers and Acquisitions",
-    "room": "LR 07",
-    "instructor": "Dr. Deepabali Bhattacharjee"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
     "courseId": "M&A",
     "subject": "M & A",
     "room": "LR 07",
@@ -1137,15 +1110,6 @@ const DEFAULT_TIMETABLE = [
     "subject": "TM 2(LRM)",
     "room": "LR 07",
     "instructor": "Dr. Lubna Rashid Malik"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNAB",
-    "subject": "Strategies for New Age Businesses",
-    "room": "LR 07",
-    "instructor": "Dr. Pranav Dharmani"
   },
   {
     "dateKey": "2026-09-18",
@@ -5110,7 +5074,7 @@ async function loadUserData() {
   initSupabase();
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v310";
+  const TIMETABLE_CACHE_VERSION = "v320";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
