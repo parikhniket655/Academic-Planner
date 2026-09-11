@@ -82,7 +82,7 @@ try {
    ========================================================================== */
 
 // Hardcoded Configurations & Backend API Credentials
-const TIMETABLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxoc845iGqxwYmyECtHppmte5RYPuhfb7e2RNn4RkLq53dSJE6R5Zkul-rs--4TkW2xLA/exec";
+const TIMETABLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbyMlI_uymfSGLsvDLXg9SdyrZ_gCWQkqSissJr9OQe3NUI6KN6Z1wzkOx0aScMxP-xCgw/exec";
 const SUPABASE_URL = "https://frnyuuywkteqiyinlrmp.supabase.co";  // Paste your Supabase project URL here (e.g. "https://xxxx.supabase.co")
 const SUPABASE_KEY = "sb_publishable_dfysjA_5CU1AmweExgrmiA_FD0AS34o";  // Paste your Supabase Anon/Public Key here
 
@@ -385,6 +385,9 @@ function isDateKeyMatch(lecture, targetDateKey) {
   if (!lecture || !targetDateKey) return false;
   
   let lKey = String(lecture.dateKey || lecture.date_key || "").trim();
+  if (lKey.startsWith("2001-")) {
+    lKey = "2026-" + lKey.substring(5);
+  }
   if (lKey === targetDateKey) return true;
 
   // Parsed Date object check (e.g. "Sat Sep 12 2026...")
@@ -11746,7 +11749,7 @@ async function loadUserData() {
   initSupabase();
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v105";
+  const TIMETABLE_CACHE_VERSION = "v110";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
