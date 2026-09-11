@@ -908,96 +908,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "MSS",
-    "subject": "MSS 12 (AY)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Scheduled",
-    "slot": "08:45 - 10:00",
-    "courseId": "Fixed Income Securities",
-    "subject": "Fixed Income Securities",
-    "room": "LR 07",
-    "instructor": "Dr. Amit Pandey"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Scheduled",
-    "slot": "08:45 - 10:00",
-    "courseId": "PFWM",
-    "subject": "Personal Finance & Wealth Management",
-    "room": "LR 07",
-    "instructor": "Dr Surbhi Verma"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Scheduled",
-    "slot": "08:45 - 10:00",
-    "courseId": "Markstrat Simulations (Core)",
-    "subject": "Markstrat Simulations (Core)",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav (A&D), Dr. Harmanjit Singh (C), Dr. Archit V. Tapar (B)"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Scheduled",
-    "slot": "08:45 - 10:00",
-    "courseId": "Mergers and Acquisitions",
-    "subject": "Mergers and Acquisitions",
-    "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Scheduled",
-    "slot": "08:45 - 10:00",
-    "courseId": "Strategies for New Age Businesses",
-    "subject": "Strategies for New Age Businesses",
-    "room": "LR 07",
-    "instructor": "Dr. Pranav Dharmani"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "PFWM",
-    "subject": "PFWM 12(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "TQMS",
-    "subject": "TQMS 12(CPG)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "PBM",
-    "subject": "PBM 9 (AVT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "FIS",
-    "subject": "FIS 13(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2001-11-01",
     "day": "Friday",
     "slot": "12:30",
@@ -1156,15 +1066,6 @@ const DEFAULT_TIMETABLE = [
     "slot": "12:30",
     "courseId": "SNCM",
     "subject": "SNCM 10(MM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-20",
-    "day": "Tuesday",
-    "slot": "12:30",
-    "courseId": "Dussehra",
-    "subject": "Dussehra",
     "room": "LR 07",
     "instructor": "Faculty"
   },
@@ -1480,42 +1381,6 @@ const DEFAULT_TIMETABLE = [
     "slot": "12:30",
     "courseId": "AK1",
     "subject": "AK1",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sunday",
-    "slot": "12:30",
-    "courseId": "Fixed Income Securities",
-    "subject": "Fixed Income Securities",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sunday",
-    "slot": "12:30",
-    "courseId": "FIS",
-    "subject": "FIS",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sunday",
-    "slot": "12:30",
-    "courseId": "Dr. Amit Pandey",
-    "subject": "Dr. Amit Pandey",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sunday",
-    "slot": "12:30",
-    "courseId": "AP2",
-    "subject": "AP2",
     "room": "LR 07",
     "instructor": "Faculty"
   },
@@ -2168,42 +2033,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2026-09-26",
-    "day": "Saturday",
-    "slot": "12:30",
-    "courseId": "PBM",
-    "subject": "PBM 5 (AVT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Saturday",
-    "slot": "12:30",
-    "courseId": "AAB",
-    "subject": "AAB 7(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Saturday",
-    "slot": "12:30",
-    "courseId": "SNCM",
-    "subject": "SNCM 5(MM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Saturday",
-    "slot": "12:30",
-    "courseId": "MSD",
-    "subject": "MSD 4(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2001-03-01",
     "day": "Monday",
     "slot": "12:30",
@@ -2375,42 +2204,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2026-10-01",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "PBM",
-    "subject": "PBM 6 (AVT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-01",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "TQMS",
-    "subject": "TQMS 9(CPG)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-01",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "PFWM",
-    "subject": "PFWM 9(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-02",
-    "day": "Friday",
-    "slot": "12:30",
-    "courseId": "Gandhi Jayanti",
-    "subject": "Gandhi Jayanti",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2001-04-01",
     "day": "Saturday",
     "slot": "12:30",
@@ -2461,42 +2254,6 @@ const DEFAULT_TIMETABLE = [
     "slot": "12:30",
     "courseId": "IMC",
     "subject": "IMC 4(GRVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Monday",
-    "slot": "12:30",
-    "courseId": "MSS",
-    "subject": "MSS 9 (AY)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Monday",
-    "slot": "12:30",
-    "courseId": "AAB",
-    "subject": "AAB 9(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Monday",
-    "slot": "12:30",
-    "courseId": "TM 6(LRM)",
-    "subject": "TM 6(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Monday",
-    "slot": "12:30",
-    "courseId": "IMC",
-    "subject": "IMC 5(GRVF)",
     "room": "LR 07",
     "instructor": "Faculty"
   },
@@ -2906,51 +2663,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "MSS",
-    "subject": "MSS 12 (AY)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "PFWM",
-    "subject": "PFWM 12(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "TQMS",
-    "subject": "TQMS 12(CPG)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "PBM",
-    "subject": "PBM 9 (AVT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "12:30",
-    "courseId": "FIS",
-    "subject": "FIS 13(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2001-11-01",
     "day": "Friday",
     "slot": "12:30",
@@ -3109,15 +2821,6 @@ const DEFAULT_TIMETABLE = [
     "slot": "12:30",
     "courseId": "SNCM",
     "subject": "SNCM 10(MM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-20",
-    "day": "Tuesday",
-    "slot": "12:30",
-    "courseId": "Dussehra",
-    "subject": "Dussehra",
     "room": "LR 07",
     "instructor": "Faculty"
   },
@@ -3383,114 +3086,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2026-10-27",
-    "day": "Tuesday",
-    "slot": "12:30",
-    "courseId": "PBM",
-    "subject": "PBM 13 (AVT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tuesday",
-    "slot": "12:30",
-    "courseId": "PFWM",
-    "subject": "PFWM 15(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tuesday",
-    "slot": "12:30",
-    "courseId": "TQMS",
-    "subject": "TQMS 15(CPG)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tuesday",
-    "slot": "12:30",
-    "courseId": "TM 11(LRM)",
-    "subject": "TM 11(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tuesday",
-    "slot": "12:30",
-    "courseId": "GSEC",
-    "subject": "GSEC 14(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tuesday",
-    "slot": "12:30",
-    "courseId": "IB",
-    "subject": "IB 11(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wednesday",
-    "slot": "12:30",
-    "courseId": "FIS",
-    "subject": "FIS 16(AP2)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wednesday",
-    "slot": "12:30",
-    "courseId": "ENV 11(RC)",
-    "subject": "ENV 11(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wednesday",
-    "slot": "12:30",
-    "courseId": "NPD",
-    "subject": "NPD 13(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wednesday",
-    "slot": "12:30",
-    "courseId": "MSD",
-    "subject": "MSD 12(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wednesday",
-    "slot": "12:30",
-    "courseId": "SNCM",
-    "subject": "SNCM 12(MM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wednesday",
-    "slot": "12:30",
-    "courseId": "ENV 12(RC)",
-    "subject": "ENV 12(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2001-12-01",
     "day": "Thursday",
     "slot": "12:30",
@@ -3532,51 +3127,6 @@ const DEFAULT_TIMETABLE = [
     "slot": "12:30",
     "courseId": "SNAB",
     "subject": "SNAB 13(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Friday",
-    "slot": "12:30",
-    "courseId": "PBM",
-    "subject": "PBM 14 (AVT)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Friday",
-    "slot": "12:30",
-    "courseId": "GSEC",
-    "subject": "GSEC 15(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Friday",
-    "slot": "12:30",
-    "courseId": "FIS",
-    "subject": "FIS 17(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Friday",
-    "slot": "12:30",
-    "courseId": "IB",
-    "subject": "IB 13(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Friday",
-    "slot": "12:30",
-    "courseId": "MBFM",
-    "subject": "MBFM 11(CSVF)",
     "room": "LR 07",
     "instructor": "Faculty"
   },
@@ -4769,42 +4319,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2026-09-13",
-    "day": "Sunday",
-    "slot": "12:30",
-    "courseId": "Fixed Income Securities",
-    "subject": "Fixed Income Securities",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sunday",
-    "slot": "12:30",
-    "courseId": "FIS",
-    "subject": "FIS",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sunday",
-    "slot": "12:30",
-    "courseId": "Dr. Amit Pandey",
-    "subject": "Dr. Amit Pandey",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sunday",
-    "slot": "12:30",
-    "courseId": "AP2",
-    "subject": "AP2",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2001-02-01",
     "day": "Monday",
     "slot": "12:30",
@@ -5449,42 +4963,6 @@ const DEFAULT_TIMETABLE = [
     "slot": "12:30",
     "courseId": "MSD",
     "subject": "MSD 3(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Saturday",
-    "slot": "12:30",
-    "courseId": "PBM",
-    "subject": "PBM 5 (AVT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Saturday",
-    "slot": "12:30",
-    "courseId": "AAB",
-    "subject": "AAB 7(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Saturday",
-    "slot": "12:30",
-    "courseId": "SNCM",
-    "subject": "SNCM 5(MM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Saturday",
-    "slot": "12:30",
-    "courseId": "MSD",
-    "subject": "MSD 4(AT)",
     "room": "LR 07",
     "instructor": "Faculty"
   },
@@ -9575,13 +9053,589 @@ const DEFAULT_TIMETABLE = [
     "instructor": "SY|14"
   },
   {
+    "dateKey": "2026-09-01",
+    "day": "Tuesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "FIS",
+    "subject": "Fixed Income Securities",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-01",
+    "day": "Tuesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-09-01",
+    "day": "Tuesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-01",
+    "day": "Tuesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-01",
+    "day": "Tuesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "Social Networks & Commercial Media",
+    "room": "LR 02",
+    "instructor": "Dr. Mihir Kushwah"
+  },
+  {
+    "dateKey": "2026-09-01",
+    "day": "Tuesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-02",
+    "day": "Wednesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-02",
+    "day": "Wednesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-02",
+    "day": "Wednesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-02",
+    "day": "Wednesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-02",
+    "day": "Wednesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-02",
+    "day": "Wednesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-03",
+    "day": "Thursday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-03",
+    "day": "Thursday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-09-03",
+    "day": "Thursday",
+    "slot": "11:55 - 13:10",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-03",
+    "day": "Thursday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "Personal Finance & Wealth Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-03",
+    "day": "Thursday",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-03",
+    "day": "Thursday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-04",
+    "day": "Friday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-04",
+    "day": "Friday",
+    "slot": "10:20 - 11:35",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-04",
+    "day": "Friday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-04",
+    "day": "Friday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-04",
+    "day": "Friday",
+    "slot": "16:05 - 17:20",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-04",
+    "day": "Friday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-05",
+    "day": "Saturday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-05",
+    "day": "Saturday",
+    "slot": "10:20 - 11:35",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-05",
+    "day": "Saturday",
+    "slot": "11:55 - 13:10",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-05",
+    "day": "Saturday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-05",
+    "day": "Saturday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-05",
+    "day": "Saturday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-07",
+    "day": "Monday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-07",
+    "day": "Monday",
+    "slot": "10:20 - 11:35",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-07",
+    "day": "Monday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-07",
+    "day": "Monday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-07",
+    "day": "Monday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-07",
+    "day": "Monday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-07",
+    "day": "Monday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-08",
+    "day": "Tuesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "FIS",
+    "subject": "Fixed Income Securities",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-08",
+    "day": "Tuesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-09-08",
+    "day": "Tuesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-08",
+    "day": "Tuesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-08",
+    "day": "Tuesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "Social Networks & Commercial Media",
+    "room": "LR 02",
+    "instructor": "Dr. Mihir Kushwah"
+  },
+  {
+    "dateKey": "2026-09-08",
+    "day": "Tuesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-09",
+    "day": "Wednesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-09",
+    "day": "Wednesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-09",
+    "day": "Wednesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-09",
+    "day": "Wednesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-09",
+    "day": "Wednesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-09",
+    "day": "Wednesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-10",
+    "day": "Thursday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-10",
+    "day": "Thursday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-09-10",
+    "day": "Thursday",
+    "slot": "11:55 - 13:10",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-10",
+    "day": "Thursday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "Personal Finance & Wealth Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-10",
+    "day": "Thursday",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-10",
+    "day": "Thursday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-11",
+    "day": "Friday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-11",
+    "day": "Friday",
+    "slot": "10:20 - 11:35",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-11",
+    "day": "Friday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-11",
+    "day": "Friday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-11",
+    "day": "Friday",
+    "slot": "16:05 - 17:20",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-11",
+    "day": "Friday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Saturday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Saturday",
+    "slot": "10:20 - 11:35",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Saturday",
+    "slot": "11:55 - 13:10",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
     "dateKey": "2026-09-12",
     "day": "Saturday",
     "slot": "14:30 - 15:45",
     "courseId": "IT",
     "subject": "Information Technology Strategy",
     "room": "LR 02",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rajesh P."
   },
   {
     "dateKey": "2026-09-12",
@@ -9590,7 +9644,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "Total Quality Management & Six Sigma",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-09-12",
@@ -9599,11 +9653,2341 @@ const DEFAULT_TIMETABLE = [
     "courseId": "FORM",
     "subject": "Financial Operations & Risk Management",
     "room": "LR 02",
-    "instructor": "Faculty"
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Monday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Monday",
+    "slot": "10:20 - 11:35",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Monday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Monday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Monday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Monday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Monday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tuesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "FIS",
+    "subject": "Fixed Income Securities",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tuesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tuesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tuesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tuesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "Social Networks & Commercial Media",
+    "room": "LR 02",
+    "instructor": "Dr. Mihir Kushwah"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tuesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wednesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wednesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wednesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wednesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wednesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wednesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thursday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thursday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thursday",
+    "slot": "11:55 - 13:10",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thursday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "Personal Finance & Wealth Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thursday",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thursday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Friday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Friday",
+    "slot": "10:20 - 11:35",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Friday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Friday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Friday",
+    "slot": "16:05 - 17:20",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Friday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Saturday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Saturday",
+    "slot": "10:20 - 11:35",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Saturday",
+    "slot": "11:55 - 13:10",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Saturday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Saturday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Saturday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Monday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Monday",
+    "slot": "10:20 - 11:35",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Monday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Monday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Monday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Monday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Monday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tuesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "FIS",
+    "subject": "Fixed Income Securities",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tuesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tuesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tuesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tuesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "Social Networks & Commercial Media",
+    "room": "LR 02",
+    "instructor": "Dr. Mihir Kushwah"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tuesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wednesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wednesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wednesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wednesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wednesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wednesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thursday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thursday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thursday",
+    "slot": "11:55 - 13:10",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thursday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "Personal Finance & Wealth Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thursday",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thursday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Friday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Friday",
+    "slot": "10:20 - 11:35",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Friday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Friday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Friday",
+    "slot": "16:05 - 17:20",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Friday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Saturday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Saturday",
+    "slot": "10:20 - 11:35",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Saturday",
+    "slot": "11:55 - 13:10",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Saturday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Saturday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Saturday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Monday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Monday",
+    "slot": "10:20 - 11:35",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Monday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Monday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Monday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Monday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Monday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tuesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "FIS",
+    "subject": "Fixed Income Securities",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tuesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tuesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tuesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tuesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "Social Networks & Commercial Media",
+    "room": "LR 02",
+    "instructor": "Dr. Mihir Kushwah"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tuesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wednesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wednesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wednesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wednesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wednesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wednesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thursday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thursday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thursday",
+    "slot": "11:55 - 13:10",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thursday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "Personal Finance & Wealth Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thursday",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thursday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-02",
+    "day": "Friday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-02",
+    "day": "Friday",
+    "slot": "10:20 - 11:35",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-02",
+    "day": "Friday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-02",
+    "day": "Friday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-02",
+    "day": "Friday",
+    "slot": "16:05 - 17:20",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-02",
+    "day": "Friday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Saturday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Saturday",
+    "slot": "10:20 - 11:35",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Saturday",
+    "slot": "11:55 - 13:10",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Saturday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Saturday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Saturday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Monday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Monday",
+    "slot": "10:20 - 11:35",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Monday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Monday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Monday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Monday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Monday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tuesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "FIS",
+    "subject": "Fixed Income Securities",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tuesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tuesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tuesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tuesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "Social Networks & Commercial Media",
+    "room": "LR 02",
+    "instructor": "Dr. Mihir Kushwah"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tuesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wednesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wednesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wednesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wednesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wednesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wednesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thursday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thursday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thursday",
+    "slot": "11:55 - 13:10",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thursday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "Personal Finance & Wealth Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thursday",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thursday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Friday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Friday",
+    "slot": "10:20 - 11:35",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Friday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Friday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Friday",
+    "slot": "16:05 - 17:20",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Friday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Saturday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Saturday",
+    "slot": "10:20 - 11:35",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Saturday",
+    "slot": "11:55 - 13:10",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Saturday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Saturday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Saturday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Monday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Monday",
+    "slot": "10:20 - 11:35",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Monday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Monday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Monday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Monday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Monday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tuesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "FIS",
+    "subject": "Fixed Income Securities",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tuesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tuesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tuesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tuesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "Social Networks & Commercial Media",
+    "room": "LR 02",
+    "instructor": "Dr. Mihir Kushwah"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tuesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wednesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wednesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wednesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wednesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wednesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wednesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thursday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thursday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thursday",
+    "slot": "11:55 - 13:10",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thursday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "Personal Finance & Wealth Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thursday",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thursday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Friday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Friday",
+    "slot": "10:20 - 11:35",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Friday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Friday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Friday",
+    "slot": "16:05 - 17:20",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Friday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Saturday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Saturday",
+    "slot": "10:20 - 11:35",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Saturday",
+    "slot": "11:55 - 13:10",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Saturday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Saturday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Saturday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Monday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Monday",
+    "slot": "10:20 - 11:35",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Monday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Monday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Monday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Monday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Monday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-20",
+    "day": "Tuesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "FIS",
+    "subject": "Fixed Income Securities",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-20",
+    "day": "Tuesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-10-20",
+    "day": "Tuesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-20",
+    "day": "Tuesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-20",
+    "day": "Tuesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "Social Networks & Commercial Media",
+    "room": "LR 02",
+    "instructor": "Dr. Mihir Kushwah"
+  },
+  {
+    "dateKey": "2026-10-20",
+    "day": "Tuesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wednesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wednesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wednesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wednesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wednesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wednesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thursday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thursday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thursday",
+    "slot": "11:55 - 13:10",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thursday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "Personal Finance & Wealth Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thursday",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thursday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Friday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Friday",
+    "slot": "10:20 - 11:35",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Friday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Friday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Friday",
+    "slot": "16:05 - 17:20",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Friday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Saturday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Saturday",
+    "slot": "10:20 - 11:35",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Saturday",
+    "slot": "11:55 - 13:10",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Saturday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Saturday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Saturday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Monday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Monday",
+    "slot": "10:20 - 11:35",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Monday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Monday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Monday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Monday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Monday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tuesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "FIS",
+    "subject": "Fixed Income Securities",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tuesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tuesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tuesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tuesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "Social Networks & Commercial Media",
+    "room": "LR 02",
+    "instructor": "Dr. Mihir Kushwah"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tuesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wednesday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wednesday",
+    "slot": "10:20 - 11:35",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wednesday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wednesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wednesday",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wednesday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thursday",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "Growth Strategies for Emerging Companies",
+    "room": "LR 02",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thursday",
+    "slot": "10:20 - 11:35",
+    "courseId": "AAB",
+    "subject": "Advanced Accounting for Business",
+    "room": "LR 02",
+    "instructor": "Dr. Somya Arora"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thursday",
+    "slot": "11:55 - 13:10",
+    "courseId": "IB",
+    "subject": "International Business Strategies",
+    "room": "LR 02",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thursday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "Personal Finance & Wealth Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thursday",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thursday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Friday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Friday",
+    "slot": "10:20 - 11:35",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Friday",
+    "slot": "11:55 - 13:10",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Friday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Friday",
+    "slot": "16:05 - 17:20",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Friday",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-A",
+    "subject": "Management Systems & Services",
+    "room": "LR 02",
+    "instructor": "Dr. K. L. Sharma"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Saturday",
+    "slot": "08:45 - 10:00",
+    "courseId": "CSY",
+    "subject": "Cybersecurity Strategy",
+    "room": "LR 02",
+    "instructor": "Prof. S. K. Sharma"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Saturday",
+    "slot": "10:20 - 11:35",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Saturday",
+    "slot": "11:55 - 13:10",
+    "courseId": "PBM Sec-A",
+    "subject": "Product & Brand Management",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Saturday",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Information Technology Strategy",
+    "room": "LR 02",
+    "instructor": "Dr. Rajesh P."
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Saturday",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "Total Quality Management & Six Sigma",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Saturday",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "Financial Operations & Risk Management",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
   }
 ];
 
-// Wazir Group Access List
 const WAZIR_MEMBERS = [
   "ipm04niketp@iimrohtak.ac.in",
   "pgp16hidayrajsinhc@iimrohtak.ac.in",
@@ -9881,7 +12265,7 @@ async function loadUserData() {
     // If user's active courses still contain Term IV courses (e.g. AIDMD, B2B), update to Term V
     const hasTerm4 = state.user.courses.some(c => ["AIDMD", "B2B", "CV Sec-A", "BA Sec-A", "PFM"].includes(c));
     const cachedVer = storage.getItem(`iimr_timetable_version_${email}`);
-    const TIMETABLE_CACHE_VERSION = "v14";
+    const TIMETABLE_CACHE_VERSION = "v95";
 
     if (hasTerm4 || cachedVer !== TIMETABLE_CACHE_VERSION) {
       console.log("Migrating student subscriptions to Term V courses...");
@@ -9909,7 +12293,7 @@ async function loadUserData() {
   initSupabase();
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v14";
+  const TIMETABLE_CACHE_VERSION = "v95";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
@@ -10835,7 +13219,7 @@ function renderWeekTimetable() {
   const startStr = monday.toLocaleDateString('en-GB'); // DD/MM/YYYY
   document.getElementById("calendar-date-label").textContent = startStr;
 
-  const columns = document.querySelectorAll(".week-column");
+  const columns = document.querySelectorAll("#week-timetable-view .week-column");
 
   let totalLecturesThisWeek = 0;
   const uniqueCoursesThisWeek = new Set();
