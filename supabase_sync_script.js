@@ -111,6 +111,7 @@ function mapToCourseCode(cName) {
   if (u.includes("TALENT MANAGEMENT") || u === "TM" || u.startsWith("TM ")) return "TM";
   if (u.includes("MERGERS") || u === "M&A" || u.includes("M & A")) return "M&A";
   if (u.includes("ENTREPRENEURSHIP") || u === "ENV") return "ENV";
+  if (u.includes("EXECUTIVE SALES") || u === "ESMM" || u.startsWith("ESMM ")) return "ESMM";
   if (u.includes("PROJECT COURSE")) return "Project Course";
 
   return "";
