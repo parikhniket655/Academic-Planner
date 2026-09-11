@@ -11749,7 +11749,7 @@ async function loadUserData() {
   initSupabase();
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v110";
+  const TIMETABLE_CACHE_VERSION = "v120";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
@@ -13366,11 +13366,18 @@ function normalizeSlotTime(slotStr) {
 }
 
 function mergeTimetable(liveTimetable) {
-  const normalizedLive = (liveTimetable || []).map(item => ({
-    ...item,
-    slot: normalizeSlotTime(item.slot)
-  }));
-  const merged = deduplicateTimetable([...normalizedLive, ...EXAMS_TIMETABLE]);
+  const normalizedLive = (liveTimetable || []).map(item => {
+    let dKey = String(item.dateKey || item.date_key || "").trim();
+    if (dKey.startsWith("2001-")) {
+      dKey = "2026-" + dKey.substring(5);
+    }
+    return {
+      ...item,
+      dateKey: dKey,
+      slot: normalizeSlotTime(item.slot)
+    };
+  });
+  const merged = deduplicateTimetable([...normalizedLive, ...DEFAULT_TIMETABLE, ...EXAMS_TIMETABLE]);
   const todayStr = formatDateKey(state.currentDate);
   
   // Keep custom logged past sessions that were manually added
