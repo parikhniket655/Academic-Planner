@@ -42,10 +42,6 @@ const WAZIR_MEMBERS = {
   "ipm04rainaa@iimrohtak.ac.in": {
     "name": "Raina Arjun",
     "courses": ["GSEC", "AAB", "FIS", "IB", "SNCM Sec-A", "MSS Sec-A"]
-  },
-  "ipm04palaky@iimrohtak.ac.in": {
-    "name": "Palak Yadav",
-    "courses": ["GSEC", "SNCM Sec-A", "SSM", "PBM Sec-B", "TQMS Sec-A", "MSS Sec-A"]
   }
 };
 
