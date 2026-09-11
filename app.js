@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 600.0) {
+  if (isStorageWorking && storedVer < 700.0) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "600.0");
+    window.localStorage.setItem("iimr_app_version", "700.0");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -4019,24 +4019,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Dr. Harmanjit Singh"
   },
   {
-    "dateKey": "2026-11-07",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "FORM",
-    "subject": "FORM 17(US)",
-    "room": "LR 07",
-    "instructor": "Dr. Ujjwal Sawarn"
-  },
-  {
-    "dateKey": "2026-11-09",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "FORM",
-    "subject": "FORM 18(US)",
-    "room": "LR 07",
-    "instructor": "Dr. Ujjwal Sawarn"
-  },
-  {
     "dateKey": "2026-11-13",
     "day": "Fri",
     "slot": "14:30 - 15:45",
@@ -4176,16 +4158,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Sat",
     "slot": "20:50 - 22:05",
     "courseId": "FORM",
-    "subject": "FORM 19(US)",
-    "room": "LR 07",
-    "instructor": "Dr. Ujjwal Sawarn"
-  },
-  {
-    "dateKey": "2026-11-16",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "FORM",
-    "subject": "FORM 20(US)",
+    "subject": "FORM 17(US)",
     "room": "LR 07",
     "instructor": "Dr. Ujjwal Sawarn"
   },
@@ -4296,6 +4269,15 @@ const DEFAULT_TIMETABLE = [
     "subject": "MSS 19",
     "room": "LR 07",
     "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 18(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
   },
   {
     "dateKey": "2026-11-18",
@@ -4424,6 +4406,15 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Dr. Anurag Kulshrestha"
   },
   {
+    "dateKey": "2026-11-21",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "FORM 19(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
     "dateKey": "2026-11-23",
     "day": "Mon",
     "slot": "08:45 - 10:00",
@@ -4476,6 +4467,15 @@ const DEFAULT_TIMETABLE = [
     "subject": "MSS 20",
     "room": "LR 07",
     "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 20(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
   },
   {
     "dateKey": "2026-11-23",
@@ -5082,8 +5082,8 @@ async function loadUserData() {
   // Initialize database client
   initSupabase();
 
-    // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v500";
+      // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
+  const TIMETABLE_CACHE_VERSION = "v600";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
@@ -5091,8 +5091,8 @@ async function loadUserData() {
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
     try {
       const parsed = JSON.parse(cachedTimetable);
-      const csyCount = parsed.filter(s => s.courseId === 'CSY').length;
-      if (csyCount >= 10) validCache = true;
+      const diwaliConflicts = parsed.filter(s => s.dateKey >= '2026-11-07' && s.dateKey <= '2026-11-12');
+      if (diwaliConflicts.length === 0) validCache = true;
     } catch(e) {}
   }
 
