@@ -139,7 +139,10 @@ const COURSE_NAMES = {
   "NPD": "New Product Development",
   "SoM": "Service Operations Management",
   "IMC": "Integrated Marketing Communication",
-  "SSM": "Services Marketing & Strategy"
+  "SSM": "Services Marketing & Strategy",
+  "ESMM": "Executive Sales & Marketing Management",
+  "M&A": "Mergers and Acquisitions",
+  "ENV": "Entrepreneurship & New Ventures"
 };
 
 // Course Credit Weights (matches 6.5 credits for 9 scheduled courses in screenshot)
@@ -196,6 +199,7 @@ const COURSE_CREDITS = {
   "PBM Sec-B": 1.0,
   "SM": 1.0,
   "M & A": 1.0,
+  "M&A": 1.0,
   "ENV": 1.0,
   "ESMM": 1.0,
   "SoM": 1.0,
@@ -267,7 +271,10 @@ const COURSE_TOTAL_SESSIONS = {
   "NPD": 20,
   "SoM": 20,
   "IMC": 20,
-  "SSM": 20
+  "SSM": 20,
+  "ESMM": 20,
+  "M&A": 20,
+  "ENV": 20
 };
 
 function getCourseCredits(courseId) {
@@ -516,17 +523,6 @@ const DEFAULT_STUDENT_DB = {
       "MSS Sec-A"
     ]
   },
-  "ipm04palaky@iimrohtak.ac.in": {
-    name: "Palak Yadav",
-    courses: [
-      "GSEC",
-      "SNCM Sec-A",
-      "SSM",
-      "PBM Sec-B",
-      "TQMS Sec-A",
-      "MSS Sec-A"
-    ]
-  },
   "pgp16hidayrajsinhc@iimrohtak.ac.in": {
     name: "Hidayrajsinh Chauhan",
     courses: [
@@ -618,56 +614,11 @@ const DEFAULT_STUDENT_DB = {
   }
 };
 
-// Default Timetable Mapping (Spans late June to late July 2026 to match stats & dates in screenshots)
-const EXAMS_TIMETABLE = [
-  // 24th August, 2026 (Monday)
-  { dateKey: "2026-08-24", day: "Monday", slot: "10:30 - 12:30", courseId: "MBPET", subject: "EXAM: Managing Business Processes with Emerging Technologies (MBPET)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-24", day: "Monday", slot: "14:30 - 16:30", courseId: "CV", subject: "EXAM: Corporate Valuation (CV)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-24", day: "Monday", slot: "14:30 - 16:30", courseId: "PM", subject: "EXAM: Project Management (PM)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-24", day: "Monday", slot: "14:30 - 16:30", courseId: "PCM", subject: "EXAM: Performance and Compensation Management (PCM)", room: "Exam Hall", instructor: "EXAM" },
-
-  // 25th August, 2026 (Tuesday)
-  { dateKey: "2026-08-25", day: "Tuesday", slot: "10:30 - 12:30", courseId: "AIDMD", subject: "EXAM: AI-Driven Marketing Decision Making (AIDMD)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-25", day: "Tuesday", slot: "14:30 - 16:30", courseId: "SCM", subject: "EXAM: Supply Chain Management (SCM)", room: "Exam Hall", instructor: "EXAM" },
-
-  // 27th August, 2026 (Thursday)
-  { dateKey: "2026-08-27", day: "Thursday", slot: "10:30 - 12:30", courseId: "FADT", subject: "EXAM: Fundamentals and Applications of Design Thinking (FADT)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-27", day: "Thursday", slot: "10:30 - 12:30", courseId: "IBS", subject: "EXAM: International Business Strategies (IBS)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-27", day: "Thursday", slot: "14:30 - 16:30", courseId: "BA", subject: "EXAM: Business Analytics (BA)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-27", day: "Thursday", slot: "14:30 - 16:30", courseId: "BGRI", subject: "EXAM: Business–Government Relations in India (BGRI)", room: "Exam Hall", instructor: "EXAM" },
-
-  // 28th August, 2026 (Friday)
-  { dateKey: "2026-08-28", day: "Friday", slot: "10:30 - 12:30", courseId: "FM", subject: "EXAM: Financial Modelling (FM)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-28", day: "Friday", slot: "14:30 - 16:30", courseId: "GBS", subject: "EXAM: Global Business Simulation (GBS)", room: "Exam Hall", instructor: "EXAM" },
-
-  // 29th August, 2026 (Saturday)
-  { dateKey: "2026-08-29", day: "Saturday", slot: "10:30 - 12:30", courseId: "TA", subject: "EXAM: Talent Acquisition (TA)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-29", day: "Saturday", slot: "14:30 - 16:30", courseId: "CB", subject: "EXAM: Consumer Behaviour (CB)", room: "Exam Hall", instructor: "EXAM" },
-
-  // 30th August, 2026 (Sunday)
-  { dateKey: "2026-08-30", day: "Sunday", slot: "10:30 - 12:30", courseId: "PS", subject: "EXAM: Pricing Strategies (PS)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-30", day: "Sunday", slot: "10:30 - 12:30", courseId: "FSA", subject: "EXAM: Financial Statement Analysis (FSA)", room: "Exam Hall", instructor: "EXAM" },
-
-  // 31st August, 2026 (Monday)
-  { dateKey: "2026-08-31", day: "Monday", slot: "10:30 - 12:30", courseId: "MS", subject: "EXAM: Managing Sustainability (MS)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-31", day: "Monday", slot: "14:30 - 16:30", courseId: "PWMP", subject: "EXAM: Playing to Win Market and Power (PWMP)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-08-31", day: "Monday", slot: "14:30 - 16:30", courseId: "SHRM", subject: "EXAM: Strategic Human Resource Management (SHRM)", room: "Exam Hall", instructor: "EXAM" },
-
-  // 1st September, 2026 (Tuesday)
-  { dateKey: "2026-09-01", day: "Tuesday", slot: "10:30 - 12:30", courseId: "IMDM", subject: "EXAM: Insurance and Managerial Decision Making (IMDM)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-09-01", day: "Tuesday", slot: "14:30 - 16:30", courseId: "SDM", subject: "EXAM: Sales and Distribution Management (SDM)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-09-01", day: "Tuesday", slot: "14:30 - 16:30", courseId: "IAPM", subject: "EXAM: Investment Analysis & Portfolio Management (IAPM)", room: "Exam Hall", instructor: "EXAM" },
-
-  // 2nd September, 2026 (Wednesday)
-  { dateKey: "2026-09-02", day: "Wednesday", slot: "10:30 - 12:30", courseId: "PFM", subject: "EXAM: Python for Managers (PFM)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-09-02", day: "Wednesday", slot: "14:30 - 16:30", courseId: "B2B", subject: "EXAM: B2B Marketing (B2B)", room: "Exam Hall", instructor: "EXAM" },
-
-  // 3rd September, 2026 (Thursday)
-  { dateKey: "2026-09-03", day: "Thursday", slot: "10:30 - 12:30", courseId: "SC", subject: "EXAM: Strategic Consulting (SC)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-09-03", day: "Thursday", slot: "14:30 - 16:30", courseId: "L&D", subject: "EXAM: Learning and Development (L&D)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-09-03", day: "Thursday", slot: "14:30 - 16:30", courseId: "MFIS", subject: "EXAM: Management of Financial Institutions and Services (MFIS)", room: "Exam Hall", instructor: "EXAM" },
-  { dateKey: "2026-09-03", day: "Thursday", slot: "14:30 - 16:30", courseId: "DBM", subject: "EXAM: Digital Business Models (DBM)", room: "Exam Hall", instructor: "EXAM" }
-];
+// Term V has not published an exam schedule yet — this stays empty until the live
+// sheet (or an official notice) gives real exam dates, so no stale/wrong entries show.
+// (Previously held Term IV's August 2026 exam schedule, which predates Term V's
+// Sept 12 start and doesn't match any Term V course code — that was a leftover bug.)
+const EXAMS_TIMETABLE = [];
 
 const DEFAULT_TIMETABLE = [
   {
@@ -4883,7 +4834,7 @@ function renderDemoAccounts() {
   
   let chosen = [];
   const test1 = "ipm04niketp@iimrohtak.ac.in";
-  const test2 = "ipm04palaky@iimrohtak.ac.in";
+  const test2 = "pgp16tanishthav@iimrohtak.ac.in";
   
   if (studentDatabase[test1]) chosen.push(test1);
   if (studentDatabase[test2]) chosen.push(test2);
@@ -5083,7 +5034,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v600";
+  const TIMETABLE_CACHE_VERSION = "v601";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
@@ -5106,8 +5057,12 @@ async function loadUserData() {
     saveTimetable();
   }
   
-  // Auto-sync Google Sheet timetable silently in the background
+  // Auto-sync Google Sheet timetable silently in the background, then keep polling
+  // so the app stays in sync with the live sheet for the whole time it's open.
   autoSyncTimetable().catch(e => console.warn("Auto sync background error:", e));
+  setInterval(() => {
+    autoSyncTimetable().catch(e => console.warn("Auto sync background error:", e));
+  }, 5 * 60 * 1000);
 
   // Ask for notification permission on first tap if push notifications are enabled
   document.body.addEventListener('click', function askPermissionOnGesture() {
@@ -6753,9 +6708,14 @@ function mergeTimetable(liveTimetable) {
     };
   }).filter(Boolean);
 
-  const merged = deduplicateTimetable([...normalizedLive, ...DEFAULT_TIMETABLE, ...EXAMS_TIMETABLE]);
+  // The live Google Sheet (synced hourly into Supabase) is the single source of truth.
+  // DEFAULT_TIMETABLE is only a bootstrap placeholder for before the very first sync
+  // completes — once real live sessions exist, mixing the static guess back in would
+  // show stale/incorrect classes (wrong dates, rooms, or faculty) alongside the real ones.
+  const base = normalizedLive.length > 0 ? normalizedLive : DEFAULT_TIMETABLE;
+  const merged = deduplicateTimetable([...base, ...EXAMS_TIMETABLE]);
   const todayStr = formatDateKey(state.currentDate);
-  
+
   // Keep custom logged past sessions that were manually added
   state.timetable.forEach(existingSession => {
     if (existingSession.dateKey && existingSession.dateKey < todayStr && existingSession.dateKey >= "2026-09-12") {
