@@ -750,7 +750,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 2(VKG)",
     "room": "Section D: LR - 06",
@@ -795,7 +795,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 1",
     "room": "LR 07",
@@ -804,7 +804,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 1",
     "room": "LR 07",
@@ -813,7 +813,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 1",
     "room": "LR 07",
@@ -867,7 +867,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-15",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 1(HS)",
     "room": "LR 07",
@@ -912,7 +912,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-15",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 1(MM)",
     "room": "LR 07",
@@ -930,7 +930,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-15",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 1",
     "room": "LR 07",
@@ -939,7 +939,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-15",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 1",
     "room": "LR 07",
@@ -948,7 +948,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-15",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 1",
     "room": "LR 07",
@@ -984,7 +984,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-16",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 2",
     "room": "Section D: LR - 06",
@@ -993,7 +993,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-16",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 2",
     "room": "Section D: LR - 06",
@@ -1002,7 +1002,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-16",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 2",
     "room": "Section D: LR - 06",
@@ -1047,7 +1047,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-16",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 3(VKG)",
     "room": "LR 07",
@@ -1137,7 +1137,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-17",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 3",
     "room": "LR 07",
@@ -1146,7 +1146,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-17",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 3",
     "room": "LR 07",
@@ -1155,7 +1155,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-17",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 3",
     "room": "LR 07",
@@ -1245,7 +1245,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-18",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 2(HS)",
     "room": "LR 07",
@@ -1290,7 +1290,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-19",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 2(MM)",
     "room": "Section D: LR - 06",
@@ -1308,7 +1308,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-19",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 4",
     "room": "LR 07",
@@ -1317,7 +1317,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-19",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 4",
     "room": "LR 07",
@@ -1326,7 +1326,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-19",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 4",
     "room": "LR 07",
@@ -1362,7 +1362,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-19",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 4(VKG)",
     "room": "LR 07",
@@ -1371,7 +1371,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-21",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 5",
     "room": "Section D: LR - 06",
@@ -1380,7 +1380,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-21",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 5",
     "room": "Section D: LR - 06",
@@ -1389,7 +1389,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-21",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 5",
     "room": "Section D: LR - 06",
@@ -1434,7 +1434,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-21",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 5(VKG)",
     "room": "LR 07",
@@ -1452,7 +1452,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-21",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 3(HS)",
     "room": "LR 07",
@@ -1488,7 +1488,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-22",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 3(MM)",
     "room": "LR 07",
@@ -1515,7 +1515,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-22",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 6(VKG)",
     "room": "LR 07",
@@ -1533,7 +1533,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-23",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 7(VKG)",
     "room": "Section D: LR - 06",
@@ -1587,7 +1587,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-24",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 4(HS)",
     "room": "Section D: LR - 06",
@@ -1614,7 +1614,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-24",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 4(MM)",
     "room": "LR 07",
@@ -1659,7 +1659,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-25",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 6",
     "room": "LR 07",
@@ -1668,7 +1668,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-25",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 6",
     "room": "LR 07",
@@ -1677,7 +1677,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-25",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 6",
     "room": "LR 07",
@@ -1713,7 +1713,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-26",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 5(HS)",
     "room": "LR 07",
@@ -1740,7 +1740,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-26",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 5(MM)",
     "room": "LR 07",
@@ -1830,7 +1830,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-29",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 8(VKG)",
     "room": "LR 07",
@@ -1920,7 +1920,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-30",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 7",
     "room": "LR 07",
@@ -1929,7 +1929,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-30",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 7",
     "room": "LR 07",
@@ -1938,7 +1938,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-30",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 7",
     "room": "LR 07",
@@ -1974,7 +1974,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-01",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 6(HS)",
     "room": "LR 07",
@@ -1992,7 +1992,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-01",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 9(VKG)",
     "room": "LR 07",
@@ -2028,7 +2028,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-03",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 8",
     "room": "LR 07",
@@ -2037,7 +2037,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-03",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 8",
     "room": "LR 07",
@@ -2046,7 +2046,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-03",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 8",
     "room": "LR 07",
@@ -2091,7 +2091,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-05",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 9",
     "room": "LR 07",
@@ -2100,7 +2100,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-05",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 9",
     "room": "LR 07",
@@ -2109,7 +2109,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-05",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 9",
     "room": "LR 07",
@@ -2190,7 +2190,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-06",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 7(HS)",
     "room": "LR 07",
@@ -2253,7 +2253,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-07",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 6(MM)",
     "room": "LR 07",
@@ -2289,7 +2289,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-08",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 10(VKG)",
     "room": "LR 07",
@@ -2334,7 +2334,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-09",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 10",
     "room": "Section D: LR - 06",
@@ -2343,7 +2343,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-09",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 10",
     "room": "Section D: LR - 06",
@@ -2352,7 +2352,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-09",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 10",
     "room": "Section D: LR - 06",
@@ -2442,7 +2442,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-10",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 7(MM)",
     "room": "LR 07",
@@ -2478,7 +2478,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-12",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 11",
     "room": "LR 07",
@@ -2487,7 +2487,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-12",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 11",
     "room": "LR 07",
@@ -2496,7 +2496,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-12",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 11",
     "room": "LR 07",
@@ -2532,7 +2532,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-12",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 11(VKG)",
     "room": "LR 07",
@@ -2577,7 +2577,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-13",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 8(MM)",
     "room": "LR 07",
@@ -2604,7 +2604,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-13",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 8(HS)",
     "room": "LR 07",
@@ -2676,7 +2676,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-15",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 12",
     "room": "LR 07",
@@ -2685,7 +2685,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-15",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 12",
     "room": "LR 07",
@@ -2694,7 +2694,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-15",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 12",
     "room": "LR 07",
@@ -2730,7 +2730,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-15",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 12(VKG)",
     "room": "LR 07",
@@ -2748,7 +2748,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-15",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 9(HS)",
     "room": "LR 07",
@@ -2793,7 +2793,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-16",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 9(MM)",
     "room": "LR 07",
@@ -2865,7 +2865,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-17",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 13(VKG)",
     "room": "LR 07",
@@ -2892,7 +2892,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-17",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 10(HS)",
     "room": "LR 07",
@@ -2928,7 +2928,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-19",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 13",
     "room": "LR 07",
@@ -2937,7 +2937,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-19",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 13",
     "room": "LR 07",
@@ -2946,7 +2946,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-19",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 13",
     "room": "LR 07",
@@ -2982,7 +2982,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-19",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 10(MM)",
     "room": "LR 07",
@@ -3036,7 +3036,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-21",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 11(HS)",
     "room": "LR 07",
@@ -3054,7 +3054,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-21",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 14(VKG)",
     "room": "LR 07",
@@ -3081,7 +3081,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-22",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 14",
     "room": "LR 07",
@@ -3090,7 +3090,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-22",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 14",
     "room": "LR 07",
@@ -3099,7 +3099,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-22",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 14",
     "room": "LR 07",
@@ -3135,7 +3135,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-22",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 12(HS)",
     "room": "LR 07",
@@ -3234,7 +3234,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-24",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 15",
     "room": "LR 07",
@@ -3243,7 +3243,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-24",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 15",
     "room": "LR 07",
@@ -3252,7 +3252,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-24",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 15",
     "room": "LR 07",
@@ -3288,7 +3288,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-26",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 11(MM)",
     "room": "LR 07",
@@ -3351,7 +3351,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-27",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 13(HS)",
     "room": "LR 07",
@@ -3378,7 +3378,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-27",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 15(VKG)",
     "room": "LR 07",
@@ -3459,7 +3459,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-28",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 12(MM)",
     "room": "LR 07",
@@ -3495,7 +3495,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-29",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 16",
     "room": "LR 07",
@@ -3504,7 +3504,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-29",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 16",
     "room": "LR 07",
@@ -3513,7 +3513,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-29",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 16",
     "room": "LR 07",
@@ -3558,7 +3558,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-30",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 14(HS)",
     "room": "Section D: LR - 06",
@@ -3657,7 +3657,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-02",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 17",
     "room": "LR 07",
@@ -3666,7 +3666,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-02",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 17",
     "room": "LR 07",
@@ -3675,7 +3675,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-02",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 17",
     "room": "LR 07",
@@ -3756,7 +3756,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-03",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 13(MM)",
     "room": "LR 07",
@@ -3783,7 +3783,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-03",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 15(HS)",
     "room": "LR 07",
@@ -3810,7 +3810,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-04",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 16(VKG)",
     "room": "LR 07",
@@ -3882,7 +3882,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-05",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 18",
     "room": "LR 07",
@@ -3891,7 +3891,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-05",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 18",
     "room": "LR 07",
@@ -3900,7 +3900,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-05",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 18",
     "room": "LR 07",
@@ -3945,7 +3945,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-06",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 14(MM)",
     "room": "LR 07",
@@ -3972,7 +3972,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-06",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 16(HS)",
     "room": "LR 07",
@@ -4017,7 +4017,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-13",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 17(HS)",
     "room": "LR 07",
@@ -4089,7 +4089,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-14",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 15(MM)",
     "room": "LR 07",
@@ -4125,7 +4125,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-14",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 17(VKG)",
     "room": "LR 07",
@@ -4170,7 +4170,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-17",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 18(HS)",
     "room": "LR 07",
@@ -4197,7 +4197,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-17",
     "day": "Tue",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 16(MM)",
     "room": "LR 07",
@@ -4224,7 +4224,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-18",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 19",
     "room": "LR 07",
@@ -4233,7 +4233,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-18",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 19",
     "room": "LR 07",
@@ -4242,7 +4242,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-18",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 19",
     "room": "LR 07",
@@ -4287,7 +4287,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2025-11-19",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 17(MM)",
     "room": "LR 07",
@@ -4314,7 +4314,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2025-11-19",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 18(VKG)",
     "room": "LR 07",
@@ -4377,7 +4377,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-20",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 19(HS)",
     "room": "LR 07",
@@ -4467,7 +4467,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-23",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 20",
     "room": "LR 07",
@@ -4476,7 +4476,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-23",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-B",
     "subject": "MSS 20",
     "room": "LR 07",
@@ -4485,7 +4485,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-23",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 20",
     "room": "LR 07",
@@ -4521,7 +4521,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-23",
     "day": "Mon",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 18(MM)",
     "room": "LR 07",
@@ -4566,7 +4566,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-25",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 19(MM)",
     "room": "Section D: LR - 06",
@@ -4620,7 +4620,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-25",
     "day": "Wed",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 19(VKG)",
     "room": "LR 07",
@@ -4647,7 +4647,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-26",
     "day": "Thu",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-B",
     "subject": "PBM 20(HS)",
     "room": "LR 07",
@@ -4701,7 +4701,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-27",
     "day": "Fri",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 20(VKG)",
     "room": "LR 07",
@@ -4773,7 +4773,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-28",
     "day": "Sat",
-    "slot": "14:30 - 15:45",
+    "slot": "17:40 - 18:55",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 20(MM)",
     "room": "LR 07",
@@ -4814,15 +4814,6 @@ const DEFAULT_TIMETABLE = [
     "subject": "ENV 20(RC)",
     "room": "LR 07",
     "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Saturday",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 1(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
   },
   {
     "dateKey": "2026-09-12",
