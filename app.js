@@ -170,38 +170,42 @@ const COURSE_CREDITS = {
   "GFMG": 0.5,
   "IMDM": 1.0,
 
-  // Term V Credits
-  "CSY": 1.0,
-  "IT": 1.0,
+  // Term V Official Credits Table
+  "GSEC": 1.0,
+  "CSY": 0.5,
+  "AAB": 1.0,
+  "IT": 0.5,
+  "FIS": 1.0,
   "FORM": 1.0,
-  "PBM": 1.0,
-  "PBM Sec-A": 1.0,
-  "PBM Sec-B": 1.0,
-  "SNAB": 1.0,
-  "TQMS": 1.0,
-  "TQMS Sec-A": 1.0,
-  "TQMS Sec-B": 1.0,
+  "MBFM": 1.0,
+  "IB": 1.0,
+  "PFWM": 1.0,
+  "TM": 1.0,
+  "SNCM": 1.0,
+  "SNCM Sec-A": 1.0,
+  "SNCM Sec-B": 1.0,
+  "SSM": 1.0,
   "MSS": 1.0,
   "MSS Sec-A": 1.0,
   "MSS Sec-B": 1.0,
   "MSS Sec-C": 1.0,
   "MSS Sec-D": 1.0,
-  "GSEC": 1.0,
-  "FIS": 1.0,
-  "IB": 1.0,
-  "SNCM": 1.0,
-  "SNCM Sec-A": 1.0,
-  "SNCM Sec-B": 1.0,
-  "AAB": 1.0,
-  "PFWM": 1.0,
-  "Project Course": 1.0,
-  "MBFM": 1.0,
-  "SM": 1.0,
-  "MSD": 1.0,
-  "NPD": 1.0,
-  "SoM": 1.0,
   "IMC": 1.0,
-  "SSM": 1.0
+  "PBM": 1.0,
+  "PBM Sec-A": 1.0,
+  "PBM Sec-B": 1.0,
+  "SM": 1.0,
+  "M & A": 1.0,
+  "ENV": 1.0,
+  "ESMM": 1.0,
+  "SoM": 1.0,
+  "SNAB": 1.0,
+  "NPD": 1.0,
+  "MSD": 1.0,
+  "TQMS": 1.0,
+  "TQMS Sec-A": 1.0,
+  "TQMS Sec-B": 1.0,
+  "Project Course": 1.0
 };
 
 // Course Total Scheduled Sessions count in syllabus
@@ -356,23 +360,39 @@ function deduplicateTimetable(list) {
   return filteredSorted.sort((a, b) => (a.dateKey || "").localeCompare(b.dateKey || ""));
 }
 
-function isStudentEnrolled(studentCourses, courseId) {
+function isStudentEnrolled(studentCourses, courseId, lecture) {
   if (!studentCourses || !courseId) return false;
   const normId = normalizeCourseId(courseId);
+  const subjStr = String(lecture ? (lecture.subject || "") : "").toUpperCase();
+  const instStr = String(lecture ? (lecture.instructor || "") : "").toUpperCase();
   
   for (let uCourse of studentCourses) {
     const normUser = normalizeCourseId(uCourse);
     if (normUser === normId) return true;
     
-    // Check base course match (e.g. user has "PBM Sec-A" and lecture is "PBM" or vice versa)
     const baseCodes = ["CW", "GBS", "BA", "CV", "AIDMD", "B2B", "IBS", "PFM", "DBM", "MSS", "SNCM", "PBM", "TQMS", "CSY", "IT", "FORM", "SNAB", "FIS", "IB", "AAB", "PFWM", "MBFM", "SM", "MSD", "NPD", "SOM", "IMC", "SSM"];
     
     const uBase = baseCodes.find(b => normUser.startsWith(normalizeCourseId(b)));
     const lBase = baseCodes.find(b => normId.startsWith(normalizeCourseId(b)));
 
     if (uBase && lBase && normalizeCourseId(uBase) === normalizeCourseId(lBase)) {
-      if (normUser.includes("SEC") && normId.includes("SEC")) {
-        if (normUser === normId) return true;
+      if (normUser.includes("SEC")) {
+        const uSecMatch = normUser.match(/SEC[\-]*([A-D])/);
+        const uSec = uSecMatch ? uSecMatch[1] : "";
+        
+        if (normId.includes("SEC")) {
+          const lSecMatch = normId.match(/SEC[\-]*([A-D])/);
+          const lSec = lSecMatch ? lSecMatch[1] : "";
+          if (uSec && lSec && uSec !== lSec) return false;
+        }
+        
+        if (normUser.includes("TQMSSEC-B") && (subjStr.includes("CPG") || instStr.includes("CPG"))) {
+          return false;
+        }
+        if (normUser.includes("TQMSSEC-A") && (subjStr.includes("VKG") || instStr.includes("VKG"))) {
+          return false;
+        }
+        return true;
       } else {
         return true;
       }
@@ -599,7 +619,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-12",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 1(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -698,7 +718,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-14",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 2(CPG)",
     "room": "Section D: LR - 06",
     "instructor": "Faculty"
@@ -887,7 +907,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-16",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 3(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -1121,7 +1141,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-19",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 4(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -1157,7 +1177,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-21",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 5(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -1211,7 +1231,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-22",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 6(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -1220,7 +1240,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-23",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 7(CPG)",
     "room": "Section D: LR - 06",
     "instructor": "Faculty"
@@ -1445,7 +1465,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-29",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 8(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -1562,7 +1582,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-01",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 9(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -1787,7 +1807,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-08",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 10(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -1958,7 +1978,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-12",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 11(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -2102,7 +2122,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-15",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 12(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -2210,7 +2230,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-17",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 13(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -2336,7 +2356,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-21",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 14(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -2579,7 +2599,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-27",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 15(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -2930,7 +2950,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-04",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 16(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -3173,7 +3193,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-14",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 17(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -3317,7 +3337,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2025-11-19",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 18(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -3560,7 +3580,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-25",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 19(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -3623,7 +3643,7 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-27",
     "day": "Fri",
     "slot": "14:30 - 15:45",
-    "courseId": "TQMS",
+    "courseId": "TQMS Sec-A",
     "subject": "TQMS 20(CPG)",
     "room": "LR 07",
     "instructor": "Faculty"
@@ -4045,7 +4065,7 @@ async function loadUserData() {
   initSupabase();
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v140";
+  const TIMETABLE_CACHE_VERSION = "v160";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
@@ -4436,7 +4456,7 @@ function renderDashboard() {
 
   // 1. Render Greeting celebration banner depending on lectures
   const todayClasses = state.timetable.filter(s => {
-    const isEnrolled = isStudentEnrolled(state.user.courses, s.courseId);
+    const isEnrolled = isStudentEnrolled(state.user.courses, s.courseId, s);
     if (!isEnrolled) return false;
     return s.dateKey === todayStr;
   });
@@ -4599,7 +4619,7 @@ function renderDashboard() {
   if (examsContainer) {
     const todayStrVal = formatDateKey(getActualToday());
     const myExams = EXAMS_TIMETABLE.filter(s => {
-      const isEnrolled = isStudentEnrolled(state.user.courses, s.courseId);
+      const isEnrolled = isStudentEnrolled(state.user.courses, s.courseId, s);
       return isEnrolled && s.dateKey >= todayStrVal;
     });
     myExams.sort((a, b) => a.dateKey.localeCompare(b.dateKey));
@@ -4998,7 +5018,7 @@ function renderWeekTimetable() {
 
     // Fetch classes for this day and student
     let dayClasses = state.timetable.filter(lecture => {
-      const isEnrolled = isStudentEnrolled(state.user.courses, lecture.courseId);
+      const isEnrolled = isStudentEnrolled(state.user.courses, lecture.courseId, lecture);
       if (!isEnrolled) return false;
       return isDateKeyMatch(lecture, dateKey);
     });
@@ -5152,7 +5172,7 @@ function renderMonthTimetable() {
     const cellDayName = getDayString(c.date);
     
     const dayClasses = state.timetable.filter(lecture => {
-      const matchesCourse = isStudentEnrolled(state.user.courses, lecture.courseId);
+      const matchesCourse = isStudentEnrolled(state.user.courses, lecture.courseId, lecture);
       if (!matchesCourse) return false;
       return isDateKeyMatch(lecture, cellDateKey);
     });
@@ -5868,7 +5888,7 @@ function checkClassReminders() {
   const dateKey = formatDateKey(today);
   
   const todayClasses = state.timetable.filter(s => {
-    const isEnrolled = isStudentEnrolled(state.user.courses, s.courseId);
+    const isEnrolled = isStudentEnrolled(state.user.courses, s.courseId, s);
     if (!isEnrolled) return false;
     return s.dateKey === dateKey;
   });
