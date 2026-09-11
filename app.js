@@ -11412,42 +11412,6 @@ const DEFAULT_TIMETABLE = [
     "subject": "Financial Operations & Risk Management",
     "room": "LR 02",
     "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Saturday",
-    "slot": "08:45 - 10:00",
-    "courseId": "CSY",
-    "subject": "Cybersecurity Strategy",
-    "room": "LR 02",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Saturday",
-    "slot": "11:55 - 13:10",
-    "courseId": "PBM Sec-A",
-    "subject": "Product & Brand Management",
-    "room": "LR 02",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Saturday",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-A",
-    "subject": "Total Quality Management & Six Sigma",
-    "room": "LR 01",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Saturday",
-    "slot": "11:55 - 13:10",
-    "courseId": "MSS Sec-A",
-    "subject": "Management Systems & Services",
-    "room": "LR 02",
-    "instructor": "Faculty"
   }
 ];
 
@@ -11749,7 +11713,7 @@ async function loadUserData() {
   initSupabase();
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v120";
+  const TIMETABLE_CACHE_VERSION = "v130";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
