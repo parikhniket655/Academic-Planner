@@ -6720,7 +6720,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v820";
+  const TIMETABLE_CACHE_VERSION = "v821";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
@@ -7020,17 +7020,59 @@ function getMonday(d) {
   return new Date(d.setDate(diff));
 }
 
+// Academic Area Mapping for Term V Electives (Official PGP 16 Curriculum)
+const COURSE_AREA_MAP = {
+  // MIS (Management Information Systems)
+  "GSEC": "MIS", "CSY": "MIS", "AAB": "MIS", "ITPM": "MIS", "ABA": "MIS",
+  // EPP (Economics and Public Policy)
+  "IT": "EPP", "EO": "EPP", "EHRM": "EPP", "FEAST": "EPP", "SE": "EPP",
+  // F & A (Finance and Accounting)
+  "FIS": "FA", "FORM": "FA", "MBFM": "FA", "IB": "FA", "PFWM": "FA", "QAF": "FA", "FRM": "FA",
+  // OB & HR (Organizational Behaviour & Human Resources)
+  "TM": "OBHR", "SNCM": "OBHR", "SSM": "OBHR", "SMW": "OBHR", "IHRM": "OBHR",
+  // M & S (Marketing & Strategy)
+  "MSS": "MS", "IMC": "MS", "PBM": "MS", "SM": "MS", "M&A": "MS", "M & A": "MS",
+  "ENV": "MS", "ESMM": "MS", "GMS": "MS", "CIM": "MS", "SOM": "MS", "SNAB": "MS",
+  // OM & QT (Operations Management & Quantitative Techniques)
+  "NPD": "OMQT", "MSD": "OMQT", "TQMS": "OMQT", "TQM": "OMQT", "DSC": "OMQT", "OSY": "OMQT"
+};
+
+const AREA_LABELS = {
+  "MIS": { name: "MIS", fullName: "Information Systems", class: "cat-mis", legendClass: "legend-mis" },
+  "EPP": { name: "EPP", fullName: "Economics & Policy", class: "cat-epp", legendClass: "legend-epp" },
+  "FA":  { name: "F & A", fullName: "Finance & Accounting", class: "cat-fa", legendClass: "legend-fa" },
+  "OBHR": { name: "OB & HR", fullName: "OB & HR", class: "cat-obhr", legendClass: "legend-obhr" },
+  "MS":  { name: "M & S", fullName: "Marketing & Strategy", class: "cat-ms", legendClass: "legend-ms" },
+  "OMQT": { name: "OM & QT", fullName: "Operations & Quant", class: "cat-omqt", legendClass: "legend-omqt" }
+};
+
 function getCourseCategoryClass(courseId, instructor) {
   if (instructor === "EXAM") return "cat-exam";
   if (!courseId) return "cat-default";
-  const id = courseId.toUpperCase();
-  if (id.startsWith("BA")) return "cat-ba";
-  if (id.startsWith("AIDMD")) return "cat-aidmd";
-  if (id.startsWith("GBS")) return "cat-gbs";
-  if (id.startsWith("B2B")) return "cat-b2b";
-  if (id.startsWith("CW")) return "cat-cw";
-  if (id.startsWith("CV")) return "cat-cv";
-  if (id.startsWith("IBS")) return "cat-cv"; // map IBS to green CV style
+  const raw = String(courseId).trim().toUpperCase();
+  const baseCode = raw.split(/[\s\-_]/)[0];
+  
+  const areaKey = COURSE_AREA_MAP[baseCode] || COURSE_AREA_MAP[raw];
+  if (areaKey && AREA_LABELS[areaKey]) {
+    return AREA_LABELS[areaKey].class;
+  }
+
+  // Fallback checks for composite names
+  if (raw.includes("TQMS") || raw.includes("NPD") || raw.includes("MSD")) return "cat-omqt";
+  if (raw.includes("MSS") || raw.includes("PBM") || raw.includes("SNAB") || raw.includes("IMC") || raw.includes("M&A") || raw.includes("ENV") || raw.includes("ESMM") || raw.includes("SOM")) return "cat-ms";
+  if (raw.includes("GSEC") || raw.includes("CSY") || raw.includes("AAB")) return "cat-mis";
+  if (raw.includes("FIS") || raw.includes("FORM") || raw.includes("MBFM") || raw.includes("IB") || raw.includes("PFWM")) return "cat-fa";
+  if (raw.includes("SNCM") || raw.includes("TM") || raw.includes("SSM")) return "cat-obhr";
+  if (raw === "IT" || raw.startsWith("IT ") || raw.includes("ECON")) return "cat-epp";
+
+  // Legacy mappings
+  if (raw.startsWith("BA")) return "cat-ba";
+  if (raw.startsWith("AIDMD")) return "cat-aidmd";
+  if (raw.startsWith("GBS")) return "cat-gbs";
+  if (raw.startsWith("B2B")) return "cat-b2b";
+  if (raw.startsWith("CW")) return "cat-cw";
+  if (raw.startsWith("CV") || raw.startsWith("IBS")) return "cat-cv";
+
   return "cat-default";
 }
 
@@ -7640,7 +7682,22 @@ function openEditStatusModal(courseId, dateKey) {
   document.getElementById("modal-log-entry").classList.add("active");
 }
 
+function renderAreaLegend() {
+  const container = document.getElementById("timetable-area-legend");
+  if (!container) return;
+  container.innerHTML = `
+    <span class="area-legend-title">Academic Areas:</span>
+    <span class="area-legend-item legend-mis" title="Management Information Systems">MIS</span>
+    <span class="area-legend-item legend-epp" title="Economics and Public Policy">EPP</span>
+    <span class="area-legend-item legend-fa" title="Finance and Accounting">F & A</span>
+    <span class="area-legend-item legend-obhr" title="Organizational Behaviour & HR">OB & HR</span>
+    <span class="area-legend-item legend-ms" title="Marketing & Strategy">M & S</span>
+    <span class="area-legend-item legend-omqt" title="Operations Management & Quantitative Techniques">OM & QT</span>
+  `;
+}
+
 function renderTimetableCanvas() {
+  renderAreaLegend();
   if (state.viewMode === "week") {
     document.getElementById("week-timetable-view").classList.add("active");
     document.getElementById("month-timetable-view").classList.remove("active");

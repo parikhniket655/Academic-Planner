@@ -16,22 +16,48 @@
   --accent-purple: #bf5af2;
   --accent-blue: #0a84ff;
   
-  /* Course Category Themes */
+  /* Course Category Themes (Academic Areas) */
+  --c-mis-bg: rgba(0, 210, 255, 0.10);
+  --c-mis-border: #00d2ff;
+  --c-mis-text: #38bdf8;
+  --c-mis-badge: rgba(0, 210, 255, 0.18);
+
+  --c-epp-bg: rgba(48, 209, 88, 0.10);
+  --c-epp-border: #30d158;
+  --c-epp-text: #4ade80;
+  --c-epp-badge: rgba(48, 209, 88, 0.18);
+
+  --c-fa-bg: rgba(255, 180, 0, 0.12);
+  --c-fa-border: #ffb400;
+  --c-fa-text: #fbbf24;
+  --c-fa-badge: rgba(255, 180, 0, 0.18);
+
+  --c-obhr-bg: rgba(191, 90, 242, 0.12);
+  --c-obhr-border: #bf5af2;
+  --c-obhr-text: #c084fc;
+  --c-obhr-badge: rgba(191, 90, 242, 0.18);
+
+  --c-ms-bg: rgba(255, 59, 92, 0.12);
+  --c-ms-border: #ff3b5c;
+  --c-ms-text: #fb7185;
+  --c-ms-badge: rgba(255, 59, 92, 0.18);
+
+  --c-omqt-bg: rgba(94, 92, 230, 0.13);
+  --c-omqt-border: #5e5ce6;
+  --c-omqt-text: #818cf8;
+  --c-omqt-badge: rgba(94, 92, 230, 0.18);
+
+  /* Legacy Themes (for backwards compatibility) */
   --c-ba-bg: rgba(10, 132, 255, 0.1);
   --c-ba-border: #0a84ff;
-  
   --c-aidmd-bg: rgba(255, 159, 10, 0.1);
   --c-aidmd-border: #ff9f0a;
-  
   --c-gbs-bg: rgba(191, 90, 242, 0.1);
   --c-gbs-border: #bf5af2;
-  
   --c-b2b-bg: rgba(255, 45, 85, 0.1);
   --c-b2b-border: #ff2d55;
-  
   --c-cw-bg: rgba(48, 176, 199, 0.1);
   --c-cw-border: #30b0c7;
-  
   --c-cv-bg: rgba(52, 199, 89, 0.1);
   --c-cv-border: #34c759;
   
@@ -66,22 +92,48 @@
   --accent-purple: #8f00ff;
   --accent-blue: #0055ff;
   
-  /* Course Category Themes (slightly darker text/borders for readability in light mode) */
+  /* Course Category Themes (Academic Areas - Light Mode) */
+  --c-mis-bg: rgba(0, 150, 220, 0.08);
+  --c-mis-border: #0284c7;
+  --c-mis-text: #0369a1;
+  --c-mis-badge: rgba(2, 132, 199, 0.12);
+
+  --c-epp-bg: rgba(34, 197, 94, 0.08);
+  --c-epp-border: #16a34a;
+  --c-epp-text: #15803d;
+  --c-epp-badge: rgba(22, 163, 74, 0.12);
+
+  --c-fa-bg: rgba(234, 179, 8, 0.10);
+  --c-fa-border: #d97706;
+  --c-fa-text: #b45309;
+  --c-fa-badge: rgba(217, 119, 6, 0.12);
+
+  --c-obhr-bg: rgba(168, 85, 247, 0.08);
+  --c-obhr-border: #9333ea;
+  --c-obhr-text: #7e22ce;
+  --c-obhr-badge: rgba(147, 51, 234, 0.12);
+
+  --c-ms-bg: rgba(244, 63, 94, 0.08);
+  --c-ms-border: #e11d48;
+  --c-ms-text: #be123c;
+  --c-ms-badge: rgba(225, 29, 72, 0.12);
+
+  --c-omqt-bg: rgba(99, 102, 241, 0.08);
+  --c-omqt-border: #4f46e5;
+  --c-omqt-text: #3730a3;
+  --c-omqt-badge: rgba(79, 70, 229, 0.12);
+
+  /* Legacy Themes (for backwards compatibility) */
   --c-ba-bg: rgba(0, 85, 255, 0.08);
   --c-ba-border: #0055ff;
-  
   --c-aidmd-bg: rgba(230, 126, 0, 0.08);
   --c-aidmd-border: #e67e00;
-  
   --c-gbs-bg: rgba(143, 0, 255, 0.08);
   --c-gbs-border: #8f00ff;
-  
   --c-b2b-bg: rgba(214, 27, 64, 0.08);
   --c-b2b-border: #d61b40;
-  
   --c-cw-bg: rgba(26, 139, 159, 0.08);
   --c-cw-border: #1a8b9f;
-  
   --c-cv-bg: rgba(36, 138, 61, 0.08);
   --c-cv-border: #248a3d;
   
@@ -572,8 +624,8 @@ body {
 .lecture-card {
   padding: 14px;
   border-radius: 12px;
-  border: 1px solid transparent;
-  border-left-width: 4px;
+  border: 1.5px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.03);
   transition: var(--transition-smooth);
 }
 .lecture-card:hover {
@@ -703,86 +755,118 @@ body {
 }
 
 /* ==========================================================================
-   CATEGORY COLOR MAPS
+   CATEGORY / ACADEMIC AREA OUTLINE MAPS
    ========================================================================== */
-/* BA (Business Analytics) */
-.cat-ba {
-  background: var(--c-ba-bg);
-  border-color: var(--c-ba-border);
+/* MIS (Management Information Systems): Cyan Outline */
+.cat-mis {
+  border-color: var(--c-mis-border) !important;
+  background: var(--c-mis-bg);
 }
-.cat-ba .lecture-time, .month-capsule.cat-ba {
-  color: var(--c-ba-border);
-  background: rgba(10, 132, 255, 0.15);
+.cat-mis:hover {
+  box-shadow: 0 0 16px rgba(0, 210, 255, 0.22);
 }
-
-/* AIDMD (AI-Driven Marketing) */
-.cat-aidmd {
-  background: var(--c-aidmd-bg);
-  border-color: var(--c-aidmd-border);
-}
-.cat-aidmd .lecture-time, .month-capsule.cat-aidmd {
-  color: var(--c-aidmd-border);
-  background: rgba(255, 159, 10, 0.15);
+.month-capsule.cat-mis {
+  border: 1.5px solid var(--c-mis-border);
+  color: var(--c-mis-text);
+  background: var(--c-mis-bg);
 }
 
-/* GBS (Global Business Environment/Simulation) */
-.cat-gbs {
-  background: var(--c-gbs-bg);
-  border-color: var(--c-gbs-border);
+/* EPP (Economics and Public Policy): Green Outline */
+.cat-epp {
+  border-color: var(--c-epp-border) !important;
+  background: var(--c-epp-bg);
 }
-.cat-gbs .lecture-time, .month-capsule.cat-gbs {
-  color: var(--c-gbs-border);
-  background: rgba(191, 90, 242, 0.15);
+.cat-epp:hover {
+  box-shadow: 0 0 16px rgba(48, 209, 88, 0.22);
 }
-
-/* B2B (B2B Marketing) */
-.cat-b2b {
-  background: var(--c-b2b-bg);
-  border-color: var(--c-b2b-border);
-}
-.cat-b2b .lecture-time, .month-capsule.cat-b2b {
-  color: var(--c-b2b-border);
-  background: rgba(255, 45, 85, 0.15);
+.month-capsule.cat-epp {
+  border: 1.5px solid var(--c-epp-border);
+  color: var(--c-epp-text);
+  background: var(--c-epp-bg);
 }
 
-/* CW (Communication Workshop) */
-.cat-cw {
-  background: var(--c-cw-bg);
-  border-color: var(--c-cw-border);
+/* F & A (Finance & Accounting): Warm Gold Outline */
+.cat-fa {
+  border-color: var(--c-fa-border) !important;
+  background: var(--c-fa-bg);
 }
-.cat-cw .lecture-time, .month-capsule.cat-cw {
-  color: var(--c-cw-border);
-  background: rgba(48, 176, 199, 0.15);
+.cat-fa:hover {
+  box-shadow: 0 0 16px rgba(255, 180, 0, 0.22);
+}
+.month-capsule.cat-fa {
+  border: 1.5px solid var(--c-fa-border);
+  color: var(--c-fa-text);
+  background: var(--c-fa-bg);
 }
 
-/* CV (Corporate Valuation) */
-.cat-cv {
-  background: var(--c-cv-bg);
-  border-color: var(--c-cv-border);
+/* OB & HR (Organizational Behaviour & HR): Purple Outline */
+.cat-obhr {
+  border-color: var(--c-obhr-border) !important;
+  background: var(--c-obhr-bg);
 }
-.cat-cv .lecture-time, .month-capsule.cat-cv {
-  color: var(--c-cv-border);
-  background: rgba(52, 199, 89, 0.15);
+.cat-obhr:hover {
+  box-shadow: 0 0 16px rgba(191, 90, 242, 0.22);
 }
+.month-capsule.cat-obhr {
+  border: 1.5px solid var(--c-obhr-border);
+  color: var(--c-obhr-text);
+  background: var(--c-obhr-bg);
+}
+
+/* M & S (Marketing & Strategy): Coral Red Outline */
+.cat-ms {
+  border-color: var(--c-ms-border) !important;
+  background: var(--c-ms-bg);
+}
+.cat-ms:hover {
+  box-shadow: 0 0 16px rgba(255, 59, 92, 0.22);
+}
+.month-capsule.cat-ms {
+  border: 1.5px solid var(--c-ms-border);
+  color: var(--c-ms-text);
+  background: var(--c-ms-bg);
+}
+
+/* OM & QT (Operations & Quantitative Techniques): Indigo Outline */
+.cat-omqt {
+  border-color: var(--c-omqt-border) !important;
+  background: var(--c-omqt-bg);
+}
+.cat-omqt:hover {
+  box-shadow: 0 0 16px rgba(94, 92, 230, 0.22);
+}
+.month-capsule.cat-omqt {
+  border: 1.5px solid var(--c-omqt-border);
+  color: var(--c-omqt-text);
+  background: var(--c-omqt-bg);
+}
+
+/* Legacy category mappings */
+.cat-ba { border-color: var(--c-ba-border) !important; background: var(--c-ba-bg); }
+.cat-aidmd { border-color: var(--c-aidmd-border) !important; background: var(--c-aidmd-bg); }
+.cat-gbs { border-color: var(--c-gbs-border) !important; background: var(--c-gbs-bg); }
+.cat-b2b { border-color: var(--c-b2b-border) !important; background: var(--c-b2b-bg); }
+.cat-cw { border-color: var(--c-cw-border) !important; background: var(--c-cw-bg); }
+.cat-cv { border-color: var(--c-cv-border) !important; background: var(--c-cv-bg); }
 
 /* Default / Uncategorized */
 .cat-default {
   background: var(--c-default-bg);
-  border-color: var(--c-default-border);
+  border-color: var(--c-default-border) !important;
 }
 .cat-default .lecture-time, .month-capsule.cat-default {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* EXAM (Special Styling) */
 .cat-exam {
-  background: rgba(239, 68, 68, 0.15) !important;
+  background: rgba(239, 68, 68, 0.12) !important;
   border-color: #ef4444 !important;
 }
 .cat-exam .lecture-time, .month-capsule.cat-exam {
   color: #ef4444 !important;
-  background: rgba(239, 68, 68, 0.25) !important;
+  background: rgba(239, 68, 68, 0.2) !important;
 }
 .exam-card {
   box-shadow: 0 0 15px rgba(239, 68, 68, 0.2) !important;
@@ -1575,10 +1659,57 @@ input:checked + .slider:before {
   align-items: center;
   padding: 16px;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-left-width: 4px;
+  border: 1.5px solid rgba(255, 255, 255, 0.06);
   border-radius: 10px;
+  transition: var(--transition-smooth);
 }
+.dash-sched-item.cat-mis { border-color: var(--c-mis-border) !important; background: var(--c-mis-bg); }
+.dash-sched-item.cat-epp { border-color: var(--c-epp-border) !important; background: var(--c-epp-bg); }
+.dash-sched-item.cat-fa  { border-color: var(--c-fa-border) !important; background: var(--c-fa-bg); }
+.dash-sched-item.cat-obhr{ border-color: var(--c-obhr-border) !important; background: var(--c-obhr-bg); }
+.dash-sched-item.cat-ms  { border-color: var(--c-ms-border) !important; background: var(--c-ms-bg); }
+.dash-sched-item.cat-omqt{ border-color: var(--c-omqt-border) !important; background: var(--c-omqt-bg); }
+
+/* Area Legend Bar (above Timetable) */
+.area-legend-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  margin-bottom: 14px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  font-size: 0.72rem;
+}
+.area-legend-title {
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.68rem;
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.area-legend-item {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  background: transparent;
+  border: 1.5px solid transparent;
+  transition: var(--transition-fast);
+}
+.area-legend-item.legend-mis { border-color: var(--c-mis-border); color: var(--c-mis-text); background: var(--c-mis-bg); }
+.area-legend-item.legend-epp { border-color: var(--c-epp-border); color: var(--c-epp-text); background: var(--c-epp-bg); }
+.area-legend-item.legend-fa  { border-color: var(--c-fa-border);  color: var(--c-fa-text);  background: var(--c-fa-bg); }
+.area-legend-item.legend-obhr{ border-color: var(--c-obhr-border); color: var(--c-obhr-text); background: var(--c-obhr-bg); }
+.area-legend-item.legend-ms  { border-color: var(--c-ms-border);  color: var(--c-ms-text);  background: var(--c-ms-bg); }
+.area-legend-item.legend-omqt{ border-color: var(--c-omqt-border); color: var(--c-omqt-text); background: var(--c-omqt-bg); }
 .dash-sched-time {
   font-family: var(--font-header);
   font-weight: 700;
