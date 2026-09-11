@@ -741,6 +741,15 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 1(AY)",
+    "room": "LR 06",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
     "slot": "16:05 - 17:20",
     "courseId": "GSEC",
     "subject": "GSEC 2(AK1)",
@@ -773,6 +782,15 @@ const DEFAULT_TIMETABLE = [
     "subject": "FORM 2(US)",
     "room": "LR 07",
     "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 1(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
   },
   {
     "dateKey": "2026-09-14",
@@ -4206,11 +4224,38 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-18",
     "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "GSEC",
+    "subject": "GSEC 18(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
     "slot": "16:05 - 17:20",
     "courseId": "MSS Sec-C",
     "subject": "MSS 19",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 18(CPG)",
+    "room": "LR 02",
+    "instructor": "Dr. C.P. Garg"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 18(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-11-18",
@@ -4233,6 +4278,24 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-18",
     "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 17(MM)",
+    "room": "LR 02",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 17(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
     "slot": "19:15 - 20:30",
     "courseId": "MSS Sec-D",
     "subject": "MSS 19",
@@ -4242,11 +4305,47 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-18",
     "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "PFWM",
+    "subject": "PFWM 18(SV)",
+    "room": "LR 02",
+    "instructor": "Dr Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "NPD",
+    "subject": "NPD 17(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSD",
+    "subject": "MSD 17(AT)",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
     "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 19",
     "room": "LR 07",
     "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "TM",
+    "subject": "TM 16(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
   },
   {
     "dateKey": "2026-11-20",
@@ -4735,7 +4834,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Dr. Rubina Chakma"
   }
 ];
-
 const WAZIR_MEMBERS = [
   "ipm04niketp@iimrohtak.ac.in",
   "pgp16hidayrajsinhc@iimrohtak.ac.in",
@@ -5034,7 +5132,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v810";
+  const TIMETABLE_CACHE_VERSION = "v811";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
