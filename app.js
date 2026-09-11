@@ -613,96 +613,6 @@ const EXAMS_TIMETABLE = [
 
 const DEFAULT_TIMETABLE = [
   {
-    "dateKey": "2026-09-12",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "TM 1(LRM)",
-    "subject": "TM 1(LRM)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "IT",
-    "subject": "IT 1(DB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 1(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 1(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "PFWM",
-    "subject": "PFWM 1(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "GSEC",
-    "subject": "GSEC 1(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "AAB",
-    "subject": "AAB 1(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS 1(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "Dr. Ashwani Kumar",
-    "subject": "Dr. Ashwani Kumar",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-12",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "AK1",
-    "subject": "AK1",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2026-09-13",
     "day": "Sun",
     "slot": "14:30 - 15:45",
@@ -735,114 +645,6 @@ const DEFAULT_TIMETABLE = [
     "slot": "14:30 - 15:45",
     "courseId": "AP2",
     "subject": "AP2",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 2(CPG)",
-    "room": "Section D: LR - 06",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 2(VKG)",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "PFWM",
-    "subject": "PFWM 2(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "GSEC",
-    "subject": "GSEC 2(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "AAB",
-    "subject": "AAB 2(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS 2(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 1",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 1",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 1",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 1",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "Dr Surbhi Verma",
-    "subject": "Dr Surbhi Verma",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-14",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "SV",
-    "subject": "SV",
     "room": "LR 07",
     "instructor": "Faculty"
   },
@@ -4817,12 +4619,192 @@ const DEFAULT_TIMETABLE = [
   },
   {
     "dateKey": "2026-09-12",
-    "day": "Saturday",
-    "slot": "20:50 - 22:05",
-    "courseId": "FORM",
-    "subject": "Financial Operations & Risk Management",
+    "day": "Sat",
+    "slot": "08:45-10:00",
+    "courseId": "TM",
+    "subject": "TM 1(LRM)",
     "room": "LR 02",
-    "instructor": "Faculty"
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Sat",
+    "slot": "14:30-15:45",
+    "courseId": "IT",
+    "subject": "IT 1(DB)",
+    "room": "LR 02",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Sat",
+    "slot": "16:05-17:20",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 1(CPG)",
+    "room": "LR 02",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Sat",
+    "slot": "17:40-18:55",
+    "courseId": "PFWM",
+    "subject": "PFWM 1(SV)",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Sat",
+    "slot": "17:40-18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 1(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Sat",
+    "slot": "19:15-20:30",
+    "courseId": "GSEC",
+    "subject": "GSEC 1(AK1)",
+    "room": "LR 02",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Sat",
+    "slot": "19:15-20:30",
+    "courseId": "M&A",
+    "subject": "M&A 1(DD)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Sat",
+    "slot": "20:50-22:05",
+    "courseId": "AAB",
+    "subject": "AAB 1(AK3)",
+    "room": "LR 02",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Sat",
+    "slot": "20:50-22:05",
+    "courseId": "FORM",
+    "subject": "FORM 1(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "08:45-10:00",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 2(CPG)",
+    "room": "LR 02",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "14:30-15:45",
+    "courseId": "PFWM",
+    "subject": "PFWM 2(SV)",
+    "room": "LR 02",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "14:30-15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 2(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "16:05-17:20",
+    "courseId": "GSEC",
+    "subject": "GSEC 2(AK1)",
+    "room": "LR 02",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "16:05-17:20",
+    "courseId": "M&A",
+    "subject": "M&A 2(DD)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "17:40-18:55",
+    "courseId": "AAB",
+    "subject": "AAB 2(AK3)",
+    "room": "LR 02",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "17:40-18:55",
+    "courseId": "FORM",
+    "subject": "FORM 2(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "19:15-20:30",
+    "courseId": "FIS",
+    "subject": "FIS 2(AP2)",
+    "room": "LR 02",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "19:15-20:30",
+    "courseId": "SM",
+    "subject": "SM 2(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "20:50-22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 1(AY)",
+    "room": "LR 02",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "20:50-22:05",
+    "courseId": "SoM",
+    "subject": "SoM 1(MK)",
+    "room": "LR 07",
+    "instructor": "Dr. Manish Kumar"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "20:50-22:05",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 1(HS)",
+    "room": "LR 06",
+    "instructor": "Dr. Harmanjit Singh"
   }
 ];
 
