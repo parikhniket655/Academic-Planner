@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 700.0) {
+  if (isStorageWorking && storedVer < 900.0) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "700.0");
+    window.localStorage.setItem("iimr_app_version", "900.0");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -624,7 +624,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-12",
     "day": "Sat",
-    "slot": "08:45-10:00",
+    "slot": "08:45 - 10:00",
     "courseId": "TM",
     "subject": "TM 1(LRM)",
     "room": "LR 02",
@@ -633,7 +633,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-12",
     "day": "Sat",
-    "slot": "14:30-15:45",
+    "slot": "14:30 - 15:45",
     "courseId": "IT",
     "subject": "IT 1(DB)",
     "room": "LR 02",
@@ -642,7 +642,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-12",
     "day": "Sat",
-    "slot": "16:05-17:20",
+    "slot": "16:05 - 17:20",
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 1(CPG)",
     "room": "LR 02",
@@ -651,7 +651,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-12",
     "day": "Sat",
-    "slot": "17:40-18:55",
+    "slot": "17:40 - 18:55",
     "courseId": "PFWM",
     "subject": "PFWM 1(SV)",
     "room": "LR 02",
@@ -660,7 +660,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-12",
     "day": "Sat",
-    "slot": "17:40-18:55",
+    "slot": "17:40 - 18:55",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 1(CPG)",
     "room": "LR 07",
@@ -669,7 +669,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-12",
     "day": "Sat",
-    "slot": "19:15-20:30",
+    "slot": "19:15 - 20:30",
     "courseId": "GSEC",
     "subject": "GSEC 1(AK1)",
     "room": "LR 02",
@@ -678,7 +678,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-12",
     "day": "Sat",
-    "slot": "19:15-20:30",
+    "slot": "19:15 - 20:30",
     "courseId": "M&A",
     "subject": "M&A 1(DD)",
     "room": "LR 07",
@@ -687,7 +687,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-12",
     "day": "Sat",
-    "slot": "20:50-22:05",
+    "slot": "20:50 - 22:05",
     "courseId": "AAB",
     "subject": "AAB 1(AK3)",
     "room": "LR 02",
@@ -696,7 +696,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-12",
     "day": "Sat",
-    "slot": "20:50-22:05",
+    "slot": "20:50 - 22:05",
     "courseId": "FORM",
     "subject": "FORM 1(US)",
     "room": "LR 07",
@@ -714,7 +714,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "08:45-10:00",
+    "slot": "08:45 - 10:00",
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 2(CPG)",
     "room": "LR 02",
@@ -723,7 +723,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "14:30-15:45",
+    "slot": "14:30 - 15:45",
     "courseId": "PFWM",
     "subject": "PFWM 2(SV)",
     "room": "LR 02",
@@ -732,7 +732,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "14:30-15:45",
+    "slot": "14:30 - 15:45",
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 2(CPG)",
     "room": "LR 07",
@@ -741,7 +741,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "16:05-17:20",
+    "slot": "16:05 - 17:20",
     "courseId": "GSEC",
     "subject": "GSEC 2(AK1)",
     "room": "LR 02",
@@ -750,7 +750,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "16:05-17:20",
+    "slot": "16:05 - 17:20",
     "courseId": "M&A",
     "subject": "M&A 2(DD)",
     "room": "LR 07",
@@ -759,7 +759,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "17:40-18:55",
+    "slot": "17:40 - 18:55",
     "courseId": "AAB",
     "subject": "AAB 2(AK3)",
     "room": "LR 02",
@@ -768,7 +768,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "17:40-18:55",
+    "slot": "17:40 - 18:55",
     "courseId": "FORM",
     "subject": "FORM 2(US)",
     "room": "LR 07",
@@ -777,7 +777,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "19:15-20:30",
+    "slot": "19:15 - 20:30",
     "courseId": "FIS",
     "subject": "FIS 2(AP2)",
     "room": "LR 02",
@@ -786,7 +786,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "19:15-20:30",
+    "slot": "19:15 - 20:30",
     "courseId": "SM",
     "subject": "SM 2(HS)",
     "room": "LR 07",
@@ -795,7 +795,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "20:50-22:05",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 1(AY)",
     "room": "LR 02",
@@ -804,7 +804,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "20:50-22:05",
+    "slot": "20:50 - 22:05",
     "courseId": "SoM",
     "subject": "SoM 1(MK)",
     "room": "LR 07",
@@ -813,7 +813,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-14",
     "day": "Mon",
-    "slot": "20:50-22:05",
+    "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-C",
     "subject": "MSS 1(HS)",
     "room": "LR 06",
@@ -5034,7 +5034,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v601";
+  const TIMETABLE_CACHE_VERSION = "v801";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
