@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 520.0) {
+  if (isStorageWorking && storedVer < 600.0) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "520.0");
+    window.localStorage.setItem("iimr_app_version", "600.0");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -296,32 +296,41 @@ function getCourseTotalSessions(courseId, fallbackVal) {
 }
 
 const COURSE_FACULTY_MAP = {
-  'CSY': 'Dr. Deepabali Bhattacharjee',
-  'IT': 'Dr. Deepabali Bhattacharjee',
-  'FORM': 'Dr. Ujjwal Sawarn',
-  'PBM Sec-A': 'Dr. Archit V. Tapar',
-  'PBM Sec-B': 'Dr. Harmanjit Singh',
-  'TQMS Sec-A': 'Prof. C. P. Gupta',
-  'TQMS Sec-B': 'Dr. V. K. Gupta',
-  'MSS Sec-A': 'Dr. Abhishek Yadav',
-  'MSS Sec-B': 'Dr. Archit V. Tapar',
-  'MSS Sec-C': 'Dr. Harmanjit Singh',
-  'MSS Sec-D': 'Dr. Abhishek Yadav',
-  'SNCM Sec-A': 'Dr. Madhurima Mishra',
-  'SNCM Sec-B': 'Dr. Madhurima Mishra',
-  'GSEC': 'Dr. Ashwani Kumar',
-  'AAB': 'Dr. Anurag Kulshrestha',
-  'PFWM': 'Dr. Surbhi Verma',
-  'MBFM': 'Dr. Deepali Dhingra',
-  'SNAB': 'Dr. Pranav Dharmani',
-  'M&A': 'Dr. Deepali Dhingra',
-  'TM': 'Dr. Lubna Rashid Malik',
-  'SoM': 'Dr. Manish Kumar',
-  'FIS': 'Dr. Amit Pandey',
-  'IB': 'Dr. Varun Dawar',
-  'MSD': 'Dr. Archit V. Tapar',
-  'NPD': 'Dr. Archit V. Tapar',
-  'IMC': 'Dr. Garima Sharma',
+  "GSEC": "Dr. Ashwani Kumar",
+  "CSY": "Dr. Ankit Chaudhary",
+  "AAB": "Dr. Anurag Kulshrestha",
+  "IT": "Dr. Deepabali Bhattacharjee",
+  "FIS": "Dr. Amit Pandey",
+  "FORM": "Dr. Ujjwal Sawarn",
+  "MBFM": "Dr. Charan Singh",
+  "IB": "Dr. Vaneet Bhatia",
+  "PFWM": "Dr Surbhi Verma",
+  "TM": "Dr. Lubna Rashid Malik",
+  "SNCM": "Dr. Madhurima Mishra",
+  "SNCM Sec-A": "Dr. Madhurima Mishra",
+  "SNCM Sec-B": "Dr. Madhurima Mishra",
+  "SSM": "Prof. Koustab Ghosh",
+  "MSS": "Dr. Abhishek Yadav",
+  "MSS Sec-A": "Dr. Abhishek Yadav",
+  "MSS Sec-B": "Dr. Archit V. Tapar",
+  "MSS Sec-C": "Dr. Harmanjit Singh",
+  "MSS Sec-D": "Dr. Abhishek Yadav",
+  "IMC": "Dr. Garima Ranga",
+  "PBM": "Dr. Archit V. Tapar",
+  "PBM Sec-A": "Dr. Archit V. Tapar",
+  "PBM Sec-B": "Dr. Harmanjit Singh",
+  "SM": "Dr. Harmanjit Singh",
+  "M&A": "Dr. Deepali Dhingra",
+  "M & A": "Dr. Deepali Dhingra",
+  "ENV": "Dr. Rubina Chakma",
+  "ESMM": "Dr. Abhishek Yadav",
+  "SoM": "Dr. Mihir Kushwah",
+  "SNAB": "Dr. Pranav Dharmani",
+  "NPD": "Dr. Anurag Tiwari",
+  "MSD": "Dr. Anurag Tiwari",
+  "TQMS": "Dr. C.P. Garg",
+  "TQMS Sec-A": "Dr. C.P. Garg",
+  "TQMS Sec-B": "Dr. V.K. Gupta"
 };
 
 function getInstructorName(instructorStr, courseId) {
@@ -686,7 +695,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 1(CPG)",
     "room": "LR 02",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-09-12",
@@ -695,7 +704,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 1(SV)",
     "room": "LR 02",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-09-12",
@@ -704,7 +713,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 1(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-09-12",
@@ -758,7 +767,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 2(CPG)",
     "room": "LR 02",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-09-14",
@@ -767,7 +776,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 2(SV)",
     "room": "LR 02",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-09-14",
@@ -776,7 +785,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 2(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-09-14",
@@ -848,7 +857,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 1(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Manish Kumar"
+    "instructor": "Dr. Mihir Kushwah"
   },
   {
     "dateKey": "2026-09-14",
@@ -866,7 +875,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 1(VB)",
     "room": "LR 06",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-09-15",
@@ -884,7 +893,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 1(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-09-15",
@@ -902,7 +911,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 1(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-09-15",
@@ -911,7 +920,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 1(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-09-15",
@@ -965,7 +974,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 3(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-09-16",
@@ -1001,7 +1010,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 3(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-09-16",
@@ -1010,7 +1019,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 3(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-09-16",
@@ -1037,7 +1046,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 2(RC)",
     "room": "LR 06",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-09-17",
@@ -1055,7 +1064,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 2(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-09-17",
@@ -1163,7 +1172,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 2(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-09-18",
@@ -1190,7 +1199,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 2(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-09-19",
@@ -1208,7 +1217,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 4(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-09-19",
@@ -1217,7 +1226,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 4(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-09-19",
@@ -1262,7 +1271,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 4(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-09-19",
@@ -1334,7 +1343,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 5(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-09-21",
@@ -1343,7 +1352,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 5(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-09-21",
@@ -1361,7 +1370,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 5(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-09-21",
@@ -1424,7 +1433,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 6(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-09-22",
@@ -1433,7 +1442,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 6(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-09-23",
@@ -1442,7 +1451,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 7(CPG)",
     "room": "LR 06",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-09-23",
@@ -1451,7 +1460,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 6(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-09-23",
@@ -1478,7 +1487,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 7(VKG)",
     "room": "LR 06",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-09-23",
@@ -1568,7 +1577,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 3(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-09-25",
@@ -1577,7 +1586,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 7(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-09-25",
@@ -1667,7 +1676,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 4(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-09-26",
@@ -1685,7 +1694,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 3(VB)",
     "room": "LR 06",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-09-28",
@@ -1694,7 +1703,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 3(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-09-28",
@@ -1757,7 +1766,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 8(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-09-29",
@@ -1766,7 +1775,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 8(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-09-29",
@@ -1775,7 +1784,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 8(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-09-29",
@@ -1793,7 +1802,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 4(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-09-29",
@@ -1802,7 +1811,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 5(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-09-29",
@@ -1811,7 +1820,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 3(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-09-30",
@@ -1829,7 +1838,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 4(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-09-30",
@@ -1910,7 +1919,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 9(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-10-01",
@@ -1928,7 +1937,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 9(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-10-01",
@@ -1937,7 +1946,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 9(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-10-03",
@@ -1946,7 +1955,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 4(AT)",
     "room": "LR 06",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-03",
@@ -1991,7 +2000,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 1(GRVF)",
     "room": "LR 07",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-10-03",
@@ -2018,7 +2027,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 3(GRVF)",
     "room": "LR 06",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-10-05",
@@ -2090,7 +2099,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 5(GRVF)",
     "room": "LR 07",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-10-06",
@@ -2108,7 +2117,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 5(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-10-06",
@@ -2144,7 +2153,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 5(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-07",
@@ -2171,7 +2180,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 5(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-10-07",
@@ -2189,7 +2198,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 6(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-07",
@@ -2216,7 +2225,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 10(SV)",
     "room": "LR 06",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-10-08",
@@ -2225,7 +2234,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 10(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-10-08",
@@ -2234,7 +2243,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 6(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-10-08",
@@ -2243,7 +2252,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 10(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-10-08",
@@ -2261,7 +2270,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 6(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-10-08",
@@ -2270,7 +2279,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 6(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-09",
@@ -2324,7 +2333,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 1(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-10-09",
@@ -2360,7 +2369,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 7(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-10",
@@ -2369,7 +2378,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 3(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-10-10",
@@ -2405,7 +2414,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 7(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-10-10",
@@ -2441,7 +2450,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 11(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-10-12",
@@ -2459,7 +2468,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 11(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-10-12",
@@ -2486,7 +2495,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 7(GRVF)",
     "room": "LR 07",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-10-12",
@@ -2504,7 +2513,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 11(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-10-13",
@@ -2522,7 +2531,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 9(GRVF)",
     "room": "LR 07",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-10-13",
@@ -2549,7 +2558,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 8(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-13",
@@ -2576,7 +2585,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 11(GRVF)",
     "room": "LR 06",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-10-14",
@@ -2594,7 +2603,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 7(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-14",
@@ -2612,7 +2621,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 7(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-10-14",
@@ -2648,7 +2657,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 12(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-10-15",
@@ -2684,7 +2693,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 12(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-10-15",
@@ -2711,7 +2720,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 12(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-10-15",
@@ -2738,7 +2747,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 9(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-16",
@@ -2765,7 +2774,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 8(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-10-16",
@@ -2783,7 +2792,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 5(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-10-17",
@@ -2792,7 +2801,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 8(AT)",
     "room": "LR 06",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-17",
@@ -2801,7 +2810,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 7(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-10-17",
@@ -2819,7 +2828,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 8(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-10-17",
@@ -2828,7 +2837,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 13(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-10-17",
@@ -2837,7 +2846,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 13(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-10-17",
@@ -2846,7 +2855,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 13(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-10-17",
@@ -2909,7 +2918,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 10(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-19",
@@ -2981,7 +2990,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 9(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-10-21",
@@ -2990,7 +2999,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 9(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-21",
@@ -3017,7 +3026,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 14(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-10-21",
@@ -3026,7 +3035,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 14(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-10-21",
@@ -3035,7 +3044,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 14(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-10-22",
@@ -3116,7 +3125,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 10(AT)",
     "room": "LR 06",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-23",
@@ -3134,7 +3143,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 9(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-10-23",
@@ -3152,7 +3161,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 8(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-10-23",
@@ -3161,16 +3170,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "CSY",
     "subject": "CSY 1(ACVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepabali Bhattacharjee"
-  },
-  {
-    "dateKey": "2026-10-24",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "CSY",
-    "subject": "CSY 2(ACVF)",
-    "room": "LR 06",
-    "instructor": "Dr. Deepabali Bhattacharjee"
+    "instructor": "Dr. Ankit Chaudhary"
   },
   {
     "dateKey": "2026-10-24",
@@ -3179,7 +3179,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 10(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "CSY",
+    "subject": "CSY 2(ACVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Ankit Chaudhary"
   },
   {
     "dateKey": "2026-10-24",
@@ -3188,7 +3197,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 10(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-10-24",
@@ -3251,7 +3260,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 11(AT)",
     "room": "LR 06",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-26",
@@ -3268,8 +3277,8 @@ const DEFAULT_TIMETABLE = [
     "slot": "14:30 - 15:45",
     "courseId": "CSY",
     "subject": "CSY 3(ACVF)",
-    "room": "LR 07",
-    "instructor": "Dr. Deepabali Bhattacharjee"
+    "room": "LR 06",
+    "instructor": "Dr. Ankit Chaudhary"
   },
   {
     "dateKey": "2026-10-26",
@@ -3314,7 +3323,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 11(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-26",
@@ -3332,7 +3341,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 10(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-10-27",
@@ -3359,7 +3368,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 15(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-10-27",
@@ -3377,7 +3386,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 11(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-10-27",
@@ -3386,7 +3395,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 15(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-10-27",
@@ -3395,7 +3404,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 15(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-10-27",
@@ -3422,7 +3431,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 11(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-10-28",
@@ -3431,7 +3440,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 13(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-28",
@@ -3440,7 +3449,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 12(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-28",
@@ -3467,7 +3476,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 12(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-10-29",
@@ -3476,7 +3485,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 12(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-10-29",
@@ -3584,7 +3593,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 13(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-10-30",
@@ -3593,7 +3602,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 11(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-10-31",
@@ -3602,7 +3611,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 12(GRVF)",
     "room": "LR 06",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-10-31",
@@ -3611,7 +3620,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 14(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-10-31",
@@ -3629,7 +3638,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 13(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-10-31",
@@ -3638,7 +3647,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 12(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-10-31",
@@ -3656,7 +3665,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 14(GRVF)",
     "room": "LR 06",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-11-02",
@@ -3682,8 +3691,8 @@ const DEFAULT_TIMETABLE = [
     "slot": "14:30 - 15:45",
     "courseId": "CSY",
     "subject": "CSY 4(ACVF)",
-    "room": "LR 07",
-    "instructor": "Dr. Deepabali Bhattacharjee"
+    "room": "LR 06",
+    "instructor": "Dr. Ankit Chaudhary"
   },
   {
     "dateKey": "2026-11-02",
@@ -3719,7 +3728,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 16(GRVF)",
     "room": "LR 07",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-11-02",
@@ -3737,16 +3746,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 14(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-03",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "CSY",
-    "subject": "CSY 6(ACVF)",
-    "room": "LR 06",
-    "instructor": "Dr. Deepabali Bhattacharjee"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-11-03",
@@ -3755,7 +3755,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 13(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "CSY",
+    "subject": "CSY 5(ACVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Ankit Chaudhary"
   },
   {
     "dateKey": "2026-11-03",
@@ -3809,7 +3818,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 16(SV)",
     "room": "LR 06",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-11-04",
@@ -3818,7 +3827,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 16(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-11-04",
@@ -3836,7 +3845,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 14(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-04",
@@ -3845,7 +3854,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 16(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-11-04",
@@ -3854,7 +3863,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 14(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-11-04",
@@ -3881,7 +3890,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 15(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-11-05",
@@ -3935,7 +3944,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 15(AT)",
     "room": "LR 06",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-06",
@@ -3944,7 +3953,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 14(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-06",
@@ -3987,9 +3996,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Fri",
     "slot": "19:15 - 20:30",
     "courseId": "CSY",
-    "subject": "CSY 5(ACVF)",
+    "subject": "CSY 6(ACVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepabali Bhattacharjee"
+    "instructor": "Dr. Ankit Chaudhary"
   },
   {
     "dateKey": "2026-11-06",
@@ -4070,7 +4079,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 16(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-13",
@@ -4079,7 +4088,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 15(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-11-14",
@@ -4088,7 +4097,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 16(RC)",
     "room": "LR 06",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-11-14",
@@ -4097,7 +4106,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 17(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-11-14",
@@ -4106,7 +4115,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 17(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-11-14",
@@ -4115,7 +4124,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 15(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-14",
@@ -4142,7 +4151,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 15(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-11-14",
@@ -4151,7 +4160,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 17(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-11-14",
@@ -4160,7 +4169,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 17(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-11-14",
@@ -4187,7 +4196,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 17(GRVF)",
     "room": "LR 06",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-11-17",
@@ -4223,7 +4232,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 16(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-17",
@@ -4250,7 +4259,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 19(GRVF)",
     "room": "LR 06",
-    "instructor": "Dr. Garima Sharma"
+    "instructor": "Dr. Garima Ranga"
   },
   {
     "dateKey": "2026-11-18",
@@ -4268,7 +4277,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 16(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-11-18",
@@ -4313,7 +4322,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 17(VB)",
     "room": "LR 06",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-11-20",
@@ -4322,7 +4331,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 17(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-11-20",
@@ -4349,7 +4358,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "CSY",
     "subject": "CSY 7(ACVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepabali Bhattacharjee"
+    "instructor": "Dr. Ankit Chaudhary"
   },
   {
     "dateKey": "2026-11-20",
@@ -4358,7 +4367,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 18(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-11-21",
@@ -4376,7 +4385,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MBFM",
     "subject": "MBFM 20(CSVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra"
+    "instructor": "Dr. Charan Singh"
   },
   {
     "dateKey": "2026-11-21",
@@ -4385,7 +4394,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "CSY",
     "subject": "CSY 8(ACVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepabali Bhattacharjee"
+    "instructor": "Dr. Ankit Chaudhary"
   },
   {
     "dateKey": "2026-11-21",
@@ -4427,19 +4436,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-23",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "CSY",
-    "subject": "CSY 10(ACVF)",
-    "room": "LR 06",
-    "instructor": "Dr. Deepabali Bhattacharjee"
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 20",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-11-23",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 20",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
+    "courseId": "CSY",
+    "subject": "CSY 9(ACVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Ankit Chaudhary"
   },
   {
     "dateKey": "2026-11-23",
@@ -4455,9 +4464,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Mon",
     "slot": "16:05 - 17:20",
     "courseId": "CSY",
-    "subject": "CSY 9(ACVF)",
+    "subject": "CSY 10(ACVF)",
     "room": "LR 07",
-    "instructor": "Dr. Deepabali Bhattacharjee"
+    "instructor": "Dr. Ankit Chaudhary"
   },
   {
     "dateKey": "2026-11-23",
@@ -4475,7 +4484,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 18(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-23",
@@ -4511,7 +4520,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 18(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-11-25",
@@ -4529,7 +4538,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 19(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-25",
@@ -4556,7 +4565,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 18(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-25",
@@ -4565,7 +4574,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 19(SV)",
     "room": "LR 07",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-11-25",
@@ -4574,7 +4583,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 19(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-11-25",
@@ -4583,7 +4592,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 19(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-11-26",
@@ -4592,7 +4601,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 19(RC)",
     "room": "LR 06",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   },
   {
     "dateKey": "2026-11-26",
@@ -4628,7 +4637,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 18(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-11-26",
@@ -4646,7 +4655,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "PFWM",
     "subject": "PFWM 20(SV)",
     "room": "LR 06",
-    "instructor": "Dr. Surbhi Verma"
+    "instructor": "Dr Surbhi Verma"
   },
   {
     "dateKey": "2026-11-27",
@@ -4655,7 +4664,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 20(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. C.P. Garg"
   },
   {
     "dateKey": "2026-11-27",
@@ -4673,7 +4682,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 20(VKG)",
     "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
+    "instructor": "Dr. V.K. Gupta"
   },
   {
     "dateKey": "2026-11-27",
@@ -4691,7 +4700,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 19(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-27",
@@ -4709,7 +4718,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 19(VB)",
     "room": "LR 06",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-11-28",
@@ -4718,7 +4727,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 20(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-28",
@@ -4745,7 +4754,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IB",
     "subject": "IB 20(VB)",
     "room": "LR 07",
-    "instructor": "Dr. Varun Dawar"
+    "instructor": "Dr. Vaneet Bhatia"
   },
   {
     "dateKey": "2026-11-30",
@@ -4763,7 +4772,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 20(AT)",
     "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
+    "instructor": "Dr. Anurag Tiwari"
   },
   {
     "dateKey": "2026-11-30",
@@ -4772,7 +4781,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 20(RC)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Rubina Chakma"
   }
 ];
 
@@ -5073,14 +5082,25 @@ async function loadUserData() {
   // Initialize database client
   initSupabase();
 
-  // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v320";
+    // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
+  const TIMETABLE_CACHE_VERSION = "v500";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
+  
+  let validCache = false;
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
+    try {
+      const parsed = JSON.parse(cachedTimetable);
+      const csyCount = parsed.filter(s => s.courseId === 'CSY').length;
+      if (csyCount >= 10) validCache = true;
+    } catch(e) {}
+  }
+
+  if (validCache) {
     state.timetable = deduplicateTimetable([...JSON.parse(cachedTimetable), ...EXAMS_TIMETABLE]);
   } else {
-    console.log("Timetable cache outdated or missing. Resetting to DEFAULT_TIMETABLE.");
+    console.log("Timetable cache outdated or invalid. Resetting to DEFAULT_TIMETABLE.");
+    storage.removeItem(`iimr_timetable_${email}`);
     state.timetable = deduplicateTimetable([...DEFAULT_TIMETABLE, ...EXAMS_TIMETABLE]);
     storage.setItem(`iimr_timetable_version_${email}`, TIMETABLE_CACHE_VERSION);
     saveTimetable();
