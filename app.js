@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 7.0) {
+  if (isStorageWorking && storedVer < 8.0) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "7.0");
+    window.localStorage.setItem("iimr_app_version", "8.0");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -237,8 +237,8 @@ const COURSE_TOTAL_SESSIONS = {
   "IMDM": 20,
 
   // Term V Total Sessions
-  "CSY": 20,
-  "IT": 20,
+  "CSY": 10,
+  "IT": 10,
   "FORM": 20,
   "PBM": 20,
   "PBM Sec-A": 20,
@@ -291,7 +291,8 @@ function getCourseTotalSessions(courseId, fallbackVal) {
   if (COURSE_TOTAL_SESSIONS[base] !== undefined) {
     return COURSE_TOTAL_SESSIONS[base];
   }
-  return fallbackVal || 20;
+  const credits = getCourseCredits(courseId);
+  return credits === 0.5 ? 10 : 20;
 }
 
 function getInstructorName(instructorStr) {
@@ -4069,87 +4070,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2025-11-19",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSD",
-    "subject": "MSD 17(AT)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2025-11-19",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 17(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2025-11-19",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 17(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2025-11-19",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "PFWM",
-    "subject": "PFWM 18(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2025-11-19",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 18(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2025-11-19",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 18(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2025-11-19",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "GSEC",
-    "subject": "GSEC 18(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2025-11-19",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "TM 16(LRM)",
-    "subject": "TM 16(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2025-11-19",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "NPD",
-    "subject": "NPD 17(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2026-11-20",
     "day": "Fri",
     "slot": "14:30 - 15:45",
@@ -5409,9 +5329,10 @@ function calculateCourseStats(courseId) {
   const today = getActualToday();
   const todayStr = formatDateKey(today);
 
-  // Find all scheduled lectures of this course in the term (excluding exams)
-  const courseSessions = state.timetable.filter(s => s.courseId === courseId && s.instructor !== "EXAM");
-  courseSessions.sort((a,b) => a.dateKey.localeCompare(b.dateKey));
+  // Find all scheduled lectures of this course in Term V (excluding pre-term dummy dates and exams)
+  const termStartStr = formatDateKey(TERM_START_DATE);
+  const courseSessions = state.timetable.filter(s => isStudentEnrolled([courseId], s.courseId, s) && s.instructor !== "EXAM" && s.dateKey >= termStartStr);
+courseSessions.sort((a,b) => a.dateKey.localeCompare(b.dateKey));
 
   // Conducted sessions are lectures where date <= today
   // Conducted sessions are lectures where date < today, or today and slot has ended
