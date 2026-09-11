@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 5.1) {
+  if (isStorageWorking && storedVer < 7.0) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "6.0");
+    window.localStorage.setItem("iimr_app_version", "7.0");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -392,6 +392,21 @@ function isStudentEnrolled(studentCourses, courseId, lecture) {
         if (normUser.includes("TQMSSEC-A") && (subjStr.includes("VKG") || instStr.includes("VKG"))) {
           return false;
         }
+        if (normUser.includes("PBMSEC-A") && (subjStr.includes("HS") || instStr.includes("HS"))) {
+          return false;
+        }
+        if (normUser.includes("PBMSEC-B") && (subjStr.includes("AVT") || instStr.includes("AVT"))) {
+          return false;
+        }
+        if (normUser.includes("MSSSEC-A") && (subjStr.includes("AVT") || subjStr.includes("HS"))) {
+          return false;
+        }
+        if (normUser.includes("MSSSEC-B") && (subjStr.includes("AY") || subjStr.includes("HS"))) {
+          return false;
+        }
+        if (normUser.includes("MSSSEC-C") && (subjStr.includes("AY") || subjStr.includes("AVT"))) {
+          return false;
+        }
         return true;
       } else {
         return true;
@@ -622,7 +637,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 1(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 1(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-09-12",
@@ -721,7 +745,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 2(CPG)",
     "room": "Section D: LR - 06",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 2(VKG)",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-09-14",
@@ -763,10 +796,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-14",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 1(AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 1",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 1",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 1",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-14",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 1",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-09-14",
@@ -799,10 +859,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-15",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 1 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 1(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 1(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-09-15",
@@ -835,10 +904,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-15",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 1(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 1(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-09-15",
@@ -853,10 +931,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-15",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 1",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 1",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 1",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 1",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-09-15",
@@ -880,10 +985,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-16",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 2(AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 2",
     "room": "Section D: LR - 06",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 2",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 2",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 2",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-09-16",
@@ -910,7 +1042,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 3(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 3(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-09-16",
@@ -997,10 +1138,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-17",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 3(AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 3",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 3",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 3",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 3",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-09-17",
@@ -1069,10 +1237,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-18",
     "day": "Fri",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 2 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 2(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 2(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-09-18",
@@ -1105,10 +1282,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-19",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 2(MM)",
     "room": "Section D: LR - 06",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 2(MM)",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-09-19",
@@ -1123,10 +1309,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-19",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 4 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 4",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 4",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 4",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 4",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-09-19",
@@ -1144,16 +1357,52 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 4(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 4(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-09-21",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 5 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 5",
     "room": "Section D: LR - 06",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 5",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 5",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 5",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-09-21",
@@ -1180,16 +1429,34 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 5(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
   },
   {
     "dateKey": "2026-09-21",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 3 (AVT)",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 5(VKG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 3(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 3(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-09-22",
@@ -1213,10 +1480,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-22",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 3(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 3(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-09-22",
@@ -1234,7 +1510,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 6(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 6(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-09-23",
@@ -1243,7 +1528,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 7(CPG)",
     "room": "Section D: LR - 06",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 7(VKG)",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-09-23",
@@ -1285,10 +1579,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-24",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 4 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 4(AVT)",
     "room": "Section D: LR - 06",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 4(HS)",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-09-24",
@@ -1303,10 +1606,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-24",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 4(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 4(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-09-25",
@@ -1348,10 +1660,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-25",
     "day": "Fri",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 6 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 6",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 6",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 6",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 6",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-09-25",
@@ -1366,10 +1705,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-26",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 5 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 5(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 5(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-09-26",
@@ -1384,10 +1732,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-26",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 5(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 5(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-09-26",
@@ -1468,7 +1825,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 8(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 8(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-09-29",
@@ -1555,10 +1921,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-30",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 7 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 7",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 7",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 7",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 7",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-09-30",
@@ -1573,10 +1966,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-01",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 6 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 6(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 6(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-10-01",
@@ -1585,7 +1987,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 9(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 9(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-10-01",
@@ -1618,10 +2029,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-03",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 8 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 8",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 8",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 8",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 8",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-10-03",
@@ -1651,22 +2089,40 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2026-10-04",
-    "day": "Sun",
+    "dateKey": "2026-10-05",
+    "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 4(GRVF)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 9",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-10-05",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 9 (AY)",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 9",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 9",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 9",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-10-05",
@@ -1726,10 +2182,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-06",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 7 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 7(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 7(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-10-06",
@@ -1780,10 +2245,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-07",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 6(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 6(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-10-07",
@@ -1810,7 +2284,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 10(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 10(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-10-08",
@@ -1852,10 +2335,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-09",
     "day": "Fri",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 10 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 10",
     "room": "Section D: LR - 06",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 10",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 10",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 10",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-10-09",
@@ -1924,10 +2434,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-10",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 7(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 7(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-10-10",
@@ -1960,10 +2479,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-12",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 11 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 11",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 11",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 11",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 11",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-10-12",
@@ -1981,7 +2527,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 11(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 11(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-10-12",
@@ -2014,10 +2569,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-13",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 8(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 8(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-10-13",
@@ -2032,10 +2596,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-13",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 8 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 8(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 8(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-10-14",
@@ -2104,10 +2677,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-15",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 12 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 12",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 12",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 12",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 12",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-10-15",
@@ -2125,16 +2725,34 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 12(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
   },
   {
     "dateKey": "2026-10-15",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 9 (AVT)",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 12(VKG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 9(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 9(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-10-15",
@@ -2167,10 +2785,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-16",
     "day": "Fri",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 9(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 9(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-10-16",
@@ -2233,7 +2860,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 13(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 13(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-10-17",
@@ -2248,10 +2884,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-17",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 10 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 10(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 10(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-10-19",
@@ -2284,10 +2929,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-19",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 13 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 13",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 13",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 13",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 13",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-10-19",
@@ -2302,10 +2974,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-19",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 10(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 10(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-10-20",
@@ -2347,10 +3028,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-21",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 11 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 11(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 11(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-10-21",
@@ -2359,7 +3049,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 14(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 14(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-10-21",
@@ -2383,10 +3082,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-22",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 14 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 14",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 14",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 14",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 14",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-10-22",
@@ -2401,10 +3127,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-22",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 12 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 12(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 12(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-10-23",
@@ -2473,15 +3208,6 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-24",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "CSY",
-    "subject": "CSY 3(ACVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-24",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
     "courseId": "MBFM",
     "subject": "MBFM 10(CSVF)",
     "room": "LR 07",
@@ -2509,10 +3235,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-24",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 15 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 15",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 15",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 15",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 15",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-10-26",
@@ -2527,10 +3280,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-26",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 11(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 11(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-10-26",
@@ -2581,10 +3343,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-27",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 13 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 13(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 13(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-10-27",
@@ -2602,7 +3373,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 15(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 15(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-10-27",
@@ -2671,10 +3451,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-28",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 12(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 12(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-10-28",
@@ -2707,10 +3496,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-29",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 16 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 16",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 16",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 16",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 16",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-10-29",
@@ -2734,10 +3550,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-30",
     "day": "Fri",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 14 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 14(AVT)",
     "room": "Section D: LR - 06",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 14(HS)",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-10-30",
@@ -2788,15 +3613,6 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-31",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 13(GRVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-31",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
     "courseId": "MBFM",
     "subject": "MBFM 14(CSVF)",
     "room": "LR 07",
@@ -2839,22 +3655,40 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2026-11-01",
-    "day": "Sun",
+    "dateKey": "2026-11-02",
+    "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 15(GRVF)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 17",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-11-02",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 17 (AY)",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 17",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 17",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 17",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-11-02",
@@ -2914,10 +3748,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-03",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 13(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 13(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-11-03",
@@ -2932,10 +3775,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-03",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 15 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 15(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 15(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-11-04",
@@ -2953,7 +3805,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 16(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-11-04",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 16(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-11-04",
@@ -3022,10 +3883,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-05",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 18 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 18",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-05",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 18",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-05",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 18",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-05",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 18",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-11-06",
@@ -3049,10 +3937,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-06",
     "day": "Fri",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 14(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 14(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-11-06",
@@ -3067,10 +3964,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-06",
     "day": "Fri",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 16 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 16(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 16(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-11-06",
@@ -3103,10 +4009,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-13",
     "day": "Fri",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 17 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 17(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-13",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 17(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-11-13",
@@ -3166,10 +4081,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-14",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 15(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 15(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-11-14",
@@ -3196,7 +4120,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 17(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 17(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-11-16",
@@ -3220,15 +4153,6 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-17",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 18(GRVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-17",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
     "courseId": "TM 15(LRM)",
     "subject": "TM 15(LRM)",
     "room": "LR 07",
@@ -3238,10 +4162,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-17",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 18 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 18(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-17",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 18(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-11-17",
@@ -3256,10 +4189,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-17",
     "day": "Tue",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 16(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-17",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 16(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-11-18",
@@ -3268,15 +4210,6 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 19(GRVF)",
     "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-18",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 20(GRVF)",
-    "room": "LR 07",
     "instructor": "Faculty"
   },
   {
@@ -3292,10 +4225,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-18",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 19 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 19",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 19",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 19",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 19",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-11-18",
@@ -3319,10 +4279,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2025-11-19",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 17(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2025-11-19",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 17(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2025-11-19",
@@ -3340,7 +4309,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 18(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2025-11-19",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 18(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2025-11-19",
@@ -3391,10 +4369,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-20",
     "day": "Fri",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 19 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 19(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-20",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 19(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-11-20",
@@ -3481,10 +4468,37 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-23",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "MSS",
-    "subject": "MSS 20 (AY)",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 20",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 20",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 20",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 20",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
   },
   {
     "dateKey": "2026-11-23",
@@ -3499,10 +4513,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-23",
     "day": "Mon",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 18(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 18(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-11-23",
@@ -3535,10 +4558,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-25",
     "day": "Wed",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 19(MM)",
     "room": "Section D: LR - 06",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-25",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 19(MM)",
+    "room": "Section D: LR - 06",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-11-25",
@@ -3583,7 +4615,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 19(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-11-25",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 19(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-11-26",
@@ -3598,10 +4639,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-26",
     "day": "Thu",
     "slot": "14:30 - 15:45",
-    "courseId": "PBM",
-    "subject": "PBM 20 (AVT)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 20(AVT)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-26",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 20(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
   },
   {
     "dateKey": "2026-11-26",
@@ -3646,7 +4696,16 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 20(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-11-27",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 20(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-11-27",
@@ -3706,10 +4765,19 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-11-28",
     "day": "Sat",
     "slot": "14:30 - 15:45",
-    "courseId": "SNCM",
+    "courseId": "SNCM Sec-A",
     "subject": "SNCM 20(MM)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-28",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 20(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
   },
   {
     "dateKey": "2026-11-30",
@@ -3751,10 +4819,10 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-12",
     "day": "Saturday",
     "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-B",
-    "subject": "Total Quality Management & Six Sigma",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 1(CPG)",
     "room": "LR 07",
-    "instructor": "Faculty"
+    "instructor": "Prof. C. P. Gupta"
   },
   {
     "dateKey": "2026-09-12",
