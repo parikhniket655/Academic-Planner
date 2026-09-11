@@ -641,15 +641,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2026-09-13",
-    "day": "Sun",
-    "slot": "14:30 - 15:45",
-    "courseId": "AP2",
-    "subject": "AP2",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2026-09-15",
     "day": "Tue",
     "slot": "14:30 - 15:45",
@@ -720,69 +711,6 @@ const DEFAULT_TIMETABLE = [
     "subject": "SNCM 1(MM)",
     "room": "LR 07",
     "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "Markstrat Simulations (Core)",
-    "subject": "Markstrat Simulations (Core)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 1",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 1",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 1",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 1",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "Dr. Abhishek Yadav (A&D), Dr. Harmanjit Singh (C), Dr. Archit V. Tapar (B)",
-    "subject": "Dr. Abhishek Yadav (A&D), Dr. Harmanjit Singh (C), Dr. Archit V. Tapar (B)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "AY,HS,AVT",
-    "subject": "AY,HS,AVT",
-    "room": "LR 07",
-    "instructor": "Faculty"
   },
   {
     "dateKey": "2026-09-16",
@@ -893,24 +821,6 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Faculty"
   },
   {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "Dr. Deepali Dhingra",
-    "subject": "Dr. Deepali Dhingra",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "DD",
-    "subject": "DD",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2026-09-17",
     "day": "Thu",
     "slot": "14:30 - 15:45",
@@ -1006,15 +916,6 @@ const DEFAULT_TIMETABLE = [
     "slot": "14:30 - 15:45",
     "courseId": "Dr. Pranav Dharmani",
     "subject": "Dr. Pranav Dharmani",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "PD",
-    "subject": "PD",
     "room": "LR 07",
     "instructor": "Faculty"
   },
