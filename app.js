@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 900.0) {
+  if (isStorageWorking && storedVer < 910.0) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "900.0");
+    window.localStorage.setItem("iimr_app_version", "910.0");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -642,6 +642,15 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-12",
     "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "FIS",
+    "subject": "FIS 1(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-12",
+    "day": "Sat",
     "slot": "16:05 - 17:20",
     "courseId": "TQMS Sec-A",
     "subject": "TQMS 1(CPG)",
@@ -701,15 +710,6 @@ const DEFAULT_TIMETABLE = [
     "subject": "FORM 1(US)",
     "room": "LR 07",
     "instructor": "Dr. Ujjwal Sawarn"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sun",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS",
-    "room": "LR 07",
-    "instructor": "Dr. Amit Pandey"
   },
   {
     "dateKey": "2026-09-14",
@@ -5034,7 +5034,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v801";
+  const TIMETABLE_CACHE_VERSION = "v802";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
