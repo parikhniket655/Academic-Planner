@@ -12261,17 +12261,10 @@ async function loadUserData() {
   const email = state.user.email;
   
   // Ensure student database has Term V courses
+    // Ensure student active courses are ALWAYS synced to the latest Term V database
   if (studentDatabase[email] && studentDatabase[email].courses) {
-    // If user's active courses still contain Term IV courses (e.g. AIDMD, B2B), update to Term V
-    const hasTerm4 = state.user.courses.some(c => ["AIDMD", "B2B", "CV Sec-A", "BA Sec-A", "PFM"].includes(c));
-    const cachedVer = storage.getItem(`iimr_timetable_version_${email}`);
-    const TIMETABLE_CACHE_VERSION = "v95";
-
-    if (hasTerm4 || cachedVer !== TIMETABLE_CACHE_VERSION) {
-      console.log("Migrating student subscriptions to Term V courses...");
-      state.user.courses = studentDatabase[email].courses;
-      storage.setItem("iimr_active_user", JSON.stringify(state.user));
-    }
+    state.user.courses = studentDatabase[email].courses;
+    storage.setItem("iimr_active_user", JSON.stringify(state.user));
   }
 
   // Load settings
@@ -12293,7 +12286,7 @@ async function loadUserData() {
   initSupabase();
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v95";
+  const TIMETABLE_CACHE_VERSION = "v100";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
