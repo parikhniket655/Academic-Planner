@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 500.0) {
+  if (isStorageWorking && storedVer < 510.0) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "500.0");
+    window.localStorage.setItem("iimr_app_version", "510.0");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -295,12 +295,60 @@ function getCourseTotalSessions(courseId, fallbackVal) {
   return credits === 0.5 ? 10 : 20;
 }
 
-function getInstructorName(instructorStr) {
-  if (!instructorStr) return 'Professor';
-  if (instructorStr.includes('|')) {
-    return instructorStr.split('|')[0];
+const COURSE_FACULTY_MAP = {
+  'CSY': 'Dr. Deepabali Bhattacharjee',
+  'IT': 'Dr. Deepabali Bhattacharjee',
+  'FORM': 'Dr. Ujjwal Sawarn',
+  'PBM Sec-A': 'Dr. Archit V. Tapar',
+  'PBM Sec-B': 'Dr. Harmanjit Singh',
+  'TQMS Sec-A': 'Prof. C. P. Gupta',
+  'TQMS Sec-B': 'Dr. V. K. Gupta',
+  'MSS Sec-A': 'Dr. Abhishek Yadav',
+  'MSS Sec-B': 'Dr. Archit V. Tapar',
+  'MSS Sec-C': 'Dr. Harmanjit Singh',
+  'MSS Sec-D': 'Dr. Abhishek Yadav',
+  'SNCM Sec-A': 'Dr. Madhurima Mishra',
+  'SNCM Sec-B': 'Dr. Madhurima Mishra',
+  'GSEC': 'Dr. Ashwani Kumar',
+  'AAB': 'Dr. Anurag Kulshrestha',
+  'PFWM': 'Dr. Surbhi Verma',
+  'MBFM': 'Dr. Deepali Dhingra',
+  'SNAB': 'Dr. Pranav Dharmani',
+  'M&A': 'Dr. Deepali Dhingra',
+  'TM': 'Dr. Lubna Rashid Malik',
+  'SoM': 'Dr. Manish Kumar',
+  'FIS': 'Dr. Amit Pandey',
+  'IB': 'Dr. Varun Dawar',
+  'MSD': 'Dr. Archit V. Tapar',
+  'NPD': 'Dr. Archit V. Tapar',
+  'IMC': 'Dr. Garima Sharma',
+};
+
+function getInstructorName(instructorStr, courseId) {
+  let res = instructorStr;
+  if (instructorStr && instructorStr.includes('|')) {
+    res = instructorStr.split('|')[0];
   }
-  return instructorStr;
+  if (!res || res === 'Faculty' || res === 'EXAM') {
+    if (courseId && COURSE_FACULTY_MAP[courseId]) {
+      return COURSE_FACULTY_MAP[courseId];
+    }
+    const base = courseId ? courseId.split(' ')[0] : '';
+    if (base && COURSE_FACULTY_MAP[base]) {
+      return COURSE_FACULTY_MAP[base];
+    }
+    return res || 'Professor';
+  }
+  return res;
+}
+
+function cleanRoomName(rmStr) {
+  if (!rmStr) return 'LR 07';
+  let s = String(rmStr).trim();
+  s = s.replace(/^Section\s+[A-D]:?\s*/i, '');
+  s = s.replace(/LR\s*[\-\:]\s*0?(\d+)/i, 'LR 0$1');
+  s = s.replace(/CR\s*[\-\:]\s*0?(\d+)/i, 'CR 0$1');
+  return s;
 }
 
 function getSessionNum(session, fallbackIdx) {
@@ -614,3831 +662,6 @@ const EXAMS_TIMETABLE = [
 
 const DEFAULT_TIMETABLE = [
   {
-    "dateKey": "2026-09-13",
-    "day": "Sun",
-    "slot": "14:30 - 15:45",
-    "courseId": "Fixed Income Securities",
-    "subject": "Fixed Income Securities",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sun",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-13",
-    "day": "Sun",
-    "slot": "14:30 - 15:45",
-    "courseId": "Dr. Amit Pandey",
-    "subject": "Dr. Amit Pandey",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "IB",
-    "subject": "IB 1(VB)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "16:05 - 17:20",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 1(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 1(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "16:05 - 17:20",
-    "courseId": "ENV 1(RC)",
-    "subject": "ENV 1(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "19:15 - 20:30",
-    "courseId": "NPD",
-    "subject": "NPD 1(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSD",
-    "subject": "MSD 1(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 1(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-15",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 1(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 2",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 2",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 2",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 2",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS 3(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "PFWM",
-    "subject": "PFWM 3(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 3(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "19:15 - 20:30",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 3(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "08:45 - 10:00",
-    "courseId": "GSEC",
-    "subject": "GSEC 3(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "AAB",
-    "subject": "AAB 3(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "Mergers and Acquisitions",
-    "subject": "Mergers and Acquisitions",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-16",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "M & A",
-    "subject": "M & A",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "ENV 2(RC)",
-    "subject": "ENV 2(RC)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNAB",
-    "subject": "SNAB 1(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "IT",
-    "subject": "IT 2(DB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 3",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 3",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 3",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 3",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "IB",
-    "subject": "IB 2(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "TM 2(LRM)",
-    "subject": "TM 2(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "Strategies for New Age Businesses",
-    "subject": "Strategies for New Age Businesses",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-17",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "Dr. Pranav Dharmani",
-    "subject": "Dr. Pranav Dharmani",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-18",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "IT",
-    "subject": "IT 3(DB)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-18",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "AAB",
-    "subject": "AAB 4(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-18",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 2(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-18",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 2(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-18",
-    "day": "Fri",
-    "slot": "19:15 - 20:30",
-    "courseId": "FIS",
-    "subject": "FIS 4(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-18",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "NPD",
-    "subject": "NPD 2(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-18",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "GSEC",
-    "subject": "GSEC 4(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-19",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 2(MM)",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-19",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 2(MM)",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-19",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSD",
-    "subject": "MSD 2(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-19",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 4",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-19",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 4",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-19",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 4",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-19",
-    "day": "Sat",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 4",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-19",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "PFWM",
-    "subject": "PFWM 4(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-19",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 4(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-09-19",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 4(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-09-21",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 5",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-21",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 5",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-21",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 5",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-21",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 5",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-21",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS 5(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-21",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "PFWM",
-    "subject": "PFWM 5(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-21",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 5(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-09-21",
-    "day": "Mon",
-    "slot": "19:15 - 20:30",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 5(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-09-21",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 3(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-21",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 3(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-22",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "GSEC",
-    "subject": "GSEC 5(AK1)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-22",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "AAB",
-    "subject": "AAB 5(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-22",
-    "day": "Tue",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 3(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-22",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 3(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-22",
-    "day": "Tue",
-    "slot": "19:15 - 20:30",
-    "courseId": "SNAB",
-    "subject": "SNAB 2(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-22",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 6(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-09-22",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 6(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-09-23",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 7(CPG)",
-    "room": "Section D: LR - 06",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-09-23",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 7(VKG)",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-09-23",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "PFWM",
-    "subject": "PFWM 6(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-23",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "FIS",
-    "subject": "FIS 6(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-23",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNAB",
-    "subject": "SNAB 3(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-23",
-    "day": "Wed",
-    "slot": "19:15 - 20:30",
-    "courseId": "IT",
-    "subject": "IT 4(DB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-24",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 4(AVT)",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-24",
-    "day": "Thu",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 4(HS)",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-24",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "AAB",
-    "subject": "AAB 6(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-24",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 4(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-24",
-    "day": "Thu",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 4(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-25",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNAB",
-    "subject": "SNAB 4(PD)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-25",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "GSEC",
-    "subject": "GSEC 6(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-25",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "FIS",
-    "subject": "FIS 7(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-25",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "PFWM",
-    "subject": "PFWM 7(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-25",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 6",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-25",
-    "day": "Fri",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 6",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-25",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 6",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-25",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 6",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-25",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSD",
-    "subject": "MSD 3(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 5(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 5(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "AAB",
-    "subject": "AAB 7(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Sat",
-    "slot": "19:15 - 20:30",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 5(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 5(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-09-26",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSD",
-    "subject": "MSD 4(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-28",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "IB",
-    "subject": "IB 3(VB)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-28",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "ENV 3(RC)",
-    "subject": "ENV 3(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-28",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "TM 3(LRM)",
-    "subject": "TM 3(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-28",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNAB",
-    "subject": "SNAB 5(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-28",
-    "day": "Mon",
-    "slot": "19:15 - 20:30",
-    "courseId": "FIS",
-    "subject": "FIS 8(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-28",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "IT",
-    "subject": "IT 5(DB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-29",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "AAB",
-    "subject": "AAB 8(AK3)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-29",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 8(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-09-29",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 8(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-09-29",
-    "day": "Tue",
-    "slot": "16:05 - 17:20",
-    "courseId": "PFWM",
-    "subject": "PFWM 8(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-29",
-    "day": "Tue",
-    "slot": "19:15 - 20:30",
-    "courseId": "GSEC",
-    "subject": "GSEC 7(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-29",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "ENV 4(RC)",
-    "subject": "ENV 4(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-29",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSD",
-    "subject": "MSD 5(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-29",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "NPD",
-    "subject": "NPD 3(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "IT",
-    "subject": "IT 6(DB)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "IB",
-    "subject": "IB 4(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "FIS",
-    "subject": "FIS 9(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "TM 4(LRM)",
-    "subject": "TM 4(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 7",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wed",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 7",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 7",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 7",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNAB",
-    "subject": "SNAB 6(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-01",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 6(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-01",
-    "day": "Thu",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 6(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-01",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 9(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-10-01",
-    "day": "Thu",
-    "slot": "19:15 - 20:30",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 9(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-10-01",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "PFWM",
-    "subject": "PFWM 9(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-02",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "Gandhi Jayanti",
-    "subject": "Gandhi Jayanti",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-03",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "NPD",
-    "subject": "NPD 4(AT)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-03",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 8",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-03",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 8",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-03",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 8",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-03",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 8",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-03",
-    "day": "Sat",
-    "slot": "19:15 - 20:30",
-    "courseId": "IMC",
-    "subject": "IMC 1(GRVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-03",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNAB",
-    "subject": "SNAB 7(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-04",
-    "day": "Sun",
-    "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 3(GRVF)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 9",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 9",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 9",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 9",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Mon",
-    "slot": "19:15 - 20:30",
-    "courseId": "AAB",
-    "subject": "AAB 9(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "TM 6(LRM)",
-    "subject": "TM 6(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-05",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "IMC",
-    "subject": "IMC 5(GRVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-06",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "IT",
-    "subject": "IT 7(DB)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-06",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "ENV 5(RC)",
-    "subject": "ENV 5(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-06",
-    "day": "Tue",
-    "slot": "16:05 - 17:20",
-    "courseId": "GSEC",
-    "subject": "GSEC 8(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-06",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 7(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-06",
-    "day": "Tue",
-    "slot": "19:15 - 20:30",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 7(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-06",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "NPD",
-    "subject": "NPD 5(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-07",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNAB",
-    "subject": "SNAB 8(PD)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-07",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "TM 5(LRM)",
-    "subject": "TM 5(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-07",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "FIS",
-    "subject": "FIS 10(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-07",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSD",
-    "subject": "MSD 6(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-07",
-    "day": "Wed",
-    "slot": "19:15 - 20:30",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 6(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-07",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 6(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-07",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "IB",
-    "subject": "IB 5(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-08",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "PFWM",
-    "subject": "PFWM 10(SV)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-08",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 10(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-10-08",
-    "day": "Thu",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 10(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-10-08",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "IB",
-    "subject": "IB 6(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-08",
-    "day": "Thu",
-    "slot": "19:15 - 20:30",
-    "courseId": "IT",
-    "subject": "IT 8(DB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-08",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "ENV 6(RC)",
-    "subject": "ENV 6(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-08",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "NPD",
-    "subject": "NPD 6(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-09",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 10",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-09",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 10",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-09",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 10",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-09",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 10",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-09",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "AAB",
-    "subject": "AAB 10(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-09",
-    "day": "Fri",
-    "slot": "08:45 - 10:00",
-    "courseId": "FIS",
-    "subject": "FIS 11(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-09",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "MBFM",
-    "subject": "MBFM 1(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-09",
-    "day": "Fri",
-    "slot": "19:15 - 20:30",
-    "courseId": "TM 7(LRM)",
-    "subject": "TM 7(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-10",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "GSEC",
-    "subject": "GSEC 9(AK1)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-10",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "MBFM",
-    "subject": "MBFM 3(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-10",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSD",
-    "subject": "MSD 7(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-10",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 7(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-10",
-    "day": "Sat",
-    "slot": "19:15 - 20:30",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 7(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-10",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "IT",
-    "subject": "IT 9(DB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-10",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "IB",
-    "subject": "IB 7(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-12",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "IT",
-    "subject": "IT 10(DB)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-12",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 11",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-12",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 11",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-12",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 11",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-12",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 11",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-12",
-    "day": "Mon",
-    "slot": "19:15 - 20:30",
-    "courseId": "IMC",
-    "subject": "IMC 7(GRVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-12",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 11(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-10-12",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 11(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-10-12",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "PFWM",
-    "subject": "PFWM 11(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-13",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "AAB",
-    "subject": "AAB 11(AK3)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-13",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 9(GRVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-13",
-    "day": "Tue",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 8(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-13",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 8(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-13",
-    "day": "Tue",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSD",
-    "subject": "MSD 8(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-13",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 8(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-13",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 8(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-14",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 11(GRVF)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-14",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "GSEC",
-    "subject": "GSEC 10(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-14",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS 12(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-14",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "ENV 7(RC)",
-    "subject": "ENV 7(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-14",
-    "day": "Wed",
-    "slot": "19:15 - 20:30",
-    "courseId": "TM 8(LRM)",
-    "subject": "TM 8(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-14",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNAB",
-    "subject": "SNAB 9(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-14",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "NPD",
-    "subject": "NPD 7(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 12",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thu",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 12",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 12",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 12",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thu",
-    "slot": "19:15 - 20:30",
-    "courseId": "PFWM",
-    "subject": "PFWM 12(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 12(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 12(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 9(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 9(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS 13(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-16",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "GSEC",
-    "subject": "GSEC 11(AK1)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-16",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSD",
-    "subject": "MSD 9(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-16",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 9(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-16",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 9(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-16",
-    "day": "Fri",
-    "slot": "19:15 - 20:30",
-    "courseId": "IB",
-    "subject": "IB 8(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-16",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "AAB",
-    "subject": "AAB 12(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-16",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "MBFM",
-    "subject": "MBFM 5(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-17",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "NPD",
-    "subject": "NPD 8(AT)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-17",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "MBFM",
-    "subject": "MBFM 7(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-17",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "ENV 8(RC)",
-    "subject": "ENV 8(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-17",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 13(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-10-17",
-    "day": "Sat",
-    "slot": "19:15 - 20:30",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 13(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-10-17",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "PFWM",
-    "subject": "PFWM 13(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-17",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 10(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-17",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 10(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "GSEC",
-    "subject": "GSEC 12(AK1)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNAB",
-    "subject": "SNAB 10(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "AAB",
-    "subject": "AAB 13(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 13",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 13",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Mon",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 13",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 13",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSD",
-    "subject": "MSD 10(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Mon",
-    "slot": "08:45 - 10:00",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 10(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 10(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-20",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "Dussehra",
-    "subject": "Dussehra",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-21",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "TM 9(LRM)",
-    "subject": "TM 9(LRM)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-21",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "IB",
-    "subject": "IB 9(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-21",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "NPD",
-    "subject": "NPD 9(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-21",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 11(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-21",
-    "day": "Wed",
-    "slot": "19:15 - 20:30",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 11(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-21",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 14(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-10-21",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 14(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-10-21",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "PFWM",
-    "subject": "PFWM 14(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-22",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNAB",
-    "subject": "SNAB 11(PD)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-22",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 14",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-22",
-    "day": "Thu",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 14",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-22",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 14",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-22",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 14",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-22",
-    "day": "Thu",
-    "slot": "19:15 - 20:30",
-    "courseId": "AAB",
-    "subject": "AAB 14(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-22",
-    "day": "Thu",
-    "slot": "08:45 - 10:00",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 12(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-22",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 12(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-23",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "NPD",
-    "subject": "NPD 10(AT)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-23",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS 14(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-23",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "ENV 9(RC)",
-    "subject": "ENV 9(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-23",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "GSEC",
-    "subject": "GSEC 13(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-23",
-    "day": "Fri",
-    "slot": "19:15 - 20:30",
-    "courseId": "MBFM",
-    "subject": "MBFM 8(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-23",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "CSY",
-    "subject": "CSY 1(ACVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-24",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "CSY",
-    "subject": "CSY 2(ACVF)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-24",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "MBFM",
-    "subject": "MBFM 10(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-24",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "IB",
-    "subject": "IB 10(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-24",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "TM 10(LRM)",
-    "subject": "TM 10(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-24",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 15",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-24",
-    "day": "Sat",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 15",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-24",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 15",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-24",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 15",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-26",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSD",
-    "subject": "MSD 11(AT)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-26",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 11(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-26",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 11(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-26",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNAB",
-    "subject": "SNAB 12(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-26",
-    "day": "Mon",
-    "slot": "19:15 - 20:30",
-    "courseId": "AAB",
-    "subject": "AAB 15(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-26",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "NPD",
-    "subject": "NPD 11(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-26",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "FIS",
-    "subject": "FIS 15(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-26",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "ENV 10(RC)",
-    "subject": "ENV 10(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 13(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 13(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tue",
-    "slot": "16:05 - 17:20",
-    "courseId": "PFWM",
-    "subject": "PFWM 15(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tue",
-    "slot": "19:15 - 20:30",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 15(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 15(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "TM 11(LRM)",
-    "subject": "TM 11(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "GSEC",
-    "subject": "GSEC 14(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-27",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "IB",
-    "subject": "IB 11(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS 16(AP2)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "ENV 11(RC)",
-    "subject": "ENV 11(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "NPD",
-    "subject": "NPD 13(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSD",
-    "subject": "MSD 12(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wed",
-    "slot": "19:15 - 20:30",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 12(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 12(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "ENV 12(RC)",
-    "subject": "ENV 12(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-29",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "TM 12(LRM)",
-    "subject": "TM 12(LRM)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-29",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "AAB",
-    "subject": "AAB 16(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-29",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 16",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-29",
-    "day": "Thu",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 16",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-29",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 16",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-29",
-    "day": "Thu",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 16",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-10-29",
-    "day": "Thu",
-    "slot": "08:45 - 10:00",
-    "courseId": "IB",
-    "subject": "IB 12(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-29",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNAB",
-    "subject": "SNAB 13(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 14(AVT)",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 14(HS)",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "GSEC",
-    "subject": "GSEC 15(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "FIS",
-    "subject": "FIS 17(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "IB",
-    "subject": "IB 13(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-30",
-    "day": "Fri",
-    "slot": "19:15 - 20:30",
-    "courseId": "MBFM",
-    "subject": "MBFM 11(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-31",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 12(GRVF)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-31",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "MBFM",
-    "subject": "MBFM 14(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-31",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNAB",
-    "subject": "SNAB 14(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-31",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "ENV 13(RC)",
-    "subject": "ENV 13(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-10-31",
-    "day": "Sat",
-    "slot": "19:15 - 20:30",
-    "courseId": "NPD",
-    "subject": "NPD 12(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-01",
-    "day": "Sun",
-    "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 14(GRVF)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-02",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 17",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-11-02",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 17",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-11-02",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 17",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-11-02",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 17",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-11-02",
-    "day": "Mon",
-    "slot": "19:15 - 20:30",
-    "courseId": "IMC",
-    "subject": "IMC 16(GRVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-02",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "CSY",
-    "subject": "CSY 4(ACVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-02",
-    "day": "Mon",
-    "slot": "08:45 - 10:00",
-    "courseId": "GSEC",
-    "subject": "GSEC 16(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-02",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "ENV 14(RC)",
-    "subject": "ENV 14(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-03",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "CSY",
-    "subject": "CSY 6(ACVF)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-03",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSD",
-    "subject": "MSD 13(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-03",
-    "day": "Tue",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 13(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-03",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 13(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-03",
-    "day": "Tue",
-    "slot": "19:15 - 20:30",
-    "courseId": "AAB",
-    "subject": "AAB 17(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-03",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 15(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-11-03",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 15(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-11-04",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "PFWM",
-    "subject": "PFWM 16(SV)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-04",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 16(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-11-04",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 16(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-11-04",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "TM 13(LRM)",
-    "subject": "TM 13(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-04",
-    "day": "Wed",
-    "slot": "19:15 - 20:30",
-    "courseId": "IB",
-    "subject": "IB 14(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-04",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNAB",
-    "subject": "SNAB 15(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-04",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "FIS",
-    "subject": "FIS 18(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-04",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "NPD",
-    "subject": "NPD 14(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-05",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "ENV 15(RC)",
-    "subject": "ENV 15(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-05",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "GSEC",
-    "subject": "GSEC 17(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-05",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 18",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-11-05",
-    "day": "Thu",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 18",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-11-05",
-    "day": "Thu",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 18",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-11-05",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 18",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-11-06",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "NPD",
-    "subject": "NPD 15(AT)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-06",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSD",
-    "subject": "MSD 14(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-06",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 14(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-06",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 14(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-06",
-    "day": "Fri",
-    "slot": "19:15 - 20:30",
-    "courseId": "TM 14(LRM)",
-    "subject": "TM 14(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-06",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 16(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-11-06",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 16(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-11-06",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNAB",
-    "subject": "SNAB 16(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-07",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "Diwali Break",
-    "subject": "Diwali Break",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-13",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "AAB",
-    "subject": "AAB 18(AK3)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-13",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 17(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-11-13",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 17(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-11-13",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "FIS",
-    "subject": "FIS 19(AP2)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-13",
-    "day": "Fri",
-    "slot": "19:15 - 20:30",
-    "courseId": "NPD",
-    "subject": "NPD 16(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-13",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "MBFM",
-    "subject": "MBFM 15(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-14",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "ENV 16(RC)",
-    "subject": "ENV 16(RC)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-14",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "MBFM",
-    "subject": "MBFM 17(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-14",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSD",
-    "subject": "MSD 15(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-14",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 15(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-14",
-    "day": "Sat",
-    "slot": "19:15 - 20:30",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 15(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-14",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "IB",
-    "subject": "IB 15(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-14",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "PFWM",
-    "subject": "PFWM 17(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-14",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 17(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-11-14",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 17(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-11-16",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "Foundation Day of IIM Rohtak",
-    "subject": "Foundation Day of IIM Rohtak",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-17",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 17(GRVF)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-17",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "TM 15(LRM)",
-    "subject": "TM 15(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-17",
-    "day": "Tue",
-    "slot": "16:05 - 17:20",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 18(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-11-17",
-    "day": "Tue",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 18(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-11-17",
-    "day": "Tue",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSD",
-    "subject": "MSD 16(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-17",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 16(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-17",
-    "day": "Tue",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 16(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-18",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "IMC",
-    "subject": "IMC 19(GRVF)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-18",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNAB",
-    "subject": "SNAB 17(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-18",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 19",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-11-18",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 19",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-11-18",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 19",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-11-18",
-    "day": "Wed",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 19",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-11-18",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "IB",
-    "subject": "IB 16(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-20",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "IB",
-    "subject": "IB 17(VB)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-20",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "ENV 17(RC)",
-    "subject": "ENV 17(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-20",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 19(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-11-20",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 19(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-11-20",
-    "day": "Fri",
-    "slot": "19:15 - 20:30",
-    "courseId": "CSY",
-    "subject": "CSY 7(ACVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-20",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "MBFM",
-    "subject": "MBFM 18(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-21",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "FIS",
-    "subject": "FIS 20(AP2)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-21",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "MBFM",
-    "subject": "MBFM 20(CSVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-21",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "CSY",
-    "subject": "CSY 8(ACVF)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-21",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNAB",
-    "subject": "SNAB 18(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-21",
-    "day": "Sat",
-    "slot": "19:15 - 20:30",
-    "courseId": "TM 17(LRM)",
-    "subject": "TM 17(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-21",
-    "day": "Sat",
-    "slot": "20:50 - 22:05",
-    "courseId": "AAB",
-    "subject": "AAB 19(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "CSY",
-    "subject": "CSY 10(ACVF)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "MSS Sec-A",
-    "subject": "MSS 20",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 20",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "MSS Sec-C",
-    "subject": "MSS 20",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-D",
-    "subject": "MSS 20",
-    "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Mon",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSD",
-    "subject": "MSD 18(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Mon",
-    "slot": "19:15 - 20:30",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 18(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 18(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Mon",
-    "slot": "20:50 - 22:05",
-    "courseId": "ENV 18(RC)",
-    "subject": "ENV 18(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Mon",
-    "slot": "08:45 - 10:00",
-    "courseId": "GSEC",
-    "subject": "GSEC 19(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-24",
-    "day": "Tue",
-    "slot": "14:30 - 15:45",
-    "courseId": "Guru Nanak's Birthday",
-    "subject": "Guru Nanak's Birthday",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-25",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 19(MM)",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-25",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 19(MM)",
-    "room": "Section D: LR - 06",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-25",
-    "day": "Wed",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSD",
-    "subject": "MSD 19(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-25",
-    "day": "Wed",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNAB",
-    "subject": "SNAB 19(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-25",
-    "day": "Wed",
-    "slot": "17:40 - 18:55",
-    "courseId": "NPD",
-    "subject": "NPD 18(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-25",
-    "day": "Wed",
-    "slot": "19:15 - 20:30",
-    "courseId": "PFWM",
-    "subject": "PFWM 19(SV)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-25",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 19(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-11-25",
-    "day": "Wed",
-    "slot": "20:50 - 22:05",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 19(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-11-26",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "ENV 19(RC)",
-    "subject": "ENV 19(RC)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-26",
-    "day": "Thu",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 20(AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar"
-  },
-  {
-    "dateKey": "2026-11-26",
-    "day": "Thu",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 20(HS)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh"
-  },
-  {
-    "dateKey": "2026-11-26",
-    "day": "Thu",
-    "slot": "16:05 - 17:20",
-    "courseId": "TM 18(LRM)",
-    "subject": "TM 18(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-26",
-    "day": "Thu",
-    "slot": "19:15 - 20:30",
-    "courseId": "IB",
-    "subject": "IB 18(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-26",
-    "day": "Thu",
-    "slot": "20:50 - 22:05",
-    "courseId": "AAB",
-    "subject": "AAB 20(AK3)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-27",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "PFWM",
-    "subject": "PFWM 20(SV)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-27",
-    "day": "Fri",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 20(CPG)",
-    "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
-  },
-  {
-    "dateKey": "2026-11-27",
-    "day": "Fri",
-    "slot": "17:40 - 18:55",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 20(VKG)",
-    "room": "LR 07",
-    "instructor": "Dr. V. K. Gupta"
-  },
-  {
-    "dateKey": "2026-11-27",
-    "day": "Fri",
-    "slot": "16:05 - 17:20",
-    "courseId": "GSEC",
-    "subject": "GSEC 20(AK1)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-27",
-    "day": "Fri",
-    "slot": "19:15 - 20:30",
-    "courseId": "SNAB",
-    "subject": "SNAB 20(PD)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-27",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "NPD",
-    "subject": "NPD 19(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-27",
-    "day": "Fri",
-    "slot": "20:50 - 22:05",
-    "courseId": "TM 19(LRM)",
-    "subject": "TM 19(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-28",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "IB",
-    "subject": "IB 19(VB)",
-    "room": "Section D: LR - 06",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-28",
-    "day": "Sat",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSD",
-    "subject": "MSD 20(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-28",
-    "day": "Sat",
-    "slot": "16:05 - 17:20",
-    "courseId": "SNCM Sec-A",
-    "subject": "SNCM 20(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-28",
-    "day": "Sat",
-    "slot": "17:40 - 18:55",
-    "courseId": "SNCM Sec-B",
-    "subject": "SNCM 20(MM)",
-    "room": "LR 07",
-    "instructor": "Dr. Madhurima Mishra"
-  },
-  {
-    "dateKey": "2026-11-30",
-    "day": "Mon",
-    "slot": "14:30 - 15:45",
-    "courseId": "IB",
-    "subject": "IB 20(VB)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-30",
-    "day": "Mon",
-    "slot": "16:05 - 17:20",
-    "courseId": "TM 20(LRM)",
-    "subject": "TM 20(LRM)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-30",
-    "day": "Mon",
-    "slot": "17:40 - 18:55",
-    "courseId": "NPD",
-    "subject": "NPD 20(AT)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
-    "dateKey": "2026-11-30",
-    "day": "Mon",
-    "slot": "19:15 - 20:30",
-    "courseId": "ENV 20(RC)",
-    "subject": "ENV 20(RC)",
-    "room": "LR 07",
-    "instructor": "Faculty"
-  },
-  {
     "dateKey": "2026-09-12",
     "day": "Sat",
     "slot": "08:45-10:00",
@@ -4481,7 +704,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 1(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-09-12",
@@ -4520,6 +743,33 @@ const DEFAULT_TIMETABLE = [
     "instructor": "Dr. Ujjwal Sawarn"
   },
   {
+    "dateKey": "2026-09-13",
+    "day": "Sun",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Fixed Income Securities",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-09-13",
+    "day": "Sun",
+    "slot": "14:30 - 15:45",
+    "courseId": "FIS",
+    "subject": "FIS",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-13",
+    "day": "Sun",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "Dr. Amit Pandey",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
     "dateKey": "2026-09-14",
     "day": "Mon",
     "slot": "08:45-10:00",
@@ -4544,7 +794,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 2(CPG)",
     "room": "LR 07",
-    "instructor": "Prof. C. P. Gupta"
+    "instructor": "Dr. V. K. Gupta"
   },
   {
     "dateKey": "2026-09-14",
@@ -4626,6 +876,3939 @@ const DEFAULT_TIMETABLE = [
     "subject": "MSS 1(HS)",
     "room": "LR 06",
     "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "IB 1(VB)",
+    "room": "LR 06",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 1(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "16:05 - 17:20",
+    "courseId": "ENV",
+    "subject": "ENV 1(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 1(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "19:15 - 20:30",
+    "courseId": "NPD",
+    "subject": "NPD 1(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSD",
+    "subject": "MSD 1(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 1(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-15",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 1(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "GSEC 3(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 2",
+    "room": "LR 06",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "FIS",
+    "subject": "FIS 3(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "PFWM 3(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 2",
+    "room": "LR 06",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "AAB",
+    "subject": "AAB 3(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 2",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 3(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 3(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 2",
+    "room": "LR 06",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "IT",
+    "subject": "Mergers and Acquisitions",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-09-16",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "M&A",
+    "subject": "M & A",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "ENV",
+    "subject": "ENV 2(RC)",
+    "room": "LR 06",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNAB",
+    "subject": "SNAB 1(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "IB 2(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "IT",
+    "subject": "IT 2(DB)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 3",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 3",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 3",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 3",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "TM",
+    "subject": "TM 2(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-09-17",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNAB",
+    "subject": "Strategies for New Age Businesses",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "IT 3(DB)",
+    "room": "LR 06",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "AAB",
+    "subject": "AAB 4(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 2(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 2(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "FIS",
+    "subject": "FIS 4(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "NPD",
+    "subject": "NPD 2(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-18",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "GSEC",
+    "subject": "GSEC 4(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 2(MM)",
+    "room": "LR 06",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSD",
+    "subject": "MSD 2(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 4",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 4(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 4(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 2(MM)",
+    "room": "LR 06",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 4",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 4",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 4",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "PFWM",
+    "subject": "PFWM 4(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-19",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "FORM 3(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 5",
+    "room": "LR 06",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "FIS",
+    "subject": "FIS 5(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 3(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 3(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 5",
+    "room": "LR 06",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 5",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "PFWM",
+    "subject": "PFWM 5(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 5(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 4(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "19:15 - 20:30",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 5(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-21",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 5",
+    "room": "LR 06",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "GSEC",
+    "subject": "GSEC 5(AK1)",
+    "room": "LR 06",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tue",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 3(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tue",
+    "slot": "17:40 - 18:55",
+    "courseId": "AAB",
+    "subject": "AAB 5(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tue",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 3(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tue",
+    "slot": "19:15 - 20:30",
+    "courseId": "SNAB",
+    "subject": "SNAB 2(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 6(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-22",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 6(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 7(CPG)",
+    "room": "LR 06",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "PFWM 6(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "FIS",
+    "subject": "FIS 6(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNAB",
+    "subject": "SNAB 3(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 7(VKG)",
+    "room": "LR 06",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-23",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "IT",
+    "subject": "IT 4(DB)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 4(AVT)",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "AAB",
+    "subject": "AAB 6(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 4(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thu",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 4(HS)",
+    "room": "LR 06",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-24",
+    "day": "Thu",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 4(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNAB",
+    "subject": "SNAB 4(PD)",
+    "room": "LR 06",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "GSEC",
+    "subject": "GSEC 6(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "FIS",
+    "subject": "FIS 7(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSD",
+    "subject": "MSD 3(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "PFWM",
+    "subject": "PFWM 7(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 6",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 6",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 6",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 6",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 5(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "AAB",
+    "subject": "AAB 7(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 5(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Sat",
+    "slot": "19:15 - 20:30",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 5(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 5(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSD",
+    "subject": "MSD 4(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-26",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "FORM 5(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "IB 3(VB)",
+    "room": "LR 06",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "ENV",
+    "subject": "ENV 3(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "TM",
+    "subject": "TM 3(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNAB",
+    "subject": "SNAB 5(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 6(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Mon",
+    "slot": "19:15 - 20:30",
+    "courseId": "FIS",
+    "subject": "FIS 8(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "IT",
+    "subject": "IT 5(DB)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "AAB",
+    "subject": "AAB 8(AK3)",
+    "room": "LR 06",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 8(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tue",
+    "slot": "16:05 - 17:20",
+    "courseId": "PFWM",
+    "subject": "PFWM 8(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tue",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 8(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tue",
+    "slot": "19:15 - 20:30",
+    "courseId": "GSEC",
+    "subject": "GSEC 7(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "ENV",
+    "subject": "ENV 4(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSD",
+    "subject": "MSD 5(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-29",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "NPD",
+    "subject": "NPD 3(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "IT 6(DB)",
+    "room": "LR 06",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "IB 4(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "FIS",
+    "subject": "FIS 9(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNAB",
+    "subject": "SNAB 6(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "TM",
+    "subject": "TM 4(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 7",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 7",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 7",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 7",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 6(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 9(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thu",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 6(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thu",
+    "slot": "19:15 - 20:30",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 9(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-01",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "PFWM",
+    "subject": "PFWM 9(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "NPD",
+    "subject": "NPD 4(AT)",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 8",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 8",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNAB",
+    "subject": "SNAB 7(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 8",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "19:15 - 20:30",
+    "courseId": "IMC",
+    "subject": "IMC 1(GRVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 8",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-03",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "FORM 7(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-10-04",
+    "day": "Sun",
+    "slot": "14:30 - 15:45",
+    "courseId": "IMC",
+    "subject": "IMC 3(GRVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 9",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 9",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 9",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 8(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Mon",
+    "slot": "19:15 - 20:30",
+    "courseId": "AAB",
+    "subject": "AAB 9(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 9",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "TM",
+    "subject": "TM 6(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "IMC",
+    "subject": "IMC 5(GRVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "IT 7(DB)",
+    "room": "LR 06",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "ENV",
+    "subject": "ENV 5(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tue",
+    "slot": "16:05 - 17:20",
+    "courseId": "GSEC",
+    "subject": "GSEC 8(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tue",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 7(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tue",
+    "slot": "19:15 - 20:30",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 7(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "NPD",
+    "subject": "NPD 5(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNAB",
+    "subject": "SNAB 8(PD)",
+    "room": "LR 06",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "TM",
+    "subject": "TM 5(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "IB 5(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "FIS",
+    "subject": "FIS 10(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSD",
+    "subject": "MSD 6(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 6(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-07",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 6(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "PFWM 10(SV)",
+    "room": "LR 06",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 10(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "IB",
+    "subject": "IB 6(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thu",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 10(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thu",
+    "slot": "19:15 - 20:30",
+    "courseId": "IT",
+    "subject": "IT 8(DB)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "ENV",
+    "subject": "ENV 6(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "NPD",
+    "subject": "NPD 6(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "08:45 - 10:00",
+    "courseId": "FIS",
+    "subject": "FIS 11(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 10",
+    "room": "LR 06",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "AAB",
+    "subject": "AAB 10(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 10",
+    "room": "LR 06",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 10",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "MBFM",
+    "subject": "MBFM 1(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "TM",
+    "subject": "TM 7(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 10",
+    "room": "LR 06",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "GSEC",
+    "subject": "GSEC 9(AK1)",
+    "room": "LR 06",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSD",
+    "subject": "MSD 7(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "MBFM",
+    "subject": "MBFM 3(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 7(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Sat",
+    "slot": "19:15 - 20:30",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 7(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "IT",
+    "subject": "IT 9(DB)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "IB",
+    "subject": "IB 7(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-10-10",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "FORM 9(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "IT",
+    "subject": "IT 10(DB)",
+    "room": "LR 06",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 11",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 11(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 11",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 11(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 11",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 10(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "19:15 - 20:30",
+    "courseId": "IMC",
+    "subject": "IMC 7(GRVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 11",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-12",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "PFWM",
+    "subject": "PFWM 11(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "AAB",
+    "subject": "AAB 11(AK3)",
+    "room": "LR 06",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "IMC",
+    "subject": "IMC 9(GRVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tue",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 8(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tue",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 8(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tue",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSD",
+    "subject": "MSD 8(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 8(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-13",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 8(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "IMC",
+    "subject": "IMC 11(GRVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "FIS",
+    "subject": "FIS 12(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "NPD",
+    "subject": "NPD 7(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "GSEC",
+    "subject": "GSEC 10(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "ENV",
+    "subject": "ENV 7(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "TM",
+    "subject": "TM 8(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-10-14",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNAB",
+    "subject": "SNAB 9(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 12",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 12(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 9(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "FIS",
+    "subject": "FIS 13(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 12",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 12(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 9(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 12",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "19:15 - 20:30",
+    "courseId": "PFWM",
+    "subject": "PFWM 12(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-15",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 12",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "GSEC",
+    "subject": "GSEC 11(AK1)",
+    "room": "LR 06",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSD",
+    "subject": "MSD 9(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 9(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 9(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "IB",
+    "subject": "IB 8(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "AAB",
+    "subject": "AAB 12(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-10-16",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "MBFM",
+    "subject": "MBFM 5(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "NPD",
+    "subject": "NPD 8(AT)",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MBFM",
+    "subject": "MBFM 7(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 10(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "ENV",
+    "subject": "ENV 8(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 13(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "19:15 - 20:30",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 13(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "PFWM",
+    "subject": "PFWM 13(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 10(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-17",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "FORM 11(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "08:45 - 10:00",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 10(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "GSEC",
+    "subject": "GSEC 12(AK1)",
+    "room": "LR 06",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNAB",
+    "subject": "SNAB 10(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "AAB",
+    "subject": "AAB 13(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSD",
+    "subject": "MSD 10(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 13",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 12(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 13",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 13",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 13",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-19",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 10(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "TM",
+    "subject": "TM 9(LRM)",
+    "room": "LR 06",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "IB 9(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "NPD",
+    "subject": "NPD 9(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 11(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 11(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 14(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 14(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-21",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "PFWM",
+    "subject": "PFWM 14(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "08:45 - 10:00",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 12(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNAB",
+    "subject": "SNAB 11(PD)",
+    "room": "LR 06",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 14",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 14",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 12(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 14",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "19:15 - 20:30",
+    "courseId": "AAB",
+    "subject": "AAB 14(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 14",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "NPD",
+    "subject": "NPD 10(AT)",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "FIS",
+    "subject": "FIS 14(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "ENV",
+    "subject": "ENV 9(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "GSEC",
+    "subject": "GSEC 13(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "MBFM",
+    "subject": "MBFM 8(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-23",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "CSY",
+    "subject": "CSY 1(ACVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "CSY",
+    "subject": "CSY 2(ACVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MBFM",
+    "subject": "MBFM 10(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "IB",
+    "subject": "IB 10(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "TM",
+    "subject": "TM 10(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 15",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 15",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 15",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 15",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-24",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "FORM 13(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSD",
+    "subject": "MSD 11(AT)",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 11(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "CSY",
+    "subject": "CSY 3(ACVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNAB",
+    "subject": "SNAB 12(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 11(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 14(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "19:15 - 20:30",
+    "courseId": "AAB",
+    "subject": "AAB 15(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "NPD",
+    "subject": "NPD 11(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "FIS",
+    "subject": "FIS 15(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-26",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "ENV",
+    "subject": "ENV 10(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 13(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "GSEC",
+    "subject": "GSEC 14(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tue",
+    "slot": "16:05 - 17:20",
+    "courseId": "PFWM",
+    "subject": "PFWM 15(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tue",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 13(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tue",
+    "slot": "17:40 - 18:55",
+    "courseId": "IB",
+    "subject": "IB 11(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tue",
+    "slot": "19:15 - 20:30",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 15(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 15(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-10-27",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "TM",
+    "subject": "TM 11(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "FIS",
+    "subject": "FIS 16(AP2)",
+    "room": "LR 06",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "ENV",
+    "subject": "ENV 11(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "NPD",
+    "subject": "NPD 13(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSD",
+    "subject": "MSD 12(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 12(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 12(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "ENV",
+    "subject": "ENV 12(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "08:45 - 10:00",
+    "courseId": "IB",
+    "subject": "IB 12(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "TM",
+    "subject": "TM 12(LRM)",
+    "room": "LR 06",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "AAB",
+    "subject": "AAB 16(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNAB",
+    "subject": "SNAB 13(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 16",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 16",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 16",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 16",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 14(AVT)",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "GSEC",
+    "subject": "GSEC 15(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "FIS",
+    "subject": "FIS 17(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 14(HS)",
+    "room": "LR 06",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "IB",
+    "subject": "IB 13(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-10-30",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "MBFM",
+    "subject": "MBFM 11(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "IMC",
+    "subject": "IMC 12(GRVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MBFM",
+    "subject": "MBFM 14(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNAB",
+    "subject": "SNAB 14(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "ENV",
+    "subject": "ENV 13(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Sat",
+    "slot": "19:15 - 20:30",
+    "courseId": "NPD",
+    "subject": "NPD 12(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-10-31",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "FORM 15(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-11-01",
+    "day": "Sun",
+    "slot": "14:30 - 15:45",
+    "courseId": "IMC",
+    "subject": "IMC 14(GRVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "GSEC 16(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 17",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "CSY",
+    "subject": "CSY 4(ACVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 17",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 17",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 16(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "19:15 - 20:30",
+    "courseId": "IMC",
+    "subject": "IMC 16(GRVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 17",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-02",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "ENV",
+    "subject": "ENV 14(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "CSY",
+    "subject": "CSY 6(ACVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSD",
+    "subject": "MSD 13(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tue",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 13(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tue",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 13(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tue",
+    "slot": "19:15 - 20:30",
+    "courseId": "AAB",
+    "subject": "AAB 17(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 15(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 15(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-04",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "PFWM 16(SV)",
+    "room": "LR 06",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-11-04",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 16(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-11-04",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "TM",
+    "subject": "TM 13(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-11-04",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "NPD",
+    "subject": "NPD 14(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-04",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 16(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-11-04",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "IB",
+    "subject": "IB 14(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-11-04",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNAB",
+    "subject": "SNAB 15(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-11-04",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "FIS",
+    "subject": "FIS 18(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-11-05",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "ENV",
+    "subject": "ENV 15(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-11-05",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "GSEC",
+    "subject": "GSEC 17(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-11-05",
+    "day": "Thu",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 18",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-05",
+    "day": "Thu",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 18",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-05",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 18",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-05",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 18",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "NPD",
+    "subject": "NPD 15(AT)",
+    "room": "LR 06",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSD",
+    "subject": "MSD 14(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 14(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 14(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNAB",
+    "subject": "SNAB 16(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "TM",
+    "subject": "TM 14(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "CSY",
+    "subject": "CSY 5(ACVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 16(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-06",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 16(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-07",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "FORM 17(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-11-09",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 18(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-11-13",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "AAB",
+    "subject": "AAB 18(AK3)",
+    "room": "LR 06",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-11-13",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 17(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-13",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "FIS",
+    "subject": "FIS 19(AP2)",
+    "room": "LR 07",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-11-13",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 17(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-13",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "NPD",
+    "subject": "NPD 16(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-13",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "MBFM",
+    "subject": "MBFM 15(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "ENV",
+    "subject": "ENV 16(RC)",
+    "room": "LR 06",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MBFM",
+    "subject": "MBFM 17(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "PFWM 17(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSD",
+    "subject": "MSD 15(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 15(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "19:15 - 20:30",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 15(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "IB",
+    "subject": "IB 15(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 17(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 17(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-11-14",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "FORM",
+    "subject": "FORM 19(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-11-16",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "FORM",
+    "subject": "FORM 20(US)",
+    "room": "LR 07",
+    "instructor": "Dr. Ujjwal Sawarn"
+  },
+  {
+    "dateKey": "2026-11-17",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "IMC",
+    "subject": "IMC 17(GRVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-11-17",
+    "day": "Tue",
+    "slot": "14:30 - 15:45",
+    "courseId": "TM",
+    "subject": "TM 15(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-11-17",
+    "day": "Tue",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 18(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-17",
+    "day": "Tue",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 18(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-17",
+    "day": "Tue",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSD",
+    "subject": "MSD 16(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-17",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 16(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-17",
+    "day": "Tue",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 16(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "IMC",
+    "subject": "IMC 19(GRVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Garima Sharma"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNAB",
+    "subject": "SNAB 17(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "IB 16(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 19",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 19",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 19",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 19",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-20",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "IB 17(VB)",
+    "room": "LR 06",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-11-20",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "ENV",
+    "subject": "ENV 17(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-11-20",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 19(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-20",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 19(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-20",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "CSY",
+    "subject": "CSY 7(ACVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-11-20",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "MBFM",
+    "subject": "MBFM 18(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-11-21",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "FIS",
+    "subject": "FIS 20(AP2)",
+    "room": "LR 06",
+    "instructor": "Dr. Amit Pandey"
+  },
+  {
+    "dateKey": "2026-11-21",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MBFM",
+    "subject": "MBFM 20(CSVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra"
+  },
+  {
+    "dateKey": "2026-11-21",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "CSY",
+    "subject": "CSY 8(ACVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-11-21",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNAB",
+    "subject": "SNAB 18(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-11-21",
+    "day": "Sat",
+    "slot": "19:15 - 20:30",
+    "courseId": "TM",
+    "subject": "TM 17(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-11-21",
+    "day": "Sat",
+    "slot": "20:50 - 22:05",
+    "courseId": "AAB",
+    "subject": "AAB 19(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "08:45 - 10:00",
+    "courseId": "GSEC",
+    "subject": "GSEC 19(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "CSY",
+    "subject": "CSY 10(ACVF)",
+    "room": "LR 06",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSS Sec-D",
+    "subject": "MSS 20",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "MSS Sec-C",
+    "subject": "MSS 20",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "CSY",
+    "subject": "CSY 9(ACVF)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepabali Bhattacharjee"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 20",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "19:15 - 20:30",
+    "courseId": "MSD",
+    "subject": "MSD 18(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "19:15 - 20:30",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 18(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "MSS Sec-A",
+    "subject": "MSS 20",
+    "room": "LR 07",
+    "instructor": "Dr. Abhishek Yadav"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 18(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-23",
+    "day": "Mon",
+    "slot": "20:50 - 22:05",
+    "courseId": "ENV",
+    "subject": "ENV 18(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-11-25",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 19(MM)",
+    "room": "LR 06",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-25",
+    "day": "Wed",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSD",
+    "subject": "MSD 19(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-25",
+    "day": "Wed",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNAB",
+    "subject": "SNAB 19(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-11-25",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 19(MM)",
+    "room": "LR 06",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-25",
+    "day": "Wed",
+    "slot": "17:40 - 18:55",
+    "courseId": "NPD",
+    "subject": "NPD 18(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-25",
+    "day": "Wed",
+    "slot": "19:15 - 20:30",
+    "courseId": "PFWM",
+    "subject": "PFWM 19(SV)",
+    "room": "LR 07",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-11-25",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 19(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-11-25",
+    "day": "Wed",
+    "slot": "20:50 - 22:05",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 19(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-11-26",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "ENV",
+    "subject": "ENV 19(RC)",
+    "room": "LR 06",
+    "instructor": "Faculty"
+  },
+  {
+    "dateKey": "2026-11-26",
+    "day": "Thu",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 20(AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-26",
+    "day": "Thu",
+    "slot": "16:05 - 17:20",
+    "courseId": "TM",
+    "subject": "TM 18(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-11-26",
+    "day": "Thu",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 20(HS)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh"
+  },
+  {
+    "dateKey": "2026-11-26",
+    "day": "Thu",
+    "slot": "19:15 - 20:30",
+    "courseId": "IB",
+    "subject": "IB 18(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-11-26",
+    "day": "Thu",
+    "slot": "20:50 - 22:05",
+    "courseId": "AAB",
+    "subject": "AAB 20(AK3)",
+    "room": "LR 07",
+    "instructor": "Dr. Anurag Kulshrestha"
+  },
+  {
+    "dateKey": "2026-11-27",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "PFWM",
+    "subject": "PFWM 20(SV)",
+    "room": "LR 06",
+    "instructor": "Dr. Surbhi Verma"
+  },
+  {
+    "dateKey": "2026-11-27",
+    "day": "Fri",
+    "slot": "14:30 - 15:45",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 20(CPG)",
+    "room": "LR 07",
+    "instructor": "Prof. C. P. Gupta"
+  },
+  {
+    "dateKey": "2026-11-27",
+    "day": "Fri",
+    "slot": "16:05 - 17:20",
+    "courseId": "GSEC",
+    "subject": "GSEC 20(AK1)",
+    "room": "LR 07",
+    "instructor": "Dr. Ashwani Kumar"
+  },
+  {
+    "dateKey": "2026-11-27",
+    "day": "Fri",
+    "slot": "17:40 - 18:55",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 20(VKG)",
+    "room": "LR 07",
+    "instructor": "Dr. V. K. Gupta"
+  },
+  {
+    "dateKey": "2026-11-27",
+    "day": "Fri",
+    "slot": "19:15 - 20:30",
+    "courseId": "SNAB",
+    "subject": "SNAB 20(PD)",
+    "room": "LR 07",
+    "instructor": "Dr. Pranav Dharmani"
+  },
+  {
+    "dateKey": "2026-11-27",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "NPD",
+    "subject": "NPD 19(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-27",
+    "day": "Fri",
+    "slot": "20:50 - 22:05",
+    "courseId": "TM",
+    "subject": "TM 19(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-11-28",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "IB 19(VB)",
+    "room": "LR 06",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-11-28",
+    "day": "Sat",
+    "slot": "14:30 - 15:45",
+    "courseId": "MSD",
+    "subject": "MSD 20(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-28",
+    "day": "Sat",
+    "slot": "16:05 - 17:20",
+    "courseId": "SNCM Sec-A",
+    "subject": "SNCM 20(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-28",
+    "day": "Sat",
+    "slot": "17:40 - 18:55",
+    "courseId": "SNCM Sec-B",
+    "subject": "SNCM 20(MM)",
+    "room": "LR 07",
+    "instructor": "Dr. Madhurima Mishra"
+  },
+  {
+    "dateKey": "2026-11-30",
+    "day": "Mon",
+    "slot": "14:30 - 15:45",
+    "courseId": "IB",
+    "subject": "IB 20(VB)",
+    "room": "LR 07",
+    "instructor": "Dr. Varun Dawar"
+  },
+  {
+    "dateKey": "2026-11-30",
+    "day": "Mon",
+    "slot": "16:05 - 17:20",
+    "courseId": "TM",
+    "subject": "TM 20(LRM)",
+    "room": "LR 07",
+    "instructor": "Dr. Lubna Rashid Malik"
+  },
+  {
+    "dateKey": "2026-11-30",
+    "day": "Mon",
+    "slot": "17:40 - 18:55",
+    "courseId": "NPD",
+    "subject": "NPD 20(AT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar"
+  },
+  {
+    "dateKey": "2026-11-30",
+    "day": "Mon",
+    "slot": "19:15 - 20:30",
+    "courseId": "ENV",
+    "subject": "ENV 20(RC)",
+    "room": "LR 07",
+    "instructor": "Faculty"
   }
 ];
 
@@ -4927,7 +5110,7 @@ async function loadUserData() {
   initSupabase();
 
   // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v300";
+  const TIMETABLE_CACHE_VERSION = "v310";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
@@ -5612,7 +5795,7 @@ function renderAttendanceTab() {
   section = currentCourse.includes('Sec-') ? currentCourse.split(' ')[1] : 'Section A';
   
   sessions = state.timetable.filter(s => isStudentEnrolled([currentCourse], s.courseId) && s.instructor !== "EXAM");
-  instructor = sessions.length > 0 ? getInstructorName(sessions[0].instructor) : "Professor";
+  instructor = sessions.length > 0 ? getInstructorName(sessions[0].instructor, currentCourse) : "Professor";
   upcomingCount = sessions.filter(s => s.dateKey > todayStr).length;
   totalSyllabus = getCourseTotalSessions(currentCourse, sessions.length);
   sessions.sort((a,b) => a.dateKey.localeCompare(b.dateKey));
@@ -5777,10 +5960,10 @@ function renderAttendanceTab() {
     tr.innerHTML = `
       <td>${statusHTML}</td>
       <td style="font-weight: 500;">${dateFormatted}</td>
-      <td>${session.room}</td>
+      <td>${cleanRoomName(session.room)}</td>
       <td style="font-weight: bold;">${sessionNum}</td>
       <td>${session.slot}</td>
-      <td>${getInstructorName(session.instructor)}</td>
+      <td>${getInstructorName(session.instructor, currentCourse)}</td>
       <td>${notifTime}</td>
     `;
 
