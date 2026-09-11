@@ -1,5 +1,6 @@
-const CACHE_NAME = "iimr-tracker-cache-v811";
+const CACHE_NAME = "iimr-tracker-cache-v820";
 const ASSETS = [
+  "./",
   "./index.html",
   "./styles.css",
   "./app.js",
@@ -34,31 +35,36 @@ self.addEventListener("activate", (e) => {
   self.clients.claim();
 });
 
-// Fetch Interceptor for Offline Use
+// Fetch Interceptor: Network-First with Cache Fallback for offline support
 self.addEventListener("fetch", (e) => {
-  // Let Supabase requests and Google Sheets sync requests bypass cache
-  if (e.request.url.includes("supabase.co") || e.request.url.includes("google.com")) {
+  // Always let API requests (Supabase, Google Apps Script) go straight to network
+  if (e.request.url.includes("supabase.co") || e.request.url.includes("google.com") || e.request.url.includes("/macros/s/")) {
     return;
   }
 
+  if (e.request.method !== "GET") return;
+
   e.respondWith(
-    caches.match(e.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(e.request).then((networkResponse) => {
-        // Cache new static requests dynamically if valid
-        if (networkResponse.status === 200 && e.request.method === "GET") {
+    fetch(e.request)
+      .then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200) {
           const responseClone = networkResponse.clone();
           caches.open(CACHE_NAME).then((cache) => {
             cache.put(e.request, responseClone);
           });
         }
         return networkResponse;
-      }).catch(() => {
-        // Fallback or ignore
-      });
-    })
+      })
+      .catch(() => {
+        return caches.match(e.request).then((cachedResponse) => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          if (e.request.mode === 'navigate') {
+            return caches.match('./index.html');
+          }
+        });
+      })
   );
 });
 
