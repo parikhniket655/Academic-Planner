@@ -368,6 +368,13 @@ function cleanRoomName(rmStr) {
 }
 
 function getSessionNum(session, fallbackIdx) {
+  if (session && session.subject) {
+    const match = session.subject.match(/\b[A-Za-z&]+\s*(\d+)/) || session.subject.match(/(\d+)/);
+    if (match) {
+      const num = parseInt(match[1]);
+      if (!isNaN(num)) return num;
+    }
+  }
   if (session && session.instructor && session.instructor.includes('|')) {
     const parts = session.instructor.split('|');
     const num = parseInt(parts[1]);
@@ -6720,7 +6727,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v821";
+  const TIMETABLE_CACHE_VERSION = "v822";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
@@ -7020,6 +7027,28 @@ function getMonday(d) {
   return new Date(d.setDate(diff));
 }
 
+function isSessionConducted(session, now = getActualToday()) {
+  if (!session) return false;
+  const todayStr = formatDateKey(now);
+  if (session.dateKey < todayStr) return true;
+  if (session.dateKey > todayStr) return false;
+  
+  // For today's classes, compare slot end time
+  const parts = (session.slot || "").split('-');
+  if (parts.length < 2) return false;
+  const endTimeStr = parts[1].trim();
+  let [endH, endM] = endTimeStr.split(':').map(Number);
+  if (isNaN(endH) || isNaN(endM)) return false;
+  if (endH < 8) endH += 12; // Handle afternoon/evening 12-hour format if needed
+  
+  const currentH = now.getHours();
+  const currentM = now.getMinutes();
+  
+  if (currentH > endH) return true;
+  if (currentH === endH && currentM >= endM) return true;
+  return false;
+}
+
 // Academic Area Mapping for Term V Electives (Official PGP 16 Curriculum)
 const COURSE_AREA_MAP = {
   // MIS (Management Information Systems)
@@ -7088,27 +7117,8 @@ function calculateCourseStats(courseId) {
   const courseSessions = state.timetable.filter(s => isStudentEnrolled([courseId], s.courseId, s) && s.instructor !== "EXAM" && s.dateKey >= termStartStr);
 courseSessions.sort((a,b) => a.dateKey.localeCompare(b.dateKey));
 
-  // Conducted sessions are lectures where date <= today
-  // Conducted sessions are lectures where date < today, or today and slot has ended
-  const conductedSessions = courseSessions.filter(s => {
-    if (s.dateKey < todayStr) return true;
-    if (s.dateKey > todayStr) return false;
-    
-    // For today's classes, compare slot end time
-    const parts = s.slot.split('-');
-    if (parts.length < 2) return true;
-    const endTimeStr = parts[1].trim();
-    let [endH, endM] = endTimeStr.split(':').map(Number);
-    if (endH < 8) endH += 12;
-    
-    const now = getActualToday();
-    const currentH = now.getHours();
-    const currentM = now.getMinutes();
-    
-    if (currentH > endH) return true;
-    if (currentH === endH && currentM >= endM) return true;
-    return false;
-  });
+  // Conducted sessions are lectures where the session has already concluded
+  const conductedSessions = courseSessions.filter(s => isSessionConducted(s, today));
   const totalConducted = conductedSessions.length;
   
   let attended = 0;
@@ -7269,6 +7279,10 @@ function renderDashboard() {
         `;
         
         item.addEventListener("click", () => {
+          if (!isSessionConducted(lecture)) {
+            showToast("Attendance can only be marked after the session has been conducted.", "info");
+            return;
+          }
           openEditStatusModal(lecture.courseId, todayStr);
         });
       }
@@ -7455,7 +7469,9 @@ function renderAttendanceTab() {
   if (!detailCard) return;
 
   const currentCourse = state.selectedAttendanceCourse || state.user.courses[0];
-  const todayStr = formatDateKey(getActualToday());
+  const today = getActualToday();
+  const todayStr = formatDateKey(today);
+  const termStartStr = formatDateKey(TERM_START_DATE);
   
   let name, stats, parentId, section, instructor, sessions, upcomingCount, totalSyllabus;
 
@@ -7464,11 +7480,11 @@ function renderAttendanceTab() {
   parentId = currentCourse.split(' ')[0];
   section = currentCourse.includes('Sec-') ? currentCourse.split(' ')[1] : 'Section A';
   
-  sessions = state.timetable.filter(s => isStudentEnrolled([currentCourse], s.courseId) && s.instructor !== "EXAM");
+  sessions = state.timetable.filter(s => isStudentEnrolled([currentCourse], s.courseId, s) && s.instructor !== "EXAM" && s.dateKey >= termStartStr);
   instructor = sessions.length > 0 ? getInstructorName(sessions[0].instructor, currentCourse) : "Professor";
-  upcomingCount = sessions.filter(s => s.dateKey > todayStr).length;
+  upcomingCount = sessions.filter(s => !isSessionConducted(s, today)).length;
   totalSyllabus = getCourseTotalSessions(currentCourse, sessions.length);
-  sessions.sort((a,b) => a.dateKey.localeCompare(b.dateKey));
+  sessions.sort((a,b) => (a.dateKey || "").localeCompare(b.dateKey || "") || (a.slot || "").localeCompare(b.slot || ""));
 
   const logPastBtnHTML = `
     <div style="margin-top: 14px; display: flex; justify-content: flex-end;">
@@ -7548,36 +7564,20 @@ function renderAttendanceTab() {
     const logStatus = state.attendanceLogs[statusKey];
     
     let statusHTML = "";
-    const isFuture = session.dateKey > todayStr;
-    const isToday = session.dateKey === todayStr;
+    const isConducted = isSessionConducted(session, today);
 
-    if (isFuture) {
+    if (!isConducted) {
       statusHTML = `
         <div class="status-cell-wrapper">
           <span class="material-symbols-outlined" style="color: var(--text-muted); font-size: 18px;">schedule</span>
           <span class="status-text-label status-upcoming">Upcoming</span>
-          <button class="btn-edit-status" disabled style="opacity: 0.3;">
-            <span class="material-symbols-outlined">edit</span>
-          </button>
-        </div>
-      `;
-    } else if (isToday) {
-      const activeLabel = logStatus ? (logStatus === 'present' ? 'Present' : (logStatus === 'absent' ? 'Absent' : 'Cancelled')) : 'Today';
-      const labelClass = logStatus ? `status-${logStatus}` : 'status-today';
-      const icon = logStatus ? (logStatus === 'present' ? 'check_circle' : (logStatus === 'absent' ? 'cancel' : 'block')) : 'calendar_today';
-      const color = logStatus ? (logStatus === 'present' ? 'var(--state-present)' : (logStatus === 'absent' ? 'var(--state-absent)' : 'var(--state-cancelled)')) : 'var(--accent-blue)';
-
-      statusHTML = `
-        <div class="status-cell-wrapper">
-          <span class="material-symbols-outlined" style="color: ${color}; font-size: 18px;">${icon}</span>
-          <span class="status-text-label ${labelClass}">${activeLabel}</span>
-          <button class="btn-edit-status" data-course="${targetCourseId}" data-date="${session.dateKey}">
+          <button class="btn-edit-status" disabled style="opacity: 0.3; pointer-events: none; cursor: not-allowed;" title="Session has not been conducted yet">
             <span class="material-symbols-outlined">edit</span>
           </button>
         </div>
       `;
     } else {
-      // Historical
+      // Conducted session
       const activeLabel = logStatus ? (logStatus === 'present' ? 'Present' : (logStatus === 'absent' ? 'Absent' : 'Cancelled')) : 'No record';
       const labelClass = logStatus ? `status-${logStatus}` : 'status-norecord';
       const icon = logStatus ? (logStatus === 'present' ? 'check_circle' : (logStatus === 'absent' ? 'cancel' : 'block')) : 'help';
@@ -7587,7 +7587,7 @@ function renderAttendanceTab() {
         <div class="status-cell-wrapper">
           <span class="material-symbols-outlined" style="color: ${color}; font-size: 18px;">${icon}</span>
           <span class="status-text-label ${labelClass}">${activeLabel}</span>
-          <button class="btn-edit-status" data-course="${targetCourseId}" data-date="${session.dateKey}">
+          <button class="btn-edit-status" data-course="${targetCourseId}" data-date="${session.dateKey}" title="Mark presence/absence">
             <span class="material-symbols-outlined">edit</span>
           </button>
         </div>
@@ -7607,8 +7607,8 @@ function renderAttendanceTab() {
 
     // Format Notif Sent timestamp
     let notifTime = "-";
-    if (!isFuture) {
-      const timeMatch = session.slot.match(/^(\d{2}):(\d{2})/);
+    if (isConducted) {
+      const timeMatch = (session.slot || "").match(/^(\d{2}):(\d{2})/);
       if (timeMatch) {
         const hr = parseInt(timeMatch[1]);
         const min = parseInt(timeMatch[2]);
@@ -7637,12 +7637,14 @@ function renderAttendanceTab() {
       <td>${notifTime}</td>
     `;
 
-    if (!isFuture) {
+    if (isConducted) {
       tr.style.cursor = "pointer";
       tr.addEventListener("click", (e) => {
         if (e.target.closest(".btn-edit-status")) return;
         openEditStatusModal(targetCourseId, session.dateKey);
       });
+    } else {
+      tr.style.cursor = "default";
     }
 
     tbody.appendChild(tr);
@@ -7661,7 +7663,9 @@ function renderAttendanceTab() {
   const logPastBtn = document.getElementById("btn-log-past-session");
   if (logPastBtn) {
     logPastBtn.addEventListener("click", () => {
-      openEditStatusModal(currentCourse, todayStr);
+      const conductedForCourse = sessions.filter(s => isSessionConducted(s, today));
+      const defaultDate = conductedForCourse.length > 0 ? conductedForCourse[conductedForCourse.length - 1].dateKey : todayStr;
+      openEditStatusModal(currentCourse, defaultDate);
       // Restrict date input to today or past
       const dateInput = document.getElementById("manual-date");
       if (dateInput) {
@@ -8158,6 +8162,21 @@ function setupEventListeners() {
       if (!courseId || !dateVal) {
         showToast("Please fill in all fields.", "error");
         return;
+      }
+
+      // Validate that attendance is only marked after session has been conducted
+      const targetSession = state.timetable.find(s => isStudentEnrolled([courseId], s.courseId, s) && s.dateKey === dateVal);
+      if (targetSession) {
+        if (!isSessionConducted(targetSession)) {
+          showToast("Attendance can only be marked after the session has been conducted.", "error");
+          return;
+        }
+      } else {
+        const todayStr = formatDateKey(getActualToday());
+        if (dateVal > todayStr) {
+          showToast("Cannot log attendance for future dates.", "error");
+          return;
+        }
       }
 
       // Automatically add past session to timetable if it does not exist
