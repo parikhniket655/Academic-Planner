@@ -45,7 +45,7 @@ try {
   })();
 
   const storedVer = parseFloat(window.localStorage.getItem("iimr_app_version") || "0");
-  if (isStorageWorking && storedVer < 910.0) {
+  if (isStorageWorking && storedVer < 1000.0) {
     const activeUser = window.localStorage.getItem("iimr_active_user");
     const studentDb = window.localStorage.getItem("iimr_student_db");
     
@@ -53,7 +53,7 @@ try {
     
     if (activeUser) window.localStorage.setItem("iimr_active_user", activeUser);
     if (studentDb) window.localStorage.setItem("iimr_student_db", studentDb);
-    window.localStorage.setItem("iimr_app_version", "910.0");
+    window.localStorage.setItem("iimr_app_version", "1000.0");
     
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then(registrations => {
@@ -5034,7 +5034,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v802";
+  const TIMETABLE_CACHE_VERSION = "v810";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
@@ -5042,8 +5042,11 @@ async function loadUserData() {
   if (cachedTimetable && cachedVersion === TIMETABLE_CACHE_VERSION) {
     try {
       const parsed = JSON.parse(cachedTimetable);
-      const diwaliConflicts = parsed.filter(s => s.dateKey >= '2026-11-07' && s.dateKey <= '2026-11-12');
-      if (diwaliConflicts.length === 0) validCache = true;
+      // Valid cache must contain a complete schedule (>= 100 sessions) and zero Diwali conflicts
+      if (Array.isArray(parsed) && parsed.length >= 100) {
+        const diwaliConflicts = parsed.filter(s => s.dateKey >= '2026-11-07' && s.dateKey <= '2026-11-12');
+        if (diwaliConflicts.length === 0) validCache = true;
+      }
     } catch(e) {}
   }
 
@@ -6712,7 +6715,9 @@ function mergeTimetable(liveTimetable) {
   // DEFAULT_TIMETABLE is only a bootstrap placeholder for before the very first sync
   // completes — once real live sessions exist, mixing the static guess back in would
   // show stale/incorrect classes (wrong dates, rooms, or faculty) alongside the real ones.
-  const base = normalizedLive.length > 0 ? normalizedLive : DEFAULT_TIMETABLE;
+  // Live sync must contain a full Term V schedule (>= 200 sessions) to replace DEFAULT_TIMETABLE.
+  // This prevents legacy partial junk or scraped header rows from wiping out the real schedule.
+  const base = normalizedLive.length >= 200 ? normalizedLive : DEFAULT_TIMETABLE;
   const merged = deduplicateTimetable([...base, ...EXAMS_TIMETABLE]);
   const todayStr = formatDateKey(state.currentDate);
 
@@ -6746,7 +6751,7 @@ async function autoSyncTimetable() {
   // 1. Primary: Direct fetch from Supabase REST API (No CDN dependency!)
   if (SUPABASE_URL && SUPABASE_KEY) {
     try {
-      const res = await fetch(`${SUPABASE_URL}/rest/v1/timetable?select=*`, {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/timetable?date_key=gte.2026-09-12&order=date_key.asc&limit=1000`, {
         headers: {
           'apikey': SUPABASE_KEY,
           'Authorization': `Bearer ${SUPABASE_KEY}`
@@ -6754,7 +6759,7 @@ async function autoSyncTimetable() {
       });
       if (res.ok) {
         const data = await res.json();
-        if (data && data.length > 0) {
+        if (data && data.length >= 200) {
           const parsed = data.map(s => ({
             dateKey: s.date_key,
             day: s.day,
@@ -6765,15 +6770,20 @@ async function autoSyncTimetable() {
             instructor: s.instructor,
             section: s.section
           }));
-          state.timetable = mergeTimetable(parsed);
-          saveTimetable();
-          renderDashboard();
-          renderTimetableCanvas();
-          if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
-            renderAttendanceTab();
+          const merged = mergeTimetable(parsed);
+          if (merged && merged.length >= 200) {
+            state.timetable = merged;
+            saveTimetable();
+            renderDashboard();
+            renderTimetableCanvas();
+            if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
+              renderAttendanceTab();
+            }
+            console.log(`Timetable successfully loaded ${parsed.length} sessions from direct Supabase REST API.`);
+            synced = true;
           }
-          console.log(`Timetable successfully loaded ${parsed.length} sessions from direct Supabase REST API.`);
-          synced = true;
+        } else {
+          console.warn("Supabase returned partial or legacy rows (" + (data ? data.length : 0) + "); retaining verified DEFAULT_TIMETABLE.");
         }
       }
     } catch (e) {
@@ -6800,15 +6810,21 @@ async function autoSyncTimetable() {
           parsedTimetable = parseCsv(csvText);
         }
 
-        if (parsedTimetable && parsedTimetable.length > 0) {
-          state.timetable = mergeTimetable(parsedTimetable);
-          saveTimetable();
-          renderDashboard();
-          if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
-            renderAttendanceTab();
+        if (parsedTimetable && parsedTimetable.length >= 200) {
+          const merged = mergeTimetable(parsedTimetable);
+          if (merged && merged.length >= 200) {
+            state.timetable = merged;
+            saveTimetable();
+            renderDashboard();
+            renderTimetableCanvas();
+            if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
+              renderAttendanceTab();
+            }
+            console.log("Timetable synced from Google Sheets Web App fallback.");
+            synced = true;
           }
-          console.log("Timetable synced from Google Sheets Web App fallback.");
-          synced = true;
+        } else {
+          console.warn("Google Sheets returned partial data (" + (parsedTimetable ? parsedTimetable.length : 0) + "); retaining verified DEFAULT_TIMETABLE.");
         }
       }
     } catch (e) {
