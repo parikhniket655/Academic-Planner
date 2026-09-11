@@ -6546,23 +6546,57 @@ function normalizeSlotTime(slotStr) {
 
 function mergeTimetable(liveTimetable) {
   const normalizedLive = (liveTimetable || []).map(item => {
+    if (!item) return null;
     let dKey = String(item.dateKey || item.date_key || "").trim();
     if (dKey.startsWith("2001-")) {
       dKey = "2026-" + dKey.substring(5);
     }
+    if (dKey < "2026-09-12") return null;
+
+    let slot = normalizeSlotTime(item.slot);
+
+    // Fix invalid 12:30 slot glitch from legacy sync
+    if (slot.includes("12:30")) {
+      const rawC = String(item.courseId || item.course_id || "");
+      if (rawC.includes("Sec-B")) {
+        slot = "17:40 - 18:55";
+      } else {
+        slot = "14:30 - 15:45";
+      }
+    }
+
+    let cId = item.courseId || item.course_id || "";
+    const subj = String(item.subject || "").toUpperCase();
+
+    if (subj.includes("TQMS")) {
+      if (subj.includes("CPG")) cId = "TQMS Sec-A";
+      else if (subj.includes("VKG")) cId = "TQMS Sec-B";
+    } else if (subj.includes("PBM")) {
+      if (subj.includes("AVT")) cId = "PBM Sec-A";
+      else if (subj.includes("HS")) cId = "PBM Sec-B";
+    } else if (subj.includes("SNCM")) {
+      if (cId.includes("Sec-B")) cId = "SNCM Sec-B";
+      else cId = "SNCM Sec-A";
+    } else if (subj.includes("MSS")) {
+      if (subj.includes("AY")) cId = "MSS Sec-A";
+      else if (subj.includes("AVT")) cId = "MSS Sec-B";
+      else if (subj.includes("HS")) cId = "MSS Sec-C";
+    }
+
     return {
       ...item,
       dateKey: dKey,
-      slot: normalizeSlotTime(item.slot)
+      slot: slot,
+      courseId: cId
     };
-  });
+  }).filter(Boolean);
+
   const merged = deduplicateTimetable([...normalizedLive, ...DEFAULT_TIMETABLE, ...EXAMS_TIMETABLE]);
   const todayStr = formatDateKey(state.currentDate);
   
   // Keep custom logged past sessions that were manually added
   state.timetable.forEach(existingSession => {
-    if (existingSession.dateKey && existingSession.dateKey < todayStr) {
-      // Exclude mock sessions that are present in DEFAULT_TIMETABLE
+    if (existingSession.dateKey && existingSession.dateKey < todayStr && existingSession.dateKey >= "2026-09-12") {
       const isDefault = DEFAULT_TIMETABLE.some(def =>
         def.dateKey === existingSession.dateKey &&
         normalizeCourseId(def.courseId) === normalizeCourseId(existingSession.courseId) &&
