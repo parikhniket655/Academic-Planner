@@ -1,4 +1,4 @@
-const CACHE_NAME = "iimr-tracker-cache-v220";
+const CACHE_NAME = "iimr-tracker-cache-v240";
 const ASSETS = [
   "./index.html",
   "./styles.css",
