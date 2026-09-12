@@ -54,7 +54,7 @@ const FACULTY_MAP = {
   "PBM Sec-B": "Dr. Harmanjit Singh",
   "TQMS": "Dr. C.P. Garg",
   "TQMS Sec-A": "Dr. C.P. Garg",
-  "TQMS Sec-B": "Dr. V.K. Gupta",
+  "TQMS Sec-B": "Dr. C.P. Garg",
   "MSS": "Dr. Abhishek Yadav",
   "MSS Sec-A": "Dr. Abhishek Yadav",
   "MSS Sec-B": "Dr. Archit V. Tapar",

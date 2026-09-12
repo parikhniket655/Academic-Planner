@@ -337,7 +337,7 @@ const COURSE_FACULTY_MAP = {
   "MSD": "Dr. Anurag Tiwari",
   "TQMS": "Dr. C.P. Garg",
   "TQMS Sec-A": "Dr. C.P. Garg",
-  "TQMS Sec-B": "Dr. V.K. Gupta"
+  "TQMS Sec-B": "Dr. C.P. Garg"
 };
 
 function getInstructorName(instructorStr, courseId, lecture) {
@@ -363,8 +363,7 @@ function getInstructorName(instructorStr, courseId, lecture) {
     if (norm === 'SOM' || norm.startsWith('SOM')) return 'Dr. Mihir Kushwah';
     if (norm === 'NPD' || norm.startsWith('NPD')) return 'Dr. Anurag Tiwari';
     if (norm === 'MSD' || norm.startsWith('MSD')) return 'Dr. Anurag Tiwari';
-    if (norm === 'TQMSSEC-B') return 'Dr. V.K. Gupta';
-    if (norm === 'TQMSSEC-A') return 'Dr. C.P. Garg';
+    if (norm.startsWith('TQMS')) return 'Dr. C.P. Garg';
     if (norm === 'PBMSEC-A') return 'Dr. Archit V. Tapar';
     if (norm === 'PBMSEC-B') return 'Dr. Harmanjit Singh';
     if (norm === 'MSSSEC-B') return 'Dr. Archit V. Tapar';
@@ -378,6 +377,7 @@ function getInstructorName(instructorStr, courseId, lecture) {
   // Fallback string replacements if legacy/incorrect names are present in instructorStr
   if (res) {
     if (res.includes('Varun Dawar') || res === 'VB') return 'Dr. Vaneet Bhatia';
+    if (res.includes('Gupta') || res.includes('VKG') || res.includes('C.P. Garg') || res.includes('CPG')) return 'Dr. C.P. Garg';
     if (res.includes('K.K. Garg') || res === 'KG') return 'Prof. Koustab Ghosh';
     if (res.includes('Garima Sharma') || res === 'GRVF') return 'Dr. Garima Ranga';
     if (res.includes('Rupesh Chandra') || res === 'RC') return 'Dr. Rubina Chakma';
@@ -491,12 +491,6 @@ function isStudentEnrolled(studentCourses, courseId, lecture) {
           if (uSec && lSec && uSec !== lSec) return false;
         }
         
-        if (normUser.includes("TQMSSEC-B") && (subjStr.includes("CPG") || instStr.includes("CPG"))) {
-          return false;
-        }
-        if (normUser.includes("TQMSSEC-A") && (subjStr.includes("VKG") || instStr.includes("VKG"))) {
-          return false;
-        }
         if (normUser.includes("PBMSEC-A") && (subjStr.includes("HS") || instStr.includes("HS"))) {
           return false;
         }
@@ -728,7 +722,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 1(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -828,7 +822,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 2(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -1098,7 +1092,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 3(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -1458,7 +1452,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 4(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -1568,7 +1562,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 5(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -1678,7 +1672,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 6(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -1738,7 +1732,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 7(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -2188,7 +2182,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 8(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -2368,7 +2362,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 9(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -2868,7 +2862,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 10(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -3168,7 +3162,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 11(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -3468,7 +3462,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 12(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -3698,7 +3692,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 13(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -3938,7 +3932,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 14(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -4448,7 +4442,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 15(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -5128,7 +5122,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 16(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -5528,7 +5522,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 17(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -5798,7 +5792,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 18(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -6198,7 +6192,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 19(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -6348,7 +6342,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "TQMS Sec-B",
     "subject": "TQMS 20(CPG)",
     "room": "LR 07",
-    "instructor": "Dr. V.K. Gupta",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -6760,7 +6754,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v824";
+  const TIMETABLE_CACHE_VERSION = "v825";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
