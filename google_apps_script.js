@@ -49,32 +49,38 @@ const FACULTY_MAP = {
   "CSY": "Dr. Ankit Chaudhary",
   "IT": "Dr. Deepabali Bhattacharjee",
   "FORM": "Dr. Ujjwal Sawarn",
+  "PBM": "Dr. Archit V. Tapar",
   "PBM Sec-A": "Dr. Archit V. Tapar",
   "PBM Sec-B": "Dr. Harmanjit Singh",
+  "TQMS": "Dr. C.P. Garg",
   "TQMS Sec-A": "Dr. C.P. Garg",
-  "TQMS Sec-B": "Dr. V.K. Gupta",
+  "TQMS Sec-B": "Dr. C.P. Garg",
+  "MSS": "Dr. Abhishek Yadav",
   "MSS Sec-A": "Dr. Abhishek Yadav",
   "MSS Sec-B": "Dr. Archit V. Tapar",
   "MSS Sec-C": "Dr. Harmanjit Singh",
   "MSS Sec-D": "Dr. Abhishek Yadav",
+  "SNCM": "Dr. Madhurima Mishra",
   "SNCM Sec-A": "Dr. Madhurima Mishra",
   "SNCM Sec-B": "Dr. Madhurima Mishra",
   "GSEC": "Dr. Ashwani Kumar",
   "AAB": "Dr. Anurag Kulshrestha",
   "PFWM": "Dr Surbhi Verma",
-  "MBFM": "Dr. Deepali Dhingra",
+  "MBFM": "Dr. Charan Singh",
   "SNAB": "Dr. Pranav Dharmani",
   "M&A": "Dr. Deepali Dhingra",
+  "M & A": "Dr. Deepali Dhingra",
   "TM": "Dr. Lubna Rashid Malik",
-  "SoM": "Dr. Manish Kumar",
+  "SoM": "Dr. Mihir Kushwah",
   "FIS": "Dr. Amit Pandey",
-  "IB": "Dr. Varun Dawar",
-  "MSD": "Dr. Archit V. Tapar",
-  "NPD": "Dr. Archit V. Tapar",
-  "IMC": "Dr. Garima Sharma",
-  "SSM": "Prof. K.K. Garg",
-  "ENV": "Dr. Rupesh Chandra",
-  "ESMM": "Dr. P.K. Sharma"
+  "IB": "Dr. Vaneet Bhatia",
+  "MSD": "Dr. Anurag Tiwari",
+  "NPD": "Dr. Anurag Tiwari",
+  "IMC": "Dr. Garima Ranga",
+  "SSM": "Prof. Koustab Ghosh",
+  "ENV": "Dr. Rubina Chakma",
+  "ESMM": "Dr. Abhishek Yadav",
+  "SM": "Dr. Harmanjit Singh"
 };
 
 const QUOTES = [
@@ -145,7 +151,7 @@ function mapToCourseCode(cName) {
   if (u.includes("SERVICES MARKETING") || u.includes("SSM")) return "SSM";
   if (u.includes("TALENT MANAGEMENT") || u === "TM" || u.startsWith("TM ") || u.startsWith("TM(") || u.startsWith("TM1") || u.startsWith("TM2")) return "TM";
   if (u.includes("MERGERS") || u === "M&A" || u.includes("M & A")) return "M&A";
-  if (u.includes("ENTREPRENEURSHIP") || u === "ENV")) return "ENV";
+  if (u.includes("ENTREPRENEURSHIP") || u === "ENV") return "ENV";
   if (u.includes("EXECUTIVE SALES") || u === "ESMM" || u.startsWith("ESMM ") || u.startsWith("ESMM(")) return "ESMM";
   if (u.includes("PROJECT COURSE")) return "Project Course";
 
@@ -292,8 +298,7 @@ function fetchTimetableSessions() {
         var rawCell = String(row[colIdx] || "").trim();
         if (!rawCell || rawCell.toUpperCase() === "LUNCH" || rawCell.toUpperCase().includes("HOLIDAY") || rawCell.toUpperCase().includes("BREAK")) continue;
 
-        var cleanVal = rawCell.replace(/?
-/g, ' ').replace(/\s+/g, ' ').trim();
+        var cleanVal = rawCell.replace(/[\r\n]+/g, ' ').replace(/\s+/g, ' ').trim();
         var match = cleanVal.match(/^([A-Za-z0-9&\s\.\-]+?)\s*(\d+)?\s*(?:\(([^)]+)\))?$/);
         if (match) {
           var rawCode = match[1].trim();
@@ -335,44 +340,52 @@ function fetchTimetableSessions() {
 }
 
 function syncTimetableToSupabase() {
-  var sessions = fetchTimetableSessions();
-  Logger.log("Found " + sessions.length + " sessions. Syncing to Supabase...");
-  
-  if (sessions.length === 0) return;
-  
-  var url = SUPABASE_URL + "/rest/v1/timetable";
-  var headers = {
-    "apikey": SUPABASE_KEY,
-    "Authorization": "Bearer " + SUPABASE_KEY,
-    "Content-Type": "application/json",
-    "Prefer": "resolution=merge-duplicates"
-  };
-
-  var chunkSize = 50;
-  for (var i = 0; i < sessions.length; i += chunkSize) {
-    var chunk = sessions.slice(i, i + chunkSize);
-    var payload = chunk.map(function(s) {
-      return {
-        date_key: s.dateKey,
-        day: s.day || "Scheduled",
-        slot: s.slot,
-        course_id: s.courseId,
-        subject: s.subject || s.courseId,
-        room: s.room,
-        instructor: s.instructor,
-        section: s.section
-      };
-    });
-
-    var options = {
-      "method": "post",
-      "headers": headers,
-      "payload": JSON.stringify(payload),
-      "muteHttpExceptions": true
+  try {
+    var sessions = fetchTimetableSessions();
+    Logger.log("Found " + sessions.length + " sessions. Syncing to Supabase...");
+    
+    if (!sessions || sessions.length === 0) return;
+    
+    var url = SUPABASE_URL + "/rest/v1/timetable";
+    var headers = {
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY,
+      "Content-Type": "application/json",
+      "Prefer": "resolution=merge-duplicates"
     };
 
-    var response = UrlFetchApp.fetch(url, options);
-    Logger.log("Chunk " + (Math.floor(i / chunkSize) + 1) + " Supabase response: " + response.getContentText());
+    var chunkSize = 50;
+    for (var i = 0; i < sessions.length; i += chunkSize) {
+      var chunk = sessions.slice(i, i + chunkSize);
+      var payload = chunk.map(function(s) {
+        return {
+          date_key: s.dateKey,
+          day: s.day || "Scheduled",
+          slot: s.slot,
+          course_id: s.courseId,
+          subject: s.subject || s.courseId,
+          room: s.room,
+          instructor: s.instructor,
+          section: s.section
+        };
+      });
+
+      var options = {
+        "method": "post",
+        "headers": headers,
+        "payload": JSON.stringify(payload),
+        "muteHttpExceptions": true
+      };
+
+      try {
+        var response = UrlFetchApp.fetch(url, options);
+        Logger.log("Chunk " + (Math.floor(i / chunkSize) + 1) + " Supabase response: " + response.getContentText());
+      } catch (chunkErr) {
+        Logger.log("Error syncing chunk " + (Math.floor(i / chunkSize) + 1) + ": " + chunkErr.toString());
+      }
+    }
+  } catch (err) {
+    Logger.log("Error in syncTimetableToSupabase: " + err.toString());
   }
 }
 
@@ -424,8 +437,8 @@ function sendDailyScheduleEmails() {
         return a.slot.localeCompare(b.slot);
       });
 
-      var htmlBody = '<div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #0d1117; color: #c9d1d9; padding: 20px; border-radius: 8px; max-width: 600px; margin: 0 auto; border: 1px solid #30363d; line-height: 1.6;">';
-      htmlBody += '<h2 style="color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-top: 0; font-size: 1.5em; display: flex; align-items: center; gap: 8px;">📅 Tomorrow's Class Schedule</h2>';
+      var htmlBody = '<div style="font-family: \'Segoe UI\', Tahoma, Geneva, Verdana, sans-serif; background-color: #0d1117; color: #c9d1d9; padding: 20px; border-radius: 8px; max-width: 600px; margin: 0 auto; border: 1px solid #30363d; line-height: 1.6;">';
+      htmlBody += '<h2 style="color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-top: 0; font-size: 1.5em; display: flex; align-items: center; gap: 8px;">📅 Tomorrow\'s Class Schedule</h2>';
       htmlBody += '<p style="font-size: 1.05em; color: #f0f6fc;">Hi <strong>' + name + '</strong>,</p>';
       htmlBody += '<p style="color: #8b949e;">Please find your personalized academic timetable for tomorrow, <strong>' + formattedDate + '</strong>.</p>';
 
