@@ -108,41 +108,43 @@ const COURSE_NAMES = {
   "GBS Sec-B": "Global Business Simulation Sec B",
   "CW Sec-B": "Communication Workshop Sec B",
 
-  // Term V Subjects
+  // Term V Official Subjects
+  "GSEC": "Growth Strategies for E-Commerce",
   "CSY": "Cyber Security",
-  "IT": "Information Technology",
-  "FORM": "Financial Risk Operations Management",
-  "PBM": "Product & Brand Management",
-  "PBM Sec-A": "Product & Brand Management Sec A",
-  "PBM Sec-B": "Product & Brand Management Sec B",
-  "SNAB": "Social Network Analytics for Business",
-  "TQMS": "Total Quality Management & Six Sigma",
-  "TQMS Sec-A": "Total Quality Management Sec A",
-  "TQMS Sec-B": "Total Quality Management Sec B",
-  "MSS": "Management Systems & Strategy",
-  "MSS Sec-A": "Management Systems & Strategy Sec A",
-  "MSS Sec-B": "Management Systems & Strategy Sec B",
-  "MSS Sec-C": "Management Systems & Strategy Sec C",
-  "MSS Sec-D": "Management Systems & Strategy Sec D",
-  "GSEC": "Global Strategy & Emerging Companies",
-  "FIS": "Financial Institutions & Services",
-  "IB": "International Business",
-  "SNCM": "Strategic Negotiation & Commercial Management",
-  "SNCM Sec-A": "Strategic Negotiation Sec A",
-  "SNCM Sec-B": "Strategic Negotiation Sec B",
-  "AAB": "Advanced Accounting for Business",
+  "AAB": "Agentic AI for Business (AAB)",
+  "IT": "International Trade",
+  "FIS": "Fixed Income Securities",
+  "FORM": "Futures, Options & Risk Management",
+  "MBFM": "Money, Banking, and Financial Markets",
+  "IB": "Investment Banking",
   "PFWM": "Personal Finance & Wealth Management",
-  "Project Course": "Project Course",
-  "MBFM": "Management of Banking & Financial Markets",
-  "SM": "Strategic Management",
-  "MSD": "Market Structure & Dynamics",
-  "NPD": "New Product Development",
-  "SoM": "Service Operations Management",
+  "TM": "Talent Management",
+  "SNCM": "Strategies for Negotiation & Conflict Management",
+  "SNCM Sec-A": "Strategies for Negotiation & Conflict Management Sec-A",
+  "SNCM Sec-B": "Strategies for Negotiation & Conflict Management Sec-B",
+  "SSM": "Strategic Storytelling for Managers",
+  "MSS": "Markstrat Simulations (Core)",
+  "MSS Sec-A": "Markstrat Simulations (Core) Sec-A",
+  "MSS Sec-B": "Markstrat Simulations (Core) Sec-B",
+  "MSS Sec-C": "Markstrat Simulations (Core) Sec-C",
+  "MSS Sec-D": "Markstrat Simulations (Core) Sec-D",
   "IMC": "Integrated Marketing Communication",
-  "SSM": "Services Marketing & Strategy",
-  "ESMM": "Executive Sales & Marketing Management",
+  "PBM": "Product & Brand Management",
+  "PBM Sec-A": "Product & Brand Management Sec-A",
+  "PBM Sec-B": "Product & Brand Management Sec-B",
+  "SM": "Service Marketing",
   "M&A": "Mergers and Acquisitions",
-  "ENV": "Entrepreneurship & New Ventures"
+  "M & A": "Mergers and Acquisitions",
+  "ENV": "Entrepreneurship and New Ventures",
+  "ESMM": "Entertainment, Sports and Media Marketing",
+  "SoM": "Social Marketing",
+  "SNAB": "Strategies for New Age Businesses",
+  "NPD": "New Product Development",
+  "MSD": "Manufacturing System Design",
+  "TQMS": "Total Quality Management & Six Sigma",
+  "TQMS Sec-A": "Total Quality Management & Six Sigma Sec-A",
+  "TQMS Sec-B": "Total Quality Management & Six Sigma Sec-B",
+  "Project Course": "Project Course"
 };
 
 // Course Credit Weights (matches 6.5 credits for 9 scheduled courses in screenshot)
@@ -273,7 +275,9 @@ const COURSE_TOTAL_SESSIONS = {
   "IMC": 20,
   "SSM": 20,
   "ESMM": 20,
+  "TM": 20,
   "M&A": 20,
+  "M & A": 20,
   "ENV": 20
 };
 
@@ -6754,7 +6758,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v825";
+  const TIMETABLE_CACHE_VERSION = "v826";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
@@ -8329,7 +8333,12 @@ function setupEventListeners() {
     const grid = document.getElementById("subs-checkboxes-grid");
     if (grid) {
       grid.innerHTML = "";
-      const termCourses = ["BA Sec-A", "BA Sec-B", "CV Sec-A", "CV Sec-B", "AIDMD", "B2B", "CW Sec-B", "GBS Sec-B", "IBS", "PFM"];
+      const termCourses = [
+        "GSEC", "CSY", "AAB", "IT", "FIS", "FORM", "MBFM", "IB", "PFWM", "TM",
+        "SNCM Sec-A", "SNCM Sec-B", "SSM", "MSS Sec-A", "MSS Sec-B", "MSS Sec-C", "MSS Sec-D",
+        "IMC", "PBM Sec-A", "PBM Sec-B", "SM", "M&A", "ENV", "ESMM", "SoM", "SNAB",
+        "NPD", "MSD", "TQMS Sec-A", "TQMS Sec-B", "Project Course"
+      ];
       termCourses.forEach(cId => {
         const item = document.createElement("label");
         item.className = "subs-checkbox-item";
