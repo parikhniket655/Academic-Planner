@@ -127,13 +127,52 @@ PART 6: THE 3 GOLDEN INVARIANTS (NEVER BREAK THESE)
    Never wipe `state.attendanceLogs` or alter keys (`<dateKey>_<courseId>`).
 
 ================================================================================
-PART 7: YOUR FIRST ACTION
+PART 7: AUTOMATED TERM TRANSITION PROTOCOL (FOR TERM VI & BEYOND)
+================================================================================
+When the user provides a new Google Sheet link (View-only) and an official Course/Faculty Directory (Excel, PDF, or text table) for a new academic term, follow this 4-step protocol:
+
+Step 1: INGEST COURSE CATALOG FIRST (Zero Guesswork)
+- Extract every course from the uploaded file into an internal map: { code, officialTitle, faculty, credits, totalSessions, area, sectioned }.
+- Update `COURSE_NAMES`, `COURSE_CREDITS`, `COURSE_TOTAL_SESSIONS`, and `COURSE_AREA_MAP` in `app.js`.
+- Update `FACULTY_MAP` and `mapToCourseCode` in `supabase_sync_script.js` and `google_apps_script.js`.
+
+Step 2: PARSE THE NEW GOOGLE SHEET
+- Extract the `SHEET_ID` from the user's URL (`/d/<SHEET_ID>/`).
+- Parse all sessions using our multi-sheet grid parser:
+  * Detect header row with time slots (`HH:MM - HH:MM`).
+  * Read date column (normalize all dates to `YYYY-MM-DD`).
+  * Extract section letter (`A`, `B`, `C`, `D`).
+  * Parse cell content: course code, session number, and faculty initials.
+  * Map course code via `mapToCourseCode()`.
+
+Step 3: PRESENT PRE-FLIGHT SANITY REPORT (Wait for Approval)
+- DO NOT edit production timetable data yet.
+- Output a markdown summary table:
+  * Detected Term Start & End dates.
+  * Total unique sessions parsed across all sheets.
+  * Breakdown table showing session count per course.
+  * Any unmapped cells or unrecognized codes flagged for user review.
+- Ask the user: "Does this schedule look correct to proceed with deployment?"
+
+Step 4: ONE-TOUCH APPLICATION UPDATE & DEPLOYMENT
+Upon user confirmation:
+1. Update `TERM_START_DATE` in `app.js` to the new term start date.
+2. Save the parsed schedule to `term<N>_default_timetable.json` and update `DEFAULT_TIMETABLE` in `app.js`.
+3. Update `SHEET_ID` in `supabase_sync_script.js` and `google_apps_script.js`.
+4. Update `date_key >= YYYY-MM-DD` filter in `app.js` (line 8552) to prevent previous term date collisions.
+5. Bump cache version across `app.js`, `sw.js`, and `index.html`.
+6. Commit (`git add . && git commit -m "Migrate to Term <N> schedule (v<NUM>)"`).
+7. Push (`git push origin main`) to trigger automated Vercel deployment.
+
+================================================================================
+PART 8: YOUR FIRST ACTION
 ================================================================================
 Please confirm that you have read and understood this guide by stating:
 1. Our current active cache version.
 2. The enrolled courses for Niket.
 3. Who teaches TQMS and IB.
 4. The exact 3 files that must be touched whenever code is updated.
+5. The 4 steps of our Term Transition Protocol.
 
 Then, tell me you are ready to work on the app!
 ```
