@@ -107,3 +107,42 @@ The application uses a multi-tier fallback architecture:
    git push origin main
    ```
 5. Confirm live status on `academic-planner-eight.vercel.app`.
+
+---
+
+## 8. Term Transition Protocol (Standard Operating Procedure for Term VI & Beyond)
+When the user provides a new Google Sheet link (View-only) and an official Course/Faculty Directory (Excel, PDF, or text table) for a new academic term, execute this 4-step protocol:
+
+### Step 1: Ingest Course Catalog First (Zero Guesswork)
+* Extract every course from the user's directory into an internal map: `{ code, officialTitle, faculty, credits, totalSessions, area, sectioned }`.
+* Update `COURSE_NAMES`, `COURSE_CREDITS`, `COURSE_TOTAL_SESSIONS`, and `COURSE_AREA_MAP` in `app.js`.
+* Update `FACULTY_MAP` and `mapToCourseCode` in `supabase_sync_script.js` and `google_apps_script.js`.
+
+### Step 2: Extract & Parse the New Google Sheet
+* Extract `SHEET_ID` from the user's URL (`/d/<SHEET_ID>/`).
+* Parse all sessions using the universal multi-sheet grid parser:
+  - Detect header row with time slots (`HH:MM - HH:MM`).
+  - Read date column (normalize all dates to `YYYY-MM-DD`).
+  - Extract section letter (`A`, `B`, `C`, `D`).
+  - Parse cell content: extract course code, session number, and faculty initials.
+  - Map course code via `mapToCourseCode()`.
+
+### Step 3: Present Pre-Flight Sanity Report (Wait for Approval)
+* DO NOT edit production timetable data yet.
+* Output a markdown summary table:
+  - Detected Term Start & End dates.
+  - Total unique sessions parsed across all sheets.
+  - Breakdown table showing session count per course.
+  - Any unmapped cells or unrecognized codes flagged for user clarification.
+* Ask the user: *"Does this schedule look correct to proceed with deployment?"*
+
+### Step 4: One-Touch Application Update & Deployment
+Upon user confirmation:
+1. Update `TERM_START_DATE` in `app.js` to the new term start date.
+2. Save the parsed schedule to `term<N>_default_timetable.json` and update `DEFAULT_TIMETABLE` in `app.js`.
+3. Update `SHEET_ID` in `supabase_sync_script.js` and `google_apps_script.js`.
+4. Update `date_key >= YYYY-MM-DD` filter in `app.js` (line 8552) to prevent previous term date collisions.
+5. Bump cache version across `app.js`, `sw.js`, and `index.html`.
+6. Commit (`git add . && git commit -m "Migrate to Term <N> schedule (v<NUM>)"`).
+7. Push (`git push origin main`) to trigger automated Vercel deployment.
+
