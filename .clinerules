@@ -1,0 +1,109 @@
+# Academic Planner — Cline Agent Rules & Architecture Guide
+
+Welcome to the **Academic Planner & Attendance Tracker** codebase. This file serves as your persistent memory, operational protocol, and technical specification. Always follow these rules when developing or modifying this repository.
+
+---
+
+## 1. Project Overview & Hosting
+* **Type**: Progressive Web App (PWA) built with Vanilla JavaScript, HTML5, and responsive CSS.
+* **Production URL**: [https://academic-planner-eight.vercel.app](https://academic-planner-eight.vercel.app)
+* **Git Remote**: `https://github.com/parikhniket655/Academic-Planner.git` (Branch: `main`)
+* **Deployment**: Continuous Deployment via Vercel — any commit pushed to `origin/main` is automatically built and deployed live within seconds.
+
+---
+
+## 2. Core Repository Files
+* **`index.html`**: Single-Page Application (SPA) DOM structure, tabs (Today/Attendance, Timetable, Dashboard, Analytics, Mess, Settings), and modals.
+* **`app.js`**: Core business logic, timetable filtering, state management, attendance graph engine, and Supabase integration.
+* **`styles.css`**: Complete responsive stylesheet, dark theme default, timetable grid, and status badges.
+* **`sw.js`**: Service Worker managing offline asset caching and PWA installs.
+* **`manifest.json`**: Web app metadata and PWA icons.
+* **`term5_default_timetable.json`**: Pre-seeded verified Term V schedule fallback.
+* **`student_db.json`**: Directory of students, emails, rolls, and default section assignments.
+* **`supabase_sync_script.js`**: Google Apps Script that syncs the live administration Google Sheet to Supabase.
+* **`mess_menu.csv`**: Monthly student mess schedule.
+
+---
+
+## 3. MANDATORY RULE: PWA Cache Invalidation
+Because this application is a PWA with a Service Worker, browsers aggressively cache JavaScript and stylesheets. **Whenever you modify `app.js` or `styles.css`**, you **MUST** bump the cache version across all three of these locations:
+
+1. **`app.js`**: Update `TIMETABLE_CACHE_VERSION`:
+   ```javascript
+   const TIMETABLE_CACHE_VERSION = "v<INCREMENT>";
+   ```
+2. **`sw.js`**: Update `CACHE_NAME`:
+   ```javascript
+   const CACHE_NAME = "iimr-tracker-cache-v<INCREMENT>";
+   ```
+3. **`index.html`**: Update the script tag query parameter:
+   ```html
+   <script src="app.js?v=<YYYYMMDD>v<INCREMENT>"></script>
+   ```
+
+*(Current active version: `v826`)*.
+
+---
+
+## 4. Official Term V Curriculum (All 24 Courses)
+
+Always use these exact official abbreviations and course titles in `COURSE_NAMES`, `COURSE_CREDITS`, and search filters:
+
+| Abb. | Official Course Title | Faculty | Area |
+| :--- | :--- | :--- | :--- |
+| **GSEC** | Growth Strategies for E-Commerce | Dr. Ashwani Kumar | MIS |
+| **CSY** | Cyber Security | Dr. Ankit Chaudhary | MIS |
+| **AAB** | Agentic AI for Business (AAB) | Dr. Anurag Kulshrestha | MIS |
+| **IT** | International Trade | Dr. Deepabali Bhattacharjee | EPP |
+| **FIS** | Fixed Income Securities | Dr. Amit Pandey | F & A |
+| **FORM** | Futures, Options & Risk Management | Dr. Ujjwal Sawarn | F & A |
+| **MBFM** | Money, Banking, and Financial Markets | Dr. Charan Singh | F & A |
+| **IB** | Investment Banking | Dr. Vaneet Bhatia | F & A |
+| **PFWM** | Personal Finance & Wealth Management | Dr Surbhi Verma | F & A |
+| **TM** | Talent Management | Dr. Lubna Rashid Malik | OB & HR |
+| **SNCM** | Strategies for Negotiation & Conflict Management | Dr. Madhurima Mishra | OB & HR |
+| **SSM** | Strategic Storytelling for Managers | Prof. Koustab Ghosh | OB & HR |
+| **MSS** | Markstrat Simulations (Core) | Sec-A: Dr. Abhishek Yadav, Sec-B: Dr. Archit V. Tapar, Sec-C: Dr. Harmanjit Singh, Sec-D: Dr. Abhishek Yadav | M & S |
+| **IMC** | Integrated Marketing Communication | Dr. Garima Ranga | M & S |
+| **PBM** | Product & Brand Management | Sec-A: Dr. Archit V. Tapar, Sec-B: Dr. Harmanjit Singh | M & S |
+| **SM** | Service Marketing | Dr. Harmanjit Singh | M & S |
+| **M & A** | Mergers and Acquisitions | Dr. Deepali Dhingra | M & S |
+| **ENV** | Entrepreneurship and New Ventures | Dr. Rubina Chakma | M & S |
+| **ESMM** | Entertainment, Sports and Media Marketing | Dr. Abhishek Yadav | M & S |
+| **SoM** | Social Marketing | Dr. Mihir Kushwah | M & S |
+| **SNAB** | Strategies for New Age Businesses | Dr. Pranav Dharmani | M & S |
+| **NPD** | New Product Development | Dr. Anurag Tiwari | OM & QT |
+| **MSD** | Manufacturing System Design | Dr. Anurag Tiwari | OM & QT |
+| **TQMS** | Total Quality Management & Six Sigma | Sec-A & Sec-B: Dr. C.P. Garg | OM & QT |
+
+---
+
+## 5. Timetable Data & Sync Pipeline
+The application uses a multi-tier fallback architecture:
+1. **Direct Supabase REST API**: Fetches live sessions synced from Google Sheets (`date_key >= 2026-09-12`).
+2. **Google Sheets Web App Endpoint**: Direct fallback to `TIMETABLE_SHEETS_URL` (`https://script.google.com/macros/s/AKfycbyMlI_uymfSGLsvDLXg9SdyrZ_gCWQkqSissJr9OQe3NUI6KN6Z1wzkOx0aScMxP-xCgw/exec`).
+3. **Local Storage / IndexedDB**: Caches timetable on student devices for instant offline access.
+4. **Pre-Bundled Fallback**: `DEFAULT_TIMETABLE` loaded from `term5_default_timetable.json`.
+
+---
+
+## 6. Primary User Context
+* **Current Account**: Niket Parikh (`ipm04niketp@iimrohtak.ac.in`)
+* **Enrolled Electives**:
+  ```javascript
+  ["CSY", "IT", "FORM", "PBM Sec-A", "SNAB", "TQMS Sec-B", "MSS Sec-A"]
+  ```
+
+---
+
+## 7. Development & Deployment Workflow
+1. When asked to make updates, inspect existing code and styles first.
+2. Maintain documentation integrity and clean syntax.
+3. Bump cache version across `app.js`, `sw.js`, and `index.html`.
+4. Commit and push:
+   ```bash
+   git add <files>
+   git commit -m "<Clear, descriptive message>"
+   git push origin main
+   ```
+5. Confirm live status on `academic-planner-eight.vercel.app`.
