@@ -41,7 +41,7 @@ Because this application is a PWA with a Service Worker, browsers aggressively c
    <script src="app.js?v=<YYYYMMDD>v<INCREMENT>"></script>
    ```
 
-*(Current active version: `v826`)*.
+*(Current active version: `v827`)*.
 
 ---
 

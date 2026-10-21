@@ -756,7 +756,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 1(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -856,7 +856,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 2(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -866,7 +866,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 1(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -926,7 +926,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 1(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -936,7 +936,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 1(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -946,7 +946,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 1(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -966,7 +966,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 1(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -986,7 +986,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 1(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -1066,7 +1066,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 2(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -1086,7 +1086,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 3(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -1146,7 +1146,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 2(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -1206,7 +1206,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 3(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -1224,7 +1224,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Thursday",
     "slot": "17:40 - 18:55",
     "courseId": "MSS Sec-C",
-    "subject": "MSS 3 (HS)",
+    "subject": "MSS 3 (AVT)",
     "room": "LR 06",
     "instructor": "Dr. Harmanjit Singh",
     "section": "C"
@@ -1286,7 +1286,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 2(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -1326,7 +1326,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 2(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -1336,7 +1336,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 4(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -1346,7 +1346,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 2(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -1376,7 +1376,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 2(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -1436,7 +1436,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 4(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -1536,7 +1536,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 5(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -1556,7 +1556,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 5(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -1576,7 +1576,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 3(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -1683,20 +1683,20 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-23",
     "day": "Wednesday",
     "slot": "08:45 - 10:00",
-    "courseId": "TQMS Sec-A",
-    "subject": "TQMS 7(CPG)",
+    "courseId": "PFWM",
+    "subject": "PFWM 6 (SV)",
     "room": "LR 02",
-    "instructor": "Dr. C.P. Garg",
+    "instructor": "Dr Surbhi Verma",
     "section": "A"
   },
   {
     "dateKey": "2026-09-23",
     "day": "Wednesday",
     "slot": "14:30 - 15:45",
-    "courseId": "PFWM",
-    "subject": "PFWM 6(SV)",
+    "courseId": "MSD",
+    "subject": "MSD 3(AT)",
     "room": "LR 02",
-    "instructor": "Dr Surbhi Verma",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -1732,21 +1732,11 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-23",
     "day": "Wednesday",
-    "slot": "14:30 - 15:45",
-    "courseId": "TQMS Sec-B",
-    "subject": "TQMS 7(CPG)",
-    "room": "LR 07",
-    "instructor": "Dr. C.P. Garg",
-    "section": "B"
-  },
-  {
-    "dateKey": "2026-09-23",
-    "day": "Wednesday",
     "slot": "16:05 - 17:20",
     "courseId": "SM",
     "subject": "SM 6(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -1756,7 +1746,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 3(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -1806,7 +1796,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 4(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -1902,6 +1892,16 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-25",
     "day": "Friday",
+    "slot": "19:15 - 20:30",
+    "courseId": "NPD",
+    "subject": "NPD 3(AT)",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-09-25",
+    "day": "Friday",
     "slot": "20:50 - 22:05",
     "courseId": "MSS Sec-A",
     "subject": "MSS 6 (AY)",
@@ -1914,9 +1914,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Friday",
     "slot": "22:25 - 23:40",
     "courseId": "MSD",
-    "subject": "MSD 3(AT)",
+    "subject": "MSD 4(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -1926,7 +1926,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 7(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -1936,7 +1936,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 4(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -1946,7 +1946,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 6(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -1993,10 +1993,10 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-09-26",
     "day": "Saturday",
     "slot": "20:50 - 22:05",
-    "courseId": "MSD",
-    "subject": "MSD 4(AT)",
+    "courseId": "PFWM",
+    "subject": "PFWM 8(SV)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr Surbhi Verma",
     "section": "A"
   },
   {
@@ -2016,7 +2016,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 5(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -2027,6 +2027,26 @@ const DEFAULT_TIMETABLE = [
     "subject": "SNCM 5(MM)",
     "room": "LR 07",
     "instructor": "Dr. Madhurima Mishra",
+    "section": "B"
+  },
+  {
+    "dateKey": "2026-09-27",
+    "day": "Sunday",
+    "slot": "08:45 - 10:00",
+    "courseId": "TQMS Sec-A",
+    "subject": "TQMS 7(CPG)",
+    "room": "LR 02",
+    "instructor": "Dr. C.P. Garg",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-09-27",
+    "day": "Sunday",
+    "slot": "10:20 - 11:35",
+    "courseId": "TQMS Sec-B",
+    "subject": "TQMS 7(CPG)",
+    "room": "LR 07",
+    "instructor": "Dr. C.P. Garg",
     "section": "B"
   },
   {
@@ -2046,7 +2066,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 3(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -2092,11 +2112,21 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-28",
     "day": "Monday",
+    "slot": "22:25 - 23:40",
+    "courseId": "NPD",
+    "subject": "NPD 4(AT)",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-09-28",
+    "day": "Monday",
     "slot": "19:15 - 20:30",
     "courseId": "SM",
     "subject": "SM 8(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -2124,7 +2154,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "16:05 - 17:20",
     "courseId": "PFWM",
-    "subject": "PFWM 8(SV)",
+    "subject": "PFWM 9(SV)",
     "room": "LR 02",
     "instructor": "Dr Surbhi Verma",
     "section": "A"
@@ -2146,7 +2176,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 4(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -2156,7 +2186,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 5(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -2164,9 +2194,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "22:25 - 23:40",
     "courseId": "NPD",
-    "subject": "NPD 3(AT)",
+    "subject": "NPD 5(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -2212,6 +2242,16 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-30",
     "day": "Wednesday",
+    "slot": "14:30 - 15:45",
+    "courseId": "SNAB",
+    "subject": "SNAB 6(PD)",
+    "room": "LR 02",
+    "instructor": "Dr. Pranav Dharmani",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wednesday",
     "slot": "16:05 - 17:20",
     "courseId": "IB",
     "subject": "IB 4(VB)",
@@ -2252,31 +2292,11 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-30",
     "day": "Wednesday",
-    "slot": "22:25 - 23:40",
-    "courseId": "SNAB",
-    "subject": "SNAB 6(PD)",
-    "room": "LR 02",
-    "instructor": "Dr. Pranav Dharmani",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wednesday",
-    "slot": "14:30 - 15:45",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 7 (AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar",
-    "section": "B"
-  },
-  {
-    "dateKey": "2026-09-30",
-    "day": "Wednesday",
     "slot": "17:40 - 18:55",
     "courseId": "SM",
     "subject": "SM 9(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -2286,7 +2306,17 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 7(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
+    "section": "B"
+  },
+  {
+    "dateKey": "2026-09-30",
+    "day": "Wednesday",
+    "slot": "22:25 - 23:40",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 7 (AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "B"
   },
   {
@@ -2302,22 +2332,12 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-09-30",
     "day": "Wednesday",
-    "slot": "14:30 - 15:45",
+    "slot": "22:25 - 23:40",
     "courseId": "MSS Sec-D",
     "subject": "MSS 7 (AY)",
     "room": "LR 06",
     "instructor": "Dr. Abhishek Yadav",
     "section": "D"
-  },
-  {
-    "dateKey": "2026-10-01",
-    "day": "Thursday",
-    "slot": "14:30 - 15:45",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 6 (AVT)",
-    "room": "LR 02",
-    "instructor": "Dr. Archit V. Tapar",
-    "section": "A"
   },
   {
     "dateKey": "2026-10-01",
@@ -2333,10 +2353,10 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-01",
     "day": "Thursday",
     "slot": "20:50 - 22:05",
-    "courseId": "PFWM",
-    "subject": "PFWM 9(SV)",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 6 (AVT)",
     "room": "LR 02",
-    "instructor": "Dr Surbhi Verma",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -2356,7 +2376,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 6(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -2394,9 +2414,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Saturday",
     "slot": "08:45 - 10:00",
     "courseId": "NPD",
-    "subject": "NPD 4(AT)",
+    "subject": "NPD 6(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -2416,7 +2436,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 1(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -2426,7 +2446,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 2(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -2456,7 +2476,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 8(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -2496,7 +2516,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 3(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -2506,7 +2526,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 4(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -2533,10 +2553,10 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-05",
     "day": "Monday",
     "slot": "17:40 - 18:55",
-    "courseId": "TM",
-    "subject": "TM 6(LRM)",
+    "courseId": "IB",
+    "subject": "IB 5(VB)",
     "room": "LR 02",
-    "instructor": "Dr. Lubna Rashid Malik",
+    "instructor": "Dr. Vaneet Bhatia",
     "section": "A"
   },
   {
@@ -2546,7 +2566,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 5(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -2556,7 +2576,17 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 6(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-10-05",
+    "day": "Monday",
+    "slot": "22:25 - 23:40",
+    "courseId": "NPD",
+    "subject": "NPD 7(AT)",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -2576,7 +2606,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 9(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -2626,7 +2656,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 5(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -2654,9 +2684,19 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "20:50 - 22:05",
     "courseId": "NPD",
-    "subject": "NPD 5(AT)",
+    "subject": "NPD 8(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-10-06",
+    "day": "Tuesday",
+    "slot": "22:25 - 23:40",
+    "courseId": "MSD",
+    "subject": "MSD 6(AT)",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -2676,7 +2716,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 7(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -2696,7 +2736,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 5(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -2707,16 +2747,6 @@ const DEFAULT_TIMETABLE = [
     "subject": "SNAB 8(PD)",
     "room": "LR 02",
     "instructor": "Dr. Pranav Dharmani",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-07",
-    "day": "Wednesday",
-    "slot": "14:30 - 15:45",
-    "courseId": "TM",
-    "subject": "TM 5(LRM)",
-    "room": "LR 02",
-    "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
   },
   {
@@ -2734,9 +2764,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Wednesday",
     "slot": "17:40 - 18:55",
     "courseId": "MSD",
-    "subject": "MSD 6(AT)",
+    "subject": "MSD 7(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -2754,7 +2784,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Wednesday",
     "slot": "20:50 - 22:05",
     "courseId": "IB",
-    "subject": "IB 5(VB)",
+    "subject": "IB 6(VB)",
     "room": "LR 02",
     "instructor": "Dr. Vaneet Bhatia",
     "section": "A"
@@ -2766,7 +2796,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 10(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -2823,10 +2853,10 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-08",
     "day": "Thursday",
     "slot": "16:05 - 17:20",
-    "courseId": "IB",
-    "subject": "IB 6(VB)",
+    "courseId": "TM",
+    "subject": "TM 5(LRM)",
     "room": "LR 02",
-    "instructor": "Dr. Vaneet Bhatia",
+    "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
   },
   {
@@ -2846,7 +2876,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 6(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -2854,9 +2884,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Thursday",
     "slot": "20:50 - 22:05",
     "courseId": "NPD",
-    "subject": "NPD 6(AT)",
+    "subject": "NPD 9(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -2876,7 +2906,17 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 6(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
+    "section": "B"
+  },
+  {
+    "dateKey": "2026-10-08",
+    "day": "Thursday",
+    "slot": "22:25 - 23:40",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 8 (AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh",
     "section": "B"
   },
   {
@@ -2887,6 +2927,16 @@ const DEFAULT_TIMETABLE = [
     "subject": "MSS 10 (AY)",
     "room": "LR 02",
     "instructor": "Dr. Abhishek Yadav",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Friday",
+    "slot": "14:30 - 15:45",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 8 (AVT)",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -2903,16 +2953,26 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-09",
     "day": "Friday",
     "slot": "17:40 - 18:55",
-    "courseId": "FIS",
-    "subject": "FIS 11(AP2)",
+    "courseId": "GSEC",
+    "subject": "GSEC 9(AK1)",
     "room": "LR 02",
-    "instructor": "Dr. Amit Pandey",
+    "instructor": "Dr. Ashwani Kumar",
     "section": "A"
   },
   {
     "dateKey": "2026-10-09",
     "day": "Friday",
     "slot": "19:15 - 20:30",
+    "courseId": "TM",
+    "subject": "TM 6(LRM)",
+    "room": "LR 02",
+    "instructor": "Dr. Lubna Rashid Malik",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-10-09",
+    "day": "Friday",
+    "slot": "20:50 - 22:05",
     "courseId": "MBFM",
     "subject": "MBFM 1(CSVF)",
     "room": "LR 02",
@@ -2922,7 +2982,7 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-09",
     "day": "Friday",
-    "slot": "20:50 - 22:05",
+    "slot": "22:25 - 23:40",
     "courseId": "MBFM",
     "subject": "MBFM 2(CSVF)",
     "room": "LR 02",
@@ -2932,21 +2992,11 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-09",
     "day": "Friday",
-    "slot": "22:25 - 23:40",
-    "courseId": "TM",
-    "subject": "TM 7(LRM)",
-    "room": "LR 02",
-    "instructor": "Dr. Lubna Rashid Malik",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-09",
-    "day": "Friday",
     "slot": "08:45 - 10:00",
     "courseId": "SoM",
     "subject": "SoM 10(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -2956,7 +3006,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 8(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -2973,10 +3023,10 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-09",
     "day": "Friday",
     "slot": "17:40 - 18:55",
-    "courseId": "SM",
-    "subject": "SM 11(HS)",
+    "courseId": "M&A",
+    "subject": "M&A 9(DD)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "Dr. Deepali Dhingra",
     "section": "B"
   },
   {
@@ -2993,10 +3043,10 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-10",
     "day": "Saturday",
     "slot": "08:45 - 10:00",
-    "courseId": "GSEC",
-    "subject": "GSEC 9(AK1)",
+    "courseId": "FIS",
+    "subject": "FIS 11(AP2)",
     "room": "LR 02",
-    "instructor": "Dr. Ashwani Kumar",
+    "instructor": "Dr. Amit Pandey",
     "section": "A"
   },
   {
@@ -3024,9 +3074,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Saturday",
     "slot": "17:40 - 18:55",
     "courseId": "MSD",
-    "subject": "MSD 7(AT)",
+    "subject": "MSD 8(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -3063,10 +3113,10 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-10",
     "day": "Saturday",
     "slot": "08:45 - 10:00",
-    "courseId": "M&A",
-    "subject": "M&A 9(DD)",
+    "courseId": "SM",
+    "subject": "SM 11(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -3106,7 +3156,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 7(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -3116,7 +3166,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 8(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -3146,7 +3196,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 11(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -3206,7 +3256,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 9(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -3216,7 +3266,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 10(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -3232,19 +3282,9 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-13",
     "day": "Tuesday",
-    "slot": "19:15 - 20:30",
-    "courseId": "MSD",
-    "subject": "MSD 8(AT)",
-    "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-13",
-    "day": "Tuesday",
     "slot": "22:25 - 23:40",
     "courseId": "PBM Sec-A",
-    "subject": "PBM 8 (AVT)",
+    "subject": "PBM 9 (AVT)",
     "room": "LR 02",
     "instructor": "Dr. Archit V. Tapar",
     "section": "A"
@@ -3274,7 +3314,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "20:50 - 22:05",
     "courseId": "PBM Sec-B",
-    "subject": "PBM 8 (AVT)",
+    "subject": "PBM 9 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
     "section": "B"
@@ -3286,7 +3326,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 9(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -3296,7 +3336,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 11(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -3326,7 +3366,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 7(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -3334,7 +3374,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Wednesday",
     "slot": "19:15 - 20:30",
     "courseId": "TM",
-    "subject": "TM 8(LRM)",
+    "subject": "TM 7(LRM)",
     "room": "LR 02",
     "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
@@ -3354,9 +3394,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Wednesday",
     "slot": "22:25 - 23:40",
     "courseId": "NPD",
-    "subject": "NPD 7(AT)",
+    "subject": "NPD 10(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -3376,7 +3416,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 12(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -3386,7 +3426,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 7(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -3422,16 +3462,6 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-15",
     "day": "Thursday",
-    "slot": "19:15 - 20:30",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 9 (AVT)",
-    "room": "LR 02",
-    "instructor": "Dr. Archit V. Tapar",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
     "slot": "22:25 - 23:40",
     "courseId": "FIS",
     "subject": "FIS 13(AP2)",
@@ -3442,21 +3472,11 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-15",
     "day": "Thursday",
-    "slot": "08:45 - 10:00",
-    "courseId": "MSS Sec-B",
-    "subject": "MSS 12 (AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Archit V. Tapar",
-    "section": "B"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
     "slot": "14:30 - 15:45",
     "courseId": "SoM",
     "subject": "SoM 12(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -3476,27 +3496,17 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 10 (KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
     "dateKey": "2026-10-15",
     "day": "Thursday",
     "slot": "20:50 - 22:05",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 9 (AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
-    "section": "B"
-  },
-  {
-    "dateKey": "2026-10-15",
-    "day": "Thursday",
-    "slot": "22:25 - 23:40",
     "courseId": "SM",
     "subject": "SM 13(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -3534,9 +3544,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Friday",
     "slot": "14:30 - 15:45",
     "courseId": "MSD",
-    "subject": "MSD 9(AT)",
+    "subject": "MSD 9 (AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -3624,9 +3634,9 @@ const DEFAULT_TIMETABLE = [
     "day": "Saturday",
     "slot": "08:45 - 10:00",
     "courseId": "NPD",
-    "subject": "NPD 8(AT)",
+    "subject": "NPD 11(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -3646,7 +3656,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 8(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -3657,16 +3667,6 @@ const DEFAULT_TIMETABLE = [
     "subject": "TQMS 13(CPG)",
     "room": "LR 02",
     "instructor": "Dr. C.P. Garg",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-17",
-    "day": "Saturday",
-    "slot": "19:15 - 20:30",
-    "courseId": "PFWM",
-    "subject": "PFWM 13(SV)",
-    "room": "LR 02",
-    "instructor": "Dr Surbhi Verma",
     "section": "A"
   },
   {
@@ -3686,7 +3686,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 8(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -3707,6 +3707,16 @@ const DEFAULT_TIMETABLE = [
     "subject": "PBM 10 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
+    "section": "B"
+  },
+  {
+    "dateKey": "2026-10-18",
+    "day": "Sunday",
+    "slot": "08:45 - 10:00",
+    "courseId": "MSS Sec-B",
+    "subject": "MSS 12 (AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "B"
   },
   {
@@ -3732,16 +3742,6 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-19",
     "day": "Monday",
-    "slot": "16:05 - 17:20",
-    "courseId": "AAB",
-    "subject": "AAB 13(AK3)",
-    "room": "LR 02",
-    "instructor": "Dr. Anurag Kulshrestha",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Monday",
     "slot": "19:15 - 20:30",
     "courseId": "MSS Sec-A",
     "subject": "MSS 13 (AY)",
@@ -3756,7 +3756,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 10(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -3768,16 +3768,6 @@ const DEFAULT_TIMETABLE = [
     "room": "LR 02",
     "instructor": "Dr. Madhurima Mishra",
     "section": "A"
-  },
-  {
-    "dateKey": "2026-10-19",
-    "day": "Monday",
-    "slot": "08:45 - 10:00",
-    "courseId": "M&A",
-    "subject": "M&A 12(DD)",
-    "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra",
-    "section": "B"
   },
   {
     "dateKey": "2026-10-19",
@@ -3806,7 +3796,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 13(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -3844,7 +3834,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Wednesday",
     "slot": "08:45 - 10:00",
     "courseId": "TM",
-    "subject": "TM 9(LRM)",
+    "subject": "TM 8(LRM)",
     "room": "LR 02",
     "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
@@ -3862,21 +3852,11 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-21",
     "day": "Wednesday",
-    "slot": "16:05 - 17:20",
-    "courseId": "NPD",
-    "subject": "NPD 9(AT)",
+    "slot": "19:15 - 20:30",
+    "courseId": "AAB",
+    "subject": "AAB 13(AK3)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-21",
-    "day": "Wednesday",
-    "slot": "17:40 - 18:55",
-    "courseId": "PBM Sec-A",
-    "subject": "PBM 11 (AVT)",
-    "room": "LR 02",
-    "instructor": "Dr. Archit V. Tapar",
+    "instructor": "Dr. Anurag Kulshrestha",
     "section": "A"
   },
   {
@@ -3894,7 +3874,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Wednesday",
     "slot": "22:25 - 23:40",
     "courseId": "PFWM",
-    "subject": "PFWM 14(SV)",
+    "subject": "PFWM 13(SV)",
     "room": "LR 02",
     "instructor": "Dr Surbhi Verma",
     "section": "A"
@@ -3906,7 +3886,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 9(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -3916,17 +3896,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 11(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
-    "section": "B"
-  },
-  {
-    "dateKey": "2026-10-21",
-    "day": "Wednesday",
-    "slot": "19:15 - 20:30",
-    "courseId": "PBM Sec-B",
-    "subject": "PBM 11 (AVT)",
-    "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -3974,7 +3944,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Thursday",
     "slot": "19:15 - 20:30",
     "courseId": "PBM Sec-A",
-    "subject": "PBM 12 (AVT)",
+    "subject": "PBM 11 (AVT)",
     "room": "LR 02",
     "instructor": "Dr. Archit V. Tapar",
     "section": "A"
@@ -3996,7 +3966,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 14(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -4016,7 +3986,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 12(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -4024,9 +3994,19 @@ const DEFAULT_TIMETABLE = [
     "day": "Thursday",
     "slot": "20:50 - 22:05",
     "courseId": "PBM Sec-B",
-    "subject": "PBM 12 (AVT)",
+    "subject": "PBM 11 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
+    "section": "B"
+  },
+  {
+    "dateKey": "2026-10-22",
+    "day": "Thursday",
+    "slot": "22:25 - 23:40",
+    "courseId": "M&A",
+    "subject": "M&A 12(DD)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra",
     "section": "B"
   },
   {
@@ -4052,16 +4032,6 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-23",
     "day": "Friday",
-    "slot": "08:45 - 10:00",
-    "courseId": "NPD",
-    "subject": "NPD 10(AT)",
-    "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-23",
-    "day": "Friday",
     "slot": "14:30 - 15:45",
     "courseId": "FIS",
     "subject": "FIS 14(AP2)",
@@ -4076,7 +4046,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 9(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -4126,7 +4096,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 10(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -4136,7 +4106,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 14(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -4163,20 +4133,20 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-24",
     "day": "Saturday",
     "slot": "14:30 - 15:45",
-    "courseId": "CSY",
-    "subject": "CSY 3(ACVF)",
+    "courseId": "MBFM",
+    "subject": "MBFM 10(CSVF)",
     "room": "LR 02",
-    "instructor": "Dr. Ankit Chaudhary",
+    "instructor": "Dr. Charan Singh",
     "section": "A"
   },
   {
     "dateKey": "2026-10-24",
     "day": "Saturday",
     "slot": "16:05 - 17:20",
-    "courseId": "MBFM",
-    "subject": "MBFM 10(CSVF)",
+    "courseId": "CSY",
+    "subject": "CSY 3(ACVF)",
     "room": "LR 02",
-    "instructor": "Dr. Charan Singh",
+    "instructor": "Dr. Ankit Chaudhary",
     "section": "A"
   },
   {
@@ -4194,7 +4164,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Saturday",
     "slot": "19:15 - 20:30",
     "courseId": "TM",
-    "subject": "TM 10(LRM)",
+    "subject": "TM 9(LRM)",
     "room": "LR 02",
     "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
@@ -4226,7 +4196,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 15(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -4248,16 +4218,6 @@ const DEFAULT_TIMETABLE = [
     "room": "LR 06",
     "instructor": "Dr. Abhishek Yadav",
     "section": "D"
-  },
-  {
-    "dateKey": "2026-10-26",
-    "day": "Monday",
-    "slot": "08:45 - 10:00",
-    "courseId": "MSD",
-    "subject": "MSD 11(AT)",
-    "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
-    "section": "A"
   },
   {
     "dateKey": "2026-10-26",
@@ -4292,16 +4252,6 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-10-26",
     "day": "Monday",
-    "slot": "19:15 - 20:30",
-    "courseId": "NPD",
-    "subject": "NPD 11(AT)",
-    "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-26",
-    "day": "Monday",
     "slot": "20:50 - 22:05",
     "courseId": "FIS",
     "subject": "FIS 15(AP2)",
@@ -4316,7 +4266,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 10(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -4346,7 +4296,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 11(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -4356,7 +4306,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 15(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -4364,7 +4314,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "14:30 - 15:45",
     "courseId": "PBM Sec-A",
-    "subject": "PBM 13 (AVT)",
+    "subject": "PBM 12 (AVT)",
     "room": "LR 02",
     "instructor": "Dr. Archit V. Tapar",
     "section": "A"
@@ -4374,7 +4324,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "16:05 - 17:20",
     "courseId": "PFWM",
-    "subject": "PFWM 15(SV)",
+    "subject": "PFWM 14(SV)",
     "room": "LR 02",
     "instructor": "Dr Surbhi Verma",
     "section": "A"
@@ -4394,7 +4344,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "19:15 - 20:30",
     "courseId": "TM",
-    "subject": "TM 11(LRM)",
+    "subject": "TM 10(LRM)",
     "room": "LR 02",
     "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
@@ -4424,7 +4374,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "08:45 - 10:00",
     "courseId": "PBM Sec-B",
-    "subject": "PBM 13 (AVT)",
+    "subject": "PBM 12 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
     "section": "B"
@@ -4436,7 +4386,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 13(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -4476,27 +4426,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 11(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wednesday",
-    "slot": "16:05 - 17:20",
-    "courseId": "NPD",
-    "subject": "NPD 13(AT)",
-    "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
-    "section": "A"
-  },
-  {
-    "dateKey": "2026-10-28",
-    "day": "Wednesday",
-    "slot": "17:40 - 18:55",
-    "courseId": "MSD",
-    "subject": "MSD 12(AT)",
-    "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -4513,10 +4443,20 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-28",
     "day": "Wednesday",
     "slot": "20:50 - 22:05",
-    "courseId": "ENV",
-    "subject": "ENV 12(RC)",
+    "courseId": "SNAB",
+    "subject": "SNAB 13(PD)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Pranav Dharmani",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-10-28",
+    "day": "Wednesday",
+    "slot": "22:25 - 23:40",
+    "courseId": "PFWM",
+    "subject": "PFWM 15(SV)",
+    "room": "LR 02",
+    "instructor": "Dr Surbhi Verma",
     "section": "A"
   },
   {
@@ -4526,7 +4466,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 16(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -4536,7 +4476,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 13(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -4554,7 +4494,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Thursday",
     "slot": "08:45 - 10:00",
     "courseId": "TM",
-    "subject": "TM 12(LRM)",
+    "subject": "TM 11(LRM)",
     "room": "LR 02",
     "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
@@ -4593,10 +4533,20 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-29",
     "day": "Thursday",
     "slot": "20:50 - 22:05",
-    "courseId": "SNAB",
-    "subject": "SNAB 13(PD)",
+    "courseId": "ENV",
+    "subject": "ENV 12(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Pranav Dharmani",
+    "instructor": "Dr. Rupesh Chandra",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-10-29",
+    "day": "Thursday",
+    "slot": "22:25 - 23:40",
+    "courseId": "MSD",
+    "subject": "MSD 11 (AT)",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -4616,7 +4566,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 16(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -4654,7 +4604,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Friday",
     "slot": "08:45 - 10:00",
     "courseId": "PBM Sec-A",
-    "subject": "PBM 14 (AVT)",
+    "subject": "PBM 13 (AVT)",
     "room": "LR 02",
     "instructor": "Dr. Archit V. Tapar",
     "section": "A"
@@ -4683,10 +4633,10 @@ const DEFAULT_TIMETABLE = [
     "dateKey": "2026-10-30",
     "day": "Friday",
     "slot": "19:15 - 20:30",
-    "courseId": "IB",
-    "subject": "IB 13(VB)",
+    "courseId": "MSD",
+    "subject": "MSD 12(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Vaneet Bhatia",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -4716,7 +4666,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 14(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -4724,7 +4674,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Friday",
     "slot": "14:30 - 15:45",
     "courseId": "PBM Sec-B",
-    "subject": "PBM 14 (AVT)",
+    "subject": "PBM 13 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
     "section": "B"
@@ -4746,7 +4696,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 17(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -4756,7 +4706,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 12(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -4766,7 +4716,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 13(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -4806,7 +4756,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 13(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -4816,7 +4766,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 12(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -4826,7 +4776,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 12(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -4836,7 +4786,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 14(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -4846,7 +4796,17 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 15(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-11-01",
+    "day": "Sunday",
+    "slot": "16:05 - 17:20",
+    "courseId": "IB",
+    "subject": "IB 13(VB)",
+    "room": "LR 02",
+    "instructor": "Dr. Vaneet Bhatia",
     "section": "A"
   },
   {
@@ -4866,7 +4826,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 16(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -4906,7 +4866,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 14(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -4926,7 +4886,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 17(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -4976,7 +4936,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 13(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -5004,7 +4964,17 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "19:15 - 20:30",
     "courseId": "PBM Sec-A",
-    "subject": "PBM 15 (AVT)",
+    "subject": "PBM 14 (AVT)",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-11-03",
+    "day": "Tuesday",
+    "slot": "22:25 - 23:40",
+    "courseId": "NPD",
+    "subject": "NPD 13(AT)",
     "room": "LR 02",
     "instructor": "Dr. Archit V. Tapar",
     "section": "A"
@@ -5036,7 +5006,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 15(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -5044,7 +5014,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "20:50 - 22:05",
     "courseId": "PBM Sec-B",
-    "subject": "PBM 15 (AVT)",
+    "subject": "PBM 14 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
     "section": "B"
@@ -5074,7 +5044,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Wednesday",
     "slot": "16:05 - 17:20",
     "courseId": "TM",
-    "subject": "TM 13(LRM)",
+    "subject": "TM 12(LRM)",
     "room": "LR 02",
     "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
@@ -5116,7 +5086,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 14(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -5136,7 +5106,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 18(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -5146,7 +5116,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 14(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -5156,7 +5126,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 15(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -5196,7 +5166,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 18(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -5207,6 +5177,16 @@ const DEFAULT_TIMETABLE = [
     "subject": "MSS 18 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Archit V. Tapar",
+    "section": "B"
+  },
+  {
+    "dateKey": "2026-11-05",
+    "day": "Thursday",
+    "slot": "20:50 - 22:05",
+    "courseId": "SSM",
+    "subject": "SSM 16(KG)",
+    "room": "LR 07",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -5236,7 +5216,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 15(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -5246,7 +5226,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 14(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -5264,7 +5244,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Friday",
     "slot": "17:40 - 18:55",
     "courseId": "TM",
-    "subject": "TM 14(LRM)",
+    "subject": "TM 13(LRM)",
     "room": "LR 02",
     "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
@@ -5274,7 +5254,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Friday",
     "slot": "19:15 - 20:30",
     "courseId": "PBM Sec-A",
-    "subject": "PBM 16 (AVT)",
+    "subject": "PBM 15 (AVT)",
     "room": "LR 02",
     "instructor": "Dr. Archit V. Tapar",
     "section": "A"
@@ -5296,7 +5276,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 15(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -5312,19 +5292,9 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-06",
     "day": "Friday",
-    "slot": "19:15 - 20:30",
-    "courseId": "SSM",
-    "subject": "SSM 16(KG)",
-    "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
-    "section": "B"
-  },
-  {
-    "dateKey": "2026-11-06",
-    "day": "Friday",
     "slot": "20:50 - 22:05",
     "courseId": "PBM Sec-B",
-    "subject": "PBM 16 (AVT)",
+    "subject": "PBM 15 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
     "section": "B"
@@ -5344,7 +5314,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Friday",
     "slot": "16:05 - 17:20",
     "courseId": "PBM Sec-A",
-    "subject": "PBM 17 (AVT)",
+    "subject": "PBM 16 (AVT)",
     "room": "LR 02",
     "instructor": "Dr. Archit V. Tapar",
     "section": "A"
@@ -5366,7 +5336,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 16(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -5404,7 +5374,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Friday",
     "slot": "14:30 - 15:45",
     "courseId": "PBM Sec-B",
-    "subject": "PBM 17 (AVT)",
+    "subject": "PBM 16 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
     "section": "B"
@@ -5416,7 +5386,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 17(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -5426,7 +5396,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 19(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -5436,7 +5406,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 16(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -5446,7 +5416,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 16(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -5466,7 +5436,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 15(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -5536,7 +5506,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 17(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -5546,7 +5516,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 18(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -5554,7 +5524,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "16:05 - 17:20",
     "courseId": "TM",
-    "subject": "TM 15(LRM)",
+    "subject": "TM 14(LRM)",
     "room": "LR 02",
     "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
@@ -5564,7 +5534,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-A",
-    "subject": "PBM 18 (AVT)",
+    "subject": "PBM 17 (AVT)",
     "room": "LR 02",
     "instructor": "Dr. Archit V. Tapar",
     "section": "A"
@@ -5576,7 +5546,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 16(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -5596,7 +5566,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 18(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -5604,7 +5574,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Tuesday",
     "slot": "19:15 - 20:30",
     "courseId": "PBM Sec-B",
-    "subject": "PBM 18 (AVT)",
+    "subject": "PBM 17 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
     "section": "B"
@@ -5626,7 +5596,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 19(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -5636,7 +5606,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "IMC",
     "subject": "IMC 20(GRVF)",
     "room": "LR 02",
-    "instructor": "Dr. Garima Ranga",
+    "instructor": "Dr. Garima Sharma",
     "section": "A"
   },
   {
@@ -5672,11 +5642,21 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-18",
     "day": "Wednesday",
+    "slot": "22:25 - 23:40",
+    "courseId": "GSEC",
+    "subject": "GSEC 18(AK1)",
+    "room": "LR 02",
+    "instructor": "Dr. Ashwani Kumar",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-11-18",
+    "day": "Wednesday",
     "slot": "17:40 - 18:55",
     "courseId": "SoM",
     "subject": "SoM 19(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -5716,7 +5696,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 17(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -5754,7 +5734,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Wednesday",
     "slot": "19:15 - 20:30",
     "courseId": "GSEC",
-    "subject": "GSEC 18(AK1)",
+    "subject": "GSEC 19(AK1)",
     "room": "LR 02",
     "instructor": "Dr. Ashwani Kumar",
     "section": "A"
@@ -5764,7 +5744,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Wednesday",
     "slot": "20:50 - 22:05",
     "courseId": "TM",
-    "subject": "TM 16(LRM)",
+    "subject": "TM 15(LRM)",
     "room": "LR 02",
     "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
@@ -5776,7 +5756,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 17(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -5816,7 +5796,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 17(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -5836,7 +5816,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 17(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -5844,7 +5824,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Friday",
     "slot": "17:40 - 18:55",
     "courseId": "PBM Sec-A",
-    "subject": "PBM 19 (AVT)",
+    "subject": "PBM 18 (AVT)",
     "room": "LR 02",
     "instructor": "Dr. Archit V. Tapar",
     "section": "A"
@@ -5884,7 +5864,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Friday",
     "slot": "16:05 - 17:20",
     "courseId": "PBM Sec-B",
-    "subject": "PBM 19 (AVT)",
+    "subject": "PBM 18 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
     "section": "B"
@@ -5896,7 +5876,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 19(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -5954,7 +5934,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Saturday",
     "slot": "20:50 - 22:05",
     "courseId": "TM",
-    "subject": "TM 17(LRM)",
+    "subject": "TM 16(LRM)",
     "room": "LR 02",
     "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
@@ -5976,7 +5956,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SM",
     "subject": "SM 20(HS)",
     "room": "LR 07",
-    "instructor": "Dr. Harmanjit Singh",
+    "instructor": "HS",
     "section": "B"
   },
   {
@@ -6016,7 +5996,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 18(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -6036,17 +6016,17 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 18(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
     "dateKey": "2026-11-23",
     "day": "Monday",
     "slot": "22:25 - 23:40",
-    "courseId": "GSEC",
-    "subject": "GSEC 19(AK1)",
+    "courseId": "TM",
+    "subject": "TM 17(LRM)",
     "room": "LR 02",
-    "instructor": "Dr. Ashwani Kumar",
+    "instructor": "Dr. Lubna Rashid Malik",
     "section": "A"
   },
   {
@@ -6056,7 +6036,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SoM",
     "subject": "SoM 20(MK)",
     "room": "LR 07",
-    "instructor": "Dr. Mihir Kushwah",
+    "instructor": "Dr. Manish Kumar",
     "section": "B"
   },
   {
@@ -6077,16 +6057,6 @@ const DEFAULT_TIMETABLE = [
     "subject": "SNCM 18(MM)",
     "room": "LR 07",
     "instructor": "Dr. Madhurima Mishra",
-    "section": "B"
-  },
-  {
-    "dateKey": "2026-11-23",
-    "day": "Monday",
-    "slot": "22:25 - 23:40",
-    "courseId": "M&A",
-    "subject": "M&A 19(DD)",
-    "room": "LR 07",
-    "instructor": "Dr. Deepali Dhingra",
     "section": "B"
   },
   {
@@ -6126,7 +6096,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 19(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -6146,7 +6116,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 18(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -6186,7 +6156,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 18(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -6200,13 +6170,23 @@ const DEFAULT_TIMETABLE = [
     "section": "B"
   },
   {
+    "dateKey": "2026-11-25",
+    "day": "Wednesday",
+    "slot": "22:25 - 23:40",
+    "courseId": "M&A",
+    "subject": "M&A 19(DD)",
+    "room": "LR 07",
+    "instructor": "Dr. Deepali Dhingra",
+    "section": "B"
+  },
+  {
     "dateKey": "2026-11-26",
     "day": "Thursday",
     "slot": "08:45 - 10:00",
     "courseId": "ENV",
     "subject": "ENV 19(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -6214,7 +6194,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Thursday",
     "slot": "16:05 - 17:20",
     "courseId": "PBM Sec-A",
-    "subject": "PBM 20 (AVT)",
+    "subject": "PBM 19 (AVT)",
     "room": "LR 02",
     "instructor": "Dr. Archit V. Tapar",
     "section": "A"
@@ -6254,7 +6234,7 @@ const DEFAULT_TIMETABLE = [
     "day": "Thursday",
     "slot": "14:30 - 15:45",
     "courseId": "PBM Sec-B",
-    "subject": "PBM 20 (AVT)",
+    "subject": "PBM 19 (AVT)",
     "room": "LR 07",
     "instructor": "Dr. Harmanjit Singh",
     "section": "B"
@@ -6266,7 +6246,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "SSM",
     "subject": "SSM 20(KG)",
     "room": "LR 07",
-    "instructor": "Prof. Koustab Ghosh",
+    "instructor": "Prof. K.K. Garg",
     "section": "B"
   },
   {
@@ -6326,7 +6306,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 19(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -6366,7 +6346,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 19(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   },
   {
@@ -6386,7 +6366,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "MSD",
     "subject": "MSD 20(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -6402,11 +6382,31 @@ const DEFAULT_TIMETABLE = [
   {
     "dateKey": "2026-11-28",
     "day": "Saturday",
+    "slot": "17:40 - 18:55",
+    "courseId": "PBM Sec-A",
+    "subject": "PBM 20 (AVT)",
+    "room": "LR 02",
+    "instructor": "Dr. Archit V. Tapar",
+    "section": "A"
+  },
+  {
+    "dateKey": "2026-11-28",
+    "day": "Saturday",
     "slot": "14:30 - 15:45",
     "courseId": "SNCM Sec-B",
     "subject": "SNCM 20(MM)",
     "room": "LR 07",
     "instructor": "Dr. Madhurima Mishra",
+    "section": "B"
+  },
+  {
+    "dateKey": "2026-11-28",
+    "day": "Saturday",
+    "slot": "19:15 - 20:30",
+    "courseId": "PBM Sec-B",
+    "subject": "PBM 20 (AVT)",
+    "room": "LR 07",
+    "instructor": "Dr. Harmanjit Singh",
     "section": "B"
   },
   {
@@ -6436,7 +6436,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "NPD",
     "subject": "NPD 20(AT)",
     "room": "LR 02",
-    "instructor": "Dr. Anurag Tiwari",
+    "instructor": "Dr. Archit V. Tapar",
     "section": "A"
   },
   {
@@ -6446,7 +6446,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ENV",
     "subject": "ENV 20(RC)",
     "room": "LR 02",
-    "instructor": "Dr. Rubina Chakma",
+    "instructor": "Dr. Rupesh Chandra",
     "section": "A"
   },
   {
@@ -6456,7 +6456,7 @@ const DEFAULT_TIMETABLE = [
     "courseId": "ESMM",
     "subject": "ESMM 20(AY)",
     "room": "LR 07",
-    "instructor": "Dr. Abhishek Yadav",
+    "instructor": "Dr. P.K. Sharma",
     "section": "B"
   }
 ];
@@ -6758,7 +6758,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v826";
+  const TIMETABLE_CACHE_VERSION = "v827";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
@@ -8555,8 +8555,47 @@ function mergeTimetable(liveTimetable) {
 async function autoSyncTimetable() {
   let synced = false;
 
-  // 1. Primary: Direct fetch from Supabase REST API (No CDN dependency!)
-  if (SUPABASE_URL && SUPABASE_KEY) {
+  // 1. Primary: Direct fetch from Live Google Sheets Web App (Single Source of Truth)
+  const syncUrl = state.settings.timetableSheetsUrl || TIMETABLE_SHEETS_URL;
+  if (syncUrl) {
+    const isJsonApi = syncUrl.includes("/macros/s/") || syncUrl.includes("/exec");
+    const fetchUrl = isJsonApi ? syncUrl : getCsvUrl(syncUrl);
+    try {
+      const res = await fetch(fetchUrl);
+      if (res.ok) {
+        let parsedTimetable = [];
+        if (isJsonApi) {
+          const data = await res.json();
+          if (data && data.sessions) {
+            parsedTimetable = data.sessions;
+          }
+        } else {
+          const csvText = await res.text();
+          parsedTimetable = parseCsv(csvText);
+        }
+
+        if (parsedTimetable && parsedTimetable.length >= 200) {
+          const merged = mergeTimetable(parsedTimetable);
+          if (merged && merged.length >= 200) {
+            state.timetable = merged;
+            saveTimetable();
+            renderDashboard();
+            renderTimetableCanvas();
+            if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
+              renderAttendanceTab();
+            }
+            console.log(`Timetable successfully synced ${merged.length} sessions from Live Google Sheets Web App.`);
+            synced = true;
+          }
+        }
+      }
+    } catch (e) {
+      console.warn("Failed to sync timetable from Live Google Sheets Web App:", e);
+    }
+  }
+
+  // 2. Secondary: Direct fetch from Supabase REST API (if available and live sheet fallback needed)
+  if (!synced && SUPABASE_URL && SUPABASE_KEY) {
     try {
       const res = await fetch(`${SUPABASE_URL}/rest/v1/timetable?date_key=gte.2026-09-12&order=date_key.asc&limit=1000`, {
         headers: {
@@ -8595,47 +8634,6 @@ async function autoSyncTimetable() {
       }
     } catch (e) {
       console.warn("Failed to fetch timetable from Supabase REST API:", e);
-    }
-  }
-
-  // 2. Fallback to Google Sheets Web App if Supabase is offline or empty
-  const syncUrl = state.settings.timetableSheetsUrl || TIMETABLE_SHEETS_URL;
-  if (!synced && syncUrl) {
-    const isJsonApi = syncUrl.includes("/macros/s/") || syncUrl.includes("/exec");
-    const fetchUrl = isJsonApi ? syncUrl : getCsvUrl(syncUrl);
-    try {
-      const res = await fetch(fetchUrl);
-      if (res.ok) {
-        let parsedTimetable = [];
-        if (isJsonApi) {
-          const data = await res.json();
-          if (data && data.sessions) {
-            parsedTimetable = data.sessions;
-          }
-        } else {
-          const csvText = await res.text();
-          parsedTimetable = parseCsv(csvText);
-        }
-
-        if (parsedTimetable && parsedTimetable.length >= 200) {
-          const merged = mergeTimetable(parsedTimetable);
-          if (merged && merged.length >= 200) {
-            state.timetable = merged;
-            saveTimetable();
-            renderDashboard();
-            renderTimetableCanvas();
-            if (document.getElementById("tab-today") && document.getElementById("tab-today").classList.contains("active")) {
-              renderAttendanceTab();
-            }
-            console.log("Timetable synced from Google Sheets Web App fallback.");
-            synced = true;
-          }
-        } else {
-          console.warn("Google Sheets returned partial data (" + (parsedTimetable ? parsedTimetable.length : 0) + "); retaining verified DEFAULT_TIMETABLE.");
-        }
-      }
-    } catch (e) {
-      console.warn("Failed to sync timetable from Google Sheets Web App:", e);
     }
   }
 }
@@ -9463,8 +9461,8 @@ function parseMessMenuCsv(csvText) {
 }
 
 async function syncMessMenu(force = false) {
-  // Clear old cached mess menus so the new September 2026 menu is loaded
-  const MESS_MENU_VERSION = "v2026_09_sep";
+  // Clear old cached mess menus so the new October 2026 menu is loaded
+  const MESS_MENU_VERSION = "v2026_10_oct";
   const cachedVersion = localStorage.getItem("iimr_mess_menu_version");
   if (cachedVersion !== MESS_MENU_VERSION) {
     localStorage.removeItem("iimr_mess_menu_raw");

@@ -1,148 +1,148 @@
 Day,Meal Type,Category,Items
 MONDAY,BREAKFAST,Beverages,"Tea, Coffee, Milk, Bournvita"
 MONDAY,BREAKFAST,Breads,"Brown Bread, Butter, Jam"
-MONDAY,BREAKFAST,Cornflakes,Cornflakes
+MONDAY,BREAKFAST,Cornflakes,Chocos
 MONDAY,BREAKFAST,Fruits/Salad,Banana
 MONDAY,BREAKFAST,Egg Dish,Bhurji
-MONDAY,BREAKFAST,Main Dish,Uttapam
-MONDAY,BREAKFAST,Side Items,Sambhar + Coconut Chutney
-MONDAY,LUNCH,Daal,Daal Tadka
-MONDAY,LUNCH,Gravy,Aaloo Matar Sabzi
-MONDAY,LUNCH,Rice,Jeera Rice
-MONDAY,LUNCH,Curd Item,Plain Dahi
-MONDAY,LUNCH,Breads,Methi Puri
-MONDAY,LUNCH,Salad,Green Salad
+MONDAY,BREAKFAST,Main Dish,Paratha
+MONDAY,BREAKFAST,Side Items,Matar Sabji
+MONDAY,LUNCH,Daal,Arhar Dal
+MONDAY,LUNCH,Gravy,Chicken Chilly
+MONDAY,LUNCH,Dry Veg,Veg Manchurian
+MONDAY,LUNCH,Rice,Fried Rice
+MONDAY,LUNCH,Curd Item,Pineapple Raita
+MONDAY,LUNCH,Breads,Roti
+MONDAY,LUNCH,Salad,Kachumbar Salad
 MONDAY,SNACKS,Drinks,"Tea, Coffee, Milk, Bournvita"
 MONDAY,SNACKS,Breads,"Bread, Butter, Jam"
-MONDAY,SNACKS,Main Snack,Aaloo Pakode
-MONDAY,SNACKS,Side Items,Ketchup + Mint Chutney
-MONDAY,DINNER,Daal,Masoor Dal Fry
-MONDAY,DINNER,Gravy,Chicken Do Pyaza
-MONDAY,DINNER,Dry Veg,Paneer Lababdar
-MONDAY,DINNER,Rice,Tawa Pulao
+MONDAY,SNACKS,Main Snack,Poha
+MONDAY,SNACKS,Side Items,Mint Chutney
+MONDAY,DINNER,Daal,Daal Palak
+MONDAY,DINNER,Gravy,Turai Chana
+MONDAY,DINNER,Rice,Jeera Rice
 MONDAY,DINNER,Breads,Roti
 MONDAY,DINNER,Salad,Green Salad
-MONDAY,DINNER,Sweets,Fruit Custard
+MONDAY,DINNER,Sweets,Jalebi
 TUESDAY,BREAKFAST,Beverages,"Tea, Coffee, Milk, Bournvita"
 TUESDAY,BREAKFAST,Breads,"Brown Bread, Butter, Jam"
-TUESDAY,BREAKFAST,Cornflakes,Chocos
-TUESDAY,BREAKFAST,Fruits/Salad,Fruit Chat - 1 Bowl
-TUESDAY,BREAKFAST,Egg Dish,Boiled eggs
-TUESDAY,BREAKFAST,Main Dish,Aloo Pyaz Paratha
-TUESDAY,BREAKFAST,Side Items,Curd + Pickle
-TUESDAY,LUNCH,Daal,Kadhi Pakoda
-TUESDAY,LUNCH,Dry Veg,Aaloo Jeera
-TUESDAY,LUNCH,Rice,Jeera Rice
-TUESDAY,LUNCH,Curd Item,Cucumber & Mint Raita
-TUESDAY,LUNCH,Breads,Roti
-TUESDAY,LUNCH,Salad,Kachumbar Salad
+TUESDAY,BREAKFAST,Cornflakes,Cornflakes
+TUESDAY,BREAKFAST,Fruits/Salad,Papaya
+TUESDAY,BREAKFAST,Egg Dish,Masala Omlette
+TUESDAY,BREAKFAST,Main Dish,Idly
+TUESDAY,BREAKFAST,Side Items,Sambar + Coconut Chutney
+TUESDAY,LUNCH,Gravy,Amritsari Chole
+TUESDAY,LUNCH,Rice,Plain Rice
+TUESDAY,LUNCH,Curd Item,Chaach
+TUESDAY,LUNCH,Breads,Bhature
+TUESDAY,LUNCH,Salad,Green Salad
 TUESDAY,SNACKS,Drinks,"Tea, Coffee, Milk, Bournvita"
 TUESDAY,SNACKS,Breads,"Bread, Butter, Jam"
-TUESDAY,SNACKS,Main Snack,Chowmein/Maggi
+TUESDAY,SNACKS,Main Snack,Maggi/Chowmein
 TUESDAY,SNACKS,Side Items,Ketchup
-TUESDAY,DINNER,Daal,Lehsuni Dal
-TUESDAY,DINNER,Dry Veg,Aaloo kaala channa
-TUESDAY,DINNER,Rice,Jeera Rice
+TUESDAY,DINNER,Daal,Urad Dal
+TUESDAY,DINNER,Dry Veg,Cabbage Matar Aaloo
+TUESDAY,DINNER,Rice,Matar Rice
 TUESDAY,DINNER,Breads,Roti
 TUESDAY,DINNER,Salad,Green Salad
-TUESDAY,DINNER,Sweets,Sewaiyan/Kheer
+TUESDAY,DINNER,Sweets,Gulab Jamun
 WEDNESDAY,BREAKFAST,Beverages,"Tea, Coffee, Milk, Bournvita"
 WEDNESDAY,BREAKFAST,Breads,"Brown Bread, Butter, Jam"
 WEDNESDAY,BREAKFAST,Cornflakes,Chocos
 WEDNESDAY,BREAKFAST,Fruits/Salad,Banana
-WEDNESDAY,BREAKFAST,Egg Dish,Masala Omelette
-WEDNESDAY,BREAKFAST,Main Dish,Vada
-WEDNESDAY,BREAKFAST,Side Items,Sambhar + Coconut Chutney
-WEDNESDAY,LUNCH,Gravy,Amritsari Chole
+WEDNESDAY,BREAKFAST,Egg Dish,Boiled Eggs
+WEDNESDAY,BREAKFAST,Main Dish,Palak Paratha
+WEDNESDAY,BREAKFAST,Side Items,"Curd, Pickle"
+WEDNESDAY,LUNCH,Daal,Kadhi Pakoda
+WEDNESDAY,LUNCH,Dry Veg,Aaloo Jeera
 WEDNESDAY,LUNCH,Rice,Plain Rice
-WEDNESDAY,LUNCH,Curd Item,Chaach
-WEDNESDAY,LUNCH,Breads,Bhature
+WEDNESDAY,LUNCH,Curd Item,Cucumber & Mint Raita
+WEDNESDAY,LUNCH,Breads,Roti
 WEDNESDAY,LUNCH,Salad,Green Salad
 WEDNESDAY,SNACKS,Drinks,"Tea, Coffee, Milk, Bournvita"
 WEDNESDAY,SNACKS,Breads,"Bread, Butter, Jam"
-WEDNESDAY,SNACKS,Main Snack,Poha
-WEDNESDAY,SNACKS,Side Items,Mint Chutney
-WEDNESDAY,DINNER,Daal,Urad Dal
+WEDNESDAY,SNACKS,Main Snack,Bhel Puri
+WEDNESDAY,SNACKS,Side Items,Meetha Chutney
+WEDNESDAY,DINNER,Daal,Masoor Dal Fry
 WEDNESDAY,DINNER,Gravy,Chicken Do Pyaza
-WEDNESDAY,DINNER,Dry Veg,Paneer Lababdar
+WEDNESDAY,DINNER,Dry Veg,Paneer butter masala
 WEDNESDAY,DINNER,Rice,Tawa Pulao
 WEDNESDAY,DINNER,Breads,Roti
 WEDNESDAY,DINNER,Salad,Green Salad
-WEDNESDAY,DINNER,Sweets,Besan Barfi/Boondi
+WEDNESDAY,DINNER,Sweets,Moong Halwa/ Sweet boondi
 THURSDAY,BREAKFAST,Beverages,"Tea, Coffee, Milk, Bournvita"
 THURSDAY,BREAKFAST,Breads,"Brown Bread, Butter, Jam"
 THURSDAY,BREAKFAST,Cornflakes,Cornflakes
 THURSDAY,BREAKFAST,Fruits/Salad,Papaya
-THURSDAY,BREAKFAST,Egg Dish,Boiled eggs
-THURSDAY,BREAKFAST,Main Dish,Plain Paratha
-THURSDAY,BREAKFAST,Side Items,Matar Sabzi
-THURSDAY,LUNCH,Daal,Mixed Dal
-THURSDAY,LUNCH,Dry Veg,Dum Aaloo
-THURSDAY,LUNCH,Rice,Plain Rice
-THURSDAY,LUNCH,Curd Item,Boondi Raita
-THURSDAY,LUNCH,Breads,Roti
-THURSDAY,LUNCH,Salad,Boiled Chana Salad
+THURSDAY,BREAKFAST,Egg Dish,Masala Omlette
+THURSDAY,BREAKFAST,Main Dish,Uttapam
+THURSDAY,BREAKFAST,Side Items,Sambar + Coconut Chutney
+THURSDAY,LUNCH,Daal,Daal Tadka
+THURSDAY,LUNCH,Gravy,Aaloo Matar Sabzi
+THURSDAY,LUNCH,Rice,Jeera Rice
+THURSDAY,LUNCH,Curd Item,Plain Dahi
+THURSDAY,LUNCH,Breads,Methi Puri
+THURSDAY,LUNCH,Salad,Green Salad
 THURSDAY,SNACKS,Drinks,"Tea, Coffee, Milk, Bournvita"
 THURSDAY,SNACKS,Breads,"Bread, Butter, Jam"
 THURSDAY,SNACKS,Main Snack,Pasta
 THURSDAY,SNACKS,Side Items,Ketchup
-THURSDAY,DINNER,Daal,Daal Palak
-THURSDAY,DINNER,Gravy,Baigan aloo
-THURSDAY,DINNER,Rice,Plain Rice
+THURSDAY,DINNER,Daal,Lehsuni Dal
+THURSDAY,DINNER,Dry Veg,Capsicum Aaloo
+THURSDAY,DINNER,Rice,Jeera Rice
 THURSDAY,DINNER,Breads,Roti
 THURSDAY,DINNER,Salad,Green Salad
-THURSDAY,DINNER,Sweets,Vanilla/Strawberry Icecream
+THURSDAY,DINNER,Sweets,Vanilla Icecream/ Butterscotch Icecream
 FRIDAY,BREAKFAST,Beverages,"Tea, Coffee, Milk, Bournvita"
 FRIDAY,BREAKFAST,Breads,"Brown Bread, Butter, Jam"
 FRIDAY,BREAKFAST,Cornflakes,Chocos
 FRIDAY,BREAKFAST,Fruits/Salad,Banana
-FRIDAY,BREAKFAST,Egg Dish,Omelette
-FRIDAY,BREAKFAST,Main Dish,Poha
-FRIDAY,BREAKFAST,Side Items,Lemon
-FRIDAY,LUNCH,Daal,Arhar Dal
-FRIDAY,LUNCH,Gravy,Chicken Chilly
-FRIDAY,LUNCH,Dry Veg,Veg Manchurian
-FRIDAY,LUNCH,Rice,Fried Rice
-FRIDAY,LUNCH,Curd Item,Pineapple Raita
+FRIDAY,BREAKFAST,Egg Dish,Boiled eggs
+FRIDAY,BREAKFAST,Main Dish,Aloo Pyaaz Paratha
+FRIDAY,BREAKFAST,Side Items,"Curd, Pickle"
+FRIDAY,LUNCH,Daal,Urad Dal
+FRIDAY,LUNCH,Gravy,Aloo Soyabean
+FRIDAY,LUNCH,Rice,Matar Pulao
+FRIDAY,LUNCH,Curd Item,Cucumber & Mint Raita
 FRIDAY,LUNCH,Breads,Roti
-FRIDAY,LUNCH,Salad,Kachumbar Salad
+FRIDAY,LUNCH,Salad,Boiled Chana salad
 FRIDAY,SNACKS,Drinks,"Tea, Coffee, Milk, Bournvita"
 FRIDAY,SNACKS,Breads,"Bread, Butter, Jam"
-FRIDAY,SNACKS,Main Snack,Pav Bhaji
-FRIDAY,SNACKS,Side Items,Lemon
+FRIDAY,SNACKS,Main Snack,Pav Bhaji/ Vada Pav
+FRIDAY,SNACKS,Side Items,Lemon/Fried Chilli
 FRIDAY,DINNER,Daal,Masoor Dal Fry
-FRIDAY,DINNER,Gravy,Aloo Soyabean
-FRIDAY,DINNER,Rice,Matar Pulao
+FRIDAY,DINNER,Gravy,Chicken Do Pyaza
+FRIDAY,DINNER,Dry Veg,Paneer Lababdar
+FRIDAY,DINNER,Rice,Tawa Pulao
 FRIDAY,DINNER,Breads,Roti
 FRIDAY,DINNER,Salad,Green Salad
-FRIDAY,DINNER,Sweets,Jalebi
+FRIDAY,DINNER,Sweets,Besan barfi
 SATURDAY,BREAKFAST,Beverages,"Tea, Coffee, Milk, Bournvita"
 SATURDAY,BREAKFAST,Breads,"Brown Bread, Butter, Jam"
-SATURDAY,BREAKFAST,Cornflakes,Chocos
+SATURDAY,BREAKFAST,Cornflakes,Cornflakes
 SATURDAY,BREAKFAST,Fruits/Salad,Papaya
 SATURDAY,BREAKFAST,Egg Dish,Bhurji
-SATURDAY,BREAKFAST,Main Dish,Aloo Pyaz Paratha
-SATURDAY,BREAKFAST,Side Items,Curd + Pickle
+SATURDAY,BREAKFAST,Main Dish,Paratha
+SATURDAY,BREAKFAST,Side Items,Matar Sabji
 SATURDAY,LUNCH,Daal,Rajma
 SATURDAY,LUNCH,Dry Veg,Lauki sabji
 SATURDAY,LUNCH,Rice,Plain Rice
-SATURDAY,LUNCH,Curd Item,Dahi vada
+SATURDAY,LUNCH,Curd Item,Dahi Vada
 SATURDAY,LUNCH,Breads,Roti
 SATURDAY,LUNCH,Salad,Green salad
 SATURDAY,SNACKS,Drinks,"Tea, Coffee, Milk, Bournvita"
 SATURDAY,SNACKS,Breads,"Bread, Butter, Jam"
-SATURDAY,SNACKS,Main Snack,Bread Pakode
-SATURDAY,SNACKS,Side Items,Ketchup + Mint Chutney
-SATURDAY,DINNER,Daal,Urad Dal
-SATURDAY,DINNER,Dry Veg,Matar Aaloo
-SATURDAY,DINNER,Rice,Jeera Rice
+SATURDAY,SNACKS,Main Snack,Aaloo toast
+SATURDAY,SNACKS,Side Items,"Ketchup, Mint Chutney"
+SATURDAY,DINNER,Daal,Rasam
+SATURDAY,DINNER,Gravy,Mix Veg Sabji
+SATURDAY,DINNER,Rice,Plain Rice
 SATURDAY,DINNER,Breads,Roti
 SATURDAY,DINNER,Salad,Green Salad
-SATURDAY,DINNER,Sweets,Sooji/Moong Dal Halwa
+SATURDAY,DINNER,Sweets,Sewaiyan
 SUNDAY,BREAKFAST,Beverages,"Tea, Coffee, Milk, Bournvita"
 SUNDAY,BREAKFAST,Breads,"Brown Bread, Butter, Jam"
-SUNDAY,BREAKFAST,Cornflakes,Cornflakes
-SUNDAY,BREAKFAST,Fruits/Salad,Papaya
+SUNDAY,BREAKFAST,Cornflakes,Chocos
+SUNDAY,BREAKFAST,Fruits/Salad,Banana
 SUNDAY,BREAKFAST,Egg Dish,Boiled eggs
 SUNDAY,BREAKFAST,Main Dish,Dosa
 SUNDAY,BREAKFAST,Side Items,Sambhar + Coconut Chutney
@@ -157,9 +157,9 @@ SUNDAY,SNACKS,Drinks,"Tea, Coffee, Milk, Bournvita"
 SUNDAY,SNACKS,Breads,"Bread, Butter, Jam"
 SUNDAY,SNACKS,Main Snack,Samosa/Kachori
 SUNDAY,SNACKS,Side Items,Imli Chutney + Mint Chutney
-SUNDAY,DINNER,Daal,Dal Makhani
-SUNDAY,DINNER,Dry Veg,Capsicum Aaloo
+SUNDAY,DINNER,Daal,Dal tadka
+SUNDAY,DINNER,Gravy,Sev tomato sabji
 SUNDAY,DINNER,Rice,Plain Rice
 SUNDAY,DINNER,Breads,Roti
 SUNDAY,DINNER,Salad,Green Salad
-SUNDAY,DINNER,Sweets,Gulab Jamun
+SUNDAY,DINNER,Sweets,Kheer
