@@ -6758,7 +6758,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v827";
+  const TIMETABLE_CACHE_VERSION = "v828";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
@@ -9461,8 +9461,8 @@ function parseMessMenuCsv(csvText) {
 }
 
 async function syncMessMenu(force = false) {
-  // Clear old cached mess menus so the new October 2026 menu is loaded
-  const MESS_MENU_VERSION = "v2026_10_oct";
+  // Clear old cached mess menus so the new November 2026 menu is loaded
+  const MESS_MENU_VERSION = "v2026_11_nov";
   const cachedVersion = localStorage.getItem("iimr_mess_menu_version");
   if (cachedVersion !== MESS_MENU_VERSION) {
     localStorage.removeItem("iimr_mess_menu_raw");
