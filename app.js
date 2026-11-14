@@ -6976,7 +6976,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v829";
+  const TIMETABLE_CACHE_VERSION = "v830";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
