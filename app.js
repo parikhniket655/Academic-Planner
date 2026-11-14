@@ -479,7 +479,7 @@ function isStudentEnrolled(studentCourses, courseId, lecture) {
     const normUser = normalizeCourseId(uCourse);
     if (normUser === normId) return true;
     
-    const baseCodes = ["CW", "GBS", "BA", "CV", "AIDMD", "B2B", "IBS", "PFM", "DBM", "MSS", "SNCM", "PBM", "TQMS", "CSY", "IT", "FORM", "SNAB", "FIS", "IB", "AAB", "PFWM", "MBFM", "SM", "MSD", "NPD", "SOM", "IMC", "SSM"];
+    const baseCodes = ["CW", "GBS", "BA", "CV", "AIDMD", "B2B", "IBS", "PFM", "DBM", "MSS", "SNCM", "PBM", "TQMS", "CSY", "IT", "FORM", "SNAB", "FIS", "IB", "AAB", "PFWM", "MBFM", "SM", "MSD", "NPD", "SOM", "IMC", "SSM", "GSEC", "TM", "ENV", "ESMM", "M & A", "M&A"];
     
     const uBase = baseCodes.find(b => normUser.startsWith(normalizeCourseId(b)));
     const lBase = baseCodes.find(b => normId.startsWith(normalizeCourseId(b)));
@@ -652,11 +652,229 @@ const DEFAULT_STUDENT_DB = {
   }
 };
 
-// Term V has not published an exam schedule yet — this stays empty until the live
-// sheet (or an official notice) gives real exam dates, so no stale/wrong entries show.
-// (Previously held Term IV's August 2026 exam schedule, which predates Term V's
-// Sept 12 start and doesn't match any Term V course code — that was a leftover bug.)
-const EXAMS_TIMETABLE = [];
+// Official Term V End-Term Examination Schedule (December 2026)
+const EXAMS_TIMETABLE = [
+  {
+    "dateKey": "2026-12-01",
+    "day": "Tuesday",
+    "slot": "10:30 AM - 12:30 PM",
+    "courseId": "IMC",
+    "subject": "EXAM: Integrated Marketing Communication (IMC)",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-01",
+    "day": "Tuesday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "MBFM",
+    "subject": "EXAM: Money, Banking, and Financial Markets (MBFM)",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-02",
+    "day": "Wednesday",
+    "slot": "10:30 AM - 12:30 PM",
+    "courseId": "SoM",
+    "subject": "EXAM: Social Marketing (SoM)",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-02",
+    "day": "Wednesday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "FIS",
+    "subject": "EXAM: Fixed Income Securities",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-02",
+    "day": "Wednesday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "SM",
+    "subject": "EXAM: Service Marketing",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-03",
+    "day": "Thursday",
+    "slot": "10:30 AM - 12:30 PM",
+    "courseId": "SSM",
+    "subject": "EXAM: Strategic Storytelling for Managers",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-03",
+    "day": "Thursday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "AAB",
+    "subject": "EXAM: Agentic AI for Business (AAB)",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-03",
+    "day": "Thursday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "FORM",
+    "subject": "EXAM: Futures, Options & Risk Management",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-04",
+    "day": "Friday",
+    "slot": "10:30 AM - 12:30 PM",
+    "courseId": "SNAB",
+    "subject": "EXAM: Strategies for New Age Businesses",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-04",
+    "day": "Friday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "PFWM",
+    "subject": "EXAM: Personal Finance & Wealth Management",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-04",
+    "day": "Friday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "TQMS",
+    "subject": "EXAM: Total Quality Management & Six Sigma",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-05",
+    "day": "Saturday",
+    "slot": "10:30 AM - 12:30 PM",
+    "courseId": "GSEC",
+    "subject": "EXAM: Growth Strategies for E-Commerce",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-05",
+    "day": "Saturday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "M & A",
+    "subject": "EXAM: Mergers and Acquisitions",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-07",
+    "day": "Monday",
+    "slot": "10:30 AM - 12:30 PM",
+    "courseId": "IB",
+    "subject": "EXAM: Investment Banking",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-07",
+    "day": "Monday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "MSS",
+    "subject": "EXAM: Markstrat Simulations (Core)",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-08",
+    "day": "Tuesday",
+    "slot": "10:30 AM - 12:30 PM",
+    "courseId": "TM",
+    "subject": "EXAM: Talent Management",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-08",
+    "day": "Tuesday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "ENV",
+    "subject": "EXAM: Entrepreneurship and New Ventures",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-09",
+    "day": "Wednesday",
+    "slot": "10:30 AM - 12:30 PM",
+    "courseId": "PBM",
+    "subject": "EXAM: Product & Brand Management",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-09",
+    "day": "Wednesday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "ESMM",
+    "subject": "EXAM: Entertainment, Sports and Media Marketing",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-09",
+    "day": "Wednesday",
+    "slot": "02:30 PM - 04:30 PM",
+    "courseId": "NPD",
+    "subject": "EXAM: New Product Development",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-10",
+    "day": "Thursday",
+    "slot": "10:30 AM - 12:30 PM",
+    "courseId": "SNCM",
+    "subject": "EXAM: Strategies for Negotiation & Conflict Management",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  },
+  {
+    "dateKey": "2026-12-10",
+    "day": "Thursday",
+    "slot": "10:30 AM - 12:30 PM",
+    "courseId": "MSD",
+    "subject": "EXAM: Manufacturing System Design",
+    "room": "Exam Hall",
+    "instructor": "EXAM",
+    "section": "All"
+  }
+];
 
 const DEFAULT_TIMETABLE = [
   {
@@ -6758,7 +6976,7 @@ async function loadUserData() {
   initSupabase();
 
       // Load Timetable (attempt live sync from hardcoded sheet, otherwise use cached/default)
-  const TIMETABLE_CACHE_VERSION = "v828";
+  const TIMETABLE_CACHE_VERSION = "v829";
   const cachedVersion = storage.getItem(`iimr_timetable_version_${email}`);
   const cachedTimetable = storage.getItem(`iimr_timetable_${email}`);
   
@@ -7383,7 +7601,24 @@ function renderDashboard() {
       const isEnrolled = isStudentEnrolled(state.user.courses, s.courseId, s);
       return isEnrolled && s.dateKey >= todayStrVal;
     });
-    myExams.sort((a, b) => a.dateKey.localeCompare(b.dateKey));
+    myExams.sort((a, b) => (a.dateKey || "").localeCompare(b.dateKey || "") || (a.slot || "").localeCompare(b.slot || ""));
+
+    // Dynamic badge showing scheduled count in card header
+    const headerRow = examsContainer.closest(".dashboard-card")?.querySelector(".card-header-row");
+    if (headerRow) {
+      let badge = headerRow.querySelector(".exam-count-badge");
+      if (myExams.length > 0) {
+        if (!badge) {
+          badge = document.createElement("span");
+          badge.className = "exam-count-badge";
+          badge.style.cssText = "background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600;";
+          headerRow.appendChild(badge);
+        }
+        badge.textContent = `${myExams.length} Scheduled`;
+      } else if (badge) {
+        badge.remove();
+      }
+    }
 
     if (myExams.length === 0) {
       examsContainer.className = "deadlines-empty";
@@ -7398,14 +7633,16 @@ function renderDashboard() {
         const item = document.createElement("div");
         item.className = "dashboard-exam-row-item";
         
-        // Format date e.g. "24 Aug"
+        // Format date e.g. "1 Dec"
         const dateParts = exam.dateKey.split('-');
         const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const formattedDate = `${parseInt(dateParts[2])} ${monthNames[parseInt(dateParts[1]) - 1]}`;
+        const dayAbbr = (exam.day || "").slice(0, 3).toUpperCase();
         
         item.innerHTML = `
           <div class="exam-date-badge">
             <span class="badge-day">${formattedDate}</span>
+            <span class="badge-weekday" style="font-size: 9px; font-weight: 600; opacity: 0.85;">${dayAbbr}</span>
           </div>
           <div class="exam-details-info">
             <span class="exam-subject-name">${exam.subject.replace("EXAM: ", "")}</span>

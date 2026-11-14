@@ -2548,7 +2548,7 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 250px;
+  max-height: 380px;
   overflow-y: auto;
   padding: 8px 0;
 }
